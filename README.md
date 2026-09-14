@@ -8,7 +8,7 @@
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
-[ScienceIDE Project](https://aitonomy.org/projects/scienceide) · [ScienceIDE Repository](https://github.com/aitofound/ScienceIDE) · [Results](#results) · [Quickstart](#quickstart) · [Roadmap](#roadmap) · [Contribute](#contribute)
+[ScienceIDE Project](https://aitonomy.org/projects/scienceide) · [ScienceIDE Repository](https://github.com/aitofound/ScienceIDE) · [Quickstart](#quickstart) · [Roadmap](#roadmap) · [Contribute](#contribute)
 
 </div>
 
