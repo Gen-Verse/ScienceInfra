@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="410" viewBox="0 0 1200 410" role="img" aria-labelledby="title desc">
+  <title id="title">ScienceInfra: the learning infrastructure for discovery intelligence</title>
+  <desc id="desc">Vision: scientific experience from ScienceIDE feeds ScienceInfra for execution, verification, training and evaluation. Improved agents return to scientific work and create new experience. The current implementation focuses on agentic reinforcement learning.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#101a35"/><stop offset="1" stop-color="#1d254c"/></linearGradient>
+    <linearGradient id="accent"><stop stop-color="#67e8d2"/><stop offset="1" stop-color="#99a8ff"/></linearGradient>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 6 3 0 6" fill="none" stroke="#8aa2cf" stroke-width="1.5"/></marker>
+  </defs>
+  <rect width="1200" height="410" rx="20" fill="url(#bg)"/>
+  <rect x="40" y="38" width="5" height="60" rx="2" fill="url(#accent)"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="62" y="58" fill="#81e6d6" font-size="14" letter-spacing="2">SCIENCEINFRA / THE LEARNING LAYER</text>
+    <text x="60" y="94" fill="#ffffff" font-size="29" font-weight="700">Turn scientific experience into agent capability.</text>
+    <text x="60" y="126" fill="#bac8e5" font-size="16">Chat → Code → Discovery: building the infrastructure for agents that learn through experimentation.</text>
+    <rect x="60" y="163" width="300" height="140" rx="12" fill="#1b2b48" stroke="#3a5275"/>
+    <text x="82" y="192" fill="#8eb0df" font-size="12" letter-spacing="1.4">EXPERIENCE SUPPLY</text>
+    <text x="82" y="222" fill="#ffffff" font-size="24" font-weight="700">ScienceIDE</text>
+    <text x="82" y="249" fill="#c5d1e8" font-size="15">Scientific environments and tasks</text>
+    <text x="82" y="275" fill="#c5d1e8" font-size="15">Expert-defined scientific checks</text>
+    <path d="M370 231 H411" stroke="#8aa2cf" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="420" y="163" width="360" height="140" rx="12" fill="#233951" stroke="#67e8d2" stroke-width="1.5"/>
+    <text x="442" y="192" fill="#81e6d6" font-size="12" letter-spacing="1.4">REUSABLE LEARNING INFRASTRUCTURE</text>
+    <text x="442" y="222" fill="#ffffff" font-size="24" font-weight="700">ScienceInfra</text>
+    <text x="442" y="249" fill="#d2e9e7" font-size="15">Prepare · Execute · Verify · Train · Evaluate</text>
+    <text x="442" y="275" fill="#d2e9e7" font-size="15">Current focus: agentic RL on scientific code</text>
+    <path d="M790 231 H831" stroke="#8aa2cf" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="840" y="163" width="300" height="140" rx="12" fill="#2b2b51" stroke="#656799"/>
+    <text x="862" y="192" fill="#bab7fa" font-size="12" letter-spacing="1.4">AGENTS FOR SCIENCE</text>
+    <text x="862" y="222" fill="#ffffff" font-size="24" font-weight="700">Learn. Test. Improve.</text>
+    <text x="862" y="249" fill="#d4d2ec" font-size="15">More capable scientific agents</text>
+    <text x="862" y="275" fill="#d4d2ec" font-size="15">A path toward discovery intelligence</text>
+    <path d="M990 315 V350 H210 V315" fill="none" stroke="#8aa2cf" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#arrow)"/>
+    <rect x="380" y="335" width="440" height="29" rx="12" fill="#192443"/>
+    <text x="600" y="355" text-anchor="middle" fill="#c5d1e8" font-size="14">Vision: scientific work creates the next learning experience</text>
+    <text x="60" y="389" fill="#91a5c7" font-size="12">SCIENCE FOR AI</text>
+    <text x="1140" y="389" text-anchor="end" fill="#aaa6d5" font-size="12">AI FOR SCIENCE</text>
+  </g>
+</svg>

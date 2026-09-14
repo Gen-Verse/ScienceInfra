@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+
+# Run artifacts. Checkpoints, Harbor job directories, and PSRL logs are large.
+outputs/
+ckpts/
+psrl_logs/
+*.log
+
+# Built datasets. `extra_info.task_path` is an absolute path to the compiled task
+# bank on the machine that ran `prepare_all.sh`, so a parquet is never portable.
+data/
+
+# Local planning notes, not part of the published package.
+NOTES-roadmap.md

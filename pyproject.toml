@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scienceinfra"
+version = "0.1.0"
+description = "Agentic RL infrastructure for scientific-computing defect repair"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+dependencies = [
+    "omegaconf>=2.3",
+    "pandas>=2.0",
+    "pyarrow>=14.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+# The RL backend and the task harness. Both are installed from source, so they
+# are declared rather than pinned.
+rl = ["harbor"]
+plot = ["matplotlib>=3.8"]
+
+[project.urls]
+Homepage = "https://github.com/Gen-Verse/ScienceInfra"
+
+[tool.setuptools.packages.find]
+include = ["scienceinfra*"]
+
+[tool.setuptools.package-data]
+scienceinfra = ["configs/*.yaml", "configs/*.jinja2"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
