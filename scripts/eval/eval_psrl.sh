@@ -28,7 +28,7 @@ HF_MODEL_PATH=${HF_MODEL_PATH:-${PSRL_WORKSPACE:-}/models/Qwen3.5-4B}
 # `L1` adds file, line, and defect note, `L2` drops the line, `L3` is the unhinted control.
 HINT_LEVEL=${HINT_LEVEL:-L1}
 # Built by `scripts/prepare/prepare_all.sh`, one directory per (env, category, tier).
-DATA_DIR=${DATA_DIR:-${REPO_ROOT}/data/mitgcm-biogeo/repair_easy}
+DATA_DIR=${DATA_DIR:-${REPO_ROOT}/data/laps/repair_easy}
 # Score the untrained `HF_MODEL_PATH` weights instead of a checkpoint, which is the
 # step-0 baseline for that model on this split.
 EVAL_BASE=${EVAL_BASE:-False}

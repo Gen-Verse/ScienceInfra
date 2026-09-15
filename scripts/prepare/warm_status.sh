@@ -10,7 +10,7 @@ HOSTS_FILE=""
 HOSTS_LIST=""
 DO_WARM=0
 THRESHOLD=40
-DATASET="${REPO_ROOT}/data/mitgcm-biogeo/repair_easy/all/L1.parquet"
+DATASET="${REPO_ROOT}/data/laps/repair_easy/all/L1.parquet"
 CONCURRENCY=8
 
 usage() { sed -n '2,3p' "$0"; }

@@ -9,7 +9,7 @@ REPO_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 RESULTS=""
 HOST=""
 CONCURRENCY=4
-DATASET="${REPO_ROOT}/data/mitgcm-biogeo/repair_easy/all/L1.parquet"
+DATASET="${REPO_ROOT}/data/laps/repair_easy/all/L1.parquet"
 DRY_RUN=0
 
 usage() { sed -n '2,3p' "$0"; }

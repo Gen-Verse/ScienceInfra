@@ -11,7 +11,7 @@ REPO_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 
 # Path to the task bank checkout. No default: it lives outside this repo.
 REPO=${REPO:-}
-ENVS=${ENVS:-laps,mitgcm-biogeo,athena-gr}
+ENVS=${ENVS:-laps,mitgcm-biogeo}
 # Nodes that will host Harbor episodes, comma separated. No default, because a wrong
 # host silently warms the wrong machine and training then cold builds.
 HOSTS=${HOSTS:-}
