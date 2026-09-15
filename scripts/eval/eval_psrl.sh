@@ -149,17 +149,19 @@ else
     chat_template_arg=""
 fi
 
-# --- Deployment: 3 nodes x 8 GPU = 24 (8 generation + 16 training) ---
+# --- Deployment: defaults to 3 nodes x 8 GPU = 24 (8 generation + 16 training) ---
+# Every value is overridable, so a single-node box can run the same recipe by
+# exporting NNODES=1 GEN_NNODES=1 TRAIN_NNODES=1 TRAIN_SP=2 TRAIN_FSDP=8.
 
 # Validation overlays training GPUs because generation and training consume all devices.
-NNODES=3
-NGPUS_PER_NODE=8
+NNODES=${NNODES:-3}
+NGPUS_PER_NODE=${NGPUS_PER_NODE:-8}
 
 # Split generation GPUs across tensor-parallel rollout instances.
-GEN_TP=2
-GEN_PP=1
-GEN_NNODES=1
-GEN_NGPUS_PER_NODE=8
+GEN_TP=${GEN_TP:-2}
+GEN_PP=${GEN_PP:-1}
+GEN_NNODES=${GEN_NNODES:-1}
+GEN_NGPUS_PER_NODE=${GEN_NGPUS_PER_NODE:-8}
 GEN_INSTANCES=$(((GEN_NNODES * GEN_NGPUS_PER_NODE) / (GEN_TP * GEN_PP)))
 GEN_NGPUS_PER_NODE_PER_INSTANCE=$((GEN_TP * GEN_PP))
 
@@ -167,13 +169,13 @@ GEN_NGPUS_PER_NODE_PER_INSTANCE=$((GEN_TP * GEN_PP))
 TRAIN_SP=${TRAIN_SP:-4}
 # Hybrid sharding keeps all-gathers within each training node.
 TRAIN_FSDP=${TRAIN_FSDP:-8}
-TRAIN_NNODES=2
-TRAIN_NGPUS_PER_NODE=8
+TRAIN_NNODES=${TRAIN_NNODES:-2}
+TRAIN_NGPUS_PER_NODE=${TRAIN_NGPUS_PER_NODE:-8}
 
 # Keep validation engines modest because they share training GPUs.
-VAL_TP=2
-VAL_PP=1
-VAL_INSTANCES=2
+VAL_TP=${VAL_TP:-2}
+VAL_PP=${VAL_PP:-1}
+VAL_INSTANCES=${VAL_INSTANCES:-2}
 VAL_NGPUS_PER_NODE_PER_INSTANCE=$((VAL_TP * VAL_PP))
 
 # --- Checkpoint loading ---
