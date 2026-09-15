@@ -1,0 +1,80 @@
+{
+ "canary": "e0628837-aea6-537d-81d1-85f6ab9cd8ac",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhd.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            do irk=1,3\n                !calculate flux function in real space, from uu and uu_prim\n                call calc_flux\n\n                !calculate flux_fourier\n                call transform_flux_real_to_fourier\n\n                !calculate rhs of the MHD equation\n                call calc_rhs\n\n                !update uu_fourier\n                call rkt(irk) !f(t+dt)\n\n                !dealiasing\n                call dealias\n\n                !transform uu_fourier to get uu\n                call transform_uu_fourier_to_real\n\n                !update uu_prim\n                call update_uu_prim_from_uu\n\n            enddo\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhd.f90",
+     "new": "            do irk=1,3\n                !calculate flux function in real space, from uu and uu_prim\n                call calc_flux\n\n                !calculate flux_fourier\n                call transform_flux_real_to_fourier\n\n                !calculate rhs of the MHD equation\n                call calc_rhs\n\n                !update uu_fourier\n                call rkt(irk) !f(t+dt)\n\n                !dealiasing\n                call dealias\n\n                !transform uu_fourier to get uu\n                call transform_uu_fourier_to_real\n\n                !update uu_prim\n                call update_uu_prim_from_uu\n\n            enddo\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-3d-mhd-evolve",
+  "meta": {
+   "body_lines": 23,
+   "call_sites": 1,
+   "file": "src_compressible/mhd.f90",
+   "subroutine": "evolve"
+  },
+  "note": "excise the executable body of evolve (src_compressible/mhd.f90)",
+  "source": "excise",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "excise",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "excise-3d-mhd-evolve",
+  "meta": {
+   "body_lines": 23,
+   "call_sites": 1,
+   "file": "src_compressible/mhd.f90",
+   "subroutine": "evolve"
+  },
+  "note": "excise the executable body of evolve (src_compressible/mhd.f90)",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 2.794
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "1.132e-02 at frame 8 in Uy, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.011316196582745915,
+    "worst_frame": 8,
+    "worst_variable": "Uy"
+   }
+  },
+  "wall_total": 11.4
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

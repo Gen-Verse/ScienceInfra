@@ -1,0 +1,92 @@
+{
+ "canary": "0c6f6efc-11fe-5cbe-8c2c-231acc40b88c",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_readparms.F",
+     "new": "      CtoN                 = 6.45 _d 0\n",
+     "old": "      CtoN                 = 6.75 _d 0\n"
+    }
+   ]
+  },
+  "family": "redfield-data",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_readparms.F",
+     "new": "      CtoN                 = 6.75 _d 0\n",
+     "old": "      CtoN                 = 6.45 _d 0\n"
+    }
+   ]
+  },
+  "id": "sem-data-bling-redfield-cton",
+  "meta": {
+   "file": "pkg/bling/bling_readparms.F",
+   "line": 324,
+   "predicted_tier": "hard",
+   "prediction_rationale": "This calibrated ecosystem scalar is consumed nonlinearly downstream, while neither units nor neighboring defaults determine its exact value.",
+   "semantic": true,
+   "target_checks": [
+    "global-bling"
+   ],
+   "vein": "data"
+  },
+  "note": "alter the default organic carbon-to-nitrogen ratio",
+  "source": "semantic",
+  "tree": "bling-biogeochemistry"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "redfield-data",
+  "floor": 0.5,
+  "floor_per_check": {
+   "global-bling": 0.5
+  },
+  "id": "sem-data-bling-redfield-cton",
+  "meta": {
+   "file": "pkg/bling/bling_readparms.F",
+   "line": 324,
+   "predicted_tier": "hard",
+   "prediction_rationale": "This calibrated ecosystem scalar is consumed nonlinearly downstream, while neither units nor neighboring defaults determine its exact value.",
+   "semantic": true,
+   "target_checks": [
+    "global-bling"
+   ],
+   "vein": "data"
+  },
+  "note": "alter the default organic carbon-to-nitrogen ratio",
+  "runs": {
+   "global-bling": {
+    "exit": 0,
+    "wall": 5.5787
+   }
+  },
+  "source": "semantic",
+  "status": "survivor",
+  "tree": "bling-biogeochemistry",
+  "verdicts": {
+   "global-bling": {
+    "error": "PTRACER01.0000000030.data: 52275 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.528e-03); PTRACER02.0000000030.data: 38489 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.821e-04); PTRACER03.0000000030.data: 55482 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.901e-03); PTRACER04.0000000030.data: 54113 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.810e-04); PTRACER05.0000000030.data: 49273 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 2.219e-05); PTRACER06.0000000030.data: 6513 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.521e-07); PTRACER07.0000000030.data: 52385 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.637e-04); PTRACER08.0000000030.data: 38708 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.115e-05); blingTracDiag.0000000030.data: 343724 of 983040 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.791e-03)",
+    "files_ok": 9,
+    "files_scored": 18,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.005901282401020613,
+    "worst_file": "PTRACER03.0000000030.data"
+   }
+  },
+  "wall_total": 7.5
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

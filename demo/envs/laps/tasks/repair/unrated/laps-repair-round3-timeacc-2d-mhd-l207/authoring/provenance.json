@@ -1,0 +1,92 @@
+{
+ "canary": "53ae41f9-6a6a-5198-9a0b-6bab6b176bc4",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhd.f90",
+     "new": "time = time + 1.03 * dt",
+     "old": "time = time + dt"
+    }
+   ]
+  },
+  "family": "timebase",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhd.f90",
+     "new": "time = time + dt",
+     "old": "time = time + 1.03 * dt"
+    }
+   ]
+  },
+  "id": "round3-timeacc-2d-mhd-l207",
+  "meta": {
+   "difficulty_design": "hard",
+   "file": "src_compressible/2D/mhd.f90",
+   "line": 207,
+   "rationale": "The accumulated clock is a codebase-specific procedural fingerprint shared by terminal-step selection, snapshot scheduling, and every times.dat row; a 3% drift is small but crosses the live deck's final-step boundary."
+  },
+  "note": "scaled the 2D simulation-clock increment by 1.03",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "timebase",
+  "floor": 0.6,
+  "floor_per_check": {
+   "aw-2d-256": 0.65,
+   "aw-2d-512": 0.55
+  },
+  "id": "round3-timeacc-2d-mhd-l207",
+  "meta": {
+   "difficulty_design": "hard",
+   "file": "src_compressible/2D/mhd.f90",
+   "line": 207,
+   "rationale": "The accumulated clock is a codebase-specific procedural fingerprint shared by terminal-step selection, snapshot scheduling, and every times.dat row; a 3% drift is small but crosses the live deck's final-step boundary."
+  },
+  "note": "scaled the 2D simulation-clock increment by 1.03",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 6.487
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 25.839
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "error": "times.dat has 14 rows against the reference's 15",
+    "frames_ok": 9,
+    "frames_scored": 10,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.006612688742528683,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   },
+   "aw-2d-512": {
+    "error": "times.dat has 27 rows against the reference's 28",
+    "frames_ok": 7,
+    "frames_scored": 10,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.004576411183421059,
+    "worst_frame": 5,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 48.3
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

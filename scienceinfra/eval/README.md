@@ -26,7 +26,7 @@ no hand-maintained URL list.
 
 ```bash
 python -m scienceinfra.datasets.build_dataset \
-    --repo ${TASK_BANK_REPO} \
+    --repo demo \
     --out-dir data/mitgcm-biogeo/repair_easy \
     --env mitgcm-biogeo --categories repair --difficulty easy --hint-level all
 ```

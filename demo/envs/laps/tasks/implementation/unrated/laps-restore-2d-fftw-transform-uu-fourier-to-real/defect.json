@@ -1,0 +1,10 @@
+{
+ "_canary": "c0229e01-d68f-5bc8-a3dc-2b34161f95d7",
+ "edits": [
+  {
+   "file": "src_compressible/2D/fftw.f90",
+   "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+   "old": "            do ivar = 1, nvar \n            \n                w_yx(:,:,:) = uu_fourier(:,:,:,ivar)\n\n                !do inverse Fourier transform along y\n                ixmin = xi_offset(myid_i+1) + 1\n                ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n                izmin = 1 \n                izmax = 1\n\n                do iz = izmin, izmax \n                    do ix = ixmin, ixmax \n                        fy_aux_ft(:) = w_yx(ix,:,iz)\n                        call fftw_execute_dft(plan_ifft_y,fy_aux_ft,fy_aux)\n                        w_yx(ix,:,iz) = fy_aux(:)\n                    enddo\n                enddo\n\n                !transpose y<-->x\n                call transpose_yx\n\n                !inverse fourier transform to get the real-space deriv\n                iymin = yi_offset(myid_i+1) + 1\n                iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n                izmin = 1 \n                izmax = 1\n\n                do iz = izmin, izmax \n                    do iy = iymin,iymax\n                        fx_aux_ft(:) = w_xy(:,iy,iz)\n                        call fftw_execute_dft_c2r(plan_ifft_x, fx_aux_ft, fx_aux)\n                        uu(:,iy,iz,ivar) = fx_aux(:)\n                    enddo\n                enddo\n            enddo\n"
+  }
+ ]
+}

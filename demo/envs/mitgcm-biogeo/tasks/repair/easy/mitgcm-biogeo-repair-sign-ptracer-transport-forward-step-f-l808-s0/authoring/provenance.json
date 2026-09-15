@@ -1,0 +1,202 @@
+{
+ "canary": "6a0a8635-a55e-54f8-97c5-39b2ce112de6",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "model/src/forward_step.F",
+     "new": "      myTime = startTime - deltaTClock*iLoop",
+     "old": "      myTime = startTime + deltaTClock*iLoop"
+    }
+   ]
+  },
+  "family": "sign",
+  "fix": {
+   "edits": [
+    {
+     "file": "model/src/forward_step.F",
+     "new": "      myTime = startTime + deltaTClock*iLoop",
+     "old": "      myTime = startTime - deltaTClock*iLoop"
+    }
+   ]
+  },
+  "id": "sign-ptracer-transport-forward-step-f-L808-s0",
+  "meta": {
+   "file": "model/src/forward_step.F",
+   "line": 808,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "flip one arithmetic sign in myTime",
+  "source": "inject",
+  "tree": "ptracer-transport"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "sign",
+  "floor": 0.122222,
+  "floor_per_check": {
+   "cfc-offline": 0.2,
+   "cfc-online": 0.1,
+   "global-bling": 0.1,
+   "global-dic": 0.1,
+   "ptracer-advection-gyre": 0.2,
+   "so-box-calcite-keir": 0.1,
+   "so-box-calcite-naviaux": 0.1,
+   "so-box-dic": 0.1,
+   "so-box-obcs-saphe": 0.1
+  },
+  "id": "sign-ptracer-transport-forward-step-f-L808-s0",
+  "meta": {
+   "file": "model/src/forward_step.F",
+   "line": 808,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "flip one arithmetic sign in myTime",
+  "runs": {
+   "cfc-offline": {
+    "exit": 0,
+    "wall": 0.6337
+   },
+   "cfc-online": {
+    "exit": 0,
+    "wall": 2.878
+   },
+   "global-bling": {
+    "exit": 0,
+    "wall": 5.7947
+   },
+   "global-dic": {
+    "exit": 0,
+    "wall": 1.8103
+   },
+   "ptracer-advection-gyre": {
+    "exit": 0,
+    "wall": 0.3345
+   },
+   "so-box-calcite-keir": {
+    "exit": 0,
+    "wall": 1.4388
+   },
+   "so-box-calcite-naviaux": {
+    "exit": 0,
+    "wall": 1.4939
+   },
+   "so-box-dic": {
+    "exit": 0,
+    "wall": 1.1292
+   },
+   "so-box-obcs-saphe": {
+    "exit": 0,
+    "wall": 1.1315
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "ptracer-transport",
+  "verdicts": {
+   "cfc-offline": {
+    "error": "candidate final iteration 0004269600 differs from reference 0004269624",
+    "files_ok": 0,
+    "files_scored": 0,
+    "final_iteration_match": false,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": null
+   },
+   "cfc-online": {
+    "error": "PTRACER01.0004269620.data: missing on candidate; PTRACER02.0004269620.data: missing on candidate",
+    "files_ok": 0,
+    "files_scored": 0,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": null
+   },
+   "global-bling": {
+    "error": "Eta.0000000030.data: missing on candidate; PH.0000000030.data: missing on candidate; PHL.0000000030.data: missing on candidate; PTRACER01.0000000030.data: missing on candidate; PTRACER02.0000000030.data: missing on candidate; PTRACER03.0000000030.data: missing on candidate; PTRACER04.0000000030.data: missing on candidate; PTRACER05.0000000030.data: missing on candidate; PTRACER06.0000000030.data: missing on candidate; PTRACER07.0000000030.data: missing on candidate; PTRACER08.0000000030.data: missing on candidate; S.0000000030.data: missing on candidate; T.0000000030.data: missing on candidate; U.0000000030.data: missing on candidate; V.0000000030.data: missing on candidate; W.0000000030.data: missing on candidate; blingTracDiag.0000000030.data: 360318 of 983040 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.576e-02); soundSpeedDiag.0000000030.data: 51477 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 2.347e+00)",
+    "files_ok": 0,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 2.3468308515109584,
+    "worst_file": "soundSpeedDiag.0000000030.data"
+   },
+   "global-dic": {
+    "error": "Eta.0005184016.data: missing on candidate; PH.0005184016.data: missing on candidate; PHL.0005184016.data: missing on candidate; PTRACER01.0005184016.data: missing on candidate; PTRACER02.0005184016.data: missing on candidate; PTRACER03.0005184016.data: missing on candidate; PTRACER04.0005184016.data: missing on candidate; PTRACER05.0005184016.data: missing on candidate; S.0005184016.data: missing on candidate; T.0005184016.data: missing on candidate; U.0005184016.data: missing on candidate; V.0005184016.data: missing on candidate; W.0005184016.data: missing on candidate; surfDiag.0005184016.data: 34098 of 81920 values exceed atol=1e-10 rtol=1e-08 (max |err| 2.318e+00)",
+    "files_ok": 0,
+    "files_scored": 1,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 2.3184487216567504,
+    "worst_file": "surfDiag.0005184016.data"
+   },
+   "ptracer-advection-gyre": {
+    "error": "candidate final iteration 0000259200 differs from reference 0000259320",
+    "files_ok": 0,
+    "files_scored": 0,
+    "final_iteration_match": false,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": null
+   },
+   "so-box-calcite-keir": {
+    "error": "Eta.0000000060.data: missing on candidate; PH.0000000060.data: missing on candidate; PHL.0000000060.data: missing on candidate; PTRACER01.0000000060.data: missing on candidate; PTRACER02.0000000060.data: missing on candidate; PTRACER03.0000000060.data: missing on candidate; PTRACER04.0000000060.data: missing on candidate; PTRACER05.0000000060.data: missing on candidate; S.0000000060.data: missing on candidate; T.0000000060.data: missing on candidate; U.0000000060.data: missing on candidate; V.0000000060.data: missing on candidate; W.0000000060.data: missing on candidate; dynDiag.0000000060.data: 45792 of 113400 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.907e+00); surfDiag.0000000060.data: 5338 of 8400 values exceed atol=1e-10 rtol=1e-08 (max |err| 7.779e+01)",
+    "files_ok": 0,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 77.79276622848556,
+    "worst_file": "surfDiag.0000000060.data"
+   },
+   "so-box-calcite-naviaux": {
+    "error": "Eta.0000000060.data: missing on candidate; PH.0000000060.data: missing on candidate; PHL.0000000060.data: missing on candidate; PTRACER01.0000000060.data: missing on candidate; PTRACER02.0000000060.data: missing on candidate; PTRACER03.0000000060.data: missing on candidate; PTRACER04.0000000060.data: missing on candidate; PTRACER05.0000000060.data: missing on candidate; S.0000000060.data: missing on candidate; T.0000000060.data: missing on candidate; U.0000000060.data: missing on candidate; V.0000000060.data: missing on candidate; W.0000000060.data: missing on candidate; dynDiag.0000000060.data: 45792 of 113400 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.907e+00); surfDiag.0000000060.data: 5344 of 8400 values exceed atol=1e-10 rtol=1e-08 (max |err| 7.779e+01)",
+    "files_ok": 0,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 77.79276622848556,
+    "worst_file": "surfDiag.0000000060.data"
+   },
+   "so-box-dic": {
+    "error": "Eta.0000000060.data: missing on candidate; PH.0000000060.data: missing on candidate; PHL.0000000060.data: missing on candidate; PTRACER01.0000000060.data: missing on candidate; PTRACER02.0000000060.data: missing on candidate; PTRACER03.0000000060.data: missing on candidate; PTRACER04.0000000060.data: missing on candidate; PTRACER05.0000000060.data: missing on candidate; S.0000000060.data: missing on candidate; T.0000000060.data: missing on candidate; U.0000000060.data: missing on candidate; V.0000000060.data: missing on candidate; W.0000000060.data: missing on candidate; dynDiag.0000000060.data: 45792 of 113400 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.907e+00); surfDiag.0000000060.data: 5338 of 8400 values exceed atol=1e-10 rtol=1e-08 (max |err| 7.779e+01)",
+    "files_ok": 0,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 77.79276622848556,
+    "worst_file": "surfDiag.0000000060.data"
+   },
+   "so-box-obcs-saphe": {
+    "error": "Eta.0000000060.data: missing on candidate; PH.0000000060.data: missing on candidate; PHL.0000000060.data: missing on candidate; PTRACER01.0000000060.data: missing on candidate; PTRACER02.0000000060.data: missing on candidate; PTRACER03.0000000060.data: missing on candidate; PTRACER04.0000000060.data: missing on candidate; PTRACER05.0000000060.data: missing on candidate; S.0000000060.data: missing on candidate; T.0000000060.data: missing on candidate; U.0000000060.data: missing on candidate; V.0000000060.data: missing on candidate; W.0000000060.data: missing on candidate; dynDiag.0000000060.data: 45792 of 113400 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.907e+00); surfDiag.0000000060.data: 5345 of 8400 values exceed atol=1e-10 rtol=1e-08 (max |err| 7.779e+01)",
+    "files_ok": 0,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 77.79276622848556,
+    "worst_file": "surfDiag.0000000060.data"
+   }
+  },
+  "wall_total": 24.2
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "_canary": "6af78046-1039-53b2-bb81-20831456e0cc",
+ "edits": [
+  {
+   "file": "src_compressible/2D/rktmod.f90",
+   "new": "dd20 = -17./60.",
+   "old": "dd20 = -17./61."
+  },
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "                        flux(ix,iy,iz,16) = (uu(ix,iy,iz,8) + ptot) * ux - udotb * Bx ",
+   "old": "                        flux(ix,iy,iz,16) = (uu(ix,iy,iz,8) + ptot) * ux "
+  },
+  {
+   "file": "src_compressible/2D/mhd.f90",
+   "new": "                        cnsx2 = sqrt(max(cms2**2 - 4 * csound2 * calfvenx**2 , 0.))",
+   "old": "                        cnsx2 = sqrt(max(cms2**2 + 4 * csound2 * calfvenx**2 , 0.))"
+  }
+ ]
+}

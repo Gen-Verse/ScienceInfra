@@ -1,0 +1,47 @@
+#!/bin/bash
+# gpu-wrap — run a command while sampling GPU state; the samples are part of
+# the graded delivery.
+#
+#   gpu-wrap <telemetry-out.csv> -- <command...>
+#
+# Samples `nvidia-smi --query-gpu=timestamp,utilization.gpu,memory.used`
+# every 0.5 s for the lifetime of the command and appends CSV rows to the
+# output file. The command's exit code is preserved. If nvidia-smi is absent
+# or fails (a GPU-less machine), the file is still created — empty — and the
+# command runs normally: the wrapper never interferes with the run.
+#
+# WHY THIS EXISTS. The verifier cannot re-run your code, so it cannot see
+# your process touch the GPU. This file is the evidence it checks instead:
+# `gpu_active` in the reward requires plausible samples (enough rows, GPU
+# utilisation above idle) for every check. It is a tripwire, not a proof —
+# the grading transcript is read against the task's exploit list, and a
+# fabricated telemetry file with an un-ported solver is the first thing that
+# audit looks for.
+
+set -uo pipefail
+
+if [ "$#" -lt 3 ] || [ "$2" != "--" ]; then
+  echo "usage: gpu-wrap <telemetry-out.csv> -- <command...>" >&2
+  exit 2
+fi
+
+OUT=$1
+shift 2
+mkdir -p "$(dirname "$OUT")"
+: > "$OUT"
+
+(
+  while :; do
+    nvidia-smi --query-gpu=timestamp,utilization.gpu,memory.used \
+               --format=csv,noheader,nounits >> "$OUT" 2>/dev/null || true
+    sleep 0.5
+  done
+) &
+SAMPLER=$!
+
+"$@"
+RC=$?
+
+kill "$SAMPLER" 2>/dev/null
+wait "$SAMPLER" 2>/dev/null
+exit "$RC"

@@ -1,0 +1,10 @@
+{
+ "_canary": "b031b354-e812-5b1e-9c0a-0512e3b374a9",
+ "edits": [
+  {
+   "file": "src_compressible/mhd.f90",
+   "new": "                        cnsz2 = sqrt(max(cms2**2 + 4 * csound2 * calfvenz**2 , 0.))",
+   "old": "                        cnsz2 = sqrt(max(cms2**2 - 4 * csound2 * calfvenz**2 , 0.))"
+  }
+ ]
+}

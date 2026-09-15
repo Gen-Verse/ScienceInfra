@@ -1,0 +1,15 @@
+{
+ "_canary": "4081e123-7fd4-5879-afcd-c1ca20a25096",
+ "edits": [
+  {
+   "file": "src_compressible/mhdrhs.f90",
+   "new": "                        flux(ix,iy,iz,7) = uu(ix,iy,iz,2) * uy - Bx * By",
+   "old": "                        flux(ix,iy,iz,7) = uu(ix,iy,iz,2) * uy"
+  },
+  {
+   "file": "src_compressible/rktmod.f90",
+   "new": "\n            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n",
+   "old": "\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n\n            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n"
+  }
+ ]
+}

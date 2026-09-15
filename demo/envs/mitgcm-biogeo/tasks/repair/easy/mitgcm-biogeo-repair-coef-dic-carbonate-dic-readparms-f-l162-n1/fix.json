@@ -1,0 +1,10 @@
+{
+ "_canary": "2e7cec80-16a3-5fd3-9e7a-5599af06106e",
+ "edits": [
+  {
+   "file": "pkg/dic/dic_readparms.F",
+   "new": "       permil      = 1. _d 0 / 1024.5 _d 0",
+   "old": "       permil      = 1. _d 0 / 1034.745 _d 0"
+  }
+ ]
+}

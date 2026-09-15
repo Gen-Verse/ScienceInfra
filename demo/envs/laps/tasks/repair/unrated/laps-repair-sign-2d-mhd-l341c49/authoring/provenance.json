@@ -1,0 +1,88 @@
+{
+ "canary": "2851a803-3f91-5086-aa01-a70622c54d7e",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhd.f90",
+     "new": "                        cnsx2 = sqrt(max(cms2**2 + 4 * csound2 * calfvenx**2 , 0.))",
+     "old": "                        cnsx2 = sqrt(max(cms2**2 - 4 * csound2 * calfvenx**2 , 0.))"
+    }
+   ]
+  },
+  "family": "sign",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhd.f90",
+     "new": "                        cnsx2 = sqrt(max(cms2**2 - 4 * csound2 * calfvenx**2 , 0.))",
+     "old": "                        cnsx2 = sqrt(max(cms2**2 + 4 * csound2 * calfvenx**2 , 0.))"
+    }
+   ]
+  },
+  "id": "sign-2d-mhd-L341c49-",
+  "meta": {
+   "file": "src_compressible/2D/mhd.f90",
+   "line": 341
+  },
+  "note": "flipped `-` to `+` in the `cnsx2` statement",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "sign",
+  "floor": 0.2,
+  "floor_per_check": {
+   "aw-2d-256": 0.2,
+   "aw-2d-512": 0.2
+  },
+  "id": "sign-2d-mhd-L341c49-",
+  "meta": {
+   "file": "src_compressible/2D/mhd.f90",
+   "line": 341
+  },
+  "note": "flipped `-` to `+` in the `cnsx2` statement",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 1.109
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 5.099
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "error": "times.dat has 16 rows against the reference's 15",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.006012363285705917,
+    "worst_frame": 3,
+    "worst_variable": "Bz"
+   },
+   "aw-2d-512": {
+    "error": "times.dat has 31 rows against the reference's 28",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.0028207276223824254,
+    "worst_frame": 2,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 12.9
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

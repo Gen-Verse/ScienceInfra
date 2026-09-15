@@ -1,0 +1,75 @@
+{
+ "canary": "d2032b47-9540-5619-a8b3-a03aad0d27be",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdinit.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            uu_prim(:,:,:,1:3) = uu(:,:,:,2:4) !ux,uy,uz\n            uu_prim(:,:,:,4) = uu(:,:,:,8)  !pressure\n\n            !rho * u\n            uu(:,:,:,2) = uu(:,:,:,1) * uu_prim(:,:,:,1)\n            uu(:,:,:,3) = uu(:,:,:,1) * uu_prim(:,:,:,2)\n            uu(:,:,:,4) = uu(:,:,:,1) * uu_prim(:,:,:,3)\n\n            !energy density\n            uu(:,:,:,8) = uu_prim(:,:,:,4)/(adiabatic_index-1) + &\n                0.5*(uu(:,:,:,1)*( (uu_prim(:,:,:,1))**2 + &\n                (uu_prim(:,:,:,2))**2 + (uu_prim(:,:,:,3))**2) + &\n                (uu(:,:,:,5))**2 + (uu(:,:,:,6))**2 +(uu(:,:,:,7))**2 )\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdinit.f90",
+     "new": "            uu_prim(:,:,:,1:3) = uu(:,:,:,2:4) !ux,uy,uz\n            uu_prim(:,:,:,4) = uu(:,:,:,8)  !pressure\n\n            !rho * u\n            uu(:,:,:,2) = uu(:,:,:,1) * uu_prim(:,:,:,1)\n            uu(:,:,:,3) = uu(:,:,:,1) * uu_prim(:,:,:,2)\n            uu(:,:,:,4) = uu(:,:,:,1) * uu_prim(:,:,:,3)\n\n            !energy density\n            uu(:,:,:,8) = uu_prim(:,:,:,4)/(adiabatic_index-1) + &\n                0.5*(uu(:,:,:,1)*( (uu_prim(:,:,:,1))**2 + &\n                (uu_prim(:,:,:,2))**2 + (uu_prim(:,:,:,3))**2) + &\n                (uu(:,:,:,5))**2 + (uu(:,:,:,6))**2 +(uu(:,:,:,7))**2 )\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-3d-mhdinit-initial_calc_conserve_variable",
+  "meta": {
+   "body_lines": 13,
+   "call_sites": 1,
+   "file": "src_compressible/mhdinit.f90",
+   "subroutine": "initial_calc_conserve_variable"
+  },
+  "note": "excise the executable body of initial_calc_conserve_variable (src_compressible/mhdinit.f90)",
+  "source": "excise",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "excise",
+  "floor": 0.1,
+  "floor_per_check": {
+   "aw-128": 0.1
+  },
+  "id": "excise-3d-mhdinit-initial_calc_conserve_variable",
+  "meta": {
+   "body_lines": 13,
+   "call_sites": 1,
+   "file": "src_compressible/mhdinit.f90",
+   "subroutine": "initial_calc_conserve_variable"
+  },
+  "note": "excise the executable body of initial_calc_conserve_variable (src_compressible/mhdinit.f90)",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 13.363
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "error": "frame count differs: reference 9, candidate 7. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 18.3
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

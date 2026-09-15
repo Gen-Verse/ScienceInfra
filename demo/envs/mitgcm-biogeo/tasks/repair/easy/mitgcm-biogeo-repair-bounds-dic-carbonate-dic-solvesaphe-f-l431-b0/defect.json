@@ -1,0 +1,10 @@
+{
+ "_canary": "e9052b91-3a6e-59ac-83c6-113696518054",
+ "edits": [
+  {
+   "file": "pkg/dic/dic_solvesaphe.F",
+   "new": "      _RL sw2total\n\n        do i=imin,imax\n         do j=jmin,jmax-1",
+   "old": "      _RL sw2total\n\n        do i=imin,imax\n         do j=jmin,jmax"
+  }
+ ]
+}

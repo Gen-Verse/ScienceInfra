@@ -1,0 +1,15 @@
+{
+ "_canary": "0181743c-9bb5-536b-906e-d0159850b4ba",
+ "edits": [
+  {
+   "file": "src_compressible/2D/rktmod.f90",
+   "new": "\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n\n            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n",
+   "old": "\n            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n"
+  },
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "                        ptot =  p - 0.5 * (Bx**2 + By**2 + Bz**2)",
+   "old": "                        ptot =  p + 0.5 * (Bx**2 + By**2 + Bz**2)"
+  }
+ ]
+}

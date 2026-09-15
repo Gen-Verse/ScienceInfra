@@ -1,0 +1,20 @@
+{
+ "_canary": "3f42e075-66b7-5d6c-ba7f-888e20cd0e8d",
+ "edits": [
+  {
+   "file": "src_compressible/mhdrhs.f90",
+   "new": "                        flux(ix,iy,iz,7) = uu(ix,iy,iz,2) * uy",
+   "old": "                        flux(ix,iy,iz,7) = uu(ix,iy,iz,2) * uy - Bx * By"
+  },
+  {
+   "file": "src_compressible/fftw.f90",
+   "new": "                    w_yxz(ix,:,iz) = fy_aux_ft(:) / (ny - 1) ",
+   "old": "                    w_yxz(ix,:,iz) = fy_aux_ft(:) / ny "
+  },
+  {
+   "file": "src_compressible/mhd.f90",
+   "new": "                        cnsy2 = sqrt(max(cms2**2 + 4 * csound2 * calfveny**2 , 0.))",
+   "old": "                        cnsy2 = sqrt(max(cms2**2 - 4 * csound2 * calfveny**2 , 0.))"
+  }
+ ]
+}

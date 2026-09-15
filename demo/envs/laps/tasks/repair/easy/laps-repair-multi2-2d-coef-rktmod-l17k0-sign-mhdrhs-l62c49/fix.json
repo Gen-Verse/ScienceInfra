@@ -1,0 +1,15 @@
+{
+ "_canary": "76adef67-1dc2-5e0d-9d20-5a297a6de222",
+ "edits": [
+  {
+   "file": "src_compressible/2D/rktmod.f90",
+   "new": "cc10 = 8.0/15.0",
+   "old": "cc10 = 8.0/15.2"
+  },
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "                        ptot =  p + 0.5 * (Bx**2 + By**2 + Bz**2)",
+   "old": "                        ptot =  p + 0.5 * (Bx**2 - By**2 + Bz**2)"
+  }
+ ]
+}

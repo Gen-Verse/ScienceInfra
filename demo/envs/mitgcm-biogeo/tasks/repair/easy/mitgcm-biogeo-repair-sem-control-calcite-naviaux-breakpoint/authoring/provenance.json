@@ -1,0 +1,92 @@
+{
+ "canary": "6282ad15-0585-5e54-8092-b5243bcd37f9",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/dic/car_flux_omega_top.F",
+     "new": "                IF (omegaC(i,j,ko,bi,bj) .GT. 0.8000 _d 0) THEN\n",
+     "old": "                IF (omegaC(i,j,ko,bi,bj) .GT. 0.8272 _d 0) THEN\n"
+    }
+   ]
+  },
+  "family": "locally-rederivable-control",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/dic/car_flux_omega_top.F",
+     "new": "                IF (omegaC(i,j,ko,bi,bj) .GT. 0.8272 _d 0) THEN\n",
+     "old": "                IF (omegaC(i,j,ko,bi,bj) .GT. 0.8000 _d 0) THEN\n"
+    }
+   ]
+  },
+  "id": "sem-control-calcite-naviaux-breakpoint",
+  "meta": {
+   "file": "pkg/dic/car_flux_omega_top.F",
+   "line": 142,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Easy control: the neighboring comment records the incumbent breakpoint and its paper alternative.",
+   "semantic": true,
+   "target_checks": [
+    "so-box-calcite-naviaux"
+   ],
+   "vein": "control"
+  },
+  "note": "replace the locally tuned Naviaux regime breakpoint with the paper value",
+  "source": "semantic",
+  "tree": "dic-calcite"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "locally-rederivable-control",
+  "floor": 0.5,
+  "floor_per_check": {
+   "so-box-calcite-naviaux": 0.5
+  },
+  "id": "sem-control-calcite-naviaux-breakpoint",
+  "meta": {
+   "file": "pkg/dic/car_flux_omega_top.F",
+   "line": 142,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Easy control: the neighboring comment records the incumbent breakpoint and its paper alternative.",
+   "semantic": true,
+   "target_checks": [
+    "so-box-calcite-naviaux"
+   ],
+   "vein": "control"
+  },
+  "note": "replace the locally tuned Naviaux regime breakpoint with the paper value",
+  "runs": {
+   "so-box-calcite-naviaux": {
+    "exit": 0,
+    "wall": 1.4722
+   }
+  },
+  "source": "semantic",
+  "status": "survivor",
+  "tree": "dic-calcite",
+  "verdicts": {
+   "so-box-calcite-naviaux": {
+    "error": "PTRACER01.0000000060.data: 2 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 2.512e-08); PTRACER02.0000000060.data: 4 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.013e-08)",
+    "files_ok": 13,
+    "files_scored": 15,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 5.0125927408828375e-08,
+    "worst_file": "PTRACER02.0000000060.data"
+   }
+  },
+  "wall_total": 3.1
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

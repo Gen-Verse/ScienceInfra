@@ -1,0 +1,10 @@
+{
+ "_canary": "af391b21-6908-5d5e-b17b-8b4203961d92",
+ "edits": [
+  {
+   "file": "src_compressible/fftw.f90",
+   "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+   "old": "            allocate( fx_aux(nx), fy_aux(ny), fz_aux(nz), &\n                fx_aux_ft(nx/2+1), fy_aux_ft(ny), fz_aux_ft(nz))\n            \n            plan_fft_x = fftw_plan_dft_r2c_1d(nx, fx_aux, fx_aux_ft, FFTW_ESTIMATE)\n            plan_fft_y = fftw_plan_dft_1d(ny, fy_aux, fy_aux_ft, fft_sign_forward, FFTW_ESTIMATE)\n            plan_fft_z = fftw_plan_dft_1d(nz, fz_aux, fz_aux_ft, fft_sign_forward, FFTW_ESTIMATE)\n\n            plan_ifft_x = fftw_plan_dft_c2r_1d(nx, fx_aux_ft, fx_aux, FFTW_ESTIMATE)\n            plan_ifft_y = fftw_plan_dft_1d(ny, fy_aux_ft, fy_aux, fft_sign_backward, FFTW_ESTIMATE)\n            plan_ifft_z = fftw_plan_dft_1d(nz, fz_aux_ft, fz_aux, fft_sign_backward, FFTW_ESTIMATE)\n\n            nmode_max_x = nx/3\n            nmode_max_y = ny/3\n            nmode_max_z = nz/3\n\n"
+  }
+ ]
+}

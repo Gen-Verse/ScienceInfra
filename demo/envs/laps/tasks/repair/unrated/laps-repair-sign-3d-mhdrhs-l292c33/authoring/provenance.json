@@ -1,0 +1,76 @@
+{
+ "canary": "bf1ec9f8-e22c-5cb6-bc15-d8c39617b6d4",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                (uu(:,:,:,6))**2 - (uu(:,:,:,7))**2)) &",
+     "old": "                (uu(:,:,:,6))**2 + (uu(:,:,:,7))**2)) &"
+    }
+   ]
+  },
+  "family": "sign",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                (uu(:,:,:,6))**2 + (uu(:,:,:,7))**2)) &",
+     "old": "                (uu(:,:,:,6))**2 - (uu(:,:,:,7))**2)) &"
+    }
+   ]
+  },
+  "id": "sign-3d-mhdrhs-L292c33-",
+  "meta": {
+   "file": "src_compressible/mhdrhs.f90",
+   "line": 292
+  },
+  "note": "flipped `+` to `-` in the `uu_prim` statement",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "sign",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "sign-3d-mhdrhs-L292c33-",
+  "meta": {
+   "file": "src_compressible/mhdrhs.f90",
+   "line": 292
+  },
+  "note": "flipped `+` to `-` in the `uu_prim` statement",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 20.777
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "6.664e-03 at frame 1 in P, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.006663928824730325,
+    "worst_frame": 1,
+    "worst_variable": "P"
+   }
+  },
+  "wall_total": 28.9
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

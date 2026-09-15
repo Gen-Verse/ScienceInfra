@@ -1,0 +1,102 @@
+{
+ "canary": "538b1e74-c8e6-56ca-ad61-aa255c7841a5",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhd.f90",
+     "new": "                        cnsz2 = sqrt(max(cms2**2 + 4 * csound2 * calfvenz**2 , 0.))",
+     "old": "                        cnsz2 = sqrt(max(cms2**2 - 4 * csound2 * calfvenz**2 , 0.))"
+    },
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                        flux(ix,iy,iz,14) = uz * Bz - ux * Bx",
+     "old": "                        flux(ix,iy,iz,14) = ux * Bz - uz * Bx"
+    }
+   ]
+  },
+  "family": "multi",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhd.f90",
+     "new": "                        cnsz2 = sqrt(max(cms2**2 - 4 * csound2 * calfvenz**2 , 0.))",
+     "old": "                        cnsz2 = sqrt(max(cms2**2 + 4 * csound2 * calfvenz**2 , 0.))"
+    },
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                        flux(ix,iy,iz,14) = ux * Bz - uz * Bx",
+     "old": "                        flux(ix,iy,iz,14) = uz * Bz - ux * Bx"
+    }
+   ]
+  },
+  "id": "multi2-3d-sign-mhd-L379c49-+swapvel-mhdrhs-L83",
+  "meta": {
+   "components": [
+    "sign-3d-mhd-L379c49-",
+    "swapvel-3d-mhdrhs-L83"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/mhd.f90",
+    "src_compressible/mhdrhs.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "flipped `-` to `+` in the `cnsz2` statement AND swapped the velocity factors of one E-field component",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "multi",
+  "floor": 0.2,
+  "floor_per_check": {
+   "aw-128": 0.2
+  },
+  "id": "multi2-3d-sign-mhd-L379c49-+swapvel-mhdrhs-L83",
+  "meta": {
+   "components": [
+    "sign-3d-mhd-L379c49-",
+    "swapvel-3d-mhdrhs-L83"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/mhd.f90",
+    "src_compressible/mhdrhs.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "flipped `-` to `+` in the `cnsz2` statement AND swapped the velocity factors of one E-field component",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 12.335
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 3.0994247239639686e-05,
+    "error": "dt differs by 3.099e-05, over the 1.0e-10 the time base allows - dt is a reduction over the whole grid, so it is a per-step fingerprint of the entire field state",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "time_base",
+    "passed": false,
+    "time_abs": 0.0002479539779171036,
+    "value": 0.011596430236598218,
+    "worst_frame": 8,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 19.8
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

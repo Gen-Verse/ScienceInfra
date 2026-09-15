@@ -1,0 +1,104 @@
+[
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-bounds-bling-biogeochemistry-bling-carbonate-sys-f-l103-b0: pristine_source_copy|exact answer-site text survives in model/src/calc_grad_phi_hyd.F"
+  ],
+  "task": "mitgcm-biogeo-repair-bounds-bling-biogeochemistry-bling-carbonate-sys-f-l103-b0"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-bounds-bling-biogeochemistry-bling-carbonate-sys-f-l104-b0: pristine_source_copy|exact answer-site text survives in eesupp/src/exch_r4_recv_get_y.F"
+  ],
+  "task": "mitgcm-biogeo-repair-bounds-bling-biogeochemistry-bling-carbonate-sys-f-l104-b0"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-bounds-dic-carbonate-phos-flux-f-l131-b0: pristine_source_copy|exact answer-site text survives in pkg/dic/car_flux.F"
+  ],
+  "task": "mitgcm-biogeo-repair-bounds-dic-carbonate-phos-flux-f-l131-b0"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-bounds-ptracer-transport-obcs-apply-ptracer-f-l102-b0: pristine_source_copy|exact answer-site text survives in pkg/obcs/obcs_apply_ts.F"
+  ],
+  "task": "mitgcm-biogeo-repair-bounds-ptracer-transport-obcs-apply-ptracer-f-l102-b0"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-bounds-ptracer-transport-obcs-apply-ptracer-f-l117-b0: pristine_source_copy|exact answer-site text survives in pkg/obcs/obcs_apply_ts.F"
+  ],
+  "task": "mitgcm-biogeo-repair-bounds-ptracer-transport-obcs-apply-ptracer-f-l117-b0"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-bounds-ptracer-transport-obcs-apply-ptracer-f-l71-b0: pristine_source_copy|exact answer-site text survives in pkg/obcs/obcs_apply_ts.F"
+  ],
+  "task": "mitgcm-biogeo-repair-bounds-ptracer-transport-obcs-apply-ptracer-f-l71-b0"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-bounds-ptracer-transport-ptracers-integrate-f-l154-b0: pristine_source_copy|exact answer-site text survives in pkg/matrix/matrix_store_tendency.F"
+  ],
+  "task": "mitgcm-biogeo-repair-bounds-ptracer-transport-ptracers-integrate-f-l154-b0"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-coef-bling-biogeochemistry-bling-bio-nitrogen-f-l1209-n0: pristine_source_copy|exact answer-site text survives in pkg/bling/bling_bio.F"
+  ],
+  "task": "mitgcm-biogeo-repair-coef-bling-biogeochemistry-bling-bio-nitrogen-f-l1209-n0"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-coef-cfc-gas-exchange-cfc11-surfforcing-f-l76-n0: pristine_source_copy|exact answer-site text survives in pkg/cfc/cfc12_surfforcing.F"
+  ],
+  "task": "mitgcm-biogeo-repair-coef-cfc-gas-exchange-cfc11-surfforcing-f-l76-n0"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-coef-cfc-gas-exchange-cfc11-surfforcing-f-l76-n1: pristine_source_copy|exact answer-site text survives in pkg/cfc/cfc12_surfforcing.F"
+  ],
+  "task": "mitgcm-biogeo-repair-coef-cfc-gas-exchange-cfc11-surfforcing-f-l76-n1"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-coef-cfc-gas-exchange-cfc12-surfforcing-f-l76-n0: pristine_source_copy|exact answer-site text survives in pkg/cfc/cfc11_surfforcing.F"
+  ],
+  "task": "mitgcm-biogeo-repair-coef-cfc-gas-exchange-cfc12-surfforcing-f-l76-n0"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-coef-cfc-gas-exchange-cfc12-surfforcing-f-l76-n1: pristine_source_copy|exact answer-site text survives in pkg/cfc/cfc11_surfforcing.F"
+  ],
+  "task": "mitgcm-biogeo-repair-coef-cfc-gas-exchange-cfc12-surfforcing-f-l76-n1"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-sign-cfc-gas-exchange-cfc11-surfforcing-f-l76-s0: pristine_source_copy|exact answer-site text survives in pkg/cfc/cfc12_surfforcing.F"
+  ],
+  "task": "mitgcm-biogeo-repair-sign-cfc-gas-exchange-cfc11-surfforcing-f-l76-s0"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-sign-cfc-gas-exchange-cfc11-surfforcing-f-l91-s0: pristine_source_copy|exact answer-site text survives in pkg/cfc/cfc12_surfforcing.F"
+  ],
+  "task": "mitgcm-biogeo-repair-sign-cfc-gas-exchange-cfc11-surfforcing-f-l91-s0"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-sign-cfc-gas-exchange-cfc12-surfforcing-f-l76-s0: pristine_source_copy|exact answer-site text survives in pkg/cfc/cfc11_surfforcing.F"
+  ],
+  "task": "mitgcm-biogeo-repair-sign-cfc-gas-exchange-cfc12-surfforcing-f-l76-s0"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-sign-cfc-gas-exchange-cfc12-surfforcing-f-l91-s0: pristine_source_copy|exact answer-site text survives in pkg/cfc/cfc11_surfforcing.F"
+  ],
+  "task": "mitgcm-biogeo-repair-sign-cfc-gas-exchange-cfc12-surfforcing-f-l91-s0"
+ },
+ {
+  "findings": [
+   "mitgcm-biogeo-repair-sign-dic-carbonate-phos-flux-f-l98-s0: pristine_source_copy|exact answer-site text survives in pkg/dic/car_flux.F"
+  ],
+  "task": "mitgcm-biogeo-repair-sign-dic-carbonate-phos-flux-f-l98-s0"
+ }
+]

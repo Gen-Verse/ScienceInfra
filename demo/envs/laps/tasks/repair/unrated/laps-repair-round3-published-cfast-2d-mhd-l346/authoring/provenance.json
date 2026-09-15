@@ -1,0 +1,98 @@
+{
+ "canary": "3f2b1fa4-47ab-5961-aff4-2d79548237b8",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhd.f90",
+     "new": "cfasty = sqrt(cms2 + cnsy2) / sqrt(1.98)",
+     "old": "cfasty = sqrt(cms2 + cnsy2) / sqrt(2.)"
+    }
+   ]
+  },
+  "family": "coef",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhd.f90",
+     "new": "cfasty = sqrt(cms2 + cnsy2) / sqrt(2.)",
+     "old": "cfasty = sqrt(cms2 + cnsy2) / sqrt(1.98)"
+    }
+   ]
+  },
+  "id": "round3-published-cfast-2d-mhd-l346",
+  "meta": {
+   "difficulty_design": "easy",
+   "file": "src_compressible/2D/mhd.f90",
+   "line": 346,
+   "rationale": "The square-root-of-two factor is part of the published fast-magnetosonic eigenvalue formula. It should be re-derived readily and serves as a positive easy-tier control despite its effect on dt."
+  },
+  "note": "perturbed the published 2D fast-wave normalization by 1%",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "coef",
+  "floor": 0.2,
+  "floor_per_check": {
+   "aw-2d-256": 0.2,
+   "aw-2d-512": 0.2
+  },
+  "id": "round3-published-cfast-2d-mhd-l346",
+  "meta": {
+   "difficulty_design": "easy",
+   "file": "src_compressible/2D/mhd.f90",
+   "line": 346,
+   "rationale": "The square-root-of-two factor is part of the published fast-magnetosonic eigenvalue formula. It should be re-derived readily and serves as a positive easy-tier control despite its effect on dt."
+  },
+  "note": "perturbed the published 2D fast-wave normalization by 1%",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 17.581
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 17.114
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "dt_abs": 3.7598677552523434e-05,
+    "error": "dt differs by 3.760e-05, over the 1.0e-10 the time base allows - dt is a reduction over the whole grid, so it is a per-step fingerprint of the entire field state",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "time_base",
+    "passed": false,
+    "time_abs": 0.0005263814857352916,
+    "value": 0.010109771531665514,
+    "worst_frame": 3,
+    "worst_variable": "Bz"
+   },
+   "aw-2d-512": {
+    "dt_abs": 1.879933877626215e-05,
+    "error": "dt differs by 1.880e-05, over the 1.0e-10 the time base allows - dt is a reduction over the whole grid, so it is a per-step fingerprint of the entire field state",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "time_base",
+    "passed": false,
+    "time_abs": 0.0005075821469590069,
+    "value": 0.005016735524947143,
+    "worst_frame": 3,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 48.8
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

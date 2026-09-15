@@ -1,0 +1,102 @@
+{
+ "canary": "0e2fab84-9332-554f-a0e1-cd77163b035b",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "cc30=0.752",
+     "old": "cc30=0.75"
+    },
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                        fnl(ix,iy,iz,7) = ky * flux_fourier(ix,iy,iz,13) + &",
+     "old": "                        fnl(ix,iy,iz,7) = ky * flux_fourier(ix,iy,iz,13) - &"
+    }
+   ]
+  },
+  "family": "multi",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "cc30=0.75",
+     "old": "cc30=0.752"
+    },
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                        fnl(ix,iy,iz,7) = ky * flux_fourier(ix,iy,iz,13) - &",
+     "old": "                        fnl(ix,iy,iz,7) = ky * flux_fourier(ix,iy,iz,13) + &"
+    }
+   ]
+  },
+  "id": "multi2-3d-coef-rktmod-L17k2-+sign-mhdrhs-L227c73-",
+  "meta": {
+   "components": [
+    "coef-3d-rktmod-L17k2-",
+    "sign-3d-mhdrhs-L227c73-"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/mhdrhs.f90",
+    "src_compressible/rktmod.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "perturbed the RK stage-3 coefficient AND flipped `-` to `+` in the `fnl` statement",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "multi",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "multi2-3d-coef-rktmod-L17k2-+sign-mhdrhs-L227c73-",
+  "meta": {
+   "components": [
+    "coef-3d-rktmod-L17k2-",
+    "sign-3d-mhdrhs-L227c73-"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/mhdrhs.f90",
+    "src_compressible/rktmod.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "perturbed the RK stage-3 coefficient AND flipped `-` to `+` in the `fnl` statement",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 13.346
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "2.270e-02 at frame 8 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.02270349699500579,
+    "worst_frame": 8,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 23.5
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

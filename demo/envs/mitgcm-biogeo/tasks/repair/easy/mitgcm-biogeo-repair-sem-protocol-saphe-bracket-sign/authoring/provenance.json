@@ -1,0 +1,92 @@
+{
+ "canary": "4174284f-727e-55b0-afac-a4b8f9fd755f",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/dic/dic_solvesaphe.F",
+     "new": "        IF(zeqn .GT. 0. _d 0) THEN\n           zh_max = zh_prev\n        ELSEIF(zeqn .LT. 0. _d 0) THEN\n           zh_min = zh_prev\n",
+     "old": "        IF(zeqn .GT. 0. _d 0) THEN\n           zh_min = zh_prev\n        ELSEIF(zeqn .LT. 0. _d 0) THEN\n           zh_max = zh_prev\n"
+    }
+   ]
+  },
+  "family": "solvesaphe-bracket-protocol",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/dic/dic_solvesaphe.F",
+     "new": "        IF(zeqn .GT. 0. _d 0) THEN\n           zh_min = zh_prev\n        ELSEIF(zeqn .LT. 0. _d 0) THEN\n           zh_max = zh_prev\n",
+     "old": "        IF(zeqn .GT. 0. _d 0) THEN\n           zh_max = zh_prev\n        ELSEIF(zeqn .LT. 0. _d 0) THEN\n           zh_min = zh_prev\n"
+    }
+   ]
+  },
+  "id": "sem-protocol-saphe-bracket-sign",
+  "meta": {
+   "file": "pkg/dic/dic_solvesaphe.F",
+   "line": 1673,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The end-state symptom is decoupled from a multi-stage state protocol, and local types do not encode the required ordering or phase.",
+   "semantic": true,
+   "target_checks": [
+    "so-box-obcs-saphe"
+   ],
+   "vein": "protocol"
+  },
+  "note": "update the opposite hydrogen bracket after evaluating the residual sign",
+  "source": "semantic",
+  "tree": "dic-solvesaphe"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "solvesaphe-bracket-protocol",
+  "floor": 0.5,
+  "floor_per_check": {
+   "so-box-obcs-saphe": 0.5
+  },
+  "id": "sem-protocol-saphe-bracket-sign",
+  "meta": {
+   "file": "pkg/dic/dic_solvesaphe.F",
+   "line": 1673,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The end-state symptom is decoupled from a multi-stage state protocol, and local types do not encode the required ordering or phase.",
+   "semantic": true,
+   "target_checks": [
+    "so-box-obcs-saphe"
+   ],
+   "vein": "protocol"
+  },
+  "note": "update the opposite hydrogen bracket after evaluating the residual sign",
+  "runs": {
+   "so-box-obcs-saphe": {
+    "exit": 0,
+    "wall": 1.109
+   }
+  },
+  "source": "semantic",
+  "status": "survivor",
+  "tree": "dic-solvesaphe",
+  "verdicts": {
+   "so-box-obcs-saphe": {
+    "error": "PTRACER01.0000000060.data: 3203 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.286e+00); surfDiag.0000000060.data: 2656 of 8400 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.595e+00)",
+    "files_ok": 13,
+    "files_scored": 15,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 5.595046269236341,
+    "worst_file": "surfDiag.0000000060.data"
+   }
+  },
+  "wall_total": 3.3
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

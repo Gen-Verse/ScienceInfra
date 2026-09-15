@@ -1,0 +1,10 @@
+{
+ "_canary": "0a62564f-f44f-5fb8-a173-40647bf34d68",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "                        fx_aux(:) = flux(:,iy,iz,ivar)\n                        call fftw_execute_dft_r2c(plan_fft_x, fx_aux, fx_aux_ft)\n                        w_xy(:,iy,iz) = fx_aux_ft(:) / nx !normalization",
+   "old": "                        fx_aux(:) = flux(:,iy,iz,ivar)\n                        call fftw_execute_dft_r2c(plan_fft_x, fx_aux, fx_aux_ft)\n                        w_xy(:,iy,iz) = fx_aux_ft(:) / (nx - 1) !normalization"
+  }
+ ]
+}

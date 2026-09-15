@@ -1,0 +1,80 @@
+{
+ "canary": "6b8d2060-a1ae-5890-9678-943d830d6f38",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            uu_prim(:,:,:,1) = uu(:,:,:,2) / uu(:,:,:,1)\n            uu_prim(:,:,:,2) = uu(:,:,:,3) / uu(:,:,:,1)\n            uu_prim(:,:,:,3) = uu(:,:,:,4) / uu(:,:,:,1)\n            \n            uu_prim(:,:,:,4) = (uu(:,:,:,8) - 0.5 * ( uu(:,:,:,2) * &\n                uu_prim(:,:,:,1) + uu(:,:,:,3) * uu_prim(:,:,:,2) + &\n                uu(:,:,:,4) * uu_prim(:,:,:,3) + (uu(:,:,:,5))**2 + &\n                (uu(:,:,:,6))**2 + (uu(:,:,:,7))**2)) &\n                * (adiabatic_index-1)\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "            uu_prim(:,:,:,1) = uu(:,:,:,2) / uu(:,:,:,1)\n            uu_prim(:,:,:,2) = uu(:,:,:,3) / uu(:,:,:,1)\n            uu_prim(:,:,:,3) = uu(:,:,:,4) / uu(:,:,:,1)\n            \n            uu_prim(:,:,:,4) = (uu(:,:,:,8) - 0.5 * ( uu(:,:,:,2) * &\n                uu_prim(:,:,:,1) + uu(:,:,:,3) * uu_prim(:,:,:,2) + &\n                uu(:,:,:,4) * uu_prim(:,:,:,3) + (uu(:,:,:,5))**2 + &\n                (uu(:,:,:,6))**2 + (uu(:,:,:,7))**2)) &\n                * (adiabatic_index-1)\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-3d-mhdrhs-update_uu_prim_from_uu",
+  "meta": {
+   "body_lines": 9,
+   "call_sites": 1,
+   "file": "src_compressible/mhdrhs.f90",
+   "subroutine": "update_uu_prim_from_uu"
+  },
+  "note": "excise the executable body of update_uu_prim_from_uu (src_compressible/mhdrhs.f90)",
+  "source": "excise",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "excise",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "excise-3d-mhdrhs-update_uu_prim_from_uu",
+  "meta": {
+   "body_lines": 9,
+   "call_sites": 1,
+   "file": "src_compressible/mhdrhs.f90",
+   "subroutine": "update_uu_prim_from_uu"
+  },
+  "note": "excise the executable body of update_uu_prim_from_uu (src_compressible/mhdrhs.f90)",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 14.639
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "1.132e-02 at frame 8 in Uy, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.011316196582745915,
+    "worst_frame": 8,
+    "worst_variable": "Uy"
+   }
+  },
+  "wall_total": 21.9
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

@@ -1,0 +1,80 @@
+{
+ "canary": "4905abd3-09f9-5dd4-ae7b-6739c808080e",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n            izmin = zj_offset(myid_j+1) + 1 \n            izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n            \n            do ivar = 1, nflux\n                !do fourier transform along x\n                do iz = izmin, izmax \n                    do iy = iymin,iymax\n                        fx_aux(:) = flux(:,iy,iz,ivar)\n                        call fftw_execute_dft_r2c(plan_fft_x, fx_aux, fx_aux_ft)\n                        w_xyz(:,iy,iz) = fx_aux_ft(:) / nx !normalization\n                    enddo\n                enddo\n\n                call from_xyz_to_zxy\n\n                !copy to flux_fourier\n                flux_fourier(:,:,:,ivar) = w_zxy(:,:,:)\n            enddo\n\n            if (if_AEB) then \n                !do fourier transform along x\n                do iz = izmin, izmax \n                    do iy = iymin,iymax\n                        fx_aux(:) = expand_term(:,iy,iz,1)\n                        call fftw_execute_dft_r2c(plan_fft_x, fx_aux, fx_aux_ft)\n                        w_xyz(:,iy,iz) = fx_aux_ft(:) / nx !normalization\n                    enddo\n                enddo\n\n                call from_xyz_to_zxy\n\n                !copy to flux_fourier\n                expand_term_fourier(:,:,:,1) = w_zxy(:,:,:)\n            endif\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n            izmin = zj_offset(myid_j+1) + 1 \n            izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n            \n            do ivar = 1, nflux\n                !do fourier transform along x\n                do iz = izmin, izmax \n                    do iy = iymin,iymax\n                        fx_aux(:) = flux(:,iy,iz,ivar)\n                        call fftw_execute_dft_r2c(plan_fft_x, fx_aux, fx_aux_ft)\n                        w_xyz(:,iy,iz) = fx_aux_ft(:) / nx !normalization\n                    enddo\n                enddo\n\n                call from_xyz_to_zxy\n\n                !copy to flux_fourier\n                flux_fourier(:,:,:,ivar) = w_zxy(:,:,:)\n            enddo\n\n            if (if_AEB) then \n                !do fourier transform along x\n                do iz = izmin, izmax \n                    do iy = iymin,iymax\n                        fx_aux(:) = expand_term(:,iy,iz,1)\n                        call fftw_execute_dft_r2c(plan_fft_x, fx_aux, fx_aux_ft)\n                        w_xyz(:,iy,iz) = fx_aux_ft(:) / nx !normalization\n                    enddo\n                enddo\n\n                call from_xyz_to_zxy\n\n                !copy to flux_fourier\n                expand_term_fourier(:,:,:,1) = w_zxy(:,:,:)\n            endif\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-3d-mhdrhs-transform_flux_real_to_fourier",
+  "meta": {
+   "body_lines": 36,
+   "call_sites": 1,
+   "file": "src_compressible/mhdrhs.f90",
+   "subroutine": "transform_flux_real_to_fourier"
+  },
+  "note": "excise the executable body of transform_flux_real_to_fourier (src_compressible/mhdrhs.f90)",
+  "source": "excise",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "excise",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "excise-3d-mhdrhs-transform_flux_real_to_fourier",
+  "meta": {
+   "body_lines": 36,
+   "call_sites": 1,
+   "file": "src_compressible/mhdrhs.f90",
+   "subroutine": "transform_flux_real_to_fourier"
+  },
+  "note": "excise the executable body of transform_flux_real_to_fourier (src_compressible/mhdrhs.f90)",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 8.269
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "1.132e-02 at frame 8 in Uy, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.01131619658274592,
+    "worst_frame": 8,
+    "worst_variable": "Uy"
+   }
+  },
+  "wall_total": 15.8
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

@@ -1,0 +1,82 @@
+{
+ "canary": "7edfc626-770e-5bc1-8c32-edcd1adc9bcf",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_bio_nitrogen.F",
+     "new": "C  phytoplankton.\n\n      DO k=1,Nr\n       DO j=jmin,jmax-1",
+     "old": "C  phytoplankton.\n\n      DO k=1,Nr\n       DO j=jmin,jmax"
+    }
+   ]
+  },
+  "family": "bounds",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_bio_nitrogen.F",
+     "new": "C  phytoplankton.\n\n      DO k=1,Nr\n       DO j=jmin,jmax",
+     "old": "C  phytoplankton.\n\n      DO k=1,Nr\n       DO j=jmin,jmax-1"
+    }
+   ]
+  },
+  "id": "bounds-bling-biogeochemistry-bling-bio-nitrogen-f-L1037-b0",
+  "meta": {
+   "file": "pkg/bling/bling_bio_nitrogen.F",
+   "line": 1037,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "clip a loop upper bound by one",
+  "source": "inject",
+  "tree": "bling-biogeochemistry"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "bounds",
+  "floor": 0.5,
+  "floor_per_check": {
+   "global-bling": 0.5
+  },
+  "id": "bounds-bling-biogeochemistry-bling-bio-nitrogen-f-L1037-b0",
+  "meta": {
+   "file": "pkg/bling/bling_bio_nitrogen.F",
+   "line": 1037,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "clip a loop upper bound by one",
+  "runs": {
+   "global-bling": {
+    "exit": 0,
+    "wall": 5.3142
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "bling-biogeochemistry",
+  "verdicts": {
+   "global-bling": {
+    "error": "PTRACER01.0000000030.data: 4256 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.084e-02); PTRACER02.0000000030.data: 3020 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.703e-03); PTRACER03.0000000030.data: 5815 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.009e-02); PTRACER04.0000000030.data: 5249 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.659e-03); PTRACER05.0000000030.data: 4393 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 9.348e-05); PTRACER06.0000000030.data: 1022 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 7.504e-08); PTRACER07.0000000030.data: 4869 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 6.201e-04); PTRACER08.0000000030.data: 3199 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.587e-05); blingTracDiag.0000000030.data: 29937 of 983040 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.085e-02)",
+    "files_ok": 9,
+    "files_scored": 18,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.010852040310172839,
+    "worst_file": "blingTracDiag.0000000030.data"
+   }
+  },
+  "wall_total": 6.7
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

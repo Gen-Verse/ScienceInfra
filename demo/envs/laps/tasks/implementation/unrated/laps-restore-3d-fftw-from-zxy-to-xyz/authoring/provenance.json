@@ -1,0 +1,75 @@
+{
+ "canary": "5d74dfdc-8c6b-54da-9362-58af556733b3",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/fftw.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n            iymin = yj_offset(myid_j+1) + 1 \n            iymax = yj_offset(myid_j+1) + yj_size(myid_j+1)\n\n            do iy = iymin, iymax \n                do ix = ixmin, ixmax \n                    fz_aux_ft(:) = w_zxy(ix,iy,:)\n                    call fftw_execute_dft(plan_ifft_z,fz_aux_ft,fz_aux)\n                    w_zxy(ix,iy,:) = fz_aux(:)\n                enddo\n            enddo\n\n            !transpose z<-->y\n            call transpose_zy\n\n            !do inverse Fourier transform along y\n            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n            izmin = zj_offset(myid_j+1) + 1 \n            izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n\n            do iz = izmin, izmax \n                do ix = ixmin, ixmax \n                    fy_aux_ft(:) = w_yxz(ix,:,iz)\n                    call fftw_execute_dft(plan_ifft_y,fy_aux_ft,fy_aux)\n                    w_yxz(ix,:,iz) = fy_aux(:)\n                enddo\n            enddo\n\n            !transpose y<-->x\n            call transpose_yx\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/fftw.f90",
+     "new": "            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n            iymin = yj_offset(myid_j+1) + 1 \n            iymax = yj_offset(myid_j+1) + yj_size(myid_j+1)\n\n            do iy = iymin, iymax \n                do ix = ixmin, ixmax \n                    fz_aux_ft(:) = w_zxy(ix,iy,:)\n                    call fftw_execute_dft(plan_ifft_z,fz_aux_ft,fz_aux)\n                    w_zxy(ix,iy,:) = fz_aux(:)\n                enddo\n            enddo\n\n            !transpose z<-->y\n            call transpose_zy\n\n            !do inverse Fourier transform along y\n            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n            izmin = zj_offset(myid_j+1) + 1 \n            izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n\n            do iz = izmin, izmax \n                do ix = ixmin, ixmax \n                    fy_aux_ft(:) = w_yxz(ix,:,iz)\n                    call fftw_execute_dft(plan_ifft_y,fy_aux_ft,fy_aux)\n                    w_yxz(ix,:,iz) = fy_aux(:)\n                enddo\n            enddo\n\n            !transpose y<-->x\n            call transpose_yx\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-3d-fftw-from_zxy_to_xyz",
+  "meta": {
+   "body_lines": 32,
+   "call_sites": 2,
+   "file": "src_compressible/fftw.f90",
+   "subroutine": "from_zxy_to_xyz"
+  },
+  "note": "excise the executable body of from_zxy_to_xyz (src_compressible/fftw.f90)",
+  "source": "excise",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "excise",
+  "floor": 0.1,
+  "floor_per_check": {
+   "aw-128": 0.1
+  },
+  "id": "excise-3d-fftw-from_zxy_to_xyz",
+  "meta": {
+   "body_lines": 32,
+   "call_sites": 2,
+   "file": "src_compressible/fftw.f90",
+   "subroutine": "from_zxy_to_xyz"
+  },
+  "note": "excise the executable body of from_zxy_to_xyz (src_compressible/fftw.f90)",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 12.974
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "error": "frame count differs: reference 9, candidate 7. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 17.9
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

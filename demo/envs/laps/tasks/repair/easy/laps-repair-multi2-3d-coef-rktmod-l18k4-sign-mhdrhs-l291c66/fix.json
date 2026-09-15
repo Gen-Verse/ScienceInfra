@@ -1,0 +1,15 @@
+{
+ "_canary": "8a1726d4-e3b4-5626-bd09-0e01737dc43d",
+ "edits": [
+  {
+   "file": "src_compressible/rktmod.f90",
+   "new": "dd30=-5./12.",
+   "old": "dd30=-5./12.2"
+  },
+  {
+   "file": "src_compressible/mhdrhs.f90",
+   "new": "                uu(:,:,:,4) * uu_prim(:,:,:,3) + (uu(:,:,:,5))**2 + &",
+   "old": "                uu(:,:,:,4) * uu_prim(:,:,:,3) + (uu(:,:,:,5))**2 - &"
+  }
+ ]
+}

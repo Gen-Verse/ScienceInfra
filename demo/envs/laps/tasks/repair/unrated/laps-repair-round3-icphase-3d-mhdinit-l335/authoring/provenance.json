@@ -1,0 +1,110 @@
+{
+ "canary": "0b9e4b9c-73b5-5a15-950f-061cfa27a989",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdinit.f90",
+     "new": "                        * sin(kx * xgrid(ix) + 0.01)",
+     "old": "                        * sin(kx * xgrid(ix))"
+    },
+    {
+     "file": "src_compressible/mhdinit.f90",
+     "new": "uu(ix,:,:,4) = uu(ix,:,:,4) + db0/sqrt(uu(ix,:,:,1)) * sin(kx * xgrid(ix) + 0.01)",
+     "old": "uu(ix,:,:,4) = uu(ix,:,:,4) + db0/sqrt(uu(ix,:,:,1)) * sin(kx * xgrid(ix))"
+    },
+    {
+     "file": "src_compressible/mhdinit.f90",
+     "new": "uu(ix,:,:,3) = uu(ix,:,:,3) + db0/sqrt(uu(ix,:,:,1)) * cos(kx * xgrid(ix) + 0.01) * cos_cor_ang",
+     "old": "uu(ix,:,:,3) = uu(ix,:,:,3) + db0/sqrt(uu(ix,:,:,1)) * cos(kx * xgrid(ix)) * cos_cor_ang"
+    },
+    {
+     "file": "src_compressible/mhdinit.f90",
+     "new": "uu(ix,:,:,6) = uu(ix,:,:,6) - db0 * cos(kx * xgrid(ix) + 0.01) * cos_cor_ang",
+     "old": "uu(ix,:,:,6) = uu(ix,:,:,6) - db0 * cos(kx * xgrid(ix)) * cos_cor_ang"
+    }
+   ]
+  },
+  "family": "icnorm",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdinit.f90",
+     "new": "                        * sin(kx * xgrid(ix))",
+     "old": "                        * sin(kx * xgrid(ix) + 0.01)"
+    },
+    {
+     "file": "src_compressible/mhdinit.f90",
+     "new": "uu(ix,:,:,4) = uu(ix,:,:,4) + db0/sqrt(uu(ix,:,:,1)) * sin(kx * xgrid(ix))",
+     "old": "uu(ix,:,:,4) = uu(ix,:,:,4) + db0/sqrt(uu(ix,:,:,1)) * sin(kx * xgrid(ix) + 0.01)"
+    },
+    {
+     "file": "src_compressible/mhdinit.f90",
+     "new": "uu(ix,:,:,3) = uu(ix,:,:,3) + db0/sqrt(uu(ix,:,:,1)) * cos(kx * xgrid(ix)) * cos_cor_ang",
+     "old": "uu(ix,:,:,3) = uu(ix,:,:,3) + db0/sqrt(uu(ix,:,:,1)) * cos(kx * xgrid(ix) + 0.01) * cos_cor_ang"
+    },
+    {
+     "file": "src_compressible/mhdinit.f90",
+     "new": "uu(ix,:,:,6) = uu(ix,:,:,6) - db0 * cos(kx * xgrid(ix)) * cos_cor_ang",
+     "old": "uu(ix,:,:,6) = uu(ix,:,:,6) - db0 * cos(kx * xgrid(ix) + 0.01) * cos_cor_ang"
+    }
+   ]
+  },
+  "id": "round3-icphase-3d-mhdinit-l335",
+  "meta": {
+   "difficulty_design": "hard",
+   "file": "src_compressible/mhdinit.f90",
+   "line": 335,
+   "rationale": "The ifield=3, ipert=1 deck makes this circular-wave branch live. A common 0.01-radian shift preserves the wave's amplitude and quadrature, leaving only the repository's arbitrary phase-origin convention to identify the incumbent."
+  },
+  "note": "shifted the live 3D circular-wave phase origin by 0.01 radians",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "icnorm",
+  "floor": 0.2,
+  "floor_per_check": {
+   "aw-128": 0.2
+  },
+  "id": "round3-icphase-3d-mhdinit-l335",
+  "meta": {
+   "difficulty_design": "hard",
+   "file": "src_compressible/mhdinit.f90",
+   "line": 335,
+   "rationale": "The ifield=3, ipert=1 deck makes this circular-wave branch live. A common 0.01-radian shift preserves the wave's amplitude and quadrature, leaving only the repository's arbitrary phase-origin convention to identify the incumbent."
+  },
+  "note": "shifted the live 3D circular-wave phase origin by 0.01 radians",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 48.708
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 3.924510525929459e-08,
+    "error": "dt differs by 3.925e-08, over the 1.0e-10 the time base allows - dt is a reduction over the whole grid, so it is a per-step fingerprint of the entire field state",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "time_base",
+    "passed": false,
+    "time_abs": 3.139608421021123e-07,
+    "value": 0.0009999769397582182,
+    "worst_frame": 4,
+    "worst_variable": "Uz"
+   }
+  },
+  "wall_total": 69.4
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

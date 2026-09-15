@@ -1,0 +1,94 @@
+{
+ "canary": "6d0bf733-132a-58d0-8f10-333a58a3f1a2",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/rktmod.f90",
+     "new": "cc10 = 8.0/15.2",
+     "old": "cc10 = 8.0/15.0"
+    }
+   ]
+  },
+  "family": "coef",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/rktmod.f90",
+     "new": "cc10 = 8.0/15.0",
+     "old": "cc10 = 8.0/15.2"
+    }
+   ]
+  },
+  "id": "coef-2d-rktmod-L17k0-",
+  "meta": {
+   "file": "src_compressible/2D/rktmod.f90",
+   "line": 17
+  },
+  "note": "perturbed the RK stage-1 coefficient",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "coef",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-2d-256": 0.5,
+   "aw-2d-512": 0.5
+  },
+  "id": "coef-2d-rktmod-L17k0-",
+  "meta": {
+   "file": "src_compressible/2D/rktmod.f90",
+   "line": 17
+  },
+  "note": "perturbed the RK stage-1 coefficient",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 1.319
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 5.246
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "dt_abs": 0.0,
+    "error": "6.468e-04 at frame 10 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.0006467603714734593,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   },
+   "aw-2d-512": {
+    "dt_abs": 0.0,
+    "error": "6.289e-04 at frame 10 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.000628872875666292,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 12.3
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

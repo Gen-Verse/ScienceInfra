@@ -1,0 +1,142 @@
+{
+ "canary": "1049844d-799f-5350-81c3-719fe6871893",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/dic/bio_export.F",
+     "new": "         lit(i,j)=lit(i,j)*(1. _d 0 + FIce(i,j,bi,bj))",
+     "old": "         lit(i,j)=lit(i,j)*(1. _d 0 - FIce(i,j,bi,bj))"
+    }
+   ]
+  },
+  "family": "sign",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/dic/bio_export.F",
+     "new": "         lit(i,j)=lit(i,j)*(1. _d 0 - FIce(i,j,bi,bj))",
+     "old": "         lit(i,j)=lit(i,j)*(1. _d 0 + FIce(i,j,bi,bj))"
+    }
+   ]
+  },
+  "id": "sign-dic-carbonate-bio-export-f-L97-s0",
+  "meta": {
+   "file": "pkg/dic/bio_export.F",
+   "line": 97,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "flip one arithmetic sign in lit",
+  "source": "inject",
+  "tree": "dic-carbonate"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "sign",
+  "floor": 0.5,
+  "floor_per_check": {
+   "global-dic": 0.5,
+   "so-box-calcite-keir": 0.5,
+   "so-box-calcite-naviaux": 0.5,
+   "so-box-dic": 0.5,
+   "so-box-obcs-saphe": 0.5
+  },
+  "id": "sign-dic-carbonate-bio-export-f-L97-s0",
+  "meta": {
+   "file": "pkg/dic/bio_export.F",
+   "line": 97,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "flip one arithmetic sign in lit",
+  "runs": {
+   "global-dic": {
+    "exit": 0,
+    "wall": 1.7165
+   },
+   "so-box-calcite-keir": {
+    "exit": 0,
+    "wall": 1.3978
+   },
+   "so-box-calcite-naviaux": {
+    "exit": 0,
+    "wall": 1.4259
+   },
+   "so-box-dic": {
+    "exit": 0,
+    "wall": 1.1078
+   },
+   "so-box-obcs-saphe": {
+    "exit": 0,
+    "wall": 1.116
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "dic-carbonate",
+  "verdicts": {
+   "global-dic": {
+    "error": "PTRACER01.0005184016.data: 5259 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.643e-03); PTRACER02.0005184016.data: 4349 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.708e-04); PTRACER03.0005184016.data: 5459 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.070e-05); PTRACER04.0005184016.data: 3194 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 2.046e-05); PTRACER05.0005184016.data: 6557 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.152e-03); surfDiag.0005184016.data: 2157 of 81920 values exceed atol=1e-10 rtol=1e-08 (max |err| 9.975e-03)",
+    "files_ok": 8,
+    "files_scored": 14,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.00997478897253501,
+    "worst_file": "surfDiag.0005184016.data"
+   },
+   "so-box-calcite-keir": {
+    "error": "PTRACER01.0000000060.data: 2128 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.143e-02); PTRACER02.0000000060.data: 1773 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 2.241e-03); PTRACER03.0000000060.data: 2243 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.005e-04); PTRACER04.0000000060.data: 1320 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 6.527e-05); PTRACER05.0000000060.data: 2517 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.578e-02); surfDiag.0000000060.data: 773 of 8400 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.959e-02)",
+    "files_ok": 9,
+    "files_scored": 15,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.019587210625306994,
+    "worst_file": "surfDiag.0000000060.data"
+   },
+   "so-box-calcite-naviaux": {
+    "error": "PTRACER01.0000000060.data: 2129 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.143e-02); PTRACER02.0000000060.data: 1779 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 2.241e-03); PTRACER03.0000000060.data: 2243 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.005e-04); PTRACER04.0000000060.data: 1320 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 6.527e-05); PTRACER05.0000000060.data: 2517 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.578e-02); surfDiag.0000000060.data: 774 of 8400 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.928e-02)",
+    "files_ok": 9,
+    "files_scored": 15,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.01927917518165856,
+    "worst_file": "surfDiag.0000000060.data"
+   },
+   "so-box-dic": {
+    "error": "PTRACER01.0000000060.data: 2143 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.186e-02); PTRACER02.0000000060.data: 1745 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.226e-03); PTRACER03.0000000060.data: 2243 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.005e-04); PTRACER04.0000000060.data: 1320 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 6.527e-05); PTRACER05.0000000060.data: 2517 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.578e-02); surfDiag.0000000060.data: 779 of 8400 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.905e-02)",
+    "files_ok": 9,
+    "files_scored": 15,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.01904719261479393,
+    "worst_file": "surfDiag.0000000060.data"
+   },
+   "so-box-obcs-saphe": {
+    "error": "PTRACER01.0000000060.data: 2143 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.185e-02); PTRACER02.0000000060.data: 1745 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.226e-03); PTRACER03.0000000060.data: 2243 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.005e-04); PTRACER04.0000000060.data: 1320 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 6.527e-05); PTRACER05.0000000060.data: 2517 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.578e-02); surfDiag.0000000060.data: 779 of 8400 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.875e-02)",
+    "files_ok": 9,
+    "files_scored": 15,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.01874728851749019,
+    "worst_file": "surfDiag.0000000060.data"
+   }
+  },
+  "wall_total": 8.7
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

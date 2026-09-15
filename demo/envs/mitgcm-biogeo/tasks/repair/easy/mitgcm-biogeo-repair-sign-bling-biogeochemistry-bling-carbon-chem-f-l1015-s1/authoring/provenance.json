@@ -1,0 +1,82 @@
+{
+ "canary": "0c1764c2-8bf0-5171-83e6-c20bec6d3fbc",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_carbon_chem.F",
+     "new": "C D. Wallace, 1998 - see endnotes for commentary on Millero, 95)\n           dv = -29.48 _d 0 + 0.1622 _d 0*t - 2.608 _d -3*t*t",
+     "old": "C D. Wallace, 1998 - see endnotes for commentary on Millero, 95)\n           dv = -29.48 _d 0 + 0.1622 _d 0*t + 2.608 _d -3*t*t"
+    }
+   ]
+  },
+  "family": "sign",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_carbon_chem.F",
+     "new": "C D. Wallace, 1998 - see endnotes for commentary on Millero, 95)\n           dv = -29.48 _d 0 + 0.1622 _d 0*t + 2.608 _d -3*t*t",
+     "old": "C D. Wallace, 1998 - see endnotes for commentary on Millero, 95)\n           dv = -29.48 _d 0 + 0.1622 _d 0*t - 2.608 _d -3*t*t"
+    }
+   ]
+  },
+  "id": "sign-bling-biogeochemistry-bling-carbon-chem-f-L1015-s1",
+  "meta": {
+   "file": "pkg/bling/bling_carbon_chem.F",
+   "line": 1015,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "flip one arithmetic sign in dv",
+  "source": "inject",
+  "tree": "bling-biogeochemistry"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "sign",
+  "floor": 0.5,
+  "floor_per_check": {
+   "global-bling": 0.5
+  },
+  "id": "sign-bling-biogeochemistry-bling-carbon-chem-f-L1015-s1",
+  "meta": {
+   "file": "pkg/bling/bling_carbon_chem.F",
+   "line": 1015,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "flip one arithmetic sign in dv",
+  "runs": {
+   "global-bling": {
+    "exit": 0,
+    "wall": 5.4036
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "bling-biogeochemistry",
+  "verdicts": {
+   "global-bling": {
+    "error": "PTRACER01.0000000030.data: 5868 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 2.919e-06); blingTracDiag.0000000030.data: 5314 of 983040 values exceed atol=1e-10 rtol=1e-08 (max |err| 2.571e-06)",
+    "files_ok": 16,
+    "files_scored": 18,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 2.9188402987934126e-06,
+    "worst_file": "PTRACER01.0000000030.data"
+   }
+  },
+  "wall_total": 6.4
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

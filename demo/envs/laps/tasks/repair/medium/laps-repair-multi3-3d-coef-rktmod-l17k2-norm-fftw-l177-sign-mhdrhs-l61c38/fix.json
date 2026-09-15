@@ -1,0 +1,20 @@
+{
+ "_canary": "f60a46fa-6e8b-5a6f-9485-0c86293178f3",
+ "edits": [
+  {
+   "file": "src_compressible/rktmod.f90",
+   "new": "cc30=0.75",
+   "old": "cc30=0.752"
+  },
+  {
+   "file": "src_compressible/fftw.f90",
+   "new": "                    w_zxy(ix,iy,:) = fz_aux_ft(:) / nz ",
+   "old": "                    w_zxy(ix,iy,:) = fz_aux_ft(:) / (nz - 1) "
+  },
+  {
+   "file": "src_compressible/mhdrhs.f90",
+   "new": "                        udotb = ux*Bx + uy*By + uz*Bz",
+   "old": "                        udotb = ux*Bx - uy*By + uz*Bz"
+  }
+ ]
+}

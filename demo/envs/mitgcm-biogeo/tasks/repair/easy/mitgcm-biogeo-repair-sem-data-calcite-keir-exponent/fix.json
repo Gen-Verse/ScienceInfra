@@ -1,0 +1,10 @@
+{
+ "_canary": "58b187a8-7cea-5577-98c3-063f6a0d121d",
+ "edits": [
+  {
+   "file": "pkg/dic/dic_readparms.F",
+   "new": "     &       calciteDissolExp(1) = 4.54 _d 0\n",
+   "old": "     &       calciteDissolExp(1) = 4.24 _d 0\n"
+  }
+ ]
+}

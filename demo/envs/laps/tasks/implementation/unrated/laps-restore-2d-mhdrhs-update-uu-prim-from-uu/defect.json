@@ -1,0 +1,10 @@
+{
+ "_canary": "23c12857-e96e-5ece-8b9c-5591e12deff8",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+   "old": "            uu_prim(:,:,:,1) = uu(:,:,:,2) / uu(:,:,:,1)\n            uu_prim(:,:,:,2) = uu(:,:,:,3) / uu(:,:,:,1)\n            uu_prim(:,:,:,3) = uu(:,:,:,4) / uu(:,:,:,1)\n            \n            uu_prim(:,:,:,4) = (uu(:,:,:,8) - 0.5 * ( uu(:,:,:,2) * &\n                uu_prim(:,:,:,1) + uu(:,:,:,3) * uu_prim(:,:,:,2) + &\n                uu(:,:,:,4) * uu_prim(:,:,:,3) + (uu(:,:,:,5))**2 + &\n                (uu(:,:,:,6))**2 + (uu(:,:,:,7))**2)) &\n                * (adiabatic_index-1)\n"
+  }
+ ]
+}

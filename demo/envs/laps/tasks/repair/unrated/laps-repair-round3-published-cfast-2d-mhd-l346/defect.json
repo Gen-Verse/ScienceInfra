@@ -1,0 +1,10 @@
+{
+ "_canary": "3f2b1fa4-47ab-5961-aff4-2d79548237b8",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhd.f90",
+   "new": "cfasty = sqrt(cms2 + cnsy2) / sqrt(1.98)",
+   "old": "cfasty = sqrt(cms2 + cnsy2) / sqrt(2.)"
+  }
+ ]
+}

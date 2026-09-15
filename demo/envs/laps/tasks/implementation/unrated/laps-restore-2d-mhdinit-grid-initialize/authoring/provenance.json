@@ -1,0 +1,88 @@
+{
+ "canary": "1bae40c5-4ffc-5baf-a104-63fceb84de64",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdinit.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n\n            iymin = 1\n            iymax = ny\n\n            izmin = 1 \n            izmax = 1\n\n            allocate(xgrid(nx), ygrid(ny), &\n                wave_number_x(nx), wave_number_y(ny),wave_number_z(nz),&\n                k_square(ixmin:ixmax,iymin:iymax,izmin:izmax))\n\n            dx = Lx / nx \n            dy = Ly / ny \n\n            do ix=1,nx \n                xgrid(ix) = 0 + (ix-1) * dx \n\n                if ( ix <= (nx/2+1) ) then\n                    wave_number_x(ix) = 2*pi*(ix-1) / Lx\n                else\n                    wave_number_x(ix) = 2*pi*(ix-1-nx) / Lx\n                endif\n            enddo\n\n            do iy=1,ny\n                ygrid(iy) = 0 + (iy-1) * dy \n\n                if ( iy <= (ny/2+1) ) then\n                    wave_number_y(iy) = 2*pi*(iy-1) / Ly\n                else\n                    wave_number_y(iy) = 2*pi*(iy-1-ny) / Ly\n                endif\n            enddo\n\n            wave_number_z(1) = 0.0\n\n            !define k_square\n            do iz=izmin,izmax\n                do iy=iymin,iymax \n                    do ix=ixmin,ixmax \n                        k_square(ix,iy,iz) = (wave_number_x(ix))**2 + &\n                            (wave_number_y(iy))**2 \n                    enddo\n                enddo\n            enddo\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdinit.f90",
+     "new": "            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n\n            iymin = 1\n            iymax = ny\n\n            izmin = 1 \n            izmax = 1\n\n            allocate(xgrid(nx), ygrid(ny), &\n                wave_number_x(nx), wave_number_y(ny),wave_number_z(nz),&\n                k_square(ixmin:ixmax,iymin:iymax,izmin:izmax))\n\n            dx = Lx / nx \n            dy = Ly / ny \n\n            do ix=1,nx \n                xgrid(ix) = 0 + (ix-1) * dx \n\n                if ( ix <= (nx/2+1) ) then\n                    wave_number_x(ix) = 2*pi*(ix-1) / Lx\n                else\n                    wave_number_x(ix) = 2*pi*(ix-1-nx) / Lx\n                endif\n            enddo\n\n            do iy=1,ny\n                ygrid(iy) = 0 + (iy-1) * dy \n\n                if ( iy <= (ny/2+1) ) then\n                    wave_number_y(iy) = 2*pi*(iy-1) / Ly\n                else\n                    wave_number_y(iy) = 2*pi*(iy-1-ny) / Ly\n                endif\n            enddo\n\n            wave_number_z(1) = 0.0\n\n            !define k_square\n            do iz=izmin,izmax\n                do iy=iymin,iymax \n                    do ix=ixmin,ixmax \n                        k_square(ix,iy,iz) = (wave_number_x(ix))**2 + &\n                            (wave_number_y(iy))**2 \n                    enddo\n                enddo\n            enddo\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-2d-mhdinit-grid_initialize",
+  "meta": {
+   "body_lines": 47,
+   "call_sites": 1,
+   "file": "src_compressible/2D/mhdinit.f90",
+   "subroutine": "grid_initialize"
+  },
+  "note": "excise the executable body of grid_initialize (src_compressible/2D/mhdinit.f90)",
+  "source": "excise",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": true,
+  "family": "excise",
+  "floor": 0.0,
+  "floor_per_check": {
+   "aw-2d-256": 0.0,
+   "aw-2d-512": 0.0
+  },
+  "id": "excise-2d-mhdinit-grid_initialize",
+  "meta": {
+   "body_lines": 47,
+   "call_sites": 1,
+   "file": "src_compressible/2D/mhdinit.f90",
+   "subroutine": "grid_initialize"
+  },
+  "note": "excise the executable body of grid_initialize (src_compressible/2D/mhdinit.f90)",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 139,
+    "wall": 4.747
+   },
+   "aw-2d-512": {
+    "exit": 139,
+    "wall": 3.232
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "error": "no out###.dat in the candidate output",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "no_output",
+    "passed": false,
+    "value": null
+   },
+   "aw-2d-512": {
+    "error": "no out###.dat in the candidate output",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "no_output",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 12.8
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

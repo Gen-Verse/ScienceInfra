@@ -1,0 +1,109 @@
+{
+ "canary": "4bf1c96c-9d80-5e37-b6ea-4bcf3da33982",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/gchem/gchem_add_tendency.F",
+     "new": "     &     iTr.LT.gchem_Tracer_num ) THEN\n",
+     "old": "     &     iTr.LE.gchem_Tracer_num ) THEN\n"
+    }
+   ]
+  },
+  "family": "gchem-tendency-protocol",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/gchem/gchem_add_tendency.F",
+     "new": "     &     iTr.LE.gchem_Tracer_num ) THEN\n",
+     "old": "     &     iTr.LT.gchem_Tracer_num ) THEN\n"
+    }
+   ]
+  },
+  "id": "sem-protocol-gchem-tracer-window",
+  "meta": {
+   "file": "pkg/gchem/gchem_add_tendency.F",
+   "line": 56,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The end-state symptom is decoupled from a multi-stage state protocol, and local types do not encode the required ordering or phase.",
+   "semantic": true,
+   "target_checks": [
+    "cfc-online",
+    "cfc-offline"
+   ],
+   "vein": "protocol"
+  },
+  "note": "exclude the final coupled tracer when adding the stored chemistry tendency",
+  "source": "semantic",
+  "tree": "gchem-dispatch"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "gchem-tendency-protocol",
+  "floor": 0.5,
+  "floor_per_check": {
+   "cfc-offline": 0.5,
+   "cfc-online": 0.5
+  },
+  "id": "sem-protocol-gchem-tracer-window",
+  "meta": {
+   "file": "pkg/gchem/gchem_add_tendency.F",
+   "line": 56,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The end-state symptom is decoupled from a multi-stage state protocol, and local types do not encode the required ordering or phase.",
+   "semantic": true,
+   "target_checks": [
+    "cfc-online",
+    "cfc-offline"
+   ],
+   "vein": "protocol"
+  },
+  "note": "exclude the final coupled tracer when adding the stored chemistry tendency",
+  "runs": {
+   "cfc-offline": {
+    "exit": 0,
+    "wall": 0.6167
+   },
+   "cfc-online": {
+    "exit": 0,
+    "wall": 2.897
+   }
+  },
+  "source": "semantic",
+  "status": "survivor",
+  "tree": "gchem-dispatch",
+  "verdicts": {
+   "cfc-offline": {
+    "error": "PTRACER02.0004269624.data: 18572 of 122880 values exceed atol=1e-20 rtol=1e-08 (max |err| 2.994e-11)",
+    "files_ok": 1,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 2.993637519199e-11,
+    "worst_file": "PTRACER02.0004269624.data"
+   },
+   "cfc-online": {
+    "error": "PTRACER02.0004269620.data: 17604 of 122880 values exceed atol=1e-20 rtol=1e-08 (max |err| 2.402e-11)",
+    "files_ok": 1,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 2.4017486861520907e-11,
+    "worst_file": "PTRACER02.0004269620.data"
+   }
+  },
+  "wall_total": 5.7
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

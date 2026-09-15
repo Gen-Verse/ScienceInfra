@@ -1,0 +1,97 @@
+{
+ "canary": "e6ce1e81-526c-5d45-8c2a-5db0ca3239a3",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/cfc/cfc12_surfforcing.F",
+     "new": "             ttemp2=( B3_12 * ttemp - B2_12 )*ttemp + B1_12",
+     "old": "             ttemp2=( B3_12 * ttemp + B2_12 )*ttemp + B1_12"
+    }
+   ]
+  },
+  "family": "sign",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/cfc/cfc12_surfforcing.F",
+     "new": "             ttemp2=( B3_12 * ttemp + B2_12 )*ttemp + B1_12",
+     "old": "             ttemp2=( B3_12 * ttemp - B2_12 )*ttemp + B1_12"
+    }
+   ]
+  },
+  "id": "sign-cfc-gas-exchange-cfc12-surfforcing-f-L77-s0",
+  "meta": {
+   "file": "pkg/cfc/cfc12_surfforcing.F",
+   "line": 77,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "flip one arithmetic sign in ttemp2",
+  "source": "inject",
+  "tree": "cfc-gas-exchange"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "sign",
+  "floor": 0.5,
+  "floor_per_check": {
+   "cfc-offline": 0.5,
+   "cfc-online": 0.5
+  },
+  "id": "sign-cfc-gas-exchange-cfc12-surfforcing-f-L77-s0",
+  "meta": {
+   "file": "pkg/cfc/cfc12_surfforcing.F",
+   "line": 77,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "flip one arithmetic sign in ttemp2",
+  "runs": {
+   "cfc-offline": {
+    "exit": 0,
+    "wall": 0.6055
+   },
+   "cfc-online": {
+    "exit": 0,
+    "wall": 2.8769
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "cfc-gas-exchange",
+  "verdicts": {
+   "cfc-offline": {
+    "error": "PTRACER02.0004269624.data: 21607 of 122880 values exceed atol=1e-20 rtol=1e-08 (max |err| 1.824e-10)",
+    "files_ok": 1,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 1.8237479209543952e-10,
+    "worst_file": "PTRACER02.0004269624.data"
+   },
+   "cfc-online": {
+    "error": "PTRACER02.0004269620.data: 20907 of 122880 values exceed atol=1e-20 rtol=1e-08 (max |err| 1.662e-10)",
+    "files_ok": 1,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 1.6622308254704318e-10,
+    "worst_file": "PTRACER02.0004269620.data"
+   }
+  },
+  "wall_total": 4.7
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

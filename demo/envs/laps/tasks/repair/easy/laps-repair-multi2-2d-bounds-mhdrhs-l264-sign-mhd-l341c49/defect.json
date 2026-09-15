@@ -1,0 +1,15 @@
+{
+ "_canary": "7f48e012-5f2f-50ee-b2c2-e8f09414700e",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "            complex :: kx, ky,kz\n\n            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1) - 1",
+   "old": "            complex :: kx, ky,kz\n\n            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)"
+  },
+  {
+   "file": "src_compressible/2D/mhd.f90",
+   "new": "                        cnsx2 = sqrt(max(cms2**2 + 4 * csound2 * calfvenx**2 , 0.))",
+   "old": "                        cnsx2 = sqrt(max(cms2**2 - 4 * csound2 * calfvenx**2 , 0.))"
+  }
+ ]
+}

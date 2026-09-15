@@ -1,0 +1,10 @@
+{
+ "_canary": "85ac1063-11da-57d0-9fb9-f5ba7397a745",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "                        flux(ix,iy,iz,11) = uu(ix,iy,iz,3) * uz ",
+   "old": "                        flux(ix,iy,iz,11) = uu(ix,iy,iz,3) * uz - By * Bz "
+  }
+ ]
+}

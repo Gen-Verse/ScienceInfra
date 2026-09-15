@@ -1,0 +1,10 @@
+{
+ "_canary": "0c296f02-c48b-504d-b3d5-b7915fdc4fbd",
+ "edits": [
+  {
+   "file": "src_compressible/2D/parallel.f90",
+   "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+   "old": "            allocate(i_offset(nproc), i_size(nproc))\n\n            normal_size = ngrid / nproc \n\n            i_offset(1) = 0\n            i_size(1) = normal_size\n\n            do iproc=2,nproc\n                i_offset(iproc) = i_offset(iproc-1) + i_size(iproc-1)\n                if (iproc < nproc) then \n                    i_size(iproc) = normal_size\n                else \n                    i_size(iproc) = ngrid - i_offset(iproc)\n                endif\n            enddo\n"
+  }
+ ]
+}

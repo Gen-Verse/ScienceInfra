@@ -1,0 +1,99 @@
+{
+ "canary": "957d2e08-3251-5cae-9eb0-06c766f7c62e",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/cfc/cfc_param.F",
+     "new": "      RETURN\n",
+     "old": "      _BEGIN_MASTER( myThid )\nC set up coefficients for CFC11\nC define Schmidt no. coefficients for CFC11\n      sca_11_1 = 3501.8 _d 0\n      sca_11_2 = -210.31 _d 0\n      sca_11_3 =    6.1851 _d 0\n      sca_11_4 =   -0.075139 _d 0\nC coefficients for determining solubility of CFC12\n      A1_11=  -229.9261 _d 0\n      A2_11=   319.6552 _d 0\n      A3_11=   119.4471 _d 0\n      A4_11=   -1.39165 _d 0\n      B1_11=   -0.142382 _d 0\n      B2_11=    0.091459 _d 0\n      B3_11=   -0.0157274 _d 0\n\nC set up coefficients for CFC12\nC define Schmidt no. coefficients for CFC12\n      sca_12_1 = 3845.4 _d 0\n      sca_12_2 = -228.95 _d 0\n      sca_12_3 =    6.1908 _d 0\n      sca_12_4 =   -0.067430 _d 0\nC coefficients for determining solubility of CFC12\n      A1_12=  -218.0971 _d 0\n      A2_12=   298.9702 _d 0\n      A3_12=   113.8049 _d 0\n      A4_12=   -1.39165 _d 0\n      B1_12=   -0.143566 _d 0\n      B2_12=    0.091015 _d 0\n      B3_12=   -0.0153924 _d 0\n\n      _END_MASTER( myThid )\n\nC--   Everyone else must wait for the parameters to be loaded\n      _BARRIER\n\n#endif /* ALLOW_CFC */\n\n      RETURN\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/cfc/cfc_param.F",
+     "new": "      _BEGIN_MASTER( myThid )\nC set up coefficients for CFC11\nC define Schmidt no. coefficients for CFC11\n      sca_11_1 = 3501.8 _d 0\n      sca_11_2 = -210.31 _d 0\n      sca_11_3 =    6.1851 _d 0\n      sca_11_4 =   -0.075139 _d 0\nC coefficients for determining solubility of CFC12\n      A1_11=  -229.9261 _d 0\n      A2_11=   319.6552 _d 0\n      A3_11=   119.4471 _d 0\n      A4_11=   -1.39165 _d 0\n      B1_11=   -0.142382 _d 0\n      B2_11=    0.091459 _d 0\n      B3_11=   -0.0157274 _d 0\n\nC set up coefficients for CFC12\nC define Schmidt no. coefficients for CFC12\n      sca_12_1 = 3845.4 _d 0\n      sca_12_2 = -228.95 _d 0\n      sca_12_3 =    6.1908 _d 0\n      sca_12_4 =   -0.067430 _d 0\nC coefficients for determining solubility of CFC12\n      A1_12=  -218.0971 _d 0\n      A2_12=   298.9702 _d 0\n      A3_12=   113.8049 _d 0\n      A4_12=   -1.39165 _d 0\n      B1_12=   -0.143566 _d 0\n      B2_12=    0.091015 _d 0\n      B3_12=   -0.0153924 _d 0\n\n      _END_MASTER( myThid )\n\nC--   Everyone else must wait for the parameters to be loaded\n      _BARRIER\n\n#endif /* ALLOW_CFC */\n\n      RETURN\n",
+     "old": "      RETURN\n"
+    }
+   ]
+  },
+  "id": "excise-cfc-gas-exchange-cfc_param-cfc_param",
+  "meta": {
+   "body_lines": 39,
+   "file": "pkg/cfc/cfc_param.F",
+   "predicted_tier": "easy",
+   "prediction_rationale": "Short routine restore is locally re-derivable and serves as an easy control.",
+   "subroutine": "CFC_PARAM"
+  },
+  "note": "excise the executable body of CFC_PARAM",
+  "source": "excise",
+  "tree": "cfc-gas-exchange"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "excise",
+  "floor": 0.1,
+  "floor_per_check": {
+   "cfc-offline": 0.1,
+   "cfc-online": 0.1
+  },
+  "id": "excise-cfc-gas-exchange-cfc_param-cfc_param",
+  "meta": {
+   "body_lines": 39,
+   "file": "pkg/cfc/cfc_param.F",
+   "predicted_tier": "easy",
+   "prediction_rationale": "Short routine restore is locally re-derivable and serves as an easy control.",
+   "subroutine": "CFC_PARAM"
+  },
+  "note": "excise the executable body of CFC_PARAM",
+  "runs": {
+   "cfc-offline": {
+    "exit": 0,
+    "wall": 0.603
+   },
+   "cfc-online": {
+    "exit": 0,
+    "wall": 2.7907
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "cfc-gas-exchange",
+  "verdicts": {
+   "cfc-offline": {
+    "error": "PTRACER01.0004269624.data: candidate contains non-finite values; PTRACER02.0004269624.data: candidate contains non-finite values",
+    "files_ok": 0,
+    "files_scored": 0,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": null
+   },
+   "cfc-online": {
+    "error": "PTRACER01.0004269620.data: candidate contains non-finite values; PTRACER02.0004269620.data: candidate contains non-finite values",
+    "files_ok": 0,
+    "files_scored": 0,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": null
+   }
+  },
+  "wall_total": 4.5
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

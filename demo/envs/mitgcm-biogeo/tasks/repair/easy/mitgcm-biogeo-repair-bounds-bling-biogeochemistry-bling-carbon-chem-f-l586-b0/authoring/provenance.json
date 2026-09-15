@@ -1,0 +1,82 @@
+{
+ "canary": "8ada6ed2-42f1-5396-8df8-263fd12a6f03",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_carbon_chem.F",
+     "new": "C....................................................................\n\n        do i=imin,imax-1",
+     "old": "C....................................................................\n\n        do i=imin,imax"
+    }
+   ]
+  },
+  "family": "bounds",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_carbon_chem.F",
+     "new": "C....................................................................\n\n        do i=imin,imax",
+     "old": "C....................................................................\n\n        do i=imin,imax-1"
+    }
+   ]
+  },
+  "id": "bounds-bling-biogeochemistry-bling-carbon-chem-f-L586-b0",
+  "meta": {
+   "file": "pkg/bling/bling_carbon_chem.F",
+   "line": 586,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "clip a loop upper bound by one",
+  "source": "inject",
+  "tree": "bling-biogeochemistry"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "bounds",
+  "floor": 0.1,
+  "floor_per_check": {
+   "global-bling": 0.1
+  },
+  "id": "bounds-bling-biogeochemistry-bling-carbon-chem-f-L586-b0",
+  "meta": {
+   "file": "pkg/bling/bling_carbon_chem.F",
+   "line": 586,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "clip a loop upper bound by one",
+  "runs": {
+   "global-bling": {
+    "exit": 0,
+    "wall": 5.2569
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "bling-biogeochemistry",
+  "verdicts": {
+   "global-bling": {
+    "error": "PTRACER01.0000000030.data: candidate contains non-finite values; PTRACER02.0000000030.data: 9420 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.326e-05); blingTracDiag.0000000030.data: candidate contains non-finite values",
+    "files_ok": 15,
+    "files_scored": 16,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 3.326460712171908e-05,
+    "worst_file": "PTRACER02.0000000030.data"
+   }
+  },
+  "wall_total": 6.2
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

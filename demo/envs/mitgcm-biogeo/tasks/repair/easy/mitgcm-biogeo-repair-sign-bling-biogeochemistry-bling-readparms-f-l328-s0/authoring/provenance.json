@@ -1,0 +1,82 @@
+{
+ "canary": "70811ca5-fd46-50a2-bb18-c8310cd3ba83",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_readparms.F",
+     "new": "      NO3toN               = CtoN * (1. _d 0 - 0.25 _d 0 * HtoC)",
+     "old": "      NO3toN               = CtoN * (1. _d 0 + 0.25 _d 0 * HtoC)"
+    }
+   ]
+  },
+  "family": "sign",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_readparms.F",
+     "new": "      NO3toN               = CtoN * (1. _d 0 + 0.25 _d 0 * HtoC)",
+     "old": "      NO3toN               = CtoN * (1. _d 0 - 0.25 _d 0 * HtoC)"
+    }
+   ]
+  },
+  "id": "sign-bling-biogeochemistry-bling-readparms-f-L328-s0",
+  "meta": {
+   "file": "pkg/bling/bling_readparms.F",
+   "line": 328,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "flip one arithmetic sign in NO3toN",
+  "source": "inject",
+  "tree": "bling-biogeochemistry"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "sign",
+  "floor": 0.5,
+  "floor_per_check": {
+   "global-bling": 0.5
+  },
+  "id": "sign-bling-biogeochemistry-bling-readparms-f-L328-s0",
+  "meta": {
+   "file": "pkg/bling/bling_readparms.F",
+   "line": 328,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "flip one arithmetic sign in NO3toN",
+  "runs": {
+   "global-bling": {
+    "exit": 0,
+    "wall": 5.7606
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "bling-biogeochemistry",
+  "verdicts": {
+   "global-bling": {
+    "error": "PTRACER02.0000000030.data: 5 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 8.380e-05); PTRACER04.0000000030.data: 12 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 8.380e-05); blingTracDiag.0000000030.data: 16 of 983040 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.538e-05)",
+    "files_ok": 15,
+    "files_scored": 18,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 8.380300143629588e-05,
+    "worst_file": "PTRACER04.0000000030.data"
+   }
+  },
+  "wall_total": 6.8
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

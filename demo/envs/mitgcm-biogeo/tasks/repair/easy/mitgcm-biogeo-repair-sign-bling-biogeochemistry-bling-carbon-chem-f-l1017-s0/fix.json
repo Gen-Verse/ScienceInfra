@@ -1,0 +1,10 @@
+{
+ "_canary": "5899e57e-117f-589f-8fe2-c90173fcf88e",
+ "edits": [
+  {
+   "file": "pkg/bling/bling_carbon_chem.F",
+   "new": "           dk = -2.84 _d -3\n           pfactor = - (dv/(bigR*tk))*pressc",
+   "old": "           dk = -2.84 _d -3\n           pfactor = + (dv/(bigR*tk))*pressc"
+  }
+ ]
+}

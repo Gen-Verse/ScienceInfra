@@ -1,0 +1,120 @@
+{
+ "canary": "3a459058-a2e3-5a66-8daa-06e487657e49",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/rktmod.f90",
+     "new": "dd30=-5./12.2",
+     "old": "dd30=-5./12."
+    },
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "                        fnl(ix,iy,iz,1) = -( kx * flux_fourier(ix,iy,iz,1) - &",
+     "old": "                        fnl(ix,iy,iz,1) = -( kx * flux_fourier(ix,iy,iz,1) + &"
+    }
+   ]
+  },
+  "family": "multi",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/rktmod.f90",
+     "new": "dd30=-5./12.",
+     "old": "dd30=-5./12.2"
+    },
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "                        fnl(ix,iy,iz,1) = -( kx * flux_fourier(ix,iy,iz,1) + &",
+     "old": "                        fnl(ix,iy,iz,1) = -( kx * flux_fourier(ix,iy,iz,1) - &"
+    }
+   ]
+  },
+  "id": "multi2-2d-coef-rktmod-L18k4-+sign-mhdrhs-L291c75-",
+  "meta": {
+   "components": [
+    "coef-2d-rktmod-L18k4-",
+    "sign-2d-mhdrhs-L291c75-"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/2D/mhdrhs.f90",
+    "src_compressible/2D/rktmod.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "perturbed the RK stage-3 correction AND flipped `+` to `-` in the `fnl` statement",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "multi",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-2d-256": 0.5,
+   "aw-2d-512": 0.5
+  },
+  "id": "multi2-2d-coef-rktmod-L18k4-+sign-mhdrhs-L291c75-",
+  "meta": {
+   "components": [
+    "coef-2d-rktmod-L18k4-",
+    "sign-2d-mhdrhs-L291c75-"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/2D/mhdrhs.f90",
+    "src_compressible/2D/rktmod.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "perturbed the RK stage-3 correction AND flipped `+` to `-` in the `fnl` statement",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 1.323
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 4.241
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "dt_abs": 0.0,
+    "error": "7.711e-04 at frame 10 in rho, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.0007710503324057649,
+    "worst_frame": 10,
+    "worst_variable": "rho"
+   },
+   "aw-2d-512": {
+    "dt_abs": 0.0,
+    "error": "7.182e-04 at frame 10 in rho, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.0007181564721103761,
+    "worst_frame": 10,
+    "worst_variable": "rho"
+   }
+  },
+  "wall_total": 13.7
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "_canary": "102100ef-1e0b-5f86-8afc-d5e0cfe40396",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "                        udotb = ux*Bx + uy*By + uz*Bz",
+   "old": "                        udotb = ux*Bx + uy*By - uz*Bz"
+  }
+ ]
+}

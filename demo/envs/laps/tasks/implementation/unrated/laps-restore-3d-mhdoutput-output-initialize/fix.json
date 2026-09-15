@@ -1,0 +1,10 @@
+{
+ "_canary": "2aa3d137-72bf-59a6-9598-3c71d7ff0ba3",
+ "edits": [
+  {
+   "file": "src_compressible/mhdoutput.f90",
+   "new": "            out_size_full = [nx,ny,nz,nvar]\n            out_size_sub = [nx,yi_size(myid_i+1),zj_size(myid_j+1),nvar]\n            out_start_ind = [0,yi_offset(myid_i+1),zj_offset(myid_j+1),0]\n\n            call mpi_type_create_subarray(4,out_size_full,out_size_sub,out_start_ind,&\n                mpi_order_fortran,mpi_realtype,out_subarr_type,ierr)\n            call mpi_type_commit(out_subarr_type, ierr)\n\n\n            ! !create the time file\n            ! if (ipe==0) then \n            !     open(FILE='time.dat',UNIT=30,STATUS='REPLACE',ACTION='WRITE')\n            !     close(30)\n            ! endif\n\n            if (output_primitive) then \n                ixmin = 1\n                ixmax = nx \n\n                iymin = yi_offset(myid_i+1) + 1 \n                iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n\n                izmin = zj_offset(myid_j+1) + 1 \n                izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n\n                allocate(output_temp_storage(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:4))\n            endif\n",
+   "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+  }
+ ]
+}

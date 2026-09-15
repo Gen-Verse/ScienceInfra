@@ -1,0 +1,10 @@
+{
+ "_canary": "3421e8e9-c4a9-5cae-9d0e-baa152741dbf",
+ "edits": [
+  {
+   "file": "src_compressible/2D/rktmod.f90",
+   "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+   "old": "            fnl_rk(:,:,:,:) = cmplx(0.0, 0.0)\n\n            cc1(1) = cc10*dt ; dd1(1) = 0.0\n            cc1(2) = cc20*dt ; dd1(2) = dd20*dt\n            cc1(3) = cc30*dt ; dd1(3) = dd30*dt\n\n            time_step(1) = time_step1 * dt \n            time_step(2) = time_step2 * dt \n            time_step(3) = time_step3 * dt\n\n"
+  }
+ ]
+}

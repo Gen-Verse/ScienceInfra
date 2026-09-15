@@ -1,0 +1,10 @@
+{
+ "_canary": "6282ad15-0585-5e54-8092-b5243bcd37f9",
+ "edits": [
+  {
+   "file": "pkg/dic/car_flux_omega_top.F",
+   "new": "                IF (omegaC(i,j,ko,bi,bj) .GT. 0.8000 _d 0) THEN\n",
+   "old": "                IF (omegaC(i,j,ko,bi,bj) .GT. 0.8272 _d 0) THEN\n"
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "canary": "11c344b3-a698-555c-b753-26e0eeffd22b",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "            integer :: nflux = 18\n\n            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1) - 1",
+     "old": "            integer :: nflux = 18\n\n            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)"
+    }
+   ]
+  },
+  "family": "bounds",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "            integer :: nflux = 18\n\n            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)",
+     "old": "            integer :: nflux = 18\n\n            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1) - 1"
+    }
+   ]
+  },
+  "id": "bounds-3d-mhdrhs-L137",
+  "meta": {
+   "file": "src_compressible/mhdrhs.f90",
+   "line": 137
+  },
+  "note": "clipped a loop upper bound by one",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "bounds",
+  "floor": 0.1,
+  "floor_per_check": {
+   "aw-128": 0.1
+  },
+  "id": "bounds-3d-mhdrhs-L137",
+  "meta": {
+   "file": "src_compressible/mhdrhs.f90",
+   "line": 137
+  },
+  "note": "clipped a loop upper bound by one",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 97.93
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "error": "frame count differs: reference 9, candidate 7. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 102.8
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

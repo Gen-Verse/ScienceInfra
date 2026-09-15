@@ -1,0 +1,10 @@
+{
+ "_canary": "81366ad3-d074-5601-be08-77b5bbd24cee",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "                        fnl(ix,iy,iz,4) = -( kx * flux_fourier(ix,iy,iz,10) + &",
+   "old": "                        fnl(ix,iy,iz,4) = -( kx * flux_fourier(ix,iy,iz,10) - &"
+  }
+ ]
+}

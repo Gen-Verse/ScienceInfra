@@ -1,0 +1,98 @@
+{
+ "canary": "f321decf-5c06-5a97-836b-068e14cb629a",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            do ivar = 1, nflux\n                iymin = yi_offset(myid_i+1) + 1\n                iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n                izmin = 1 \n                izmax = 1\n\n                !do fourier transform along x\n                do iz = izmin, izmax \n                    do iy = iymin,iymax\n                        fx_aux(:) = flux(:,iy,iz,ivar)\n                        call fftw_execute_dft_r2c(plan_fft_x, fx_aux, fx_aux_ft)\n                        w_xy(:,iy,iz) = fx_aux_ft(:) / nx !normalization\n                    enddo\n                enddo\n\n                !transpose x<-->y\n                call transpose_xy\n\n                ixmin = xi_offset(myid_i+1) + 1\n                ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n                izmin = 1 \n                izmax = 1\n\n                !do fourier transform along y\n                do iz = izmin, izmax \n                    do ix = ixmin, ixmax \n                        fy_aux(:) = w_yx(ix,:,iz)\n                        call fftw_execute_dft(plan_fft_y,fy_aux,fy_aux_ft)\n                        w_yx(ix,:,iz) = fy_aux_ft(:) / ny \n                    enddo\n                enddo\n\n                !copy to flux_fourier\n                flux_fourier(:,:,:,ivar) = w_yx(:,:,:)\n            enddo\n\n            if (if_AEB) then \n                !do fourier transform along x\n                iymin = yi_offset(myid_i+1) + 1\n                iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n                izmin = 1 \n                izmax = 1\n\n                do iz = izmin, izmax \n                    do iy = iymin,iymax\n                        fx_aux(:) = expand_term(:,iy,iz,1)\n                        call fftw_execute_dft_r2c(plan_fft_x, fx_aux, fx_aux_ft)\n                        w_xy(:,iy,iz) = fx_aux_ft(:) / nx !normalization\n                    enddo\n                enddo\n\n                !transpose x<-->y\n                call transpose_xy\n\n                ixmin = xi_offset(myid_i+1) + 1\n                ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n                izmin = 1 \n                izmax = 1\n\n                !do fourier transform along y\n                do iz = izmin, izmax \n                    do ix = ixmin, ixmax \n                        fy_aux(:) = w_yx(ix,:,iz)\n                        call fftw_execute_dft(plan_fft_y,fy_aux,fy_aux_ft)\n                        w_yx(ix,:,iz) = fy_aux_ft(:) / ny \n                    enddo\n                enddo\n\n                !copy to flux_fourier\n                expand_term_fourier(:,:,:,1) = w_yx(:,:,:)\n            endif\n\n            if (if_external_force) then \n                do ivar = 1, nextern\n                    !do fourier transform along x\n                    iymin = yi_offset(myid_i+1) + 1\n                    iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n                    izmin = 1 \n                    izmax = 1\n\n                    do iz = izmin, izmax \n                        do iy = iymin,iymax\n                            fx_aux(:) = external_force(:,iy,iz,ivar)\n                            call fftw_execute_dft_r2c(plan_fft_x, fx_aux, fx_aux_ft)\n                            w_xy(:,iy,iz) = fx_aux_ft(:) / nx !normalization\n                        enddo\n                    enddo\n\n                    !transpose x<-->y\n                    call transpose_xy\n\n                    ixmin = xi_offset(myid_i+1) + 1\n                    ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n                    izmin = 1 \n                    izmax = 1\n\n                    !do fourier transform along y\n                    do iz = izmin, izmax \n                        do ix = ixmin, ixmax \n                            fy_aux(:) = w_yx(ix,:,iz)\n                            call fftw_execute_dft(plan_fft_y,fy_aux,fy_aux_ft)\n                            w_yx(ix,:,iz) = fy_aux_ft(:) / ny \n                        enddo\n                    enddo\n\n                    !copy to flux_fourier\n                    external_force_fourier(:,:,:,ivar) = w_yx(:,:,:)\n                enddo\n            endif\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "            do ivar = 1, nflux\n                iymin = yi_offset(myid_i+1) + 1\n                iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n                izmin = 1 \n                izmax = 1\n\n                !do fourier transform along x\n                do iz = izmin, izmax \n                    do iy = iymin,iymax\n                        fx_aux(:) = flux(:,iy,iz,ivar)\n                        call fftw_execute_dft_r2c(plan_fft_x, fx_aux, fx_aux_ft)\n                        w_xy(:,iy,iz) = fx_aux_ft(:) / nx !normalization\n                    enddo\n                enddo\n\n                !transpose x<-->y\n                call transpose_xy\n\n                ixmin = xi_offset(myid_i+1) + 1\n                ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n                izmin = 1 \n                izmax = 1\n\n                !do fourier transform along y\n                do iz = izmin, izmax \n                    do ix = ixmin, ixmax \n                        fy_aux(:) = w_yx(ix,:,iz)\n                        call fftw_execute_dft(plan_fft_y,fy_aux,fy_aux_ft)\n                        w_yx(ix,:,iz) = fy_aux_ft(:) / ny \n                    enddo\n                enddo\n\n                !copy to flux_fourier\n                flux_fourier(:,:,:,ivar) = w_yx(:,:,:)\n            enddo\n\n            if (if_AEB) then \n                !do fourier transform along x\n                iymin = yi_offset(myid_i+1) + 1\n                iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n                izmin = 1 \n                izmax = 1\n\n                do iz = izmin, izmax \n                    do iy = iymin,iymax\n                        fx_aux(:) = expand_term(:,iy,iz,1)\n                        call fftw_execute_dft_r2c(plan_fft_x, fx_aux, fx_aux_ft)\n                        w_xy(:,iy,iz) = fx_aux_ft(:) / nx !normalization\n                    enddo\n                enddo\n\n                !transpose x<-->y\n                call transpose_xy\n\n                ixmin = xi_offset(myid_i+1) + 1\n                ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n                izmin = 1 \n                izmax = 1\n\n                !do fourier transform along y\n                do iz = izmin, izmax \n                    do ix = ixmin, ixmax \n                        fy_aux(:) = w_yx(ix,:,iz)\n                        call fftw_execute_dft(plan_fft_y,fy_aux,fy_aux_ft)\n                        w_yx(ix,:,iz) = fy_aux_ft(:) / ny \n                    enddo\n                enddo\n\n                !copy to flux_fourier\n                expand_term_fourier(:,:,:,1) = w_yx(:,:,:)\n            endif\n\n            if (if_external_force) then \n                do ivar = 1, nextern\n                    !do fourier transform along x\n                    iymin = yi_offset(myid_i+1) + 1\n                    iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n                    izmin = 1 \n                    izmax = 1\n\n                    do iz = izmin, izmax \n                        do iy = iymin,iymax\n                            fx_aux(:) = external_force(:,iy,iz,ivar)\n                            call fftw_execute_dft_r2c(plan_fft_x, fx_aux, fx_aux_ft)\n                            w_xy(:,iy,iz) = fx_aux_ft(:) / nx !normalization\n                        enddo\n                    enddo\n\n                    !transpose x<-->y\n                    call transpose_xy\n\n                    ixmin = xi_offset(myid_i+1) + 1\n                    ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n                    izmin = 1 \n                    izmax = 1\n\n                    !do fourier transform along y\n                    do iz = izmin, izmax \n                        do ix = ixmin, ixmax \n                            fy_aux(:) = w_yx(ix,:,iz)\n                            call fftw_execute_dft(plan_fft_y,fy_aux,fy_aux_ft)\n                            w_yx(ix,:,iz) = fy_aux_ft(:) / ny \n                        enddo\n                    enddo\n\n                    !copy to flux_fourier\n                    external_force_fourier(:,:,:,ivar) = w_yx(:,:,:)\n                enddo\n            endif\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-2d-mhdrhs-transform_flux_real_to_fourier",
+  "meta": {
+   "body_lines": 109,
+   "call_sites": 1,
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "subroutine": "transform_flux_real_to_fourier"
+  },
+  "note": "excise the executable body of transform_flux_real_to_fourier (src_compressible/2D/mhdrhs.f90)",
+  "source": "excise",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "excise",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-2d-256": 0.5,
+   "aw-2d-512": 0.5
+  },
+  "id": "excise-2d-mhdrhs-transform_flux_real_to_fourier",
+  "meta": {
+   "body_lines": 109,
+   "call_sites": 1,
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "subroutine": "transform_flux_real_to_fourier"
+  },
+  "note": "excise the executable body of transform_flux_real_to_fourier (src_compressible/2D/mhdrhs.f90)",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 0.619
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 1.703
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "dt_abs": 0.0,
+    "error": "1.220e-01 at frame 10 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.12203645923154999,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   },
+   "aw-2d-512": {
+    "dt_abs": 0.0,
+    "error": "1.198e-01 at frame 10 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.11981497863181434,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 7.6
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

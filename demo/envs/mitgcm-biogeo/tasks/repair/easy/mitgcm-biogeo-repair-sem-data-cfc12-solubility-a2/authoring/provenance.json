@@ -1,0 +1,109 @@
+{
+ "canary": "9a941b3b-2865-507e-b582-129edecc8d42",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/cfc/cfc_param.F",
+     "new": "      A2_12=   294.9702 _d 0\n",
+     "old": "      A2_12=   298.9702 _d 0\n"
+    }
+   ]
+  },
+  "family": "cfc-fit-data",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/cfc/cfc_param.F",
+     "new": "      A2_12=   298.9702 _d 0\n",
+     "old": "      A2_12=   294.9702 _d 0\n"
+    }
+   ]
+  },
+  "id": "sem-data-cfc12-solubility-a2",
+  "meta": {
+   "file": "pkg/cfc/cfc_param.F",
+   "line": 51,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+   "semantic": true,
+   "target_checks": [
+    "cfc-online",
+    "cfc-offline"
+   ],
+   "vein": "data"
+  },
+  "note": "perturb the second CFC-12 solubility coefficient",
+  "source": "semantic",
+  "tree": "cfc-gas-exchange"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "cfc-fit-data",
+  "floor": 0.5,
+  "floor_per_check": {
+   "cfc-offline": 0.5,
+   "cfc-online": 0.5
+  },
+  "id": "sem-data-cfc12-solubility-a2",
+  "meta": {
+   "file": "pkg/cfc/cfc_param.F",
+   "line": 51,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+   "semantic": true,
+   "target_checks": [
+    "cfc-online",
+    "cfc-offline"
+   ],
+   "vein": "data"
+  },
+  "note": "perturb the second CFC-12 solubility coefficient",
+  "runs": {
+   "cfc-offline": {
+    "exit": 0,
+    "wall": 0.6293
+   },
+   "cfc-online": {
+    "exit": 0,
+    "wall": 2.8306
+   }
+  },
+  "source": "semantic",
+  "status": "survivor",
+  "tree": "cfc-gas-exchange",
+  "verdicts": {
+   "cfc-offline": {
+    "error": "PTRACER02.0004269624.data: 21388 of 122880 values exceed atol=1e-20 rtol=1e-08 (max |err| 1.404e-10)",
+    "files_ok": 1,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 1.4040411577798589e-10,
+    "worst_file": "PTRACER02.0004269624.data"
+   },
+   "cfc-online": {
+    "error": "PTRACER02.0004269620.data: 20688 of 122880 values exceed atol=1e-20 rtol=1e-08 (max |err| 1.280e-10)",
+    "files_ok": 1,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 1.2804739546181663e-10,
+    "worst_file": "PTRACER02.0004269620.data"
+   }
+  },
+  "wall_total": 6.1
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

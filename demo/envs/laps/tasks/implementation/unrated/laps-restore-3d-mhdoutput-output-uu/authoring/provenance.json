@@ -1,0 +1,75 @@
+{
+ "canary": "69237f8d-3208-513c-8985-9c9a3323cd02",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdoutput.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            if (iout ==0  ) write(fname,'(a3,i3)')  'out000'\n            if (iout <1000) write(fname,'(a3,i3)')  'out' ,iout   \n            if (iout <100 ) write(fname,'(a4,i2)')  'out0' ,iout\n            if (iout < 10 ) write(fname,'(a5,i1)')  'out00',iout\n\n            !write time\n            if (ipe==0) then \n                open(unit=10,file= fname // '.dat',form='unformatted',&\n                    status='replace',action='write')\n                    write(10) real(time,4)\n                close(10)\n            endif\n\n            if (output_primitive) then\n                !temporarily store rho*u and energy density \n                output_temp_storage(:,:,:,1:3) = uu(:,:,:,2:4)\n                output_temp_storage(:,:,:,4) = uu(:,:,:,8)\n\n                !replace rho*u by u and e by p\n                uu(:,:,:,2:4) = uu_prim(:,:,:,1:3)\n                uu(:,:,:,8) = uu_prim(:,:,:,4)\n            endif\n\n            call mpi_file_open(mpi_comm_world, fname // '.dat', &\n                mpi_mode_wronly + mpi_mode_create, mpi_info_null, &\n                file_handle, ierr)\n\n            data_size = size(uu)\n\n            call mpi_file_set_view(file_handle, displacement, &\n                mpi_realtype, out_subarr_type, 'native', mpi_info_null, ierr)\n\n            call mpi_file_write_all(file_handle, uu, data_size, &\n                mpi_realtype, mpi_status_ignore, ierr )\n\n            call mpi_file_close(file_handle, ierr)\n\n            if (output_primitive) then \n                !recover rho*u and e\n                uu(:,:,:,2:4) = output_temp_storage(:,:,:,1:3)\n                uu(:,:,:,8) = output_temp_storage(:,:,:,4)\n            endif\n\n            ! !write time to time.dat\n            ! if (ipe==0) then \n            !     open(FILE='time.dat',UNIT=30,STATUS='OLD',ACTION='WRITE',POSITION='APPEND')\n            !         write(30,'(i5,3x,f12.6)') iout,time\n            !     close(30)\n            ! endif\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdoutput.f90",
+     "new": "            if (iout ==0  ) write(fname,'(a3,i3)')  'out000'\n            if (iout <1000) write(fname,'(a3,i3)')  'out' ,iout   \n            if (iout <100 ) write(fname,'(a4,i2)')  'out0' ,iout\n            if (iout < 10 ) write(fname,'(a5,i1)')  'out00',iout\n\n            !write time\n            if (ipe==0) then \n                open(unit=10,file= fname // '.dat',form='unformatted',&\n                    status='replace',action='write')\n                    write(10) real(time,4)\n                close(10)\n            endif\n\n            if (output_primitive) then\n                !temporarily store rho*u and energy density \n                output_temp_storage(:,:,:,1:3) = uu(:,:,:,2:4)\n                output_temp_storage(:,:,:,4) = uu(:,:,:,8)\n\n                !replace rho*u by u and e by p\n                uu(:,:,:,2:4) = uu_prim(:,:,:,1:3)\n                uu(:,:,:,8) = uu_prim(:,:,:,4)\n            endif\n\n            call mpi_file_open(mpi_comm_world, fname // '.dat', &\n                mpi_mode_wronly + mpi_mode_create, mpi_info_null, &\n                file_handle, ierr)\n\n            data_size = size(uu)\n\n            call mpi_file_set_view(file_handle, displacement, &\n                mpi_realtype, out_subarr_type, 'native', mpi_info_null, ierr)\n\n            call mpi_file_write_all(file_handle, uu, data_size, &\n                mpi_realtype, mpi_status_ignore, ierr )\n\n            call mpi_file_close(file_handle, ierr)\n\n            if (output_primitive) then \n                !recover rho*u and e\n                uu(:,:,:,2:4) = output_temp_storage(:,:,:,1:3)\n                uu(:,:,:,8) = output_temp_storage(:,:,:,4)\n            endif\n\n            ! !write time to time.dat\n            ! if (ipe==0) then \n            !     open(FILE='time.dat',UNIT=30,STATUS='OLD',ACTION='WRITE',POSITION='APPEND')\n            !         write(30,'(i5,3x,f12.6)') iout,time\n            !     close(30)\n            ! endif\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-3d-mhdoutput-output_uu",
+  "meta": {
+   "body_lines": 49,
+   "call_sites": 5,
+   "file": "src_compressible/mhdoutput.f90",
+   "subroutine": "output_uu"
+  },
+  "note": "excise the executable body of output_uu (src_compressible/mhdoutput.f90)",
+  "source": "excise",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "excise",
+  "floor": 0.0,
+  "floor_per_check": {
+   "aw-128": 0.0
+  },
+  "id": "excise-3d-mhdoutput-output_uu",
+  "meta": {
+   "body_lines": 49,
+   "call_sites": 5,
+   "file": "src_compressible/mhdoutput.f90",
+   "subroutine": "output_uu"
+  },
+  "note": "excise the executable body of output_uu (src_compressible/mhdoutput.f90)",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 15.484
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "error": "no out###.dat in the candidate output",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "no_output",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 20.3
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

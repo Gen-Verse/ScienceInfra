@@ -1,0 +1,97 @@
+{
+ "canary": "278d4b51-fd39-53ff-ae77-ef441a89fed0",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/cfc/cfc_param.F",
+     "new": "      sca_11_2 = -212.4131 _d 0",
+     "old": "      sca_11_2 = -210.31 _d 0"
+    }
+   ]
+  },
+  "family": "coef",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/cfc/cfc_param.F",
+     "new": "      sca_11_2 = -210.31 _d 0",
+     "old": "      sca_11_2 = -212.4131 _d 0"
+    }
+   ]
+  },
+  "id": "coef-cfc-gas-exchange-cfc-param-f-L31-n0",
+  "meta": {
+   "file": "pkg/cfc/cfc_param.F",
+   "line": 31,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "perturb a numeric coefficient in sca_11_2 by one percent",
+  "source": "inject",
+  "tree": "cfc-gas-exchange"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "coef",
+  "floor": 0.5,
+  "floor_per_check": {
+   "cfc-offline": 0.5,
+   "cfc-online": 0.5
+  },
+  "id": "coef-cfc-gas-exchange-cfc-param-f-L31-n0",
+  "meta": {
+   "file": "pkg/cfc/cfc_param.F",
+   "line": 31,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "perturb a numeric coefficient in sca_11_2 by one percent",
+  "runs": {
+   "cfc-offline": {
+    "exit": 0,
+    "wall": 0.5933
+   },
+   "cfc-online": {
+    "exit": 0,
+    "wall": 2.7696
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "cfc-gas-exchange",
+  "verdicts": {
+   "cfc-offline": {
+    "error": "PTRACER01.0004269624.data: 15383 of 122880 values exceed atol=1e-20 rtol=1e-08 (max |err| 3.153e-13)",
+    "files_ok": 1,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 3.15281105257636e-13,
+    "worst_file": "PTRACER01.0004269624.data"
+   },
+   "cfc-online": {
+    "error": "PTRACER01.0004269620.data: 14530 of 122880 values exceed atol=1e-20 rtol=1e-08 (max |err| 2.990e-13)",
+    "files_ok": 1,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 2.9902010874289975e-13,
+    "worst_file": "PTRACER01.0004269620.data"
+   }
+  },
+  "wall_total": 4.5
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

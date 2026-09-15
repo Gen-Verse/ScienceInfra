@@ -1,0 +1,15 @@
+{
+ "_canary": "ae9a4e3f-0a46-5e2d-a1e0-7a9952bf5eac",
+ "edits": [
+  {
+   "file": "src_compressible/parallel.f90",
+   "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+   "old": "            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n            izmin = zj_offset(myid_j+1) + 1\n            izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n\n            w_xyz(ixmin : ixmax, iymin : iymax, izmin : izmax) = &\n                w_yxz(ixmin : ixmax, iymin : iymax, izmin : izmax)\n\n            do idim = 1, dims(1)-1\n                ipe_send = modulo(myid_i - idim + dims(1), dims(1))\n                ipe_recv = modulo(myid_i + idim + dims(1), dims(1))\n\n                call mpi_sendrecv(w_yxz, 1, subarr_type_xy_recv(ipe_send+1), ipe_send, ipe_send, & \n                    w_xyz, 1, subarr_type_xy_send(ipe_recv+1), ipe_recv, myid_i, &\n                    comm1d_i, MPI_STATUS_IGNORE,ierr)\n            enddo\n            \n"
+  },
+  {
+   "file": "src_compressible/rktmod.f90",
+   "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+   "old": "            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n\n\n            !fully implicit method for viscosity-----------------------\n            !Warning: if expansion exists, the k_square needs to be modified\n            if (if_visc .and. (.not. if_visc_exp)) then\n                do ivar = 2,4\n                    uu_fourier(:,:,:,ivar) = uu_fourier(:,:,:,ivar) / (time_step(irk) &\n                        * k_square(:,:,:) * viscosity + 1.0)\n                enddo\n            endif\n\n            !fully implicit method for resistivity-----------------------\n            !Warning: if expansion exists, the k_square needs to be modified\n            if (if_resis .and. (.not. if_resis_exp)) then\n                do ivar = 5,7\n                    uu_fourier(:,:,:,ivar) = uu_fourier(:,:,:,ivar) / (time_step(irk) &\n                        * k_square(:,:,:) * resistivity + 1.0)\n                enddo\n            endif\n"
+  }
+ ]
+}

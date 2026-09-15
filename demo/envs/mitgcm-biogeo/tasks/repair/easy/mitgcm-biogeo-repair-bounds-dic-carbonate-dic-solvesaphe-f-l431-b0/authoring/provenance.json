@@ -1,0 +1,142 @@
+{
+ "canary": "e9052b91-3a6e-59ac-83c6-113696518054",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/dic/dic_solvesaphe.F",
+     "new": "      _RL sw2total\n\n        do i=imin,imax\n         do j=jmin,jmax-1",
+     "old": "      _RL sw2total\n\n        do i=imin,imax\n         do j=jmin,jmax"
+    }
+   ]
+  },
+  "family": "bounds",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/dic/dic_solvesaphe.F",
+     "new": "      _RL sw2total\n\n        do i=imin,imax\n         do j=jmin,jmax",
+     "old": "      _RL sw2total\n\n        do i=imin,imax\n         do j=jmin,jmax-1"
+    }
+   ]
+  },
+  "id": "bounds-dic-carbonate-dic-solvesaphe-f-L431-b0",
+  "meta": {
+   "file": "pkg/dic/dic_solvesaphe.F",
+   "line": 431,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "clip a loop upper bound by one",
+  "source": "inject",
+  "tree": "dic-carbonate"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "bounds",
+  "floor": 0.28,
+  "floor_per_check": {
+   "global-dic": 1.0,
+   "so-box-calcite-keir": 0.1,
+   "so-box-calcite-naviaux": 0.1,
+   "so-box-dic": 0.1,
+   "so-box-obcs-saphe": 0.1
+  },
+  "id": "bounds-dic-carbonate-dic-solvesaphe-f-L431-b0",
+  "meta": {
+   "file": "pkg/dic/dic_solvesaphe.F",
+   "line": 431,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "clip a loop upper bound by one",
+  "runs": {
+   "global-dic": {
+    "exit": 0,
+    "wall": 1.7436
+   },
+   "so-box-calcite-keir": {
+    "exit": 0,
+    "wall": 1.3789
+   },
+   "so-box-calcite-naviaux": {
+    "exit": 0,
+    "wall": 1.4187
+   },
+   "so-box-dic": {
+    "exit": 0,
+    "wall": 1.0643
+   },
+   "so-box-obcs-saphe": {
+    "exit": 0,
+    "wall": 1.0726
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "dic-carbonate",
+  "verdicts": {
+   "global-dic": {
+    "error": "all graded values within bound",
+    "files_ok": 14,
+    "files_scored": 14,
+    "final_iteration_match": true,
+    "outcome": "passed",
+    "passed": true,
+    "value": 0.0,
+    "worst_file": "Eta.0005184016.data"
+   },
+   "so-box-calcite-keir": {
+    "error": "PTRACER01.0000000060.data: candidate contains non-finite values; PTRACER02.0000000060.data: candidate contains non-finite values; surfDiag.0000000060.data: candidate contains non-finite values",
+    "files_ok": 12,
+    "files_scored": 12,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": "Eta.0000000060.data"
+   },
+   "so-box-calcite-naviaux": {
+    "error": "PTRACER01.0000000060.data: candidate contains non-finite values; PTRACER02.0000000060.data: candidate contains non-finite values; surfDiag.0000000060.data: candidate contains non-finite values",
+    "files_ok": 12,
+    "files_scored": 12,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": "Eta.0000000060.data"
+   },
+   "so-box-dic": {
+    "error": "PTRACER01.0000000060.data: candidate contains non-finite values; surfDiag.0000000060.data: candidate contains non-finite values",
+    "files_ok": 13,
+    "files_scored": 13,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": "Eta.0000000060.data"
+   },
+   "so-box-obcs-saphe": {
+    "error": "PTRACER01.0000000060.data: candidate contains non-finite values; surfDiag.0000000060.data: candidate contains non-finite values",
+    "files_ok": 13,
+    "files_scored": 13,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": "Eta.0000000060.data"
+   }
+  },
+  "wall_total": 8.9
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

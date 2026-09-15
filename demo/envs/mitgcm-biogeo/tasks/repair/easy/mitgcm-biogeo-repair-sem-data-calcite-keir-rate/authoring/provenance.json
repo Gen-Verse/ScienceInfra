@@ -1,0 +1,92 @@
+{
+ "canary": "61630b7d-ecc9-5f78-a653-e09ba1fc0e8d",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/dic/dic_readparms.F",
+     "new": "     &       calciteDissolRate(1) = 6.777 _d 0\n",
+     "old": "     &       calciteDissolRate(1) = 7.177 _d 0\n"
+    }
+   ]
+  },
+  "family": "calcite-rate-data",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/dic/dic_readparms.F",
+     "new": "     &       calciteDissolRate(1) = 7.177 _d 0\n",
+     "old": "     &       calciteDissolRate(1) = 6.777 _d 0\n"
+    }
+   ]
+  },
+  "id": "sem-data-calcite-keir-rate",
+  "meta": {
+   "file": "pkg/dic/dic_readparms.F",
+   "line": 305,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The deck uses a locally calibrated rate-law tuple whose exact member cannot be reconstructed from the named publication alone.",
+   "semantic": true,
+   "target_checks": [
+    "so-box-calcite-keir"
+   ],
+   "vein": "data"
+  },
+  "note": "alter one calibrated member of the selected calcite dissolution law",
+  "source": "semantic",
+  "tree": "dic-calcite"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "calcite-rate-data",
+  "floor": 0.5,
+  "floor_per_check": {
+   "so-box-calcite-keir": 0.5
+  },
+  "id": "sem-data-calcite-keir-rate",
+  "meta": {
+   "file": "pkg/dic/dic_readparms.F",
+   "line": 305,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The deck uses a locally calibrated rate-law tuple whose exact member cannot be reconstructed from the named publication alone.",
+   "semantic": true,
+   "target_checks": [
+    "so-box-calcite-keir"
+   ],
+   "vein": "data"
+  },
+  "note": "alter one calibrated member of the selected calcite dissolution law",
+  "runs": {
+   "so-box-calcite-keir": {
+    "exit": 0,
+    "wall": 1.4595
+   }
+  },
+  "source": "semantic",
+  "status": "survivor",
+  "tree": "dic-calcite",
+  "verdicts": {
+   "so-box-calcite-keir": {
+    "error": "PTRACER01.0000000060.data: 862 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 7.489e-06); PTRACER02.0000000060.data: 1005 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.498e-05)",
+    "files_ok": 13,
+    "files_scored": 15,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 1.4978656568409576e-05,
+    "worst_file": "PTRACER02.0000000060.data"
+   }
+  },
+  "wall_total": 3.4
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

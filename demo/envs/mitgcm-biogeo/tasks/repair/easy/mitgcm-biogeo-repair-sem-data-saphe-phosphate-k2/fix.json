@@ -1,0 +1,10 @@
+{
+ "_canary": "76611fc3-0f99-54cd-90fb-eafb84e9882c",
+ "edits": [
+  {
+   "file": "pkg/dic/dic_solvesaphe.F",
+   "new": "           ak2p(i,j,bi,bj) = EXP( 172.1033 _d 0\n",
+   "old": "           ak2p(i,j,bi,bj) = EXP( 174.1033 _d 0\n"
+  }
+ ]
+}

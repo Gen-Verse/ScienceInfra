@@ -1,0 +1,10 @@
+{
+ "_canary": "ca68ec19-123f-509f-878b-25e38d19e80e",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "            endif\n\n            ixmin = 1\n            ixmax = nx ",
+   "old": "            endif\n\n            ixmin = 1\n            ixmax = nx - 1"
+  }
+ ]
+}

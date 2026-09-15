@@ -1,0 +1,10 @@
+{
+ "_canary": "e88ea0fb-0db1-5599-bc91-8966dbe5f367",
+ "edits": [
+  {
+   "file": "pkg/offline/offline_fields_load.F",
+   "new": "             uVel(i,j,k,bi,bj) = aWght*uvel0(i,j,k,bi,bj)\n     &                         + bWght*uvel1(i,j,k,bi,bj)",
+   "old": "             uVel(i,j,k,bi,bj) = bWght*uvel0(i,j,k,bi,bj)\n     &                         + aWght*uvel1(i,j,k,bi,bj)"
+  }
+ ]
+}

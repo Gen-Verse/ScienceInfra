@@ -1,0 +1,10 @@
+{
+ "_canary": "f6a26abc-dd2f-555d-ba0d-0611bf80f888",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdinit.f90",
+   "new": "uu(ix,iy,:,4) = Vjet/2.02 * (1 - tanh((r_yz - 1)/0.1))",
+   "old": "uu(ix,iy,:,4) = Vjet/2 * (1 - tanh((r_yz - 1)/0.1))"
+  }
+ ]
+}

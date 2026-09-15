@@ -1,0 +1,88 @@
+{
+ "canary": "168a5ed8-3991-5f85-b509-55b2b33e78ba",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/AEBmod.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            radius = radius0 \n\n            call AEB_calc(radius)\n\n            if (.not. if_corotating) then \n                corotating_angle = 0.0\n            endif\n\n            cos_cor_ang = cos(corotating_angle)\n            sin_cor_ang = sin(corotating_angle)\n\n            if (ipe==0) then \n                inquire(FILE='EBM_info.dat', exist=file_exist)\n                if (file_exist) then \n                    open(FILE='EBM_info.dat',UNIT=30,STATUS='OLD',ACTION='WRITE',POSITION='APPEND')\n                else \n                    open(FILE='EBM_info.dat',UNIT=30,STATUS='REPLACE',ACTION='WRITE')\n                endif\n                close(30)\n            endif\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/AEBmod.f90",
+     "new": "            radius = radius0 \n\n            call AEB_calc(radius)\n\n            if (.not. if_corotating) then \n                corotating_angle = 0.0\n            endif\n\n            cos_cor_ang = cos(corotating_angle)\n            sin_cor_ang = sin(corotating_angle)\n\n            if (ipe==0) then \n                inquire(FILE='EBM_info.dat', exist=file_exist)\n                if (file_exist) then \n                    open(FILE='EBM_info.dat',UNIT=30,STATUS='OLD',ACTION='WRITE',POSITION='APPEND')\n                else \n                    open(FILE='EBM_info.dat',UNIT=30,STATUS='REPLACE',ACTION='WRITE')\n                endif\n                close(30)\n            endif\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-2d-aebmod-aeb_initialize",
+  "meta": {
+   "body_lines": 20,
+   "call_sites": 1,
+   "file": "src_compressible/2D/AEBmod.f90",
+   "subroutine": "AEB_initialize"
+  },
+  "note": "excise the executable body of AEB_initialize (src_compressible/2D/AEBmod.f90)",
+  "source": "excise",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": true,
+  "family": "excise",
+  "floor": 0.1,
+  "floor_per_check": {
+   "aw-2d-256": 0.1,
+   "aw-2d-512": 0.1
+  },
+  "id": "excise-2d-aebmod-aeb_initialize",
+  "meta": {
+   "body_lines": 20,
+   "call_sites": 1,
+   "file": "src_compressible/2D/AEBmod.f90",
+   "subroutine": "AEB_initialize"
+  },
+  "note": "excise the executable body of AEB_initialize (src_compressible/2D/AEBmod.f90)",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 2,
+    "wall": 1.82
+   },
+   "aw-2d-512": {
+    "exit": 2,
+    "wall": 1.615
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "error": "frame count differs: reference 11, candidate 1. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   },
+   "aw-2d-512": {
+    "error": "frame count differs: reference 11, candidate 1. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 8.5
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

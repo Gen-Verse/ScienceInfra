@@ -1,0 +1,71 @@
+{
+ "canary": "45dc3dbd-5e62-55ad-aad3-a39375b66151",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "                    - uu_fourier(:,:,:,:)",
+     "old": "                    + uu_fourier(:,:,:,:)"
+    }
+   ]
+  },
+  "family": "sign",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "                    + uu_fourier(:,:,:,:)",
+     "old": "                    - uu_fourier(:,:,:,:)"
+    }
+   ]
+  },
+  "id": "sign-3d-rktmod-L41c20-",
+  "meta": {
+   "file": "src_compressible/rktmod.f90",
+   "line": 41
+  },
+  "note": "flipped `+` to `-` in the `uu_fourier` statement",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "sign",
+  "floor": 0.1,
+  "floor_per_check": {
+   "aw-128": 0.1
+  },
+  "id": "sign-3d-rktmod-L41c20-",
+  "meta": {
+   "file": "src_compressible/rktmod.f90",
+   "line": 41
+  },
+  "note": "flipped `+` to `-` in the `uu_fourier` statement",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 3.684
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "error": "frame count differs: reference 9, candidate 3. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 8.8
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

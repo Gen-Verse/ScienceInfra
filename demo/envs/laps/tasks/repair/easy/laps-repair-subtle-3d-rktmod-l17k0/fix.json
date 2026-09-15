@@ -1,0 +1,10 @@
+{
+ "_canary": "087a4d9e-4085-5c0f-b217-cc972dee8be0",
+ "edits": [
+  {
+   "file": "src_compressible/rktmod.f90",
+   "new": "cc10 = 8.0/15.0",
+   "old": "cc10 = 8.0/15.002"
+  }
+ ]
+}

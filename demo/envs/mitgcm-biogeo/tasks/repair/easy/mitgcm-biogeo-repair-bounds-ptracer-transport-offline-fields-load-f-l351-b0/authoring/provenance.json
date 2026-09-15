@@ -1,0 +1,82 @@
+{
+ "canary": "a5cf1e83-3dc3-5b2a-ab9a-f85e3959c538",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/offline/offline_fields_load.F",
+     "new": "C--   Save time-interpolation weights\n      DO bj = myByLo(myThid), myByHi(myThid)-1",
+     "old": "C--   Save time-interpolation weights\n      DO bj = myByLo(myThid), myByHi(myThid)"
+    }
+   ]
+  },
+  "family": "bounds",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/offline/offline_fields_load.F",
+     "new": "C--   Save time-interpolation weights\n      DO bj = myByLo(myThid), myByHi(myThid)",
+     "old": "C--   Save time-interpolation weights\n      DO bj = myByLo(myThid), myByHi(myThid)-1"
+    }
+   ]
+  },
+  "id": "bounds-ptracer-transport-offline-fields-load-f-L351-b0",
+  "meta": {
+   "file": "pkg/offline/offline_fields_load.F",
+   "line": 351,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "clip a loop upper bound by one",
+  "source": "inject",
+  "tree": "ptracer-transport"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "bounds",
+  "floor": 0.5,
+  "floor_per_check": {
+   "cfc-offline": 0.5
+  },
+  "id": "bounds-ptracer-transport-offline-fields-load-f-L351-b0",
+  "meta": {
+   "file": "pkg/offline/offline_fields_load.F",
+   "line": 351,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "clip a loop upper bound by one",
+  "runs": {
+   "cfc-offline": {
+    "exit": 0,
+    "wall": 0.6023
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "ptracer-transport",
+  "verdicts": {
+   "cfc-offline": {
+    "error": "PTRACER01.0004269624.data: 14843 of 122880 values exceed atol=1e-20 rtol=1e-08 (max |err| 1.859e-10); PTRACER02.0004269624.data: 15302 of 122880 values exceed atol=1e-20 rtol=1e-08 (max |err| 1.254e-10)",
+    "files_ok": 0,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 1.8591515862751937e-10,
+    "worst_file": "PTRACER01.0004269624.data"
+   }
+  },
+  "wall_total": 1.4
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

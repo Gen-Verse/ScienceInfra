@@ -1,0 +1,10 @@
+{
+ "_canary": "712ada96-54bf-5b06-b255-189b38e14199",
+ "edits": [
+  {
+   "file": "pkg/bling/bling_readparms.F",
+   "new": "      secperday            = 87264.0 _d 0",
+   "old": "      secperday            = 86400. _d 0"
+  }
+ ]
+}

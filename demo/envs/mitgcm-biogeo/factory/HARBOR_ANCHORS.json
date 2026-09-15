@@ -1,0 +1,28 @@
+{
+  "task": "mitgcm-biogeo-repair-sem-data-cfc11-schmidt-leading",
+  "runs": [
+    {
+      "task": "mitgcm-biogeo-repair-sem-data-cfc11-schmidt-leading",
+      "agent": "oracle",
+      "reward": 1.0,
+      "reward_repair": 1.0,
+      "equivalence_pass": 1,
+      "exceptions": 0,
+      "started_at": "2026-09-04T02:30:08.616739",
+      "finished_at": "2026-09-04T02:36:01.392676",
+      "result": ".work/mitgcm-biogeo/harbor-oracle/2026-09-04__02-30-08/result.json"
+    },
+    {
+      "task": "mitgcm-biogeo-repair-sem-data-cfc11-schmidt-leading",
+      "agent": "nop",
+      "reward": 0.0,
+      "reward_repair": 0.0,
+      "equivalence_pass": 0,
+      "exceptions": 0,
+      "started_at": "2026-09-04T02:36:09.996344",
+      "finished_at": "2026-09-04T02:37:12.269984",
+      "result": ".work/mitgcm-biogeo/harbor-nop/2026-09-04__02-36-09/result.json"
+    }
+  ],
+  "verification": "The oracle performed the cold local Docker verification build; the matching nop reused its image layers."
+}

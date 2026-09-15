@@ -1,0 +1,10 @@
+{
+ "_canary": "5d74dfdc-8c6b-54da-9362-58af556733b3",
+ "edits": [
+  {
+   "file": "src_compressible/fftw.f90",
+   "new": "            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n            iymin = yj_offset(myid_j+1) + 1 \n            iymax = yj_offset(myid_j+1) + yj_size(myid_j+1)\n\n            do iy = iymin, iymax \n                do ix = ixmin, ixmax \n                    fz_aux_ft(:) = w_zxy(ix,iy,:)\n                    call fftw_execute_dft(plan_ifft_z,fz_aux_ft,fz_aux)\n                    w_zxy(ix,iy,:) = fz_aux(:)\n                enddo\n            enddo\n\n            !transpose z<-->y\n            call transpose_zy\n\n            !do inverse Fourier transform along y\n            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n            izmin = zj_offset(myid_j+1) + 1 \n            izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n\n            do iz = izmin, izmax \n                do ix = ixmin, ixmax \n                    fy_aux_ft(:) = w_yxz(ix,:,iz)\n                    call fftw_execute_dft(plan_ifft_y,fy_aux_ft,fy_aux)\n                    w_yxz(ix,:,iz) = fy_aux(:)\n                enddo\n            enddo\n\n            !transpose y<-->x\n            call transpose_yx\n",
+   "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+  }
+ ]
+}

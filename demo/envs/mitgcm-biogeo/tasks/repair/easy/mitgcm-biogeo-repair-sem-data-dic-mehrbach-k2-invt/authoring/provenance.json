@@ -1,0 +1,92 @@
+{
+ "canary": "ad416725-32a9-5fa5-85d1-5a621da0a020",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/dic/carbon_chem.F",
+     "new": "           ak2(i,j,bi,bj)=10.**(-1. _d 0*(1494.7 _d 0*invtk+ 4.777 _d 0-\n",
+     "old": "           ak2(i,j,bi,bj)=10.**(-1. _d 0*(1394.7 _d 0*invtk+ 4.777 _d 0-\n"
+    }
+   ]
+  },
+  "family": "carbonate-fit-data",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/dic/carbon_chem.F",
+     "new": "           ak2(i,j,bi,bj)=10.**(-1. _d 0*(1394.7 _d 0*invtk+ 4.777 _d 0-\n",
+     "old": "           ak2(i,j,bi,bj)=10.**(-1. _d 0*(1494.7 _d 0*invtk+ 4.777 _d 0-\n"
+    }
+   ]
+  },
+  "id": "sem-data-dic-mehrbach-k2-invt",
+  "meta": {
+   "file": "pkg/dic/carbon_chem.F",
+   "line": 635,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+   "semantic": true,
+   "target_checks": [
+    "global-dic"
+   ],
+   "vein": "data"
+  },
+  "note": "perturb the inverse-temperature coefficient in the surface K2 fit",
+  "source": "semantic",
+  "tree": "dic-carbonate"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "carbonate-fit-data",
+  "floor": 0.5,
+  "floor_per_check": {
+   "global-dic": 0.5
+  },
+  "id": "sem-data-dic-mehrbach-k2-invt",
+  "meta": {
+   "file": "pkg/dic/carbon_chem.F",
+   "line": 635,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+   "semantic": true,
+   "target_checks": [
+    "global-dic"
+   ],
+   "vein": "data"
+  },
+  "note": "perturb the inverse-temperature coefficient in the surface K2 fit",
+  "runs": {
+   "global-dic": {
+    "exit": 0,
+    "wall": 1.7949
+   }
+  },
+  "source": "semantic",
+  "status": "survivor",
+  "tree": "dic-carbonate",
+  "verdicts": {
+   "global-dic": {
+    "error": "PTRACER01.0005184016.data: 13938 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 6.790e-03); surfDiag.0005184016.data: 17748 of 81920 values exceed atol=1e-10 rtol=1e-08 (max |err| 2.257e-01)",
+    "files_ok": 12,
+    "files_scored": 14,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.225723209154701,
+    "worst_file": "surfDiag.0005184016.data"
+   }
+  },
+  "wall_total": 4.0
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

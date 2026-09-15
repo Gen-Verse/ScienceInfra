@@ -1,0 +1,15 @@
+{
+ "_canary": "b3e6edf1-e36e-53ca-b6b1-b23195ff378f",
+ "edits": [
+  {
+   "file": "src_compressible/fftw.f90",
+   "new": "                    w_yxz(ix,:,iz) = fy_aux_ft(:) / ny ",
+   "old": "                    w_yxz(ix,:,iz) = fy_aux_ft(:) / (ny - 1) "
+  },
+  {
+   "file": "src_compressible/mhdrhs.f90",
+   "new": "                uu_prim(:,:,:,1) + uu(:,:,:,3) * uu_prim(:,:,:,2) + &",
+   "old": "                uu_prim(:,:,:,1) - uu(:,:,:,3) * uu_prim(:,:,:,2) + &"
+  }
+ ]
+}

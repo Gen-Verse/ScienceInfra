@@ -1,0 +1,10 @@
+{
+ "_canary": "54a4e8b8-7e78-5013-9c3e-227891eca123",
+ "edits": [
+  {
+   "file": "pkg/bling/bling_readparms.F",
+   "new": "      k_Fe_diaz            = 7. _d -10 / permil\n",
+   "old": "      k_Fe_diaz            = 6. _d -10 / permil\n"
+  }
+ ]
+}

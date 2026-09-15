@@ -1,0 +1,88 @@
+{
+ "canary": "9a551d1a-2bf3-5dd4-8212-50ff7883fd55",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/fftw.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            allocate( fx_aux(nx), fy_aux(ny),  &\n                fx_aux_ft(nx/2+1), fy_aux_ft(ny))\n            \n            plan_fft_x = fftw_plan_dft_r2c_1d(nx, fx_aux, fx_aux_ft, FFTW_ESTIMATE)\n            plan_fft_y = fftw_plan_dft_1d(ny, fy_aux, fy_aux_ft, fft_sign_forward, FFTW_ESTIMATE)\n\n            plan_ifft_x = fftw_plan_dft_c2r_1d(nx, fx_aux_ft, fx_aux, FFTW_ESTIMATE)\n            plan_ifft_y = fftw_plan_dft_1d(ny, fy_aux_ft, fy_aux, fft_sign_backward, FFTW_ESTIMATE)\n\n            nmode_max_x = nx/3\n            nmode_max_y = ny/3\n\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/fftw.f90",
+     "new": "            allocate( fx_aux(nx), fy_aux(ny),  &\n                fx_aux_ft(nx/2+1), fy_aux_ft(ny))\n            \n            plan_fft_x = fftw_plan_dft_r2c_1d(nx, fx_aux, fx_aux_ft, FFTW_ESTIMATE)\n            plan_fft_y = fftw_plan_dft_1d(ny, fy_aux, fy_aux_ft, fft_sign_forward, FFTW_ESTIMATE)\n\n            plan_ifft_x = fftw_plan_dft_c2r_1d(nx, fx_aux_ft, fx_aux, FFTW_ESTIMATE)\n            plan_ifft_y = fftw_plan_dft_1d(ny, fy_aux_ft, fy_aux, fft_sign_backward, FFTW_ESTIMATE)\n\n            nmode_max_x = nx/3\n            nmode_max_y = ny/3\n\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-2d-fftw-fftw_initialize",
+  "meta": {
+   "body_lines": 12,
+   "call_sites": 1,
+   "file": "src_compressible/2D/fftw.f90",
+   "subroutine": "fftw_initialize"
+  },
+  "note": "excise the executable body of fftw_initialize (src_compressible/2D/fftw.f90)",
+  "source": "excise",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": true,
+  "family": "excise",
+  "floor": 0.0,
+  "floor_per_check": {
+   "aw-2d-256": 0.0,
+   "aw-2d-512": 0.0
+  },
+  "id": "excise-2d-fftw-fftw_initialize",
+  "meta": {
+   "body_lines": 12,
+   "call_sites": 1,
+   "file": "src_compressible/2D/fftw.f90",
+   "subroutine": "fftw_initialize"
+  },
+  "note": "excise the executable body of fftw_initialize (src_compressible/2D/fftw.f90)",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 139,
+    "wall": 2.931
+   },
+   "aw-2d-512": {
+    "exit": 139,
+    "wall": 2.9
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "error": "no out###.dat in the candidate output",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "no_output",
+    "passed": false,
+    "value": null
+   },
+   "aw-2d-512": {
+    "error": "no out###.dat in the candidate output",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "no_output",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 11.0
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

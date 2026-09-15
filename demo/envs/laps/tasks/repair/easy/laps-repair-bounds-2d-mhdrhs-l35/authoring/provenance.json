@@ -1,0 +1,94 @@
+{
+ "canary": "ca68ec19-123f-509f-878b-25e38d19e80e",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "            endif\n\n            ixmin = 1\n            ixmax = nx - 1",
+     "old": "            endif\n\n            ixmin = 1\n            ixmax = nx "
+    }
+   ]
+  },
+  "family": "bounds",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "            endif\n\n            ixmin = 1\n            ixmax = nx ",
+     "old": "            endif\n\n            ixmin = 1\n            ixmax = nx - 1"
+    }
+   ]
+  },
+  "id": "bounds-2d-mhdrhs-L35",
+  "meta": {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "line": 35
+  },
+  "note": "clipped a loop upper bound by one",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "bounds",
+  "floor": 0.35,
+  "floor_per_check": {
+   "aw-2d-256": 0.5,
+   "aw-2d-512": 0.2
+  },
+  "id": "bounds-2d-mhdrhs-L35",
+  "meta": {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "line": 35
+  },
+  "note": "clipped a loop upper bound by one",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 1.349
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 5.368
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "dt_abs": 0.0,
+    "error": "9.369e-01 at frame 10 in P, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.9369107846718542,
+    "worst_frame": 10,
+    "worst_variable": "P"
+   },
+   "aw-2d-512": {
+    "dt_abs": 8.900908874123889e-05,
+    "error": "dt differs by 8.901e-05, over the 1.0e-10 the time base allows - dt is a reduction over the whole grid, so it is a per-step fingerprint of the entire field state",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "time_base",
+    "passed": false,
+    "time_abs": 0.0006230636211886076,
+    "value": 1.010083149170783,
+    "worst_frame": 7,
+    "worst_variable": "P"
+   }
+  },
+  "wall_total": 12.3
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

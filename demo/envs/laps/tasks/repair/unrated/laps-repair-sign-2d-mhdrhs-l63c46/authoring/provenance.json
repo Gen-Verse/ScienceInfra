@@ -1,0 +1,94 @@
+{
+ "canary": "102100ef-1e0b-5f86-8afc-d5e0cfe40396",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "                        udotb = ux*Bx + uy*By - uz*Bz",
+     "old": "                        udotb = ux*Bx + uy*By + uz*Bz"
+    }
+   ]
+  },
+  "family": "sign",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "                        udotb = ux*Bx + uy*By + uz*Bz",
+     "old": "                        udotb = ux*Bx + uy*By - uz*Bz"
+    }
+   ]
+  },
+  "id": "sign-2d-mhdrhs-L63c46-",
+  "meta": {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "line": 63
+  },
+  "note": "flipped `+` to `-` in the `udotb` statement",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "sign",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-2d-256": 0.5,
+   "aw-2d-512": 0.5
+  },
+  "id": "sign-2d-mhdrhs-L63c46-",
+  "meta": {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "line": 63
+  },
+  "note": "flipped `+` to `-` in the `udotb` statement",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 0.826
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 3.843
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "dt_abs": 0.0,
+    "error": "1.142e-02 at frame 10 in P, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.011418885154486302,
+    "worst_frame": 10,
+    "worst_variable": "P"
+   },
+   "aw-2d-512": {
+    "dt_abs": 0.0,
+    "error": "1.093e-02 at frame 10 in P, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.0109265952515063,
+    "worst_frame": 10,
+    "worst_variable": "P"
+   }
+  },
+  "wall_total": 10.4
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

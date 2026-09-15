@@ -1,0 +1,10 @@
+{
+ "_canary": "5afa3999-af35-5e2b-a0a1-a31010e03688",
+ "edits": [
+  {
+   "file": "pkg/dic/calcite_saturation.F",
+   "new": "        CALL DIC_COEFFS_DEEP(\n     I                       locTemp, locSalt,\n     I                       bi,bj,iMin,iMax,jMin,jMax,\n     I                       k,myThid)\n\nC Now correct the coefficients for pressure dependence\n        CALL DIC_COEFFS_SURF(\n     I                       locTemp, locSalt,\n     I                       bi,bj,iMin,iMax,jMin,jMax,myThid)\n",
+   "old": "        CALL DIC_COEFFS_SURF(\n     I                       locTemp, locSalt,\n     I                       bi,bj,iMin,iMax,jMin,jMax,myThid)\n\nC Now correct the coefficients for pressure dependence\n        CALL DIC_COEFFS_DEEP(\n     I                       locTemp, locSalt,\n     I                       bi,bj,iMin,iMax,jMin,jMax,\n     I                       k,myThid)\n"
+  }
+ ]
+}

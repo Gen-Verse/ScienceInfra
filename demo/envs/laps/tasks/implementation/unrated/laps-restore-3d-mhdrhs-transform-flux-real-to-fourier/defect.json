@@ -1,0 +1,10 @@
+{
+ "_canary": "4905abd3-09f9-5dd4-ae7b-6739c808080e",
+ "edits": [
+  {
+   "file": "src_compressible/mhdrhs.f90",
+   "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+   "old": "            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n            izmin = zj_offset(myid_j+1) + 1 \n            izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n            \n            do ivar = 1, nflux\n                !do fourier transform along x\n                do iz = izmin, izmax \n                    do iy = iymin,iymax\n                        fx_aux(:) = flux(:,iy,iz,ivar)\n                        call fftw_execute_dft_r2c(plan_fft_x, fx_aux, fx_aux_ft)\n                        w_xyz(:,iy,iz) = fx_aux_ft(:) / nx !normalization\n                    enddo\n                enddo\n\n                call from_xyz_to_zxy\n\n                !copy to flux_fourier\n                flux_fourier(:,:,:,ivar) = w_zxy(:,:,:)\n            enddo\n\n            if (if_AEB) then \n                !do fourier transform along x\n                do iz = izmin, izmax \n                    do iy = iymin,iymax\n                        fx_aux(:) = expand_term(:,iy,iz,1)\n                        call fftw_execute_dft_r2c(plan_fft_x, fx_aux, fx_aux_ft)\n                        w_xyz(:,iy,iz) = fx_aux_ft(:) / nx !normalization\n                    enddo\n                enddo\n\n                call from_xyz_to_zxy\n\n                !copy to flux_fourier\n                expand_term_fourier(:,:,:,1) = w_zxy(:,:,:)\n            endif\n"
+  }
+ ]
+}

@@ -1,0 +1,92 @@
+{
+ "canary": "7baaabb8-0d11-5b04-8fbb-d38d9ecff52e",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/dic/carbon_chem.F",
+     "new": "     &          0.0184 _d 0*s + 0.000118 _d 0*s2))\nC------------------------------------------------------------------------\nC kb = [H][BO2]/[HBO2]\nC Millero p.669 (1995) using data from dickson (1990)\nC On total pH scale\n           akb(i,j,bi,bj)=exp((-8996.90 _d 0- 2890.53 _d 0*sqrts -\n     &          77.942 _d 0*s + 1.728 _d 0*s15 - 0.0996 _d 0*s2)*invtk +\n     &          (148.0248 _d 0 + 137.1942 _d 0*sqrts + 1.62142 _d 0*s) +\n     &          (-24.4344 _d 0 - 25.085 _d 0*sqrts - 0.2474 _d 0*s) *\n     &          dlogtk + 0.053105 _d 0*sqrts*tk)\nC------------------------------------------------------------------------\n",
+     "old": "     &          0.0184 _d 0*s + 0.000118 _d 0*s2))\nC------------------------------------------------------------------------\nC kb = [H][BO2]/[HBO2]\nC Millero p.669 (1995) using data from dickson (1990)\nC On total pH scale\n           akb(i,j,bi,bj)=exp((-8966.90 _d 0- 2890.53 _d 0*sqrts -\n     &          77.942 _d 0*s + 1.728 _d 0*s15 - 0.0996 _d 0*s2)*invtk +\n     &          (148.0248 _d 0 + 137.1942 _d 0*sqrts + 1.62142 _d 0*s) +\n     &          (-24.4344 _d 0 - 25.085 _d 0*sqrts - 0.2474 _d 0*s) *\n     &          dlogtk + 0.053105 _d 0*sqrts*tk)\nC------------------------------------------------------------------------\n"
+    }
+   ]
+  },
+  "family": "carbonate-fit-data",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/dic/carbon_chem.F",
+     "new": "     &          0.0184 _d 0*s + 0.000118 _d 0*s2))\nC------------------------------------------------------------------------\nC kb = [H][BO2]/[HBO2]\nC Millero p.669 (1995) using data from dickson (1990)\nC On total pH scale\n           akb(i,j,bi,bj)=exp((-8966.90 _d 0- 2890.53 _d 0*sqrts -\n     &          77.942 _d 0*s + 1.728 _d 0*s15 - 0.0996 _d 0*s2)*invtk +\n     &          (148.0248 _d 0 + 137.1942 _d 0*sqrts + 1.62142 _d 0*s) +\n     &          (-24.4344 _d 0 - 25.085 _d 0*sqrts - 0.2474 _d 0*s) *\n     &          dlogtk + 0.053105 _d 0*sqrts*tk)\nC------------------------------------------------------------------------\n",
+     "old": "     &          0.0184 _d 0*s + 0.000118 _d 0*s2))\nC------------------------------------------------------------------------\nC kb = [H][BO2]/[HBO2]\nC Millero p.669 (1995) using data from dickson (1990)\nC On total pH scale\n           akb(i,j,bi,bj)=exp((-8996.90 _d 0- 2890.53 _d 0*sqrts -\n     &          77.942 _d 0*s + 1.728 _d 0*s15 - 0.0996 _d 0*s2)*invtk +\n     &          (148.0248 _d 0 + 137.1942 _d 0*sqrts + 1.62142 _d 0*s) +\n     &          (-24.4344 _d 0 - 25.085 _d 0*sqrts - 0.2474 _d 0*s) *\n     &          dlogtk + 0.053105 _d 0*sqrts*tk)\nC------------------------------------------------------------------------\n"
+    }
+   ]
+  },
+  "id": "sem-data-dic-borate-invt",
+  "meta": {
+   "file": "pkg/dic/carbon_chem.F",
+   "line": 636,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+   "semantic": true,
+   "target_checks": [
+    "global-dic"
+   ],
+   "vein": "data"
+  },
+  "note": "perturb one coefficient in the boric-acid dissociation fit",
+  "source": "semantic",
+  "tree": "dic-carbonate"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "carbonate-fit-data",
+  "floor": 0.5,
+  "floor_per_check": {
+   "global-dic": 0.5
+  },
+  "id": "sem-data-dic-borate-invt",
+  "meta": {
+   "file": "pkg/dic/carbon_chem.F",
+   "line": 636,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+   "semantic": true,
+   "target_checks": [
+    "global-dic"
+   ],
+   "vein": "data"
+  },
+  "note": "perturb one coefficient in the boric-acid dissociation fit",
+  "runs": {
+   "global-dic": {
+    "exit": 0,
+    "wall": 1.752
+   }
+  },
+  "source": "semantic",
+  "status": "survivor",
+  "tree": "dic-carbonate",
+  "verdicts": {
+   "global-dic": {
+    "error": "PTRACER01.0005184016.data: 11382 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.619e-04); surfDiag.0005184016.data: 17370 of 81920 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.340e-02)",
+    "files_ok": 12,
+    "files_scored": 14,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.013401713292777728,
+    "worst_file": "surfDiag.0005184016.data"
+   }
+  },
+  "wall_total": 4.0
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "canary": "f53948ae-d29e-5bde-9a43-e2db17c60588",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdoutput.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            out_size_full = [nx,ny,1,nvar]\n            out_size_sub = [nx,yi_size(myid_i+1),1,nvar]\n            out_start_ind = [0,yi_offset(myid_i+1),0,0]\n\n            call mpi_type_create_subarray(4,out_size_full,out_size_sub,out_start_ind,&\n                mpi_order_fortran,mpi_realtype,out_subarr_type,ierr)\n            call mpi_type_commit(out_subarr_type, ierr)\n\n\n            if (output_primitive) then \n                ixmin = 1\n                ixmax = nx \n\n                iymin = yi_offset(myid_i+1) + 1 \n                iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n\n                izmin = 1 \n                izmax = 1\n\n                allocate(output_temp_storage(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:4))\n            endif\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdoutput.f90",
+     "new": "            out_size_full = [nx,ny,1,nvar]\n            out_size_sub = [nx,yi_size(myid_i+1),1,nvar]\n            out_start_ind = [0,yi_offset(myid_i+1),0,0]\n\n            call mpi_type_create_subarray(4,out_size_full,out_size_sub,out_start_ind,&\n                mpi_order_fortran,mpi_realtype,out_subarr_type,ierr)\n            call mpi_type_commit(out_subarr_type, ierr)\n\n\n            if (output_primitive) then \n                ixmin = 1\n                ixmax = nx \n\n                iymin = yi_offset(myid_i+1) + 1 \n                iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n\n                izmin = 1 \n                izmax = 1\n\n                allocate(output_temp_storage(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:4))\n            endif\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-2d-mhdoutput-output_initialize",
+  "meta": {
+   "body_lines": 21,
+   "call_sites": 1,
+   "file": "src_compressible/2D/mhdoutput.f90",
+   "subroutine": "output_initialize"
+  },
+  "note": "excise the executable body of output_initialize (src_compressible/2D/mhdoutput.f90)",
+  "source": "excise",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": true,
+  "family": "excise",
+  "floor": 0.1,
+  "floor_per_check": {
+   "aw-2d-256": 0.1,
+   "aw-2d-512": 0.1
+  },
+  "id": "excise-2d-mhdoutput-output_initialize",
+  "meta": {
+   "body_lines": 21,
+   "call_sites": 1,
+   "file": "src_compressible/2D/mhdoutput.f90",
+   "subroutine": "output_initialize"
+  },
+  "note": "excise the executable body of output_initialize (src_compressible/2D/mhdoutput.f90)",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 139,
+    "wall": 2.482
+   },
+   "aw-2d-512": {
+    "exit": 139,
+    "wall": 2.465
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "error": "frame count differs: reference 11, candidate 1. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   },
+   "aw-2d-512": {
+    "error": "frame count differs: reference 11, candidate 1. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 9.9
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

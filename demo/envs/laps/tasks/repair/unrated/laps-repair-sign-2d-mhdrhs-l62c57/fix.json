@@ -1,0 +1,10 @@
+{
+ "_canary": "3cda2fc3-7804-5da9-a3d9-baa0553310cd",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "                        ptot =  p + 0.5 * (Bx**2 + By**2 + Bz**2)",
+   "old": "                        ptot =  p + 0.5 * (Bx**2 + By**2 - Bz**2)"
+  }
+ ]
+}

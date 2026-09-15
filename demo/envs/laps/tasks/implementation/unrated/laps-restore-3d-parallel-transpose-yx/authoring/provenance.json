@@ -1,0 +1,75 @@
+{
+ "canary": "ba3ae6eb-fec9-5a2b-80ff-ae91261f1cac",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/parallel.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n            izmin = zj_offset(myid_j+1) + 1\n            izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n\n            w_xyz(ixmin : ixmax, iymin : iymax, izmin : izmax) = &\n                w_yxz(ixmin : ixmax, iymin : iymax, izmin : izmax)\n\n            do idim = 1, dims(1)-1\n                ipe_send = modulo(myid_i - idim + dims(1), dims(1))\n                ipe_recv = modulo(myid_i + idim + dims(1), dims(1))\n\n                call mpi_sendrecv(w_yxz, 1, subarr_type_xy_recv(ipe_send+1), ipe_send, ipe_send, & \n                    w_xyz, 1, subarr_type_xy_send(ipe_recv+1), ipe_recv, myid_i, &\n                    comm1d_i, MPI_STATUS_IGNORE,ierr)\n            enddo\n            \n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/parallel.f90",
+     "new": "            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n            izmin = zj_offset(myid_j+1) + 1\n            izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n\n            w_xyz(ixmin : ixmax, iymin : iymax, izmin : izmax) = &\n                w_yxz(ixmin : ixmax, iymin : iymax, izmin : izmax)\n\n            do idim = 1, dims(1)-1\n                ipe_send = modulo(myid_i - idim + dims(1), dims(1))\n                ipe_recv = modulo(myid_i + idim + dims(1), dims(1))\n\n                call mpi_sendrecv(w_yxz, 1, subarr_type_xy_recv(ipe_send+1), ipe_send, ipe_send, & \n                    w_xyz, 1, subarr_type_xy_send(ipe_recv+1), ipe_recv, myid_i, &\n                    comm1d_i, MPI_STATUS_IGNORE,ierr)\n            enddo\n            \n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-3d-parallel-transpose_yx",
+  "meta": {
+   "body_lines": 19,
+   "call_sites": 1,
+   "file": "src_compressible/parallel.f90",
+   "subroutine": "transpose_yx"
+  },
+  "note": "excise the executable body of transpose_yx (src_compressible/parallel.f90)",
+  "source": "excise",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "excise",
+  "floor": 0.1,
+  "floor_per_check": {
+   "aw-128": 0.1
+  },
+  "id": "excise-3d-parallel-transpose_yx",
+  "meta": {
+   "body_lines": 19,
+   "call_sites": 1,
+   "file": "src_compressible/parallel.f90",
+   "subroutine": "transpose_yx"
+  },
+  "note": "excise the executable body of transpose_yx (src_compressible/parallel.f90)",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 8.83
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "error": "frame count differs: reference 9, candidate 7. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 14.0
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

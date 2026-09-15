@@ -1,0 +1,15 @@
+{
+ "_canary": "215cc3e5-3ce9-5b26-a618-dba5dd74582d",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdinit.f90",
+   "new": "uu(ix,iy,iz,4) = uu(ix,iy,iz,4) + db0 * exp( -( (xgrid(ix)-0.5*Lx) &",
+   "old": "uu(ix,iy,iz,4) = uu(ix,iy,iz,4) + db0 * exp( -0.99 * ( (xgrid(ix)-0.5*Lx) &"
+  },
+  {
+   "file": "src_compressible/2D/mhdinit.f90",
+   "new": "uu(ix,iy,iz,7) = uu(Ix,iy,iz,7) - db0/uu(ix,iy,iz,1) * exp( -( (xgrid(ix)-0.5*Lx) &",
+   "old": "uu(ix,iy,iz,7) = uu(Ix,iy,iz,7) - db0/uu(ix,iy,iz,1) * exp( -0.99 * ( (xgrid(ix)-0.5*Lx) &"
+  }
+ ]
+}

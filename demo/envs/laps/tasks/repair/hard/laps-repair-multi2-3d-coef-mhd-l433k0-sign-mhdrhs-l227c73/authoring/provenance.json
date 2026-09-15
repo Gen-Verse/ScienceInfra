@@ -1,0 +1,97 @@
+{
+ "canary": "b579af9d-7cb9-5a09-94f7-681e8d6629dd",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhd.f90",
+     "new": "dtmin = dtmin * cfl * 1.02",
+     "old": "dtmin = dtmin * cfl"
+    },
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                        fnl(ix,iy,iz,7) = ky * flux_fourier(ix,iy,iz,13) + &",
+     "old": "                        fnl(ix,iy,iz,7) = ky * flux_fourier(ix,iy,iz,13) - &"
+    }
+   ]
+  },
+  "family": "multi",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhd.f90",
+     "new": "dtmin = dtmin * cfl",
+     "old": "dtmin = dtmin * cfl * 1.02"
+    },
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                        fnl(ix,iy,iz,7) = ky * flux_fourier(ix,iy,iz,13) - &",
+     "old": "                        fnl(ix,iy,iz,7) = ky * flux_fourier(ix,iy,iz,13) + &"
+    }
+   ]
+  },
+  "id": "multi2-3d-coef-mhd-L433k0-+sign-mhdrhs-L227c73-",
+  "meta": {
+   "components": [
+    "coef-3d-mhd-L433k0-",
+    "sign-3d-mhdrhs-L227c73-"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/mhd.f90",
+    "src_compressible/mhdrhs.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "perturbed the CFL safety factor AND flipped `-` to `+` in the `fnl` statement",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "multi",
+  "floor": 0.1,
+  "floor_per_check": {
+   "aw-128": 0.1
+  },
+  "id": "multi2-3d-coef-mhd-L433k0-+sign-mhdrhs-L227c73-",
+  "meta": {
+   "components": [
+    "coef-3d-mhd-L433k0-",
+    "sign-3d-mhdrhs-L227c73-"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/mhd.f90",
+    "src_compressible/mhdrhs.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "perturbed the CFL safety factor AND flipped `-` to `+` in the `fnl` statement",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 11.959
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "error": "frame count differs: reference 9, candidate 8. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 17.3
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "_canary": "79819159-3365-57cf-8553-50684bf8b630",
+ "edits": [
+  {
+   "file": "pkg/cfc/cfc11_surfforcing.F",
+   "new": "             SolCFC11(i,j) = 1.01 _d -12 * SolCFC11(i,j)",
+   "old": "             SolCFC11(i,j) = 1. _d -12 * SolCFC11(i,j)"
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+{
+ "_canary": "db5af9b0-c497-56bb-b792-5472b3b2d06e",
+ "edits": [
+  {
+   "file": "pkg/bling/bling_carbon_chem.F",
+   "new": "           ak1p(i,j,bi,bj) = exp(-4576.752*invtk - 115.525 -",
+   "old": "           ak1p(i,j,bi,bj) = exp(-4576.752*invtk + 115.525 -"
+  }
+ ]
+}

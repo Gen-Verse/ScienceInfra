@@ -1,0 +1,88 @@
+{
+ "canary": "0c296f02-c48b-504d-b3d5-b7915fdc4fbd",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/parallel.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            allocate(i_offset(nproc), i_size(nproc))\n\n            normal_size = ngrid / nproc \n\n            i_offset(1) = 0\n            i_size(1) = normal_size\n\n            do iproc=2,nproc\n                i_offset(iproc) = i_offset(iproc-1) + i_size(iproc-1)\n                if (iproc < nproc) then \n                    i_size(iproc) = normal_size\n                else \n                    i_size(iproc) = ngrid - i_offset(iproc)\n                endif\n            enddo\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/parallel.f90",
+     "new": "            allocate(i_offset(nproc), i_size(nproc))\n\n            normal_size = ngrid / nproc \n\n            i_offset(1) = 0\n            i_size(1) = normal_size\n\n            do iproc=2,nproc\n                i_offset(iproc) = i_offset(iproc-1) + i_size(iproc-1)\n                if (iproc < nproc) then \n                    i_size(iproc) = normal_size\n                else \n                    i_size(iproc) = ngrid - i_offset(iproc)\n                endif\n            enddo\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-2d-parallel-decompose_1d",
+  "meta": {
+   "body_lines": 15,
+   "call_sites": 2,
+   "file": "src_compressible/2D/parallel.f90",
+   "subroutine": "decompose_1d"
+  },
+  "note": "excise the executable body of decompose_1d (src_compressible/2D/parallel.f90)",
+  "source": "excise",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": true,
+  "family": "excise",
+  "floor": 0.0,
+  "floor_per_check": {
+   "aw-2d-256": 0.0,
+   "aw-2d-512": 0.0
+  },
+  "id": "excise-2d-parallel-decompose_1d",
+  "meta": {
+   "body_lines": 15,
+   "call_sites": 2,
+   "file": "src_compressible/2D/parallel.f90",
+   "subroutine": "decompose_1d"
+  },
+  "note": "excise the executable body of decompose_1d (src_compressible/2D/parallel.f90)",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 139,
+    "wall": 5.327
+   },
+   "aw-2d-512": {
+    "exit": 139,
+    "wall": 5.247
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "error": "no out###.dat in the candidate output",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "no_output",
+    "passed": false,
+    "value": null
+   },
+   "aw-2d-512": {
+    "error": "no out###.dat in the candidate output",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "no_output",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 15.5
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "_canary": "70811ca5-fd46-50a2-bb18-c8310cd3ba83",
+ "edits": [
+  {
+   "file": "pkg/bling/bling_readparms.F",
+   "new": "      NO3toN               = CtoN * (1. _d 0 - 0.25 _d 0 * HtoC)",
+   "old": "      NO3toN               = CtoN * (1. _d 0 + 0.25 _d 0 * HtoC)"
+  }
+ ]
+}

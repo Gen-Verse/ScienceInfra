@@ -1,0 +1,10 @@
+{
+ "_canary": "e0628837-aea6-537d-81d1-85f6ab9cd8ac",
+ "edits": [
+  {
+   "file": "src_compressible/mhd.f90",
+   "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+   "old": "            do irk=1,3\n                !calculate flux function in real space, from uu and uu_prim\n                call calc_flux\n\n                !calculate flux_fourier\n                call transform_flux_real_to_fourier\n\n                !calculate rhs of the MHD equation\n                call calc_rhs\n\n                !update uu_fourier\n                call rkt(irk) !f(t+dt)\n\n                !dealiasing\n                call dealias\n\n                !transform uu_fourier to get uu\n                call transform_uu_fourier_to_real\n\n                !update uu_prim\n                call update_uu_prim_from_uu\n\n            enddo\n"
+  }
+ ]
+}

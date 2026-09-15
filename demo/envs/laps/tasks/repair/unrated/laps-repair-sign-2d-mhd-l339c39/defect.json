@@ -1,0 +1,10 @@
+{
+ "_canary": "07779659-0558-5b44-8447-096e27d893ce",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhd.f90",
+   "new": "                        cms2 = csound2 - calfven2",
+   "old": "                        cms2 = csound2 + calfven2"
+  }
+ ]
+}

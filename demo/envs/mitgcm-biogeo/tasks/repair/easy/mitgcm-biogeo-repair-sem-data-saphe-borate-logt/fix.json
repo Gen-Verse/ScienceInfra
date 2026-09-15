@@ -1,0 +1,10 @@
+{
+ "_canary": "db52abf7-ca99-5dc6-8f12-5c15d3593436",
+ "edits": [
+  {
+   "file": "pkg/dic/dic_solvesaphe.F",
+   "new": "     &      + (148.0248 _d 0 + 137.1942 _d 0*sqrts + 1.62142 _d 0*s)\n",
+   "old": "     &      + (148.0248 _d 0 + 135.1942 _d 0*sqrts + 1.62142 _d 0*s)\n"
+  }
+ ]
+}

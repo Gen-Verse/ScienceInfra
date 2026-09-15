@@ -1,0 +1,10 @@
+{
+ "_canary": "9d17f79d-065d-5371-a1af-3c7814c4fb4d",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "0.5 * (Bx**2",
+   "old": "0.505 * (Bx**2"
+  }
+ ]
+}

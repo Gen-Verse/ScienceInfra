@@ -1,0 +1,10 @@
+{
+ "_canary": "f93be31d-db41-5c4a-915a-1d3fd0fe29a0",
+ "edits": [
+  {
+   "file": "pkg/dic/phos_flux.F",
+   "new": "           bexport(i,j)=BIOac(i,j,k)*(1.01 _d 0-DOPfraction)",
+   "old": "           bexport(i,j)=BIOac(i,j,k)*(1. _d 0-DOPfraction)"
+  }
+ ]
+}

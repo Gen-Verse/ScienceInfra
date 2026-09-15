@@ -1,0 +1,96 @@
+{
+ "canary": "6e06c1a8-64ab-5861-b27e-9e67aac66963",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/rktmod.f90",
+     "new": "cc30=0.7502",
+     "old": "cc30=0.75"
+    }
+   ]
+  },
+  "family": "subtle",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/rktmod.f90",
+     "new": "cc30=0.75",
+     "old": "cc30=0.7502"
+    }
+   ]
+  },
+  "id": "subtle-2d-rktmod-l17k2",
+  "meta": {
+   "difficulty_design": "medium",
+   "file": "src_compressible/2D/rktmod.f90",
+   "symptom_style": "lean"
+  },
+  "note": "RK stage-3 coefficient (subtle)",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "subtle",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-2d-256": 0.5,
+   "aw-2d-512": 0.5
+  },
+  "id": "subtle-2d-rktmod-l17k2",
+  "meta": {
+   "difficulty_design": "medium",
+   "file": "src_compressible/2D/rktmod.f90",
+   "symptom_style": "lean"
+  },
+  "note": "RK stage-3 coefficient (subtle)",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 1.253
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 5.486
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "dt_abs": 0.0,
+    "error": "1.845e-05 at frame 10 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 1.8453871038992542e-05,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   },
+   "aw-2d-512": {
+    "dt_abs": 0.0,
+    "error": "1.792e-05 at frame 10 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 1.7922957146671026e-05,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 12.4
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

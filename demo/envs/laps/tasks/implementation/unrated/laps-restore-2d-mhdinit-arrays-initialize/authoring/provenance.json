@@ -1,0 +1,88 @@
+{
+ "canary": "8df4b365-b8e3-51f6-a0f4-e22bf4be7b2d",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdinit.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            ixmin = 1\n            ixmax = nx \n\n            iymin = yi_offset(myid_i+1) + 1 \n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n\n            izmin = 1 \n            izmax = 1\n\n            allocate(uu(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar), &\n                uu_prim(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:4), &\n                flux(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:18)) \n\n            if (if_AEB) then \n                allocate(expand_term(ixmin:ixmax, iymin:iymax, izmin:izmax,1))\n            endif\n\n            if (if_Hall) then \n                allocate(current_density(ixmin:ixmax, iymin:iymax, izmin:izmax,3))\n            endif\n\n            if (if_external_force) then \n                allocate(external_force(ixmin:ixmax, iymin:iymax, izmin:izmax,1:nextern))\n            endif \n            !--------------------------------------------------\n\n\n            !--------------------------------------------------\n            !uu in fourier space\n            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n\n            iymin = 1\n            iymax = ny\n\n            izmin = 1 \n            izmax = 1\n\n            allocate(uu_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar),&\n                flux_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:18), &\n                fnl(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar), &\n                fnl_rk(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar))\n\n            if (if_AEB) then \n                !allocate(uu_prim_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 4:4))\n                allocate(expand_term_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 1))\n            endif\n\n            if (if_Hall) then \n                allocate(current_density_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 3))\n            endif\n\n            if (if_external_force) then \n                allocate(external_force_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax,1:nextern))\n            endif \n            !--------------------------------------------------\n\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdinit.f90",
+     "new": "            ixmin = 1\n            ixmax = nx \n\n            iymin = yi_offset(myid_i+1) + 1 \n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n\n            izmin = 1 \n            izmax = 1\n\n            allocate(uu(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar), &\n                uu_prim(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:4), &\n                flux(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:18)) \n\n            if (if_AEB) then \n                allocate(expand_term(ixmin:ixmax, iymin:iymax, izmin:izmax,1))\n            endif\n\n            if (if_Hall) then \n                allocate(current_density(ixmin:ixmax, iymin:iymax, izmin:izmax,3))\n            endif\n\n            if (if_external_force) then \n                allocate(external_force(ixmin:ixmax, iymin:iymax, izmin:izmax,1:nextern))\n            endif \n            !--------------------------------------------------\n\n\n            !--------------------------------------------------\n            !uu in fourier space\n            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n\n            iymin = 1\n            iymax = ny\n\n            izmin = 1 \n            izmax = 1\n\n            allocate(uu_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar),&\n                flux_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:18), &\n                fnl(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar), &\n                fnl_rk(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar))\n\n            if (if_AEB) then \n                !allocate(uu_prim_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 4:4))\n                allocate(expand_term_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 1))\n            endif\n\n            if (if_Hall) then \n                allocate(current_density_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 3))\n            endif\n\n            if (if_external_force) then \n                allocate(external_force_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax,1:nextern))\n            endif \n            !--------------------------------------------------\n\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-2d-mhdinit-arrays_initialize",
+  "meta": {
+   "body_lines": 57,
+   "call_sites": 1,
+   "file": "src_compressible/2D/mhdinit.f90",
+   "subroutine": "arrays_initialize"
+  },
+  "note": "excise the executable body of arrays_initialize (src_compressible/2D/mhdinit.f90)",
+  "source": "excise",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": true,
+  "family": "excise",
+  "floor": 0.0,
+  "floor_per_check": {
+   "aw-2d-256": 0.0,
+   "aw-2d-512": 0.0
+  },
+  "id": "excise-2d-mhdinit-arrays_initialize",
+  "meta": {
+   "body_lines": 57,
+   "call_sites": 1,
+   "file": "src_compressible/2D/mhdinit.f90",
+   "subroutine": "arrays_initialize"
+  },
+  "note": "excise the executable body of arrays_initialize (src_compressible/2D/mhdinit.f90)",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 139,
+    "wall": 2.535
+   },
+   "aw-2d-512": {
+    "exit": 139,
+    "wall": 2.425
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "error": "no out###.dat in the candidate output",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "no_output",
+    "passed": false,
+    "value": null
+   },
+   "aw-2d-512": {
+    "error": "no out###.dat in the candidate output",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "no_output",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 9.9
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

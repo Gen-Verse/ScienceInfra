@@ -1,0 +1,116 @@
+{
+ "canary": "f60a46fa-6e8b-5a6f-9485-0c86293178f3",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "cc30=0.752",
+     "old": "cc30=0.75"
+    },
+    {
+     "file": "src_compressible/fftw.f90",
+     "new": "                    w_zxy(ix,iy,:) = fz_aux_ft(:) / (nz - 1) ",
+     "old": "                    w_zxy(ix,iy,:) = fz_aux_ft(:) / nz "
+    },
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                        udotb = ux*Bx - uy*By + uz*Bz",
+     "old": "                        udotb = ux*Bx + uy*By + uz*Bz"
+    }
+   ]
+  },
+  "family": "multi",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "cc30=0.75",
+     "old": "cc30=0.752"
+    },
+    {
+     "file": "src_compressible/fftw.f90",
+     "new": "                    w_zxy(ix,iy,:) = fz_aux_ft(:) / nz ",
+     "old": "                    w_zxy(ix,iy,:) = fz_aux_ft(:) / (nz - 1) "
+    },
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                        udotb = ux*Bx + uy*By + uz*Bz",
+     "old": "                        udotb = ux*Bx - uy*By + uz*Bz"
+    }
+   ]
+  },
+  "id": "multi3-3d-coef-rktmod-L17k2-+norm-fftw-L177+sign-mhdrhs-L61c38-",
+  "meta": {
+   "components": [
+    "coef-3d-rktmod-L17k2-",
+    "norm-3d-fftw-L177",
+    "sign-3d-mhdrhs-L61c38-"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/fftw.f90",
+    "src_compressible/mhdrhs.f90",
+    "src_compressible/rktmod.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "perturbed the RK stage-3 coefficient AND FFT normalisation 1/nz -> 1/(nz-1) AND flipped `+` to `-` in the `udotb` statement",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "multi",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "multi3-3d-coef-rktmod-L17k2-+norm-fftw-L177+sign-mhdrhs-L61c38-",
+  "meta": {
+   "components": [
+    "coef-3d-rktmod-L17k2-",
+    "norm-3d-fftw-L177",
+    "sign-3d-mhdrhs-L61c38-"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/fftw.f90",
+    "src_compressible/mhdrhs.f90",
+    "src_compressible/rktmod.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "perturbed the RK stage-3 coefficient AND FFT normalisation 1/nz -> 1/(nz-1) AND flipped `+` to `-` in the `udotb` statement",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 13.191
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "7.887e-03 at frame 8 in rho, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.007887407786957512,
+    "worst_frame": 8,
+    "worst_variable": "rho"
+   }
+  },
+  "wall_total": 20.3
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

@@ -16,7 +16,7 @@
 
 **ScienceInfra is the training and evaluation infrastructure component of ScienceIDE**, the work introduced in *ScienceIDE: Scaling Scientific Experience toward 1,000 Executable Environments*. It connects scientific task banks to containerized agent execution, verifier-derived rewards, asynchronous reinforcement learning, and standalone evaluation.
 
-**Our long-term goal is reusable learning infrastructure for discovery intelligence.** The current implementation starts with agentic RL on scientific codebases; future development will focus on scaling execution, strengthening verification, and making scientific experience easier to use across agents and learning workflows.
+**Our long-term goal is reusable learning infrastructure for discovery intelligence.** The current implementation starts with agentic RL on scientific codebases. Future development will focus on scaling execution, strengthening verification, and making scientific experience easier to use across agents and learning workflows.
 
 ⭐ **Star to follow ScienceInfra's development** and help build the infrastructure for agents that learn from science.
 
@@ -34,18 +34,18 @@ ScienceIDE addresses the scientific experience bottleneck by turning domain expe
 |---|---|---|
 | **ScienceIDE** | Scientific environment construction, task factories, validation, and the broader research program | [Project](https://aitonomy.org/projects/scienceide) · [Repository](https://github.com/aitofound/ScienceIDE) |
 | **ScienceInfra** | Task-bank preparation, agent execution, rewards, online RL, and checkpoint evaluation | **This repository** |
-| **Learning backend** | Asynchronous rollout and optimization through PSRL, built on veRL; model generation through vLLM | [PSRL](https://github.com/psrl-project/psrl) |
+| **Learning backend** | Asynchronous rollout and optimization through PSRL, built on veRL, with model generation through vLLM | [PSRL](https://github.com/psrl-project/psrl) |
 | **Episode harness** | Containerized tool interaction and verifier execution | [Harbor / Terminus-2](https://github.com/laude-institute/harbor) |
 
-The ScienceIDE paper reports **64 environments across 27 codebases and 2,812 tasks**. **1,000 environments is the expansion target.** These describe the broader ScienceIDE work; this repository contains the infrastructure code and recipes, with scientific task banks supplied separately.
+The ScienceIDE paper reports **64 environments across 27 codebases and 2,812 tasks**. **1,000 environments is the expansion target.** These describe the broader ScienceIDE work. This repository contains the infrastructure code and recipes, with scientific task banks supplied separately.
 
-The current ScienceIDE repository describes a **placeholder release** with task specifications, validity gates, and examples. Its full task bank and authoring pipeline are not included in that release. See [Quickstart](#quickstart) for the task-bank format required by this code.
+The current ScienceIDE repository describes a **placeholder release** with task specifications, validity gates, and examples. Its full task bank and authoring pipeline are not included in that release. Two complete environments ship in [`demo/`](demo/README.md), which is what the commands below use.
 
 ## What you can do today
 
 | Capability | What it enables | Entry point |
 |---|---|---|
-| **Prepare scientific task banks** | Compile authored tasks, resolve defect hints, construct dataset splits, and warm container caches | [Data preparation](scienceinfra/datasets/README.md) |
+| **Prepare scientific task banks** | Compile authored tasks, resolve defect hints, construct dataset splits, and warm container caches | [Data preparation](scienceinfra/datasets/README.md) · [bundled demo](demo/README.md) |
 | **Run long-horizon scientific episodes** | Let an agent inspect and edit real code, execute tools, and receive scientific feedback | [Episode runner](scienceinfra/rl/runner.py) |
 | **Train with scientific rewards** | Feed numerical verification into asynchronous GRPO through configurable agent-loop and reward interfaces | [RL recipe](scienceinfra/rl/README.md) |
 | **Evaluate baselines and checkpoints** | Run independent evaluation with per-task records, category/family summaries, and infrastructure error reporting | [Evaluation guide](scienceinfra/eval/README.md) |
@@ -56,14 +56,14 @@ The current ScienceIDE repository describes a **placeholder release** with task 
 - **Long episodes need explicit budget handling.** The recipe masks budget-truncated trajectories from token loss while retaining their rewards in the group baseline.
 - **Infrastructure failures need separate treatment.** The runner and failure classifier distinguish environment faults from policy outcomes, so broken execution does not silently become a learning target.
 - **Expensive environments need operational support.** Preparation includes cache warming, and launch configurations control which nodes host episodes.
-- **Environment and learning logic have separate interfaces.** Task packages define the scientific problem; the agent loop and reward hook connect it to PSRL through configuration.
+- **Environment and learning logic have separate interfaces.** Task packages define the scientific problem. The agent loop and reward hook connect it to PSRL through configuration.
 
 <details>
 <summary><strong>View the execution and training architecture</strong></summary>
 
 ![ScienceInfra execution and training architecture](figures/overview.svg)
 
-PSRL supplies asynchronous rollout management, token capture, weight transfer, and the GRPO trainer. Harbor executes the episodes; vLLM serves model generations. ScienceInfra supplies the scientific-task integration above these components.
+PSRL supplies asynchronous rollout management, token capture, weight transfer, and the GRPO trainer. Harbor executes the episodes. vLLM serves model generations. ScienceInfra supplies the scientific-task integration above these components.
 
 </details>
 
@@ -71,14 +71,14 @@ PSRL supplies asynchronous rollout management, token capture, weight transfer, a
 
 **Scientific feedback improves held-out verifier reward in two scientific environments.**
 
-The ScienceIDE paper (§4.4, Figure 12) evaluates **Qwen3.5-4B**, starting from the base checkpoint without SFT initialization, after 30 GRPO steps:
+The ScienceIDE paper evaluates **Qwen3.5-4B**, starting from the base checkpoint without SFT initialization, after 30 GRPO steps:
 
 | Environment | Scientific setting | Evaluated held-out tasks | Base reward | After RL | Gain |
 |---|---|---:|---:|---:|---:|
 | **LAPS** | Pseudo-spectral Hall-MHD | 14 | 0.357 | **0.857** | **+0.500** |
 | **MITgcm-biogeo** | Ocean biogeochemistry | 21 | 0.286 | **0.571** | **+0.285** |
 
-These are **mean shaped verifier rewards on a 0–1 scale**, with partial credit. Base and RL checkpoints use matched harnesses and localization hints. The comparisons are within each training environment, with one run per environment; they do not establish transfer to unseen codebases or repeated-seed uncertainty. The unhinted ScienceIDE-Hard leaderboard is a separate evaluation.
+These are **mean shaped verifier rewards on a 0 to 1 scale**, with partial credit. Base and RL checkpoints use matched harnesses and localization hints. The comparisons are within each training environment, with one run per environment. They do not establish transfer to unseen codebases or repeated-seed uncertainty. The unhinted ScienceIDE-Hard leaderboard is a separate evaluation.
 
 <details>
 <summary><strong>Training curves and recipe details</strong></summary>
@@ -87,9 +87,9 @@ These are **mean shaped verifier rewards on a 0–1 scale**, with partial credit
 
 ![MITgcm-biogeo training diagnostics](figures/rl_training_mitgcm_biogeo.svg)
 
-The source split for MITgcm-biogeo contains 23 validation tasks; the paper's held-out comparison above evaluates 21. Training diagnostics and held-out evaluation therefore have distinct sample counts.
+The source split for MITgcm-biogeo contains 23 validation tasks. The paper's held-out comparison above evaluates 21. Training diagnostics and held-out evaluation therefore have distinct sample counts.
 
-See the [RL recipe](scienceinfra/rl/README.md) for budget masking and training diagnostics. Regenerate the figures with `python -m scienceinfra.plotting.rl_training`; their metric tables are committed in that module.
+See the [RL recipe](scienceinfra/rl/README.md) for budget masking and training diagnostics. Regenerate the figures with `python -m scienceinfra.plotting.rl_training`. Their metric tables are committed in that module.
 
 </details>
 
@@ -99,50 +99,74 @@ Start by validating one scientific environment. Training and model serving requi
 
 ### 1. Install and prepare the inputs
 
-- **Python 3.11+** for this package; use the compatible Python/CUDA environment required by your PSRL installation for training.
+- **Python 3.11+** for this package. Use the compatible Python/CUDA environment required by your PSRL installation for training.
 - **Docker** on every machine that runs episodes, plus Harbor installed in the active Python environment.
-- **A compatible scientific task bank**, separate from this repository. The preparation script expects `utils/harbor/to_harbor.py` and `envs/<env>/` in that checkout. The placeholder ScienceIDE examples alone are not a complete input for the commands below.
+- **A scientific task bank.** [`demo/`](demo/README.md) ships two, so no separate checkout is needed to run the steps below. For the full collection of scientific environments and tasks, see [ScienceIDE](https://github.com/aitofound/ScienceIDE).
 - **[PSRL](https://github.com/psrl-project/psrl#-quick-start)** and its serving/training dependencies for the RL and model-evaluation paths.
+
+<details>
+<summary><strong>Install PSRL from source</strong></summary>
+
+PSRL is not on PyPI. Install it from source first, following its [installation guide](https://github.com/psrl-project/psrl#-quick-start):
+
+```bash
+# Rust is a build prerequisite.
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source "$HOME/.cargo/env"
+
+conda create -n psrl python=3.12 && conda activate psrl
+
+git clone https://github.com/psrl-project/psrl.git && cd psrl
+bash scripts/install_basic.sh        # vLLM, veRL, core deps
+bash scripts/install_nixl.sh         # RDMA weight sync
+bash scripts/install_megatron.sh     # Megatron, TransformerEngine
+bash scripts/install_lmcache.sh      # LMCache
+python -m pip install -e .           # PSRL itself
+```
+
+A Docker image is also available, which skips the build steps entirely. Check the [PSRL README](https://github.com/psrl-project/psrl) for the current tag.
+
+</details>
 
 ```bash
 git clone https://github.com/Gen-Verse/ScienceInfra.git
 cd ScienceInfra
 pip install -e .
-
-# Replace this with your compatible task-bank checkout.
-export TASK_BANK_REPO=/absolute/path/to/scientific-task-bank
 ```
 
-Install ScienceInfra in each worker environment so Ray can import the agent loop by its package path. The installation above installs this package's dependencies; it does not install the full PSRL stack or the task bank.
+Install ScienceInfra in each worker environment so Ray can import the agent loop by its package path. The installation above installs this package's dependencies. It does not install the full PSRL stack.
 
 ### 2. Build one environment
 
+The bundled LAPS demo needs no external checkout and no GPU.
+
 ```bash
 bash scripts/prepare/prepare_all.sh \
-    --repo "${TASK_BANK_REPO}" \
-    --envs mitgcm-biogeo --stages compile,lines,dataset
+    --repo demo --envs laps --stages compile,lines,dataset
 ```
+
+This compiles the authored tasks into Harbor tasks and writes Parquets to `data/laps/repair_easy/`. For the MITgcm demo, substitute `--envs mitgcm-biogeo` after restoring its binary inputs, which [`demo/README.md`](demo/README.md) explains.
 
 Generated Parquets contain absolute task paths. Make those paths available wherever episodes execute. The [preparation guide](scienceinfra/datasets/README.md) covers multi-node cache warming and rebuilds.
 
 ### 3. Check execution without a model or GPU
 
 ```bash
-# First test one task; then remove --limit 1 to validate the full bank.
+# One task first. Drop --limit 1 to validate the whole environment.
 bash scripts/eval/eval_standalone.sh \
-    --dataset data/mitgcm-biogeo/repair_easy/all/L1.parquet \
+    --dataset data/laps/repair_easy/all/L1.parquet \
     --agent oracle --limit 1 -n 1 --output-dir outputs/anchor_oracle
 
 bash scripts/eval/eval_standalone.sh \
-    --dataset data/mitgcm-biogeo/repair_easy/all/L1.parquet \
+    --dataset data/laps/repair_easy/all/L1.parquet \
     --agent nop --limit 1 -n 1 --output-dir outputs/anchor_nop
 ```
 
-Expected normalized repair scores: **oracle = 1.0; nop = 0.0**. The first execution also builds container images, so allow time for compilation. Resolve failed anchors before measuring a model.
+Expected normalized repair scores: **oracle = 1.0, nop = 0.0**. The first execution also builds container images, so allow time for compilation. Resolve failed anchors before measuring a model.
 
 ### 4. Run the RL recipe
 
-The committed launcher uses **3 nodes × 8 GPUs: 8 for generation and 16 for training**. Configure the deployment block in [`train_grpo.sh`](scripts/rl/train_grpo.sh) and your PSRL/Ray cluster for your hardware before launching; this is a cluster recipe. Warm task images on every episode node using the preparation guide.
+The committed launcher uses **3 nodes × 8 GPUs: 8 for generation and 16 for training**. Configure the deployment block in [`train_grpo.sh`](scripts/rl/train_grpo.sh) and your PSRL/Ray cluster for your hardware before launching. This is a cluster recipe. Warm task images on every episode node using the preparation guide.
 
 ```bash
 HF_MODEL_PATH=/absolute/path/to/Qwen3.5-4B \
@@ -151,11 +175,11 @@ HINT_LEVEL=L1 \
     bash scripts/rl/train_grpo.sh
 ```
 
-For saved-checkpoint evaluation, use the [evaluation guide](scienceinfra/eval/README.md). Match hints, thinking mode, context window, and turn budget when comparing runs; the training and standalone evaluation defaults differ.
+For saved-checkpoint evaluation, use the [evaluation guide](scienceinfra/eval/README.md). Match hints, thinking mode, context window, and turn budget when comparing runs. The training and standalone evaluation defaults differ.
 
 ## Roadmap
 
-**ScienceIDE provides the starting point; ScienceInfra will focus on the infrastructure needed to scale scientific agent learning.** The following are development directions, with scope evolving through experiments and contributions.
+**ScienceIDE provides the starting point. ScienceInfra will focus on the infrastructure needed to scale scientific agent learning.** The following are development directions, with scope evolving through experiments and contributions.
 
 | Direction | Next infrastructure focus |
 |---|---|
@@ -165,7 +189,7 @@ For saved-checkpoint evaluation, use the [evaluation guide](scienceinfra/eval/RE
 | **Reusable learning interfaces** | Make trajectory export, SFT consumption, and additional training/harness adapters easier to integrate |
 | **Learning across environments** | Curriculum and sampling support, held-out codebase evaluation, and interfaces for feeding new experience back into task development |
 
-Current code focuses on task preparation, online RL, and evaluation. The broader interfaces and task coverage above are future work; PSRL is the currently integrated training backend.
+Current code focuses on task preparation, online RL, and evaluation. The broader interfaces and task coverage above are future work. PSRL is the currently integrated training backend.
 
 ## Contribute
 
@@ -175,7 +199,7 @@ We welcome **AI/RL researchers, systems engineers, and scientific software exper
 - **Improve the infrastructure:** reduce environment startup costs, improve scheduling, or make failures and rewards easier to inspect.
 - **Extend agent learning:** contribute an agent-loop or reward adapter, a training recipe, or an evaluation with clearly documented budgets and splits.
 
-[Open an issue](https://github.com/Gen-Verse/ScienceInfra/issues) with the use case and expected behavior, or [submit a pull request](https://github.com/Gen-Verse/ScienceInfra/pulls). For a new environment, include oracle/nop checks; for learning changes, report reward definitions, task splits, and execution settings.
+[Open an issue](https://github.com/Gen-Verse/ScienceInfra/issues) with the use case and expected behavior, or [submit a pull request](https://github.com/Gen-Verse/ScienceInfra/pulls). For a new environment, include oracle/nop checks. For learning changes, report reward definitions, task splits, and execution settings.
 
 ## Documentation
 
@@ -191,6 +215,12 @@ We welcome **AI/RL researchers, systems engineers, and scientific software exper
 <details>
 <summary><strong>Troubleshooting and operational notes</strong></summary>
 
+- **Behind an HTTP proxy, configure it for the builder, not just your shell.** BuildKit does not inherit shell proxy variables, so the first task image stalls in `apt-get install` for as long as the build timeout allows, with no error. Add a `proxies` block to `~/.docker/config.json` and confirm a build can reach the network before blaming the task:
+  ```bash
+  printf 'FROM debian:bookworm-slim\nRUN apt-get update && echo APT_OK\n' > /tmp/px/Dockerfile
+  docker build --progress=plain -t px /tmp/px | grep APT_OK
+  ```
+  A local Debian mirror is the alternative: see `scienceinfra/configs/apt-mirror-override.yaml` and `to_harbor.py --apt-mirror`.
 - **A degraded Docker daemon is the most common cause of a stalled run.** It does
   not announce itself, and `docker ps -q` can exit 0 while the daemon is dead.
   Check all three before launching, and exclude any failing node with

@@ -1,0 +1,10 @@
+{
+ "_canary": "6a92b766-b167-57eb-8357-2143f547e91e",
+ "edits": [
+  {
+   "file": "pkg/dic/bio_export.F",
+   "new": "         atten = kall*drF(k)*hFacC(i,j,k,bi,bj)*.5 _d 0",
+   "old": "         atten = kall*drF(k)*hFacC(i,j,k,bi,bj)*0.505 _d 0"
+  }
+ ]
+}

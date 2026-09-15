@@ -1,0 +1,10 @@
+{
+ "_canary": "7a15f7d3-0151-5478-a422-6101746ba9b8",
+ "edits": [
+  {
+   "file": "src_compressible/fftw.f90",
+   "new": "                    w_yxz(ix,:,iz) = fy_aux_ft(:) / (ny - 1) ",
+   "old": "                    w_yxz(ix,:,iz) = fy_aux_ft(:) / ny "
+  }
+ ]
+}

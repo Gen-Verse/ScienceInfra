@@ -1,0 +1,10 @@
+{
+ "_canary": "2851a803-3f91-5086-aa01-a70622c54d7e",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhd.f90",
+   "new": "                        cnsx2 = sqrt(max(cms2**2 + 4 * csound2 * calfvenx**2 , 0.))",
+   "old": "                        cnsx2 = sqrt(max(cms2**2 - 4 * csound2 * calfvenx**2 , 0.))"
+  }
+ ]
+}

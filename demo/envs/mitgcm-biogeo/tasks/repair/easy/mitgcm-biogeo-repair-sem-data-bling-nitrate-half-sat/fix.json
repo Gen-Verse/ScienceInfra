@@ -1,0 +1,10 @@
+{
+ "_canary": "f0259ff8-afff-59cf-824a-f84d1d478dfa",
+ "edits": [
+  {
+   "file": "pkg/bling/bling_readparms.F",
+   "new": "      k_NO3                = 2. _d -6 / permil\n",
+   "old": "      k_NO3                = 3. _d -6 / permil\n"
+  }
+ ]
+}

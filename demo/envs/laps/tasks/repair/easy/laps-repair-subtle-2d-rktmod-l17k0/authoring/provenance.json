@@ -1,0 +1,96 @@
+{
+ "canary": "dd0b2089-2935-5c37-b6d7-29781f5c539e",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/rktmod.f90",
+     "new": "cc10 = 8.0/15.002",
+     "old": "cc10 = 8.0/15.0"
+    }
+   ]
+  },
+  "family": "subtle",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/rktmod.f90",
+     "new": "cc10 = 8.0/15.0",
+     "old": "cc10 = 8.0/15.002"
+    }
+   ]
+  },
+  "id": "subtle-2d-rktmod-l17k0",
+  "meta": {
+   "difficulty_design": "medium",
+   "file": "src_compressible/2D/rktmod.f90",
+   "symptom_style": "lean"
+  },
+  "note": "RK stage-1 coefficient (subtle)",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "subtle",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-2d-256": 0.5,
+   "aw-2d-512": 0.5
+  },
+  "id": "subtle-2d-rktmod-l17k0",
+  "meta": {
+   "difficulty_design": "medium",
+   "file": "src_compressible/2D/rktmod.f90",
+   "symptom_style": "lean"
+  },
+  "note": "RK stage-1 coefficient (subtle)",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 1.337
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 5.202
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "dt_abs": 0.0,
+    "error": "6.547e-06 at frame 10 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 6.546858324713023e-06,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   },
+   "aw-2d-512": {
+    "dt_abs": 0.0,
+    "error": "6.366e-06 at frame 10 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 6.366448921546475e-06,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 12.1
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

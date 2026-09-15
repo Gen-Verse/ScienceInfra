@@ -1,0 +1,94 @@
+{
+ "canary": "2027ce9f-0f64-5253-8d76-307ff3a31a79",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "                        flux(ix,iy,iz,11) = uu(ix,iy,iz,3) * uz + By * Bz ",
+     "old": "                        flux(ix,iy,iz,11) = uu(ix,iy,iz,3) * uz - By * Bz "
+    }
+   ]
+  },
+  "family": "sign",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "                        flux(ix,iy,iz,11) = uu(ix,iy,iz,3) * uz - By * Bz ",
+     "old": "                        flux(ix,iy,iz,11) = uu(ix,iy,iz,3) * uz + By * Bz "
+    }
+   ]
+  },
+  "id": "sign-2d-mhdrhs-L80c64-",
+  "meta": {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "line": 80
+  },
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "sign",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-2d-256": 0.5,
+   "aw-2d-512": 0.5
+  },
+  "id": "sign-2d-mhdrhs-L80c64-",
+  "meta": {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "line": 80
+  },
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 0.821
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 2.654
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "dt_abs": 0.0,
+    "error": "2.425e-05 at frame 10 in Uz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 2.4251637475589116e-05,
+    "worst_frame": 10,
+    "worst_variable": "Uz"
+   },
+   "aw-2d-512": {
+    "dt_abs": 0.0,
+    "error": "2.155e-05 at frame 10 in Uz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 2.15495355688905e-05,
+    "worst_frame": 10,
+    "worst_variable": "Uz"
+   }
+  },
+  "wall_total": 9.5
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "_canary": "bc7f6cee-843b-5fce-ba91-0d7b44602142",
+ "edits": [
+  {
+   "file": "pkg/cfc/cfc11_surfforcing.F",
+   "new": "             ttemp2=( B3_11 * ttemp - B2_11 )*ttemp + B1_11",
+   "old": "             ttemp2=( B3_11 * ttemp + B2_11 )*ttemp + B1_11"
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+{
+ "_canary": "6d01759d-a707-5377-957c-ae92fffdd3c0",
+ "edits": [
+  {
+   "file": "pkg/bling/bling_readparms.F",
+   "new": "      permil               = 1. _d 0 / 1034.745 _d 0",
+   "old": "      permil               = 1. _d 0 / 1024.5 _d 0"
+  }
+ ]
+}

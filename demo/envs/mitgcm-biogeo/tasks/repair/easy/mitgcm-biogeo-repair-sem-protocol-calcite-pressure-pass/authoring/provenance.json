@@ -1,0 +1,109 @@
+{
+ "canary": "5afa3999-af35-5e2b-a0a1-a31010e03688",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/dic/calcite_saturation.F",
+     "new": "        CALL DIC_COEFFS_DEEP(\n     I                       locTemp, locSalt,\n     I                       bi,bj,iMin,iMax,jMin,jMax,\n     I                       k,myThid)\n\nC Now correct the coefficients for pressure dependence\n        CALL DIC_COEFFS_SURF(\n     I                       locTemp, locSalt,\n     I                       bi,bj,iMin,iMax,jMin,jMax,myThid)\n",
+     "old": "        CALL DIC_COEFFS_SURF(\n     I                       locTemp, locSalt,\n     I                       bi,bj,iMin,iMax,jMin,jMax,myThid)\n\nC Now correct the coefficients for pressure dependence\n        CALL DIC_COEFFS_DEEP(\n     I                       locTemp, locSalt,\n     I                       bi,bj,iMin,iMax,jMin,jMax,\n     I                       k,myThid)\n"
+    }
+   ]
+  },
+  "family": "calcite-column-protocol",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/dic/calcite_saturation.F",
+     "new": "        CALL DIC_COEFFS_SURF(\n     I                       locTemp, locSalt,\n     I                       bi,bj,iMin,iMax,jMin,jMax,myThid)\n\nC Now correct the coefficients for pressure dependence\n        CALL DIC_COEFFS_DEEP(\n     I                       locTemp, locSalt,\n     I                       bi,bj,iMin,iMax,jMin,jMax,\n     I                       k,myThid)\n",
+     "old": "        CALL DIC_COEFFS_DEEP(\n     I                       locTemp, locSalt,\n     I                       bi,bj,iMin,iMax,jMin,jMax,\n     I                       k,myThid)\n\nC Now correct the coefficients for pressure dependence\n        CALL DIC_COEFFS_SURF(\n     I                       locTemp, locSalt,\n     I                       bi,bj,iMin,iMax,jMin,jMax,myThid)\n"
+    }
+   ]
+  },
+  "id": "sem-protocol-calcite-pressure-pass",
+  "meta": {
+   "file": "pkg/dic/calcite_saturation.F",
+   "line": 89,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The end-state symptom is decoupled from a multi-stage state protocol, and local types do not encode the required ordering or phase.",
+   "semantic": true,
+   "target_checks": [
+    "so-box-calcite-keir",
+    "so-box-calcite-naviaux"
+   ],
+   "vein": "protocol"
+  },
+  "note": "apply deep pressure corrections before initializing surface coefficients",
+  "source": "semantic",
+  "tree": "dic-calcite"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "calcite-column-protocol",
+  "floor": 0.5,
+  "floor_per_check": {
+   "so-box-calcite-keir": 0.5,
+   "so-box-calcite-naviaux": 0.5
+  },
+  "id": "sem-protocol-calcite-pressure-pass",
+  "meta": {
+   "file": "pkg/dic/calcite_saturation.F",
+   "line": 89,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The end-state symptom is decoupled from a multi-stage state protocol, and local types do not encode the required ordering or phase.",
+   "semantic": true,
+   "target_checks": [
+    "so-box-calcite-keir",
+    "so-box-calcite-naviaux"
+   ],
+   "vein": "protocol"
+  },
+  "note": "apply deep pressure corrections before initializing surface coefficients",
+  "runs": {
+   "so-box-calcite-keir": {
+    "exit": 0,
+    "wall": 1.3877
+   },
+   "so-box-calcite-naviaux": {
+    "exit": 0,
+    "wall": 1.4541
+   }
+  },
+  "source": "semantic",
+  "status": "survivor",
+  "tree": "dic-calcite",
+  "verdicts": {
+   "so-box-calcite-keir": {
+    "error": "PTRACER01.0000000060.data: 3435 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.682e-04); PTRACER02.0000000060.data: 3616 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 9.062e-04); surfDiag.0000000060.data: 1611 of 8400 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.422e-04)",
+    "files_ok": 12,
+    "files_scored": 15,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.0009062275123330465,
+    "worst_file": "PTRACER02.0000000060.data"
+   },
+   "so-box-calcite-naviaux": {
+    "error": "PTRACER01.0000000060.data: 3232 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.676e-04); PTRACER02.0000000060.data: 3443 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 9.062e-04); surfDiag.0000000060.data: 1610 of 8400 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.338e-04)",
+    "files_ok": 12,
+    "files_scored": 15,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.0009062275123330465,
+    "worst_file": "PTRACER02.0000000060.data"
+   }
+  },
+  "wall_total": 5.1
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

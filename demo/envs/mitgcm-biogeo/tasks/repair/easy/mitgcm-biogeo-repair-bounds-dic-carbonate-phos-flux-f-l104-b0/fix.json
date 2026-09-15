@@ -1,0 +1,10 @@
+{
+ "_canary": "8bd69a84-6689-5dcb-8bd6-fc78d02f8e5d",
+ "edits": [
+  {
+   "file": "pkg/dic/phos_flux.F",
+   "new": "         DO i=imin,imax",
+   "old": "         DO i=imin,imax-1"
+  }
+ ]
+}

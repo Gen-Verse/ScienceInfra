@@ -1,0 +1,71 @@
+{
+ "canary": "f8988538-af7e-56c8-bcf5-e84cea5c4c8a",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "            uu_prim(:,:,:,4) = (uu(:,:,:,8) + 0.5 * ( uu(:,:,:,2) * &",
+     "old": "            uu_prim(:,:,:,4) = (uu(:,:,:,8) - 0.5 * ( uu(:,:,:,2) * &"
+    }
+   ]
+  },
+  "family": "sign",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "            uu_prim(:,:,:,4) = (uu(:,:,:,8) - 0.5 * ( uu(:,:,:,2) * &",
+     "old": "            uu_prim(:,:,:,4) = (uu(:,:,:,8) + 0.5 * ( uu(:,:,:,2) * &"
+    }
+   ]
+  },
+  "id": "sign-3d-mhdrhs-L289c44-",
+  "meta": {
+   "file": "src_compressible/mhdrhs.f90",
+   "line": 289
+  },
+  "note": "flipped `-` to `+` in the `uu_prim` statement",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "sign",
+  "floor": 0.1,
+  "floor_per_check": {
+   "aw-128": 0.1
+  },
+  "id": "sign-3d-mhdrhs-L289c44-",
+  "meta": {
+   "file": "src_compressible/mhdrhs.f90",
+   "line": 289
+  },
+  "note": "flipped `-` to `+` in the `uu_prim` statement",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 19.647
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "error": "frame count differs: reference 9, candidate 10. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 25.8
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

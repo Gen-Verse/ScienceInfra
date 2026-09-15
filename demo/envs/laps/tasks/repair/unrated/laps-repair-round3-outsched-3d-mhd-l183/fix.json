@@ -1,0 +1,10 @@
+{
+ "_canary": "25fd2967-ab03-576d-8d5c-a39fe94ffe9a",
+ "edits": [
+  {
+   "file": "src_compressible/mhd.f90",
+   "new": "if (time >= tout) then",
+   "old": "if (time + dt >= tout) then"
+  }
+ ]
+}

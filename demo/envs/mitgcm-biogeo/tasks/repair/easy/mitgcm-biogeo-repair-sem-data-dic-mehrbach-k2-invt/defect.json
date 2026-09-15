@@ -1,0 +1,10 @@
+{
+ "_canary": "ad416725-32a9-5fa5-85d1-5a621da0a020",
+ "edits": [
+  {
+   "file": "pkg/dic/carbon_chem.F",
+   "new": "           ak2(i,j,bi,bj)=10.**(-1. _d 0*(1494.7 _d 0*invtk+ 4.777 _d 0-\n",
+   "old": "           ak2(i,j,bi,bj)=10.**(-1. _d 0*(1394.7 _d 0*invtk+ 4.777 _d 0-\n"
+  }
+ ]
+}

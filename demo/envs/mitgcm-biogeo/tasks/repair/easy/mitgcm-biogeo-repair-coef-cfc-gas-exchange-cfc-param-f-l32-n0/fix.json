@@ -1,0 +1,10 @@
+{
+ "_canary": "f6c02eac-32cb-5e31-bfcb-c62df05ab742",
+ "edits": [
+  {
+   "file": "pkg/cfc/cfc_param.F",
+   "new": "      sca_11_3 =    6.1851 _d 0",
+   "old": "      sca_11_3 =    6.246951 _d 0"
+  }
+ ]
+}

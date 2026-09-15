@@ -1,0 +1,15 @@
+{
+ "_canary": "fcc05823-9d2e-5967-9ef2-949ad9e34237",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhd.f90",
+   "new": "dtmin = dtmin * cfl",
+   "old": "dtmin = dtmin * cfl * 1.02"
+  },
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "                        flux(ix,iy,iz,11) = uu(ix,iy,iz,3) * uz - By * Bz ",
+   "old": "                        flux(ix,iy,iz,11) = uu(ix,iy,iz,3) * uz + By * Bz "
+  }
+ ]
+}

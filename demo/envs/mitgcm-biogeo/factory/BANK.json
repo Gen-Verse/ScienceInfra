@@ -1,0 +1,1363 @@
+[
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-bling-biogeochemistry-bling-bio-nitrogen-f-L1037-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-bling-biogeochemistry-bling-bio-nitrogen-f-l1037-b0",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-bling-biogeochemistry-bling-bio-nitrogen-f-L1038-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-bling-biogeochemistry-bling-bio-nitrogen-f-l1038-b0",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "bounds",
+  "floor_native": 0.1,
+  "id": "bounds-bling-biogeochemistry-bling-carbon-chem-f-L586-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-bling-biogeochemistry-bling-carbon-chem-f-l586-b0",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-bling-biogeochemistry-bling-carbonate-sys-f-L143-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-bling-biogeochemistry-bling-carbonate-sys-f-l143-b0",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-cfc-gas-exchange-cfc11-surfforcing-f-L65-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-cfc-gas-exchange-cfc11-surfforcing-f-l65-b0",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-cfc-gas-exchange-cfc11-surfforcing-f-L66-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-cfc-gas-exchange-cfc11-surfforcing-f-l66-b0",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-cfc-gas-exchange-cfc12-surfforcing-f-L65-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-cfc-gas-exchange-cfc12-surfforcing-f-l65-b0",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-cfc-gas-exchange-cfc12-surfforcing-f-L66-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-cfc-gas-exchange-cfc12-surfforcing-f-l66-b0",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-dic-carbonate-bio-export-f-L103-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-dic-carbonate-bio-export-f-l103-b0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-dic-carbonate-bio-export-f-L105-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-dic-carbonate-bio-export-f-l105-b0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-dic-carbonate-bio-export-f-L106-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-dic-carbonate-bio-export-f-l106-b0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "bounds",
+  "floor_native": 0.16,
+  "id": "bounds-dic-carbonate-dic-biotic-forcing-f-L135-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-dic-carbonate-dic-biotic-forcing-f-l135-b0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-dic-carbonate-dic-biotic-forcing-f-L243-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-dic-carbonate-dic-biotic-forcing-f-l243-b0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "bounds",
+  "floor_native": 0.28,
+  "id": "bounds-dic-carbonate-dic-solvesaphe-f-L430-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-dic-carbonate-dic-solvesaphe-f-l430-b0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "bounds",
+  "floor_native": 0.28,
+  "id": "bounds-dic-carbonate-dic-solvesaphe-f-L431-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-dic-carbonate-dic-solvesaphe-f-l431-b0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-dic-carbonate-phos-flux-f-L103-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-dic-carbonate-phos-flux-f-l103-b0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-dic-carbonate-phos-flux-f-L104-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-dic-carbonate-phos-flux-f-l104-b0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "cfc-offline"
+  ],
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-ptracer-transport-offline-fields-load-f-L351-b0",
+  "note": "clip a loop upper bound by one",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-bounds-ptracer-transport-offline-fields-load-f-l351-b0",
+  "tree": "ptracer-transport"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-bling-biogeochemistry-bling-carbon-chem-f-L1015-n0",
+  "note": "perturb a numeric coefficient in dv by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-bling-biogeochemistry-bling-carbon-chem-f-l1015-n0",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-bling-biogeochemistry-bling-carbon-chem-f-L1015-n1",
+  "note": "perturb a numeric coefficient in dv by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-bling-biogeochemistry-bling-carbon-chem-f-l1015-n1",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-bling-biogeochemistry-bling-carbonate-sys-f-L156-n0",
+  "note": "perturb a numeric coefficient in calcium by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-bling-biogeochemistry-bling-carbonate-sys-f-l156-n0",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-bling-biogeochemistry-bling-carbonate-sys-f-L156-n1",
+  "note": "perturb a numeric coefficient in calcium by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-bling-biogeochemistry-bling-carbonate-sys-f-l156-n1",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-bling-biogeochemistry-bling-carbonate-sys-f-L170-n0",
+  "note": "perturb a numeric coefficient in sitlocal by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-bling-biogeochemistry-bling-carbonate-sys-f-l170-n0",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-bling-biogeochemistry-bling-readparms-f-L312-n0",
+  "note": "perturb a numeric coefficient in secperday by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-bling-biogeochemistry-bling-readparms-f-l312-n0",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-bling-biogeochemistry-bling-readparms-f-L313-n0",
+  "note": "perturb a numeric coefficient in permil by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-bling-biogeochemistry-bling-readparms-f-l313-n0",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-bling-biogeochemistry-bling-readparms-f-L313-n1",
+  "note": "perturb a numeric coefficient in permil by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-bling-biogeochemistry-bling-readparms-f-l313-n1",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-cfc-gas-exchange-cfc-param-f-L30-n0",
+  "note": "perturb a numeric coefficient in sca_11_1 by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-cfc-gas-exchange-cfc-param-f-l30-n0",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-cfc-gas-exchange-cfc-param-f-L31-n0",
+  "note": "perturb a numeric coefficient in sca_11_2 by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-cfc-gas-exchange-cfc-param-f-l31-n0",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-cfc-gas-exchange-cfc-param-f-L32-n0",
+  "note": "perturb a numeric coefficient in sca_11_3 by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-cfc-gas-exchange-cfc-param-f-l32-n0",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-cfc-gas-exchange-cfc11-surfforcing-f-L85-n0",
+  "note": "perturb a numeric coefficient in SolCFC11 by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-cfc-gas-exchange-cfc11-surfforcing-f-l85-n0",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-cfc-gas-exchange-cfc11-surfforcing-f-L87-n0",
+  "note": "perturb a numeric coefficient in SolCFC11 by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-cfc-gas-exchange-cfc11-surfforcing-f-l87-n0",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-cfc-gas-exchange-cfc12-surfforcing-f-L85-n0",
+  "note": "perturb a numeric coefficient in SolCFC12 by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-cfc-gas-exchange-cfc12-surfforcing-f-l85-n0",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-cfc-gas-exchange-cfc12-surfforcing-f-L87-n0",
+  "note": "perturb a numeric coefficient in SolCFC12 by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-cfc-gas-exchange-cfc12-surfforcing-f-l87-n0",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-dic-carbonate-bio-export-f-L111-n0",
+  "note": "perturb a numeric coefficient in atten by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-dic-carbonate-bio-export-f-l111-n0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-dic-carbonate-dic-biotic-forcing-f-L309-n0",
+  "note": "perturb a numeric coefficient in GALK by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-dic-carbonate-dic-biotic-forcing-f-l309-n0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-dic-carbonate-dic-readparms-f-L162-n0",
+  "note": "perturb a numeric coefficient in permil by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-dic-carbonate-dic-readparms-f-l162-n0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-dic-carbonate-dic-readparms-f-L162-n1",
+  "note": "perturb a numeric coefficient in permil by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-dic-carbonate-dic-readparms-f-l162-n1",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-dic-carbonate-phos-flux-f-L70-n0",
+  "note": "perturb a numeric coefficient in pflux by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-dic-carbonate-phos-flux-f-l70-n0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-dic-carbonate-phos-flux-f-L73-n0",
+  "note": "perturb a numeric coefficient in bexport by one percent",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-coef-dic-carbonate-phos-flux-f-l73-n0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-calcite-naviaux"
+  ],
+  "family": "locally-rederivable-control",
+  "floor_native": 0.5,
+  "id": "sem-control-calcite-naviaux-breakpoint",
+  "note": "replace the locally tuned Naviaux regime breakpoint with the paper value",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Easy control: the neighboring comment records the incumbent breakpoint and its paper alternative.",
+  "task": "mitgcm-biogeo-repair-sem-control-calcite-naviaux-breakpoint",
+  "tree": "dic-calcite"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "bling-limitation-data",
+  "floor_native": 0.5,
+  "id": "sem-data-bling-diaz-iron-half-sat",
+  "note": "alter the diazotroph iron half-saturation constant",
+  "predicted_tier": "hard",
+  "prediction_rationale": "This calibrated ecosystem scalar is consumed nonlinearly downstream, while neither units nor neighboring defaults determine its exact value.",
+  "task": "mitgcm-biogeo-repair-sem-data-bling-diaz-iron-half-sat",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "bling-limitation-data",
+  "floor_native": 0.5,
+  "id": "sem-data-bling-iron-half-sat",
+  "note": "alter the phytoplankton iron half-saturation constant",
+  "predicted_tier": "hard",
+  "prediction_rationale": "This calibrated ecosystem scalar is consumed nonlinearly downstream, while neither units nor neighboring defaults determine its exact value.",
+  "task": "mitgcm-biogeo-repair-sem-data-bling-iron-half-sat",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "bling-iron-ligand-data",
+  "floor_native": 0.5,
+  "id": "sem-data-bling-ligand-stability-max",
+  "note": "alter the light-dependent upper ligand stability constant",
+  "predicted_tier": "hard",
+  "prediction_rationale": "This calibrated ecosystem scalar is consumed nonlinearly downstream, while neither units nor neighboring defaults determine its exact value.",
+  "task": "mitgcm-biogeo-repair-sem-data-bling-ligand-stability-max",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "bling-limitation-data",
+  "floor_native": 0.5,
+  "id": "sem-data-bling-nitrate-half-sat",
+  "note": "alter the nitrate half-saturation constant",
+  "predicted_tier": "hard",
+  "prediction_rationale": "This calibrated ecosystem scalar is consumed nonlinearly downstream, while neither units nor neighboring defaults determine its exact value.",
+  "task": "mitgcm-biogeo-repair-sem-data-bling-nitrate-half-sat",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "bling-limitation-data",
+  "floor_native": 0.5,
+  "id": "sem-data-bling-phosphate-half-sat",
+  "note": "alter the phosphate half-saturation constant",
+  "predicted_tier": "hard",
+  "prediction_rationale": "This calibrated ecosystem scalar is consumed nonlinearly downstream, while neither units nor neighboring defaults determine its exact value.",
+  "task": "mitgcm-biogeo-repair-sem-data-bling-phosphate-half-sat",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "redfield-data",
+  "floor_native": 0.5,
+  "id": "sem-data-bling-redfield-cton",
+  "note": "alter the default organic carbon-to-nitrogen ratio",
+  "predicted_tier": "hard",
+  "prediction_rationale": "This calibrated ecosystem scalar is consumed nonlinearly downstream, while neither units nor neighboring defaults determine its exact value.",
+  "task": "mitgcm-biogeo-repair-sem-data-bling-redfield-cton",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "so-box-calcite-keir"
+  ],
+  "family": "calcite-rate-data",
+  "floor_native": 0.5,
+  "id": "sem-data-calcite-keir-exponent",
+  "note": "alter one calibrated member of the selected calcite dissolution law",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The deck uses a locally calibrated rate-law tuple whose exact member cannot be reconstructed from the named publication alone.",
+  "task": "mitgcm-biogeo-repair-sem-data-calcite-keir-exponent",
+  "tree": "dic-calcite"
+ },
+ {
+  "checks": [
+   "so-box-calcite-keir"
+  ],
+  "family": "calcite-rate-data",
+  "floor_native": 0.5,
+  "id": "sem-data-calcite-keir-rate",
+  "note": "alter one calibrated member of the selected calcite dissolution law",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The deck uses a locally calibrated rate-law tuple whose exact member cannot be reconstructed from the named publication alone.",
+  "task": "mitgcm-biogeo-repair-sem-data-calcite-keir-rate",
+  "tree": "dic-calcite"
+ },
+ {
+  "checks": [
+   "so-box-calcite-naviaux"
+  ],
+  "family": "calcite-rate-data",
+  "floor_native": 0.5,
+  "id": "sem-data-calcite-naviaux-exp-high",
+  "note": "alter one calibrated member of the selected calcite dissolution law",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The deck uses a locally calibrated rate-law tuple whose exact member cannot be reconstructed from the named publication alone.",
+  "task": "mitgcm-biogeo-repair-sem-data-calcite-naviaux-exp-high",
+  "tree": "dic-calcite"
+ },
+ {
+  "checks": [
+   "so-box-calcite-naviaux"
+  ],
+  "family": "calcite-rate-data",
+  "floor_native": 0.5,
+  "id": "sem-data-calcite-naviaux-exp-low",
+  "note": "alter one calibrated member of the selected calcite dissolution law",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The deck uses a locally calibrated rate-law tuple whose exact member cannot be reconstructed from the named publication alone.",
+  "task": "mitgcm-biogeo-repair-sem-data-calcite-naviaux-exp-low",
+  "tree": "dic-calcite"
+ },
+ {
+  "checks": [
+   "so-box-calcite-naviaux"
+  ],
+  "family": "calcite-rate-data",
+  "floor_native": 0.5,
+  "id": "sem-data-calcite-naviaux-rate-low",
+  "note": "alter one calibrated member of the selected calcite dissolution law",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The deck uses a locally calibrated rate-law tuple whose exact member cannot be reconstructed from the named publication alone.",
+  "task": "mitgcm-biogeo-repair-sem-data-calcite-naviaux-rate-low",
+  "tree": "dic-calcite"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "cfc-fit-data",
+  "floor_native": 0.5,
+  "id": "sem-data-cfc11-schmidt-cubic",
+  "note": "perturb the cubic CFC-11 Schmidt-number coefficient",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+  "task": "mitgcm-biogeo-repair-sem-data-cfc11-schmidt-cubic",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "cfc-fit-data",
+  "floor_native": 0.5,
+  "id": "sem-data-cfc11-schmidt-leading",
+  "note": "perturb the leading CFC-11 Schmidt-number coefficient",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+  "task": "mitgcm-biogeo-repair-sem-data-cfc11-schmidt-leading",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "cfc-fit-data",
+  "floor_native": 0.5,
+  "id": "sem-data-cfc11-solubility-a1",
+  "note": "perturb the first CFC-11 solubility coefficient",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+  "task": "mitgcm-biogeo-repair-sem-data-cfc11-solubility-a1",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "cfc-fit-data",
+  "floor_native": 0.5,
+  "id": "sem-data-cfc11-solubility-b3",
+  "note": "perturb the third salinity coefficient in CFC-11 solubility",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+  "task": "mitgcm-biogeo-repair-sem-data-cfc11-solubility-b3",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "cfc-fit-data",
+  "floor_native": 0.5,
+  "id": "sem-data-cfc12-schmidt-linear",
+  "note": "perturb the linear CFC-12 Schmidt-number coefficient",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+  "task": "mitgcm-biogeo-repair-sem-data-cfc12-schmidt-linear",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "cfc-fit-data",
+  "floor_native": 0.5,
+  "id": "sem-data-cfc12-solubility-a2",
+  "note": "perturb the second CFC-12 solubility coefficient",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+  "task": "mitgcm-biogeo-repair-sem-data-cfc12-solubility-a2",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "global-dic"
+  ],
+  "family": "carbonate-fit-data",
+  "floor_native": 0.5,
+  "id": "sem-data-dic-borate-invt",
+  "note": "perturb one coefficient in the boric-acid dissociation fit",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+  "task": "mitgcm-biogeo-repair-sem-data-dic-borate-invt",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "global-dic"
+  ],
+  "family": "carbonate-fit-data",
+  "floor_native": 0.5,
+  "id": "sem-data-dic-mehrbach-k1-invt",
+  "note": "perturb the inverse-temperature coefficient in the surface K1 fit",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+  "task": "mitgcm-biogeo-repair-sem-data-dic-mehrbach-k1-invt",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "global-dic"
+  ],
+  "family": "carbonate-fit-data",
+  "floor_native": 0.5,
+  "id": "sem-data-dic-mehrbach-k2-invt",
+  "note": "perturb the inverse-temperature coefficient in the surface K2 fit",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+  "task": "mitgcm-biogeo-repair-sem-data-dic-mehrbach-k2-invt",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-obcs-saphe",
+   "so-box-calcite-naviaux"
+  ],
+  "family": "solvesaphe-fit-data",
+  "floor_native": 0.5,
+  "id": "sem-data-saphe-borate-logt",
+  "note": "perturb a coupled salinity entry in the SolveSAPHE borate fit",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+  "task": "mitgcm-biogeo-repair-sem-data-saphe-borate-logt",
+  "tree": "dic-solvesaphe"
+ },
+ {
+  "checks": [
+   "so-box-obcs-saphe",
+   "so-box-calcite-naviaux"
+  ],
+  "family": "solvesaphe-fit-data",
+  "floor_native": 0.5,
+  "id": "sem-data-saphe-phosphate-k2",
+  "note": "perturb the leading entry in the SolveSAPHE phosphate K2 fit",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+  "task": "mitgcm-biogeo-repair-sem-data-saphe-phosphate-k2",
+  "tree": "dic-solvesaphe"
+ },
+ {
+  "checks": [
+   "so-box-obcs-saphe",
+   "so-box-calcite-naviaux"
+  ],
+  "family": "solvesaphe-fit-data",
+  "floor_native": 0.5,
+  "id": "sem-data-saphe-waters-k1-sqrt-s",
+  "note": "perturb the square-root salinity entry in the Waters K1 fit",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+  "task": "mitgcm-biogeo-repair-sem-data-saphe-waters-k1-sqrt-s",
+  "tree": "dic-solvesaphe"
+ },
+ {
+  "checks": [
+   "so-box-obcs-saphe",
+   "so-box-calcite-naviaux"
+  ],
+  "family": "solvesaphe-fit-data",
+  "floor_native": 0.5,
+  "id": "sem-data-saphe-waters-k1-temp-s",
+  "note": "perturb the salinity-temperature cross term in the Waters K1 fit",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+  "task": "mitgcm-biogeo-repair-sem-data-saphe-waters-k1-temp-s",
+  "tree": "dic-solvesaphe"
+ },
+ {
+  "checks": [
+   "so-box-obcs-saphe",
+   "so-box-calcite-naviaux"
+  ],
+  "family": "solvesaphe-fit-data",
+  "floor_native": 0.5,
+  "id": "sem-data-saphe-waters-k2-sqrt-s",
+  "note": "perturb the square-root salinity entry in the Waters K2 fit",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+  "task": "mitgcm-biogeo-repair-sem-data-saphe-waters-k2-sqrt-s",
+  "tree": "dic-solvesaphe"
+ },
+ {
+  "checks": [
+   "so-box-obcs-saphe",
+   "so-box-calcite-naviaux"
+  ],
+  "family": "solvesaphe-fit-data",
+  "floor_native": 0.5,
+  "id": "sem-data-saphe-waters-k2-temp-s",
+  "note": "perturb the salinity-temperature cross term in the Waters K2 fit",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The symptom is remote from this empirical multi-coefficient fit, and the exact incumbent entry is not derivable from neighboring arithmetic.",
+  "task": "mitgcm-biogeo-repair-sem-data-saphe-waters-k2-temp-s",
+  "tree": "dic-solvesaphe"
+ },
+ {
+  "checks": [
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux"
+  ],
+  "family": "calcite-column-protocol",
+  "floor_native": 0.5,
+  "id": "sem-protocol-calcite-pressure-pass",
+  "note": "apply deep pressure corrections before initializing surface coefficients",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The end-state symptom is decoupled from a multi-stage state protocol, and local types do not encode the required ordering or phase.",
+  "task": "mitgcm-biogeo-repair-sem-protocol-calcite-pressure-pass",
+  "tree": "dic-calcite"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "gchem-tendency-protocol",
+  "floor_native": 0.5,
+  "id": "sem-protocol-gchem-tracer-window",
+  "note": "exclude the final coupled tracer when adding the stored chemistry tendency",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The end-state symptom is decoupled from a multi-stage state protocol, and local types do not encode the required ordering or phase.",
+  "task": "mitgcm-biogeo-repair-sem-protocol-gchem-tracer-window",
+  "tree": "gchem-dispatch"
+ },
+ {
+  "checks": [
+   "cfc-offline"
+  ],
+  "family": "offline-window-protocol",
+  "floor_native": 0.5,
+  "id": "sem-protocol-offline-u-time-window",
+  "note": "reverse the bracketing-record weights for offline zonal velocity",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The end-state symptom is decoupled from a multi-stage state protocol, and local types do not encode the required ordering or phase.",
+  "task": "mitgcm-biogeo-repair-sem-protocol-offline-u-time-window",
+  "tree": "ptracer-transport"
+ },
+ {
+  "checks": [
+   "ptracer-advection-gyre",
+   "cfc-offline",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic",
+   "cfc-online",
+   "global-bling"
+  ],
+  "family": "ptracer-coupling-protocol",
+  "floor_native": 0.611111,
+  "id": "sem-protocol-ptracer-forcing-phase",
+  "note": "apply the internal forcing in the wrong Adams-Bashforth phase",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The end-state symptom is decoupled from a multi-stage state protocol, and local types do not encode the required ordering or phase.",
+  "task": "mitgcm-biogeo-repair-sem-protocol-ptracer-forcing-phase",
+  "tree": "ptracer-transport"
+ },
+ {
+  "checks": [
+   "so-box-obcs-saphe"
+  ],
+  "family": "solvesaphe-bracket-protocol",
+  "floor_native": 0.5,
+  "id": "sem-protocol-saphe-bracket-sign",
+  "note": "update the opposite hydrogen bracket after evaluating the residual sign",
+  "predicted_tier": "hard",
+  "prediction_rationale": "The end-state symptom is decoupled from a multi-stage state protocol, and local types do not encode the required ordering or phase.",
+  "task": "mitgcm-biogeo-repair-sem-protocol-saphe-bracket-sign",
+  "tree": "dic-solvesaphe"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-bling-biogeochemistry-bling-carbon-chem-f-L1015-s0",
+  "note": "flip one arithmetic sign in dv",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-bling-biogeochemistry-bling-carbon-chem-f-l1015-s0",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-bling-biogeochemistry-bling-carbon-chem-f-L1015-s1",
+  "note": "flip one arithmetic sign in dv",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-bling-biogeochemistry-bling-carbon-chem-f-l1015-s1",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-bling-biogeochemistry-bling-carbon-chem-f-L1017-s0",
+  "note": "flip one arithmetic sign in pfactor",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-bling-biogeochemistry-bling-carbon-chem-f-l1017-s0",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-bling-biogeochemistry-bling-carbon-chem-f-L1027-s0",
+  "note": "flip one arithmetic sign in ak1p",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-bling-biogeochemistry-bling-carbon-chem-f-l1027-s0",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-bling-biogeochemistry-bling-readparms-f-L328-s0",
+  "note": "flip one arithmetic sign in NO3toN",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-bling-biogeochemistry-bling-readparms-f-l328-s0",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "global-bling"
+  ],
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-bling-biogeochemistry-bling-readparms-f-L330-s0",
+  "note": "flip one arithmetic sign in O2toN",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-bling-biogeochemistry-bling-readparms-f-l330-s0",
+  "tree": "bling-biogeochemistry"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "sign",
+  "floor_native": 0.0,
+  "id": "sign-cfc-gas-exchange-cfc-atmos-f-L76-s0",
+  "note": "flip one arithmetic sign in it",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-cfc-gas-exchange-cfc-atmos-f-l76-s0",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-cfc-gas-exchange-cfc11-surfforcing-f-L77-s0",
+  "note": "flip one arithmetic sign in ttemp2",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-cfc-gas-exchange-cfc11-surfforcing-f-l77-s0",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-cfc-gas-exchange-cfc11-surfforcing-f-L77-s1",
+  "note": "flip one arithmetic sign in ttemp2",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-cfc-gas-exchange-cfc11-surfforcing-f-l77-s1",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-cfc-gas-exchange-cfc12-surfforcing-f-L77-s0",
+  "note": "flip one arithmetic sign in ttemp2",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-cfc-gas-exchange-cfc12-surfforcing-f-l77-s0",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-cfc-gas-exchange-cfc12-surfforcing-f-L77-s1",
+  "note": "flip one arithmetic sign in ttemp2",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-cfc-gas-exchange-cfc12-surfforcing-f-l77-s1",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-dic-carbonate-bio-export-f-L97-s0",
+  "note": "flip one arithmetic sign in lit",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-dic-carbonate-bio-export-f-l97-s0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-dic-carbonate-dic-biotic-forcing-f-L303-s0",
+  "note": "flip one arithmetic sign in GPO4",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-dic-carbonate-dic-biotic-forcing-f-l303-s0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-dic-carbonate-dic-biotic-forcing-f-L305-s0",
+  "note": "flip one arithmetic sign in car",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-dic-carbonate-dic-biotic-forcing-f-l305-s0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-dic-carbonate-phos-flux-f-L116-s0",
+  "note": "flip one arithmetic sign in pflux",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-dic-carbonate-phos-flux-f-l116-s0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic"
+  ],
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-dic-carbonate-phos-flux-f-L133-s0",
+  "note": "flip one arithmetic sign in pflux",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-dic-carbonate-phos-flux-f-l133-s0",
+  "tree": "dic-carbonate"
+ },
+ {
+  "checks": [
+   "ptracer-advection-gyre",
+   "cfc-offline",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic",
+   "cfc-online",
+   "global-bling"
+  ],
+  "family": "sign",
+  "floor_native": 0.2,
+  "id": "sign-ptracer-transport-forward-step-f-L807-s0",
+  "note": "flip one arithmetic sign in myIter",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-ptracer-transport-forward-step-f-l807-s0",
+  "tree": "ptracer-transport"
+ },
+ {
+  "checks": [
+   "ptracer-advection-gyre",
+   "cfc-offline",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic",
+   "cfc-online",
+   "global-bling"
+  ],
+  "family": "sign",
+  "floor_native": 0.122222,
+  "id": "sign-ptracer-transport-forward-step-f-L808-s0",
+  "note": "flip one arithmetic sign in myTime",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-ptracer-transport-forward-step-f-l808-s0",
+  "tree": "ptracer-transport"
+ },
+ {
+  "checks": [
+   "ptracer-advection-gyre",
+   "cfc-offline",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic",
+   "cfc-online",
+   "global-bling"
+  ],
+  "family": "sign",
+  "floor_native": 0.111111,
+  "id": "sign-ptracer-transport-ptracers-integrate-f-L156-s0",
+  "note": "flip one arithmetic sign in GAD_TR",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-ptracer-transport-ptracers-integrate-f-l156-s0",
+  "tree": "ptracer-transport"
+ },
+ {
+  "checks": [
+   "ptracer-advection-gyre",
+   "cfc-offline",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-dic",
+   "cfc-online",
+   "global-bling"
+  ],
+  "family": "sign",
+  "floor_native": 0.555556,
+  "id": "sign-ptracer-transport-ptracers-integrate-f-L156-s1",
+  "note": "flip one arithmetic sign in GAD_TR",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable.",
+  "task": "mitgcm-biogeo-repair-sign-ptracer-transport-ptracers-integrate-f-l156-s1",
+  "tree": "ptracer-transport"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-cfc-gas-exchange-cfc_atmos-cfc_atmos",
+  "note": "excise the executable body of CFC_ATMOS",
+  "predicted_tier": "medium",
+  "prediction_rationale": "Long incumbent floating-point bodies can resist bit-exact reconstruction.",
+  "task": "mitgcm-biogeo-restore-excise-cfc-gas-exchange-cfc-atmos-cfc-atmos",
+  "tree": "cfc-gas-exchange"
+ },
+ {
+  "checks": [
+   "cfc-offline",
+   "cfc-online"
+  ],
+  "family": "excise",
+  "floor_native": 0.1,
+  "id": "excise-cfc-gas-exchange-cfc_param-cfc_param",
+  "note": "excise the executable body of CFC_PARAM",
+  "predicted_tier": "easy",
+  "prediction_rationale": "Short routine restore is locally re-derivable and serves as an easy control.",
+  "task": "mitgcm-biogeo-restore-excise-cfc-gas-exchange-cfc-param-cfc-param",
+  "tree": "cfc-gas-exchange"
+ }
+]

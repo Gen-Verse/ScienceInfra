@@ -1,0 +1,76 @@
+{
+ "canary": "46d7609b-a95b-5cf8-81a6-863f405bf8dd",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "cc10 = 8.0/15.2",
+     "old": "cc10 = 8.0/15.0"
+    }
+   ]
+  },
+  "family": "coef",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "cc10 = 8.0/15.0",
+     "old": "cc10 = 8.0/15.2"
+    }
+   ]
+  },
+  "id": "coef-3d-rktmod-L17k0-",
+  "meta": {
+   "file": "src_compressible/rktmod.f90",
+   "line": 17
+  },
+  "note": "perturbed the RK stage-1 coefficient",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "coef",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "coef-3d-rktmod-L17k0-",
+  "meta": {
+   "file": "src_compressible/rktmod.f90",
+   "line": 17
+  },
+  "note": "perturbed the RK stage-1 coefficient",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 22.944
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "7.945e-05 at frame 8 in By, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 7.945104235219285e-05,
+    "worst_frame": 8,
+    "worst_variable": "By"
+   }
+  },
+  "wall_total": 31.5
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "_canary": "593e8342-473e-5b6a-a00f-7198e6a9fcad",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "            complex :: kx, ky,kz\n\n            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1) - 1",
+   "old": "            complex :: kx, ky,kz\n\n            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)"
+  }
+ ]
+}

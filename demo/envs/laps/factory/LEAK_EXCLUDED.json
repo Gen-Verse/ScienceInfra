@@ -1,0 +1,44 @@
+[
+ {
+  "findings": [
+   "laps-repair-bounds-3d-mhdrhs-l139: pristine copy of the defect site survives in the agent tree: src_compressible/fftw.f90"
+  ],
+  "task": "laps-repair-bounds-3d-mhdrhs-l139"
+ },
+ {
+  "findings": [
+   "laps-repair-bounds-3d-mhdrhs-l33: pristine copy of the defect site survives in the agent tree: src_compressible/mhd.f90"
+  ],
+  "task": "laps-repair-bounds-3d-mhdrhs-l33"
+ },
+ {
+  "findings": [
+   "laps-repair-bounds-3d-mhdrhs-l35: pristine copy of the defect site survives in the agent tree: src_compressible/mhd.f90"
+  ],
+  "task": "laps-repair-bounds-3d-mhdrhs-l35"
+ },
+ {
+  "findings": [
+   "laps-repair-bounds-3d-mhdrhs-l37: pristine copy of the defect site survives in the agent tree: src_compressible/fftw.f90"
+  ],
+  "task": "laps-repair-bounds-3d-mhdrhs-l37"
+ },
+ {
+  "findings": [
+   "laps-repair-norm-2d-fftw-l59: pristine copy of the defect site survives in the agent tree: src_compressible/2D/mhdrhs.f90"
+  ],
+  "task": "laps-repair-norm-2d-fftw-l59"
+ },
+ {
+  "findings": [
+   "laps-repair-norm-2d-fftw-l76: pristine copy of the defect site survives in the agent tree: src_compressible/2D/mhdrhs.f90"
+  ],
+  "task": "laps-repair-norm-2d-fftw-l76"
+ },
+ {
+  "findings": [
+   "laps-repair-norm-3d-fftw-l62: pristine copy of the defect site survives in the agent tree: src_compressible/mhdrhs.f90"
+  ],
+  "task": "laps-repair-norm-3d-fftw-l62"
+ }
+]

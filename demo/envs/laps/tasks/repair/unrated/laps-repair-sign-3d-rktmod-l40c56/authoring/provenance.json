@@ -1,0 +1,76 @@
+{
+ "canary": "8dec21db-2827-5517-8edf-5baab5b81aa7",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) - dd1(irk) * fnl_rk(:,:,:,:) &",
+     "old": "            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &"
+    }
+   ]
+  },
+  "family": "sign",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &",
+     "old": "            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) - dd1(irk) * fnl_rk(:,:,:,:) &"
+    }
+   ]
+  },
+  "id": "sign-3d-rktmod-L40c56-",
+  "meta": {
+   "file": "src_compressible/rktmod.f90",
+   "line": 40
+  },
+  "note": "flipped `+` to `-` in the `uu_fourier` statement",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "sign",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "sign-3d-rktmod-L40c56-",
+  "meta": {
+   "file": "src_compressible/rktmod.f90",
+   "line": 40
+  },
+  "note": "flipped `+` to `-` in the `uu_fourier` statement",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 11.8
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "1.585e-02 at frame 8 in Uy, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.015849758689813698,
+    "worst_frame": 8,
+    "worst_variable": "Uy"
+   }
+  },
+  "wall_total": 20.4
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

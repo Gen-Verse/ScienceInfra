@@ -1,0 +1,10 @@
+{
+ "_canary": "fe721e80-4529-5288-a9f2-1440621e8d70",
+ "edits": [
+  {
+   "file": "pkg/bling/bling_readparms.F",
+   "new": "      k_PO4                = 1.5 _d -8 / permil\n",
+   "old": "      k_PO4                = 1. _d -8 / permil\n"
+  }
+ ]
+}

@@ -1,0 +1,571 @@
+{
+ "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+ "evidence": {
+  "model/src/forward_step.F": {
+   "build_links": {
+    "cfc-offline": [
+     "forward_step.F"
+    ],
+    "cfc-online": [
+     "forward_step.F"
+    ],
+    "global-bling": [
+     "forward_step.F"
+    ],
+    "global-dic": [
+     "forward_step.F"
+    ],
+    "ptracer-advection-gyre": [
+     "forward_step.F"
+    ],
+    "so-box": [
+     "forward_step.F"
+    ]
+   },
+   "profiles": [
+    "cfc-offline",
+    "cfc-online",
+    "global-bling",
+    "global-dic",
+    "ptracer-advection-gyre",
+    "so-box"
+   ]
+  },
+  "pkg/bling/bling_bio.F": {
+   "build_links": {
+    "global-bling": [
+     "bling_bio.F"
+    ]
+   },
+   "profiles": [
+    "global-bling"
+   ]
+  },
+  "pkg/bling/bling_bio_nitrogen.F": {
+   "build_links": {
+    "global-bling": [
+     "bling_bio_nitrogen.F"
+    ]
+   },
+   "profiles": [
+    "global-bling"
+   ]
+  },
+  "pkg/bling/bling_carbon_chem.F": {
+   "build_links": {
+    "global-bling": [
+     "bling_carbon_chem.F"
+    ]
+   },
+   "profiles": [
+    "global-bling"
+   ]
+  },
+  "pkg/bling/bling_carbonate_sys.F": {
+   "build_links": {
+    "global-bling": [
+     "bling_carbonate_sys.F"
+    ]
+   },
+   "profiles": [
+    "global-bling"
+   ]
+  },
+  "pkg/bling/bling_readparms.F": {
+   "build_links": {
+    "global-bling": [
+     "bling_readparms.F"
+    ]
+   },
+   "profiles": [
+    "global-bling"
+   ]
+  },
+  "pkg/bling/bling_solvesaphe.F": {
+   "build_links": {
+    "global-bling": [
+     "bling_solvesaphe.F"
+    ]
+   },
+   "profiles": [
+    "global-bling"
+   ]
+  },
+  "pkg/cfc/cfc11_surfforcing.F": {
+   "build_links": {
+    "cfc-offline": [
+     "cfc11_surfforcing.F"
+    ],
+    "cfc-online": [
+     "cfc11_surfforcing.F"
+    ]
+   },
+   "profiles": [
+    "cfc-offline",
+    "cfc-online"
+   ]
+  },
+  "pkg/cfc/cfc12_surfforcing.F": {
+   "build_links": {
+    "cfc-offline": [
+     "cfc12_surfforcing.F"
+    ],
+    "cfc-online": [
+     "cfc12_surfforcing.F"
+    ]
+   },
+   "profiles": [
+    "cfc-offline",
+    "cfc-online"
+   ]
+  },
+  "pkg/cfc/cfc_atmos.F": {
+   "build_links": {
+    "cfc-offline": [
+     "cfc_atmos.F"
+    ],
+    "cfc-online": [
+     "cfc_atmos.F"
+    ]
+   },
+   "profiles": [
+    "cfc-offline",
+    "cfc-online"
+   ]
+  },
+  "pkg/cfc/cfc_param.F": {
+   "build_links": {
+    "cfc-offline": [
+     "cfc_param.F"
+    ],
+    "cfc-online": [
+     "cfc_param.F"
+    ]
+   },
+   "profiles": [
+    "cfc-offline",
+    "cfc-online"
+   ]
+  },
+  "pkg/dic/bio_export.F": {
+   "build_links": {
+    "global-dic": [
+     "bio_export.F"
+    ],
+    "so-box": [
+     "bio_export.F"
+    ]
+   },
+   "profiles": [
+    "global-dic",
+    "so-box"
+   ]
+  },
+  "pkg/dic/calcite_saturation.F": {
+   "build_links": {
+    "global-dic": [
+     "calcite_saturation.F"
+    ],
+    "so-box": [
+     "calcite_saturation.F"
+    ]
+   },
+   "profiles": [
+    "global-dic",
+    "so-box"
+   ]
+  },
+  "pkg/dic/car_flux.F": {
+   "build_links": {
+    "global-dic": [
+     "car_flux.F"
+    ],
+    "so-box": [
+     "car_flux.F"
+    ]
+   },
+   "profiles": [
+    "global-dic",
+    "so-box"
+   ]
+  },
+  "pkg/dic/car_flux_omega_top.F": {
+   "build_links": {
+    "global-dic": [
+     "car_flux_omega_top.F"
+    ],
+    "so-box": [
+     "car_flux_omega_top.F"
+    ]
+   },
+   "profiles": [
+    "global-dic",
+    "so-box"
+   ]
+  },
+  "pkg/dic/carbon_chem.F": {
+   "build_links": {
+    "global-dic": [
+     "carbon_chem.F"
+    ],
+    "so-box": [
+     "carbon_chem.F"
+    ]
+   },
+   "profiles": [
+    "global-dic",
+    "so-box"
+   ]
+  },
+  "pkg/dic/dic_biotic_forcing.F": {
+   "build_links": {
+    "global-dic": [
+     "dic_biotic_forcing.F"
+    ],
+    "so-box": [
+     "dic_biotic_forcing.F"
+    ]
+   },
+   "profiles": [
+    "global-dic",
+    "so-box"
+   ]
+  },
+  "pkg/dic/dic_readparms.F": {
+   "build_links": {
+    "global-dic": [
+     "dic_readparms.F"
+    ],
+    "so-box": [
+     "dic_readparms.F"
+    ]
+   },
+   "profiles": [
+    "global-dic",
+    "so-box"
+   ]
+  },
+  "pkg/dic/dic_solvesaphe.F": {
+   "build_links": {
+    "global-dic": [
+     "dic_solvesaphe.F"
+    ],
+    "so-box": [
+     "dic_solvesaphe.F"
+    ]
+   },
+   "profiles": [
+    "global-dic",
+    "so-box"
+   ]
+  },
+  "pkg/dic/phos_flux.F": {
+   "build_links": {
+    "global-dic": [
+     "phos_flux.F"
+    ],
+    "so-box": [
+     "phos_flux.F"
+    ]
+   },
+   "profiles": [
+    "global-dic",
+    "so-box"
+   ]
+  },
+  "pkg/gchem/gchem_add_tendency.F": {
+   "build_links": {
+    "cfc-offline": [
+     "gchem_add_tendency.F"
+    ],
+    "cfc-online": [
+     "gchem_add_tendency.F"
+    ],
+    "global-bling": [
+     "gchem_add_tendency.F"
+    ],
+    "global-dic": [
+     "gchem_add_tendency.F"
+    ],
+    "so-box": [
+     "gchem_add_tendency.F"
+    ]
+   },
+   "profiles": [
+    "cfc-offline",
+    "cfc-online",
+    "global-bling",
+    "global-dic",
+    "so-box"
+   ]
+  },
+  "pkg/gchem/gchem_calc_tendency.F": {
+   "build_links": {
+    "cfc-offline": [
+     "gchem_calc_tendency.F"
+    ],
+    "cfc-online": [
+     "gchem_calc_tendency.F"
+    ],
+    "global-bling": [
+     "gchem_calc_tendency.F"
+    ],
+    "global-dic": [
+     "gchem_calc_tendency.F"
+    ],
+    "so-box": [
+     "gchem_calc_tendency.F"
+    ]
+   },
+   "profiles": [
+    "cfc-offline",
+    "cfc-online",
+    "global-bling",
+    "global-dic",
+    "so-box"
+   ]
+  },
+  "pkg/generic_advdiff/gad_som_advect.F": {
+   "build_links": {
+    "cfc-offline": [
+     "gad_som_advect.F"
+    ],
+    "cfc-online": [
+     "gad_som_advect.F"
+    ],
+    "global-bling": [
+     "gad_som_advect.F"
+    ],
+    "global-dic": [
+     "gad_som_advect.F"
+    ],
+    "ptracer-advection-gyre": [
+     "gad_som_advect.F"
+    ],
+    "so-box": [
+     "gad_som_advect.F"
+    ]
+   },
+   "profiles": [
+    "cfc-offline",
+    "cfc-online",
+    "global-bling",
+    "global-dic",
+    "ptracer-advection-gyre",
+    "so-box"
+   ]
+  },
+  "pkg/obcs/obcs_apply_ptracer.F": {
+   "build_links": {
+    "so-box": [
+     "obcs_apply_ptracer.F"
+    ]
+   },
+   "profiles": [
+    "so-box"
+   ]
+  },
+  "pkg/offline/offline_fields_load.F": {
+   "build_links": {
+    "cfc-offline": [
+     "offline_fields_load.F"
+    ]
+   },
+   "profiles": [
+    "cfc-offline"
+   ]
+  },
+  "pkg/ptracers/ptracers_integrate.F": {
+   "build_links": {
+    "cfc-offline": [
+     "ptracers_integrate.F"
+    ],
+    "cfc-online": [
+     "ptracers_integrate.F"
+    ],
+    "global-bling": [
+     "ptracers_integrate.F"
+    ],
+    "global-dic": [
+     "ptracers_integrate.F"
+    ],
+    "ptracer-advection-gyre": [
+     "ptracers_integrate.F"
+    ],
+    "so-box": [
+     "ptracers_integrate.F"
+    ]
+   },
+   "profiles": [
+    "cfc-offline",
+    "cfc-online",
+    "global-bling",
+    "global-dic",
+    "ptracer-advection-gyre",
+    "so-box"
+   ]
+  }
+ },
+ "method": "resolved source targets of symlinks emitted by each calibrated genmake2 build",
+ "rows": {
+  "model/src/forward_step.F": [
+   "global-dic",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-bling",
+   "cfc-online",
+   "cfc-offline",
+   "ptracer-advection-gyre"
+  ],
+  "pkg/bling/bling_bio.F": [
+   "global-bling"
+  ],
+  "pkg/bling/bling_bio_nitrogen.F": [
+   "global-bling"
+  ],
+  "pkg/bling/bling_carbon_chem.F": [
+   "global-bling"
+  ],
+  "pkg/bling/bling_carbonate_sys.F": [
+   "global-bling"
+  ],
+  "pkg/bling/bling_readparms.F": [
+   "global-bling"
+  ],
+  "pkg/bling/bling_solvesaphe.F": [
+   "global-bling"
+  ],
+  "pkg/cfc/cfc11_surfforcing.F": [
+   "cfc-online",
+   "cfc-offline"
+  ],
+  "pkg/cfc/cfc12_surfforcing.F": [
+   "cfc-online",
+   "cfc-offline"
+  ],
+  "pkg/cfc/cfc_atmos.F": [
+   "cfc-online",
+   "cfc-offline"
+  ],
+  "pkg/cfc/cfc_param.F": [
+   "cfc-online",
+   "cfc-offline"
+  ],
+  "pkg/dic/bio_export.F": [
+   "global-dic",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux"
+  ],
+  "pkg/dic/calcite_saturation.F": [
+   "global-dic",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux"
+  ],
+  "pkg/dic/car_flux.F": [
+   "global-dic",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux"
+  ],
+  "pkg/dic/car_flux_omega_top.F": [
+   "global-dic",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux"
+  ],
+  "pkg/dic/carbon_chem.F": [
+   "global-dic",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux"
+  ],
+  "pkg/dic/dic_biotic_forcing.F": [
+   "global-dic",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux"
+  ],
+  "pkg/dic/dic_readparms.F": [
+   "global-dic",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux"
+  ],
+  "pkg/dic/dic_solvesaphe.F": [
+   "global-dic",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux"
+  ],
+  "pkg/dic/phos_flux.F": [
+   "global-dic",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux"
+  ],
+  "pkg/gchem/gchem_add_tendency.F": [
+   "global-dic",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-bling",
+   "cfc-online",
+   "cfc-offline"
+  ],
+  "pkg/gchem/gchem_calc_tendency.F": [
+   "global-dic",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-bling",
+   "cfc-online",
+   "cfc-offline"
+  ],
+  "pkg/generic_advdiff/gad_som_advect.F": [
+   "global-dic",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-bling",
+   "cfc-online",
+   "cfc-offline",
+   "ptracer-advection-gyre"
+  ],
+  "pkg/obcs/obcs_apply_ptracer.F": [
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux"
+  ],
+  "pkg/offline/offline_fields_load.F": [
+   "cfc-offline"
+  ],
+  "pkg/ptracers/ptracers_integrate.F": [
+   "global-dic",
+   "so-box-dic",
+   "so-box-obcs-saphe",
+   "so-box-calcite-keir",
+   "so-box-calcite-naviaux",
+   "global-bling",
+   "cfc-online",
+   "cfc-offline",
+   "ptracer-advection-gyre"
+  ]
+ }
+}

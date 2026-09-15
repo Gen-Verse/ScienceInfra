@@ -1,0 +1,25 @@
+{
+ "_canary": "0b9e4b9c-73b5-5a15-950f-061cfa27a989",
+ "edits": [
+  {
+   "file": "src_compressible/mhdinit.f90",
+   "new": "                        * sin(kx * xgrid(ix))",
+   "old": "                        * sin(kx * xgrid(ix) + 0.01)"
+  },
+  {
+   "file": "src_compressible/mhdinit.f90",
+   "new": "uu(ix,:,:,4) = uu(ix,:,:,4) + db0/sqrt(uu(ix,:,:,1)) * sin(kx * xgrid(ix))",
+   "old": "uu(ix,:,:,4) = uu(ix,:,:,4) + db0/sqrt(uu(ix,:,:,1)) * sin(kx * xgrid(ix) + 0.01)"
+  },
+  {
+   "file": "src_compressible/mhdinit.f90",
+   "new": "uu(ix,:,:,3) = uu(ix,:,:,3) + db0/sqrt(uu(ix,:,:,1)) * cos(kx * xgrid(ix)) * cos_cor_ang",
+   "old": "uu(ix,:,:,3) = uu(ix,:,:,3) + db0/sqrt(uu(ix,:,:,1)) * cos(kx * xgrid(ix) + 0.01) * cos_cor_ang"
+  },
+  {
+   "file": "src_compressible/mhdinit.f90",
+   "new": "uu(ix,:,:,6) = uu(ix,:,:,6) - db0 * cos(kx * xgrid(ix)) * cos_cor_ang",
+   "old": "uu(ix,:,:,6) = uu(ix,:,:,6) - db0 * cos(kx * xgrid(ix) + 0.01) * cos_cor_ang"
+  }
+ ]
+}

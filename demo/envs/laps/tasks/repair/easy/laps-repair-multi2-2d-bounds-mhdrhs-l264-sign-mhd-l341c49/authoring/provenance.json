@@ -1,0 +1,114 @@
+{
+ "canary": "7f48e012-5f2f-50ee-b2c2-e8f09414700e",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "            complex :: kx, ky,kz\n\n            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1) - 1",
+     "old": "            complex :: kx, ky,kz\n\n            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)"
+    },
+    {
+     "file": "src_compressible/2D/mhd.f90",
+     "new": "                        cnsx2 = sqrt(max(cms2**2 + 4 * csound2 * calfvenx**2 , 0.))",
+     "old": "                        cnsx2 = sqrt(max(cms2**2 - 4 * csound2 * calfvenx**2 , 0.))"
+    }
+   ]
+  },
+  "family": "multi",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "            complex :: kx, ky,kz\n\n            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)",
+     "old": "            complex :: kx, ky,kz\n\n            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1) - 1"
+    },
+    {
+     "file": "src_compressible/2D/mhd.f90",
+     "new": "                        cnsx2 = sqrt(max(cms2**2 - 4 * csound2 * calfvenx**2 , 0.))",
+     "old": "                        cnsx2 = sqrt(max(cms2**2 + 4 * csound2 * calfvenx**2 , 0.))"
+    }
+   ]
+  },
+  "id": "multi2-2d-bounds-mhdrhs-L264+sign-mhd-L341c49-",
+  "meta": {
+   "components": [
+    "bounds-2d-mhdrhs-L264",
+    "sign-2d-mhd-L341c49-"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/2D/mhd.f90",
+    "src_compressible/2D/mhdrhs.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "clipped a loop upper bound by one AND flipped `-` to `+` in the `cnsx2` statement",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "multi",
+  "floor": 0.2,
+  "floor_per_check": {
+   "aw-2d-256": 0.2,
+   "aw-2d-512": 0.2
+  },
+  "id": "multi2-2d-bounds-mhdrhs-L264+sign-mhd-L341c49-",
+  "meta": {
+   "components": [
+    "bounds-2d-mhdrhs-L264",
+    "sign-2d-mhd-L341c49-"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/2D/mhd.f90",
+    "src_compressible/2D/mhdrhs.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "clipped a loop upper bound by one AND flipped `-` to `+` in the `cnsx2` statement",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 1.227
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 5.277
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "error": "times.dat has 16 rows against the reference's 15",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.005976654711436692,
+    "worst_frame": 3,
+    "worst_variable": "Bz"
+   },
+   "aw-2d-512": {
+    "error": "times.dat has 31 rows against the reference's 28",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.002820624732088696,
+    "worst_frame": 2,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 15.2
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

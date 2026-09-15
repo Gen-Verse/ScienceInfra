@@ -1,0 +1,102 @@
+{
+ "canary": "b3e6edf1-e36e-53ca-b6b1-b23195ff378f",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/fftw.f90",
+     "new": "                    w_yxz(ix,:,iz) = fy_aux_ft(:) / (ny - 1) ",
+     "old": "                    w_yxz(ix,:,iz) = fy_aux_ft(:) / ny "
+    },
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                uu_prim(:,:,:,1) - uu(:,:,:,3) * uu_prim(:,:,:,2) + &",
+     "old": "                uu_prim(:,:,:,1) + uu(:,:,:,3) * uu_prim(:,:,:,2) + &"
+    }
+   ]
+  },
+  "family": "multi",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/fftw.f90",
+     "new": "                    w_yxz(ix,:,iz) = fy_aux_ft(:) / ny ",
+     "old": "                    w_yxz(ix,:,iz) = fy_aux_ft(:) / (ny - 1) "
+    },
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                uu_prim(:,:,:,1) + uu(:,:,:,3) * uu_prim(:,:,:,2) + &",
+     "old": "                uu_prim(:,:,:,1) - uu(:,:,:,3) * uu_prim(:,:,:,2) + &"
+    }
+   ]
+  },
+  "id": "multi2-3d-norm-fftw-L160+sign-mhdrhs-L290c33-",
+  "meta": {
+   "components": [
+    "norm-3d-fftw-L160",
+    "sign-3d-mhdrhs-L290c33-"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/fftw.f90",
+    "src_compressible/mhdrhs.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "FFT normalisation 1/ny -> 1/(ny-1) AND flipped `+` to `-` in the `uu_prim` statement",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "multi",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "multi2-3d-norm-fftw-L160+sign-mhdrhs-L290c33-",
+  "meta": {
+   "components": [
+    "norm-3d-fftw-L160",
+    "sign-3d-mhdrhs-L290c33-"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/fftw.f90",
+    "src_compressible/mhdrhs.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "FFT normalisation 1/ny -> 1/(ny-1) AND flipped `+` to `-` in the `uu_prim` statement",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 12.534
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "1.192e-02 at frame 1 in P, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.011918584182897707,
+    "worst_frame": 1,
+    "worst_variable": "P"
+   }
+  },
+  "wall_total": 21.8
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

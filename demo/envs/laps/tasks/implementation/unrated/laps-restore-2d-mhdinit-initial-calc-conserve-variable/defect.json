@@ -1,0 +1,10 @@
+{
+ "_canary": "5b2f1450-93f2-5d9b-b305-b4e74aa99974",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdinit.f90",
+   "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+   "old": "            uu_prim(:,:,:,1:3) = uu(:,:,:,2:4) !ux,uy,uz\n            uu_prim(:,:,:,4) = uu(:,:,:,8)  !pressure\n\n            !rho * u\n            uu(:,:,:,2) = uu(:,:,:,1) * uu_prim(:,:,:,1)\n            uu(:,:,:,3) = uu(:,:,:,1) * uu_prim(:,:,:,2)\n            uu(:,:,:,4) = uu(:,:,:,1) * uu_prim(:,:,:,3)\n\n            !energy density\n            uu(:,:,:,8) = uu_prim(:,:,:,4)/(adiabatic_index-1) + &\n                0.5*(uu(:,:,:,1)*( (uu_prim(:,:,:,1))**2 + &\n                (uu_prim(:,:,:,2))**2 + (uu_prim(:,:,:,3))**2) + &\n                (uu(:,:,:,5))**2 + (uu(:,:,:,6))**2 + &\n                (uu(:,:,:,7))**2 )\n"
+  }
+ ]
+}

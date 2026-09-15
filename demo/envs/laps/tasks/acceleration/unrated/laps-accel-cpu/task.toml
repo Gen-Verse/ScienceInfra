@@ -1,0 +1,88 @@
+# sciaccel-rl / laps-accel-cpu — Harbor manifest.
+#
+# This task is DERIVED from ScienceAccelBench tasks/laps (the v2 grid package)
+# and repackaged as a single containerized Harbor episode so it can be run by
+# `harbor run` and used for RL rollouts. Differences from the source package:
+#
+#   * The grid (checks x targets) collapses to one cell: the container's CPUs
+#     are the target. The GPU-port framing becomes "accelerate on this
+#     machine while holding the trajectories" — same scheme pin, same decks,
+#     same tolerances, same validators (vendored byte-for-byte).
+#   * Three of the four checks ship: aw-2d-256, aw-2d-512, aw-128.
+#     aw-256 is excluded for size alone — its reference is 11 frames x 1.07 GB
+#     = ~12 GB, which neither a verifier image nor an RL artifact transfer
+#     should carry. Resolution generalisation is still covered (256^2 vs 512^2
+#     in 2D; 128^3 in 3D).
+#   * The reference is produced IN SITU at verifier-image build time from the
+#     pinned commit and pinned flags, then baked into the verifier image. The
+#     agent's container never contains it (verifier runs separate).
+#   * The reward is graded (see tests/grade.py) rather than pass/fail, so
+#     outcome-reward RL gets a learning signal below full success.
+
+schema_version = "1.4"
+
+# No artifacts list: the agent's publish directory /logs/artifacts/ is
+# transferred to the separate verifier implicitly, and the deliverable
+# (per-check frames + times.dat, frame count deck-derived) lives there.
+
+[task]
+name = "sciaccel/laps-accel-cpu"
+description = "Accelerate LAPS, a pseudo-spectral 3D Hall-MHD solar-wind code (Fortran 90 + MPI + FFTW3), on the container's CPUs — holding three plasma trajectories (2D and 3D) to 1e-10 absolute, pointwise, against a reference produced from the pinned build."
+
+[metadata.provenance]
+derived_from = "ScienceAccelBench tasks/laps (v2 grid package)"
+upstream_repo = "https://github.com/chenshihelio/LAPS"
+upstream_commit = "a625806931a82ba3342f35906955e6806081d219"
+upstream_license = "GPL-2.0"
+excluded_checks = "aw-256 (reference ~12 GB; size, not science)"
+
+[environment]
+# 4 CPUs: every deck runs on 4 MPI ranks (rank count is bitwise-invariant for
+# LAPS, measured in the source package) and the incumbent timing is a 4-rank
+# number. NOTE: on the local docker provider this is a DECLARATION, not an
+# enforced limit — the container sees the whole machine. Self-reported
+# speedups are advisory either way; correctness does not depend on cpus.
+cpus = 4
+memory_mb = 8192
+# Toolchain + clone + patches, no solver build (building the incumbent is the
+# agent's first job). Budget is for a cold base-image pull.
+build_timeout_sec = 3600.0
+network_mode = "allowlist"
+allowed_hosts = ["*.chatgpt.com", "*.googleapis.com", "*.nodejs.org", "*.npmjs.com", "*.npmjs.org", "*.oaistatic.com", "aiplatform.googleapis.com", "api.anthropic.com", "api.openai.com", "auth.openai.com", "chatgpt.com", "claude.ai", "downloads.claude.ai", "files.pythonhosted.org", "github.com", "nodejs.org", "oauth2.googleapis.com", "objects.githubusercontent.com", "pypi.org", "raw.githubusercontent.com", "registry.npmjs.org", "sentry.io", "statsig.anthropic.com"]
+
+[agent]
+# RL-friendly default: enough to build the incumbent (~1 min) and run the
+# three decks (~15 s on 4 desktop ranks; a few minutes in a VM) several times
+# over. Raise for eval-grade attempts at a real speedup.
+#
+# NOTE: with this default, `reward` carries NO acceleration signal — running
+# the unmodified incumbent scores 1.0. This timeout is also the one clock an
+# agent cannot forge (harbor enforces it from outside the container), which
+# makes it the budget-forcing lever: on a homogeneous fleet, calibrate with
+# one oracle run and set it so the unaccelerated path cannot deliver every
+# frame. See README, "Which reward to train on".
+timeout_sec = 3600.0
+network_mode = "allowlist"
+allowed_hosts = ["*.chatgpt.com", "*.googleapis.com", "*.oaistatic.com", "aiplatform.googleapis.com", "api.anthropic.com", "api.openai.com", "auth.openai.com", "chatgpt.com", "oauth2.googleapis.com", "sentry.io", "statsig.anthropic.com"]
+
+[verifier]
+# The verifier only compares files (~1.5 GB of frames read twice through
+# numpy) — no simulation runs at verify time.
+timeout_sec = 900.0
+environment_mode = "separate"
+
+[verifier.environment]
+# Built from tests/ as its own context. The build clones the pinned commit,
+# builds the incumbent with pinned arithmetic flags, and RUNS all three decks
+# to produce the reference — that is what this budget is for (dominated by
+# aw-128: ~8 s on 4 desktop ranks, minutes in a VM; plus toolchain apt).
+# The image is built once and cached across rollouts.
+cpus = 4
+memory_mb = 8192
+build_timeout_sec = 10800.0
+
+[metadata.taxonomy]
+category = "acceleration"
+difficulty = "unrated"
+difficulty_basis = "measured:codex:gpt-5.6-luna:pass_rate=1.00:n=1"
+difficulty_design = "hard"

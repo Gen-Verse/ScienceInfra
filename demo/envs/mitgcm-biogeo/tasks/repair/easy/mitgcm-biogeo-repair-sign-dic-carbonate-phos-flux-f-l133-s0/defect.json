@@ -1,0 +1,10 @@
+{
+ "_canary": "8e92837c-cff9-5ec2-94e0-c195f53a4ed7",
+ "edits": [
+  {
+   "file": "pkg/dic/phos_flux.F",
+   "new": "        DO i=imin,imax\n         pflux(i,j,ko)=pflux(i,j,ko) - (flux_u(i,j)-flux_l)",
+   "old": "        DO i=imin,imax\n         pflux(i,j,ko)=pflux(i,j,ko) + (flux_u(i,j)-flux_l)"
+  }
+ ]
+}

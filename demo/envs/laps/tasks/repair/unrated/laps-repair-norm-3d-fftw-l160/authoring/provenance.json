@@ -1,0 +1,76 @@
+{
+ "canary": "7a15f7d3-0151-5478-a422-6101746ba9b8",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/fftw.f90",
+     "new": "                    w_yxz(ix,:,iz) = fy_aux_ft(:) / (ny - 1) ",
+     "old": "                    w_yxz(ix,:,iz) = fy_aux_ft(:) / ny "
+    }
+   ]
+  },
+  "family": "norm",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/fftw.f90",
+     "new": "                    w_yxz(ix,:,iz) = fy_aux_ft(:) / ny ",
+     "old": "                    w_yxz(ix,:,iz) = fy_aux_ft(:) / (ny - 1) "
+    }
+   ]
+  },
+  "id": "norm-3d-fftw-L160",
+  "meta": {
+   "file": "src_compressible/fftw.f90",
+   "line": 160
+  },
+  "note": "FFT normalisation 1/ny -> 1/(ny-1)",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "norm",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "norm-3d-fftw-L160",
+  "meta": {
+   "file": "src_compressible/fftw.f90",
+   "line": 160
+  },
+  "note": "FFT normalisation 1/ny -> 1/(ny-1)",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 14.433
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "7.874e-03 at frame 7 in rho, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.007874015748031593,
+    "worst_frame": 7,
+    "worst_variable": "rho"
+   }
+  },
+  "wall_total": 22.2
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

@@ -1,0 +1,75 @@
+{
+ "canary": "ea733b2c-daa1-536c-a2f3-cc634a60f729",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrms.f90",
+     "new": "        ! ============================================================\n        ! The body of this subroutine has been removed.\n        ! Restore it so the solver reproduces the correct physics.\n        ! ============================================================\n        return\n",
+     "old": "        allocate(uu_ave(nvar), uu_square_ave(nvar), uu_rms(nvar), &\n            uu_ave_sum(nvar), uu_square_ave_sum(nvar), B0_ave(nvar))\n\n        size_grid = nx*ny*nz\n\n        nout_perline = 2 * nvar + 3 \n        write(format_rms_line,'(a,i2,a)') '(f12.6,2x,',nout_perline,'(1pe16.8))'\n\n        !create the rms file\n        if (ipe==0) then \n            inquire(FILE='rms.dat', exist=file_exist)\n            if (file_exist) then \n                open(FILE='rms.dat',UNIT=30,STATUS='OLD',ACTION='WRITE',Position='APPEND')\n            else \n                open(FILE='rms.dat',UNIT=30,STATUS='REPLACE',ACTION='WRITE')\n            endif \n            close(30)\n        endif\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrms.f90",
+     "new": "        allocate(uu_ave(nvar), uu_square_ave(nvar), uu_rms(nvar), &\n            uu_ave_sum(nvar), uu_square_ave_sum(nvar), B0_ave(nvar))\n\n        size_grid = nx*ny*nz\n\n        nout_perline = 2 * nvar + 3 \n        write(format_rms_line,'(a,i2,a)') '(f12.6,2x,',nout_perline,'(1pe16.8))'\n\n        !create the rms file\n        if (ipe==0) then \n            inquire(FILE='rms.dat', exist=file_exist)\n            if (file_exist) then \n                open(FILE='rms.dat',UNIT=30,STATUS='OLD',ACTION='WRITE',Position='APPEND')\n            else \n                open(FILE='rms.dat',UNIT=30,STATUS='REPLACE',ACTION='WRITE')\n            endif \n            close(30)\n        endif\n",
+     "old": "        ! ============================================================\n        ! The body of this subroutine has been removed.\n        ! Restore it so the solver reproduces the correct physics.\n        ! ============================================================\n        return\n"
+    }
+   ]
+  },
+  "id": "excise-3d-mhdrms-rms_initialize",
+  "meta": {
+   "body_lines": 18,
+   "call_sites": 1,
+   "file": "src_compressible/mhdrms.f90",
+   "subroutine": "rms_initialize"
+  },
+  "note": "excise the executable body of rms_initialize (src_compressible/mhdrms.f90)",
+  "source": "excise",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": true,
+  "family": "excise",
+  "floor": 0.1,
+  "floor_per_check": {
+   "aw-128": 0.1
+  },
+  "id": "excise-3d-mhdrms-rms_initialize",
+  "meta": {
+   "body_lines": 18,
+   "call_sites": 1,
+   "file": "src_compressible/mhdrms.f90",
+   "subroutine": "rms_initialize"
+  },
+  "note": "excise the executable body of rms_initialize (src_compressible/mhdrms.f90)",
+  "runs": {
+   "aw-128": {
+    "exit": 139,
+    "wall": 3.27
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "error": "frame count differs: reference 9, candidate 1. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 8.9
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

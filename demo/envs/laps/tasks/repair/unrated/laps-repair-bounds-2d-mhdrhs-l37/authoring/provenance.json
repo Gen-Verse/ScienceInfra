@@ -1,0 +1,91 @@
+{
+ "canary": "eba8ca62-c0e1-572b-98b9-f6d2ebe6902b",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "            endif\n\n            ixmin = 1\n            ixmax = nx \n            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1) - 1",
+     "old": "            endif\n\n            ixmin = 1\n            ixmax = nx \n            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)"
+    }
+   ]
+  },
+  "family": "bounds",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "            endif\n\n            ixmin = 1\n            ixmax = nx \n            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)",
+     "old": "            endif\n\n            ixmin = 1\n            ixmax = nx \n            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1) - 1"
+    }
+   ]
+  },
+  "id": "bounds-2d-mhdrhs-L37",
+  "meta": {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "line": 37
+  },
+  "note": "clipped a loop upper bound by one",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "bounds",
+  "floor": 0.35,
+  "floor_per_check": {
+   "aw-2d-256": 0.5,
+   "aw-2d-512": 0.2
+  },
+  "id": "bounds-2d-mhdrhs-L37",
+  "meta": {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "line": 37
+  },
+  "note": "clipped a loop upper bound by one",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 1.505
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 5.176
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "dt_abs": 0.0,
+    "error": "1.758e+00 at frame 10 in rho, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 1.7579523869562514,
+    "worst_frame": 10,
+    "worst_variable": "rho"
+   },
+   "aw-2d-512": {
+    "error": "times.dat has 32 rows against the reference's 28",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 1.7428099753717134,
+    "worst_frame": 10,
+    "worst_variable": "rho"
+   }
+  },
+  "wall_total": 12.3
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

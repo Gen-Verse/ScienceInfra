@@ -1,0 +1,10 @@
+{
+ "_canary": "4434f3c8-9490-5989-ba09-c01ca5768179",
+ "edits": [
+  {
+   "file": "pkg/cfc/cfc12_surfforcing.F",
+   "new": "         DO i=iMin,iMax-1",
+   "old": "         DO i=iMin,iMax"
+  }
+ ]
+}

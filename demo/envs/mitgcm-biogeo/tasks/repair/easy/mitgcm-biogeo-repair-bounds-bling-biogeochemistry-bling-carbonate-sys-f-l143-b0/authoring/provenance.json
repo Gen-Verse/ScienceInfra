@@ -1,0 +1,82 @@
+{
+ "canary": "e63ae02b-8dca-5927-bb83-a18221cbb159",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_carbonate_sys.F",
+     "new": "C$TAF LOOP = parallel\n        DO j=jMin,jMax-1",
+     "old": "C$TAF LOOP = parallel\n        DO j=jMin,jMax"
+    }
+   ]
+  },
+  "family": "bounds",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_carbonate_sys.F",
+     "new": "C$TAF LOOP = parallel\n        DO j=jMin,jMax",
+     "old": "C$TAF LOOP = parallel\n        DO j=jMin,jMax-1"
+    }
+   ]
+  },
+  "id": "bounds-bling-biogeochemistry-bling-carbonate-sys-f-L143-b0",
+  "meta": {
+   "file": "pkg/bling/bling_carbonate_sys.F",
+   "line": 143,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "clip a loop upper bound by one",
+  "source": "inject",
+  "tree": "bling-biogeochemistry"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "bounds",
+  "floor": 0.5,
+  "floor_per_check": {
+   "global-bling": 0.5
+  },
+  "id": "bounds-bling-biogeochemistry-bling-carbonate-sys-f-L143-b0",
+  "meta": {
+   "file": "pkg/bling/bling_carbonate_sys.F",
+   "line": 143,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "clip a loop upper bound by one",
+  "runs": {
+   "global-bling": {
+    "exit": 0,
+    "wall": 5.2029
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "bling-biogeochemistry",
+  "verdicts": {
+   "global-bling": {
+    "error": "PTRACER01.0000000030.data: 1625 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.182e-05); PTRACER02.0000000030.data: 1746 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 4.547e-05); blingTracDiag.0000000030.data: 2980 of 983040 values exceed atol=1e-10 rtol=1e-08 (max |err| 4.502e-05)",
+    "files_ok": 15,
+    "files_scored": 18,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 5.182393751645975e-05,
+    "worst_file": "PTRACER01.0000000030.data"
+   }
+  },
+  "wall_total": 6.0
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

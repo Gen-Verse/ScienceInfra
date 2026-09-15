@@ -1,0 +1,10 @@
+{
+ "_canary": "8a51fa37-39aa-51f5-bd7a-1a98351b8e82",
+ "edits": [
+  {
+   "file": "pkg/dic/phos_flux.F",
+   "new": "          ELSEIF (hFacC(i,j,k+1,bi,bj).EQ.0. _d 0) THEN\n           pflux(i,j,k)=pflux(i,j,k)+BIOac(i,j,k)*(1. _d 0-DOPfraction)",
+   "old": "          ELSEIF (hFacC(i,j,k+1,bi,bj).EQ.0. _d 0) THEN\n           pflux(i,j,k)=pflux(i,j,k)+BIOac(i,j,k)*(1.01 _d 0-DOPfraction)"
+  }
+ ]
+}

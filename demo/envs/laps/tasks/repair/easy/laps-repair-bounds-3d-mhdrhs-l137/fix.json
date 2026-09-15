@@ -1,0 +1,10 @@
+{
+ "_canary": "11c344b3-a698-555c-b753-26e0eeffd22b",
+ "edits": [
+  {
+   "file": "src_compressible/mhdrhs.f90",
+   "new": "            integer :: nflux = 18\n\n            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)",
+   "old": "            integer :: nflux = 18\n\n            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1) - 1"
+  }
+ ]
+}

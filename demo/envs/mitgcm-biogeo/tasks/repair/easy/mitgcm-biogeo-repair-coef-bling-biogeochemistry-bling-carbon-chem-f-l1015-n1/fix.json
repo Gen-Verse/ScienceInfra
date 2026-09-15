@@ -1,0 +1,10 @@
+{
+ "_canary": "2d4f1966-172b-58a5-85b3-d6193cfaadc1",
+ "edits": [
+  {
+   "file": "pkg/bling/bling_carbon_chem.F",
+   "new": "C D. Wallace, 1998 - see endnotes for commentary on Millero, 95)\n           dv = -29.48 _d 0 + 0.1622 _d 0*t + 2.608 _d -3*t*t",
+   "old": "C D. Wallace, 1998 - see endnotes for commentary on Millero, 95)\n           dv = -29.48 _d 0 + 0.163822 _d 0*t + 2.608 _d -3*t*t"
+  }
+ ]
+}

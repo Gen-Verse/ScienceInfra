@@ -1,0 +1,98 @@
+{
+ "canary": "f6a26abc-dd2f-555d-ba0d-0611bf80f888",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdinit.f90",
+     "new": "uu(ix,iy,:,4) = Vjet/2.02 * (1 - tanh((r_yz - 1)/0.1))",
+     "old": "uu(ix,iy,:,4) = Vjet/2 * (1 - tanh((r_yz - 1)/0.1))"
+    }
+   ]
+  },
+  "family": "icnorm",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdinit.f90",
+     "new": "uu(ix,iy,:,4) = Vjet/2 * (1 - tanh((r_yz - 1)/0.1))",
+     "old": "uu(ix,iy,:,4) = Vjet/2.02 * (1 - tanh((r_yz - 1)/0.1))"
+    }
+   ]
+  },
+  "id": "round3-icjetnorm-2d-mhdinit-l379",
+  "meta": {
+   "difficulty_design": "hard",
+   "file": "src_compressible/2D/mhdinit.f90",
+   "line": 379,
+   "rationale": "This live branch maps the author-level Vjet parameter onto a tanh profile. The exact divisor is an unpublished normalization convention whose error propagates through every evolved frame."
+  },
+  "note": "perturbed the live 2D jet amplitude normalization by 1%",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "icnorm",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-2d-256": 0.5,
+   "aw-2d-512": 0.5
+  },
+  "id": "round3-icjetnorm-2d-mhdinit-l379",
+  "meta": {
+   "difficulty_design": "hard",
+   "file": "src_compressible/2D/mhdinit.f90",
+   "line": 379,
+   "rationale": "This live branch maps the author-level Vjet parameter onto a tanh profile. The exact divisor is an unpublished normalization convention whose error propagates through every evolved frame."
+  },
+  "note": "perturbed the live 2D jet amplitude normalization by 1%",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 4.672
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 8.872
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "dt_abs": 0.0,
+    "error": "2.970e-03 at frame 7 in Uz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.0029703043545969976,
+    "worst_frame": 7,
+    "worst_variable": "Uz"
+   },
+   "aw-2d-512": {
+    "dt_abs": 0.0,
+    "error": "2.970e-03 at frame 1 in Uz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.0029702970221576197,
+    "worst_frame": 1,
+    "worst_variable": "Uz"
+   }
+  },
+  "wall_total": 29.9
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

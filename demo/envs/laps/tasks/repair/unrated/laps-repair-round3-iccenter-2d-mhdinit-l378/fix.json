@@ -1,0 +1,10 @@
+{
+ "_canary": "c7024e8d-a6e1-51f3-8691-b7b83dce7f6b",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdinit.f90",
+   "new": "r_yz = sqrt((xgrid(ix)-Lx/2)**2 + (ygrid(iy)-Ly/2)**2)",
+   "old": "r_yz = sqrt((xgrid(ix)-0.501*Lx)**2 + (ygrid(iy)-0.501*Ly)**2)"
+  }
+ ]
+}

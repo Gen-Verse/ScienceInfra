@@ -1,0 +1,86 @@
+{
+ "canary": "07779659-0558-5b44-8447-096e27d893ce",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhd.f90",
+     "new": "                        cms2 = csound2 - calfven2",
+     "old": "                        cms2 = csound2 + calfven2"
+    }
+   ]
+  },
+  "family": "sign",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhd.f90",
+     "new": "                        cms2 = csound2 + calfven2",
+     "old": "                        cms2 = csound2 - calfven2"
+    }
+   ]
+  },
+  "id": "sign-2d-mhd-L339c39-",
+  "meta": {
+   "file": "src_compressible/2D/mhd.f90",
+   "line": 339
+  },
+  "note": "flipped `+` to `-` in the `cms2` statement",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "sign",
+  "floor": 0.15,
+  "floor_per_check": {
+   "aw-2d-256": 0.1,
+   "aw-2d-512": 0.2
+  },
+  "id": "sign-2d-mhd-L339c39-",
+  "meta": {
+   "file": "src_compressible/2D/mhd.f90",
+   "line": 339
+  },
+  "note": "flipped `+` to `-` in the `cms2` statement",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 0.954
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 3.126
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "error": "frame count differs: reference 11, candidate 10. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   },
+   "aw-2d-512": {
+    "error": "times.dat has 18 rows against the reference's 28",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.0032178610591219597,
+    "worst_frame": 5,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 11.2
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

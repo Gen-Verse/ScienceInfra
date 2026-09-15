@@ -1,0 +1,128 @@
+{
+ "canary": "6af78046-1039-53b2-bb81-20831456e0cc",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/rktmod.f90",
+     "new": "dd20 = -17./61.",
+     "old": "dd20 = -17./60."
+    },
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "                        flux(ix,iy,iz,16) = (uu(ix,iy,iz,8) + ptot) * ux ",
+     "old": "                        flux(ix,iy,iz,16) = (uu(ix,iy,iz,8) + ptot) * ux - udotb * Bx "
+    },
+    {
+     "file": "src_compressible/2D/mhd.f90",
+     "new": "                        cnsx2 = sqrt(max(cms2**2 + 4 * csound2 * calfvenx**2 , 0.))",
+     "old": "                        cnsx2 = sqrt(max(cms2**2 - 4 * csound2 * calfvenx**2 , 0.))"
+    }
+   ]
+  },
+  "family": "multi",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/rktmod.f90",
+     "new": "dd20 = -17./60.",
+     "old": "dd20 = -17./61."
+    },
+    {
+     "file": "src_compressible/2D/mhdrhs.f90",
+     "new": "                        flux(ix,iy,iz,16) = (uu(ix,iy,iz,8) + ptot) * ux - udotb * Bx ",
+     "old": "                        flux(ix,iy,iz,16) = (uu(ix,iy,iz,8) + ptot) * ux "
+    },
+    {
+     "file": "src_compressible/2D/mhd.f90",
+     "new": "                        cnsx2 = sqrt(max(cms2**2 - 4 * csound2 * calfvenx**2 , 0.))",
+     "old": "                        cnsx2 = sqrt(max(cms2**2 + 4 * csound2 * calfvenx**2 , 0.))"
+    }
+   ]
+  },
+  "id": "multi3-2d-coef-rktmod-L18k3-+dropterm-mhdrhs-L89c72-+sign-mhd-L341c49-",
+  "meta": {
+   "components": [
+    "coef-2d-rktmod-L18k3-",
+    "dropterm-2d-mhdrhs-L89c72-",
+    "sign-2d-mhd-L341c49-"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/2D/mhd.f90",
+    "src_compressible/2D/mhdrhs.f90",
+    "src_compressible/2D/rktmod.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "perturbed the RK stage-2 correction AND dropped the u.B transport term AND flipped `-` to `+` in the `cnsx2` statement",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "multi",
+  "floor": 0.2,
+  "floor_per_check": {
+   "aw-2d-256": 0.2,
+   "aw-2d-512": 0.2
+  },
+  "id": "multi3-2d-coef-rktmod-L18k3-+dropterm-mhdrhs-L89c72-+sign-mhd-L341c49-",
+  "meta": {
+   "components": [
+    "coef-2d-rktmod-L18k3-",
+    "dropterm-2d-mhdrhs-L89c72-",
+    "sign-2d-mhd-L341c49-"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/2D/mhd.f90",
+    "src_compressible/2D/mhdrhs.f90",
+    "src_compressible/2D/rktmod.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "perturbed the RK stage-2 correction AND dropped the u.B transport term AND flipped `-` to `+` in the `cnsx2` statement",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 1.048
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 5.139
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "error": "times.dat has 16 rows against the reference's 15",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.0062384858058625176,
+    "worst_frame": 3,
+    "worst_variable": "Bz"
+   },
+   "aw-2d-512": {
+    "error": "times.dat has 31 rows against the reference's 28",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.005616392461693653,
+    "worst_frame": 10,
+    "worst_variable": "P"
+   }
+  },
+  "wall_total": 12.9
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

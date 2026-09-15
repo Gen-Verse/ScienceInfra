@@ -1,0 +1,92 @@
+{
+ "canary": "54a4e8b8-7e78-5013-9c3e-227891eca123",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_readparms.F",
+     "new": "      k_Fe_diaz            = 6. _d -10 / permil\n",
+     "old": "      k_Fe_diaz            = 7. _d -10 / permil\n"
+    }
+   ]
+  },
+  "family": "bling-limitation-data",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_readparms.F",
+     "new": "      k_Fe_diaz            = 7. _d -10 / permil\n",
+     "old": "      k_Fe_diaz            = 6. _d -10 / permil\n"
+    }
+   ]
+  },
+  "id": "sem-data-bling-diaz-iron-half-sat",
+  "meta": {
+   "file": "pkg/bling/bling_readparms.F",
+   "line": 348,
+   "predicted_tier": "hard",
+   "prediction_rationale": "This calibrated ecosystem scalar is consumed nonlinearly downstream, while neither units nor neighboring defaults determine its exact value.",
+   "semantic": true,
+   "target_checks": [
+    "global-bling"
+   ],
+   "vein": "data"
+  },
+  "note": "alter the diazotroph iron half-saturation constant",
+  "source": "semantic",
+  "tree": "bling-biogeochemistry"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "bling-limitation-data",
+  "floor": 0.5,
+  "floor_per_check": {
+   "global-bling": 0.5
+  },
+  "id": "sem-data-bling-diaz-iron-half-sat",
+  "meta": {
+   "file": "pkg/bling/bling_readparms.F",
+   "line": 348,
+   "predicted_tier": "hard",
+   "prediction_rationale": "This calibrated ecosystem scalar is consumed nonlinearly downstream, while neither units nor neighboring defaults determine its exact value.",
+   "semantic": true,
+   "target_checks": [
+    "global-bling"
+   ],
+   "vein": "data"
+  },
+  "note": "alter the diazotroph iron half-saturation constant",
+  "runs": {
+   "global-bling": {
+    "exit": 0,
+    "wall": 5.4098
+   }
+  },
+  "source": "semantic",
+  "status": "survivor",
+  "tree": "bling-biogeochemistry",
+  "verdicts": {
+   "global-bling": {
+    "error": "PTRACER01.0000000030.data: 20435 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 6.749e-05); PTRACER02.0000000030.data: 12126 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 4.908e-06); PTRACER03.0000000030.data: 32237 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 6.081e-05); PTRACER04.0000000030.data: 30224 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.100e-06); PTRACER05.0000000030.data: 21121 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 4.579e-07); PTRACER06.0000000030.data: 541 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 5.828e-09); PTRACER07.0000000030.data: 26535 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 7.277e-06); PTRACER08.0000000030.data: 12203 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.325e-07); blingTracDiag.0000000030.data: 154898 of 983040 values exceed atol=1e-10 rtol=1e-08 (max |err| 6.898e-05)",
+    "files_ok": 9,
+    "files_scored": 18,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 6.898162768576022e-05,
+    "worst_file": "blingTracDiag.0000000030.data"
+   }
+  },
+  "wall_total": 7.3
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

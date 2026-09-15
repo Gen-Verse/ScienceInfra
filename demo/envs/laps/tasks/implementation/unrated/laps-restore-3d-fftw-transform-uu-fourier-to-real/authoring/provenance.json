@@ -1,0 +1,80 @@
+{
+ "canary": "d84febb3-047f-58cc-a9f9-b3c2e4c51f8c",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/fftw.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            do ivar = 1, nvar \n            \n                w_zxy(:,:,:) = uu_fourier(:,:,:,ivar)\n\n                !transpose and inverse fourier transform to get w_xyz\n                call from_zxy_to_xyz\n\n                !inverse fourier transform to get the real-space deriv\n                iymin = yi_offset(myid_i+1) + 1\n                iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n                izmin = zj_offset(myid_j+1) + 1 \n                izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n\n                do iz = izmin, izmax \n                    do iy = iymin,iymax\n                        fx_aux_ft(:) = w_xyz(:,iy,iz)\n                        call fftw_execute_dft_c2r(plan_ifft_x, fx_aux_ft, fx_aux)\n                        uu(:,iy,iz,ivar) = fx_aux(:) \n                    enddo\n                enddo\n\n            enddo\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/fftw.f90",
+     "new": "            do ivar = 1, nvar \n            \n                w_zxy(:,:,:) = uu_fourier(:,:,:,ivar)\n\n                !transpose and inverse fourier transform to get w_xyz\n                call from_zxy_to_xyz\n\n                !inverse fourier transform to get the real-space deriv\n                iymin = yi_offset(myid_i+1) + 1\n                iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n                izmin = zj_offset(myid_j+1) + 1 \n                izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n\n                do iz = izmin, izmax \n                    do iy = iymin,iymax\n                        fx_aux_ft(:) = w_xyz(:,iy,iz)\n                        call fftw_execute_dft_c2r(plan_ifft_x, fx_aux_ft, fx_aux)\n                        uu(:,iy,iz,ivar) = fx_aux(:) \n                    enddo\n                enddo\n\n            enddo\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-3d-fftw-transform_uu_fourier_to_real",
+  "meta": {
+   "body_lines": 22,
+   "call_sites": 1,
+   "file": "src_compressible/fftw.f90",
+   "subroutine": "transform_uu_fourier_to_real"
+  },
+  "note": "excise the executable body of transform_uu_fourier_to_real (src_compressible/fftw.f90)",
+  "source": "excise",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "excise",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "excise-3d-fftw-transform_uu_fourier_to_real",
+  "meta": {
+   "body_lines": 22,
+   "call_sites": 1,
+   "file": "src_compressible/fftw.f90",
+   "subroutine": "transform_uu_fourier_to_real"
+  },
+  "note": "excise the executable body of transform_uu_fourier_to_real (src_compressible/fftw.f90)",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 15.254
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "1.132e-02 at frame 8 in Uy, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.011316196582745915,
+    "worst_frame": 8,
+    "worst_variable": "Uy"
+   }
+  },
+  "wall_total": 22.8
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

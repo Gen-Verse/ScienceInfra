@@ -1,0 +1,10 @@
+{
+ "_canary": "de6b84b3-5aec-54f3-b186-5c2ce98559ab",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdoutput.f90",
+   "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+   "old": "            if (iout ==0  ) write(fname,'(a3,i3)')  'out000'\n            if (iout <1000) write(fname,'(a3,i3)')  'out' ,iout   \n            if (iout <100 ) write(fname,'(a4,i2)')  'out0' ,iout\n            if (iout < 10 ) write(fname,'(a5,i1)')  'out00',iout\n\n            !write time\n            if (ipe==0) then \n                open(unit=10,file= fname // '.dat',form='unformatted',&\n                    status='replace',action='write')\n                    write(10) real(time,4)\n                close(10)\n            endif\n\n            if (output_primitive) then\n                !temporarily store rho*u and energy density \n                output_temp_storage(:,:,:,1:3) = uu(:,:,:,2:4)\n                output_temp_storage(:,:,:,4) = uu(:,:,:,8)\n\n                !replace rho*u by u and e by p\n                uu(:,:,:,2:4) = uu_prim(:,:,:,1:3)\n                uu(:,:,:,8) = uu_prim(:,:,:,4)\n            endif\n\n            call mpi_file_open(mpi_comm_world, fname // '.dat', &\n                mpi_mode_wronly + mpi_mode_create, mpi_info_null, &\n                file_handle, ierr)\n\n            data_size = size(uu)\n\n            call mpi_file_set_view(file_handle, displacement, &\n                mpi_realtype, out_subarr_type, 'native', mpi_info_null, ierr)\n\n            call mpi_file_write_all(file_handle, uu, data_size, &\n                mpi_realtype, mpi_status_ignore, ierr )\n\n            call mpi_file_close(file_handle, ierr)\n\n            if (output_primitive) then \n                !recover rho*u and e\n                uu(:,:,:,2:4) = output_temp_storage(:,:,:,1:3)\n                uu(:,:,:,8) = output_temp_storage(:,:,:,4)\n            endif\n"
+  }
+ ]
+}

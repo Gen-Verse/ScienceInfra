@@ -1,0 +1,75 @@
+{
+ "canary": "5ac43a9b-e7d6-5abc-b666-c7d3dcb5a428",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhd.f90",
+     "new": "time = time + 1.01 * dt",
+     "old": "time = time + dt"
+    }
+   ]
+  },
+  "family": "timebase",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhd.f90",
+     "new": "time = time + dt",
+     "old": "time = time + 1.01 * dt"
+    }
+   ]
+  },
+  "id": "round3-timeacc-3d-mhd-l256",
+  "meta": {
+   "difficulty_design": "hard",
+   "file": "src_compressible/mhd.f90",
+   "line": 256,
+   "rationale": "The clock update couples output timing, the stopping step, radius evolution, and the full-precision schedule sidecar; the correct accumulation convention must be inferred from downstream constraints rather than a published formula."
+  },
+  "note": "scaled the 3D simulation-clock increment by 1.01",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "timebase",
+  "floor": 0.1,
+  "floor_per_check": {
+   "aw-128": 0.1
+  },
+  "id": "round3-timeacc-3d-mhd-l256",
+  "meta": {
+   "difficulty_design": "hard",
+   "file": "src_compressible/mhd.f90",
+   "line": 256,
+   "rationale": "The clock update couples output timing, the stopping step, radius evolution, and the full-precision schedule sidecar; the correct accumulation convention must be inferred from downstream constraints rather than a published formula."
+  },
+  "note": "scaled the 3D simulation-clock increment by 1.01",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 35.613
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "error": "frame count differs: reference 9, candidate 8. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 49.8
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

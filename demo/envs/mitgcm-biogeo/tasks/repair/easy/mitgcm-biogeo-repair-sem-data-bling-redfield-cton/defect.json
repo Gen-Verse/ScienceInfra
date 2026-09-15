@@ -1,0 +1,10 @@
+{
+ "_canary": "0c6f6efc-11fe-5cbe-8c2c-231acc40b88c",
+ "edits": [
+  {
+   "file": "pkg/bling/bling_readparms.F",
+   "new": "      CtoN                 = 6.45 _d 0\n",
+   "old": "      CtoN                 = 6.75 _d 0\n"
+  }
+ ]
+}

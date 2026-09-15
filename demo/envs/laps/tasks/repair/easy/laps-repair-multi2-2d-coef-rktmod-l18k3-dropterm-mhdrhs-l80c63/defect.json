@@ -1,0 +1,15 @@
+{
+ "_canary": "2d0c9702-25cd-5f2f-a9e9-e7194dd5b886",
+ "edits": [
+  {
+   "file": "src_compressible/2D/rktmod.f90",
+   "new": "dd20 = -17./61.",
+   "old": "dd20 = -17./60."
+  },
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "                        flux(ix,iy,iz,11) = uu(ix,iy,iz,3) * uz ",
+   "old": "                        flux(ix,iy,iz,11) = uu(ix,iy,iz,3) * uz - By * Bz "
+  }
+ ]
+}

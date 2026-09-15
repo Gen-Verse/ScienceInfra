@@ -1,0 +1,10 @@
+{
+ "_canary": "4174284f-727e-55b0-afac-a4b8f9fd755f",
+ "edits": [
+  {
+   "file": "pkg/dic/dic_solvesaphe.F",
+   "new": "        IF(zeqn .GT. 0. _d 0) THEN\n           zh_max = zh_prev\n        ELSEIF(zeqn .LT. 0. _d 0) THEN\n           zh_min = zh_prev\n",
+   "old": "        IF(zeqn .GT. 0. _d 0) THEN\n           zh_min = zh_prev\n        ELSEIF(zeqn .LT. 0. _d 0) THEN\n           zh_max = zh_prev\n"
+  }
+ ]
+}

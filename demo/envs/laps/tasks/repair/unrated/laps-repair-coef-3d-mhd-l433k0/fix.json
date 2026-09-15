@@ -1,0 +1,10 @@
+{
+ "_canary": "cdd0e91b-c048-5901-8b09-0186a2424bbb",
+ "edits": [
+  {
+   "file": "src_compressible/mhd.f90",
+   "new": "dtmin = dtmin * cfl",
+   "old": "dtmin = dtmin * cfl * 1.02"
+  }
+ ]
+}

@@ -1,0 +1,10 @@
+{
+ "_canary": "a268e487-1a09-5115-900b-d12b5c2809b3",
+ "edits": [
+  {
+   "file": "src_compressible/2D/rktmod.f90",
+   "new": "            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &",
+   "old": "            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) - dd1(irk) * fnl_rk(:,:,:,:) &"
+  }
+ ]
+}

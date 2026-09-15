@@ -1,0 +1,80 @@
+{
+ "canary": "e18b0c9d-3295-5f9b-bc0b-6e0763d0b348",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n\n\n            !fully implicit method for viscosity-----------------------\n            !Warning: if expansion exists, the k_square needs to be modified\n            if (if_visc .and. (.not. if_visc_exp)) then\n                do ivar = 2,4\n                    uu_fourier(:,:,:,ivar) = uu_fourier(:,:,:,ivar) / (time_step(irk) &\n                        * k_square(:,:,:) * viscosity + 1.0)\n                enddo\n            endif\n\n            !fully implicit method for resistivity-----------------------\n            !Warning: if expansion exists, the k_square needs to be modified\n            if (if_resis .and. (.not. if_resis_exp)) then\n                do ivar = 5,7\n                    uu_fourier(:,:,:,ivar) = uu_fourier(:,:,:,ivar) / (time_step(irk) &\n                        * k_square(:,:,:) * resistivity + 1.0)\n                enddo\n            endif\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n\n\n            !fully implicit method for viscosity-----------------------\n            !Warning: if expansion exists, the k_square needs to be modified\n            if (if_visc .and. (.not. if_visc_exp)) then\n                do ivar = 2,4\n                    uu_fourier(:,:,:,ivar) = uu_fourier(:,:,:,ivar) / (time_step(irk) &\n                        * k_square(:,:,:) * viscosity + 1.0)\n                enddo\n            endif\n\n            !fully implicit method for resistivity-----------------------\n            !Warning: if expansion exists, the k_square needs to be modified\n            if (if_resis .and. (.not. if_resis_exp)) then\n                do ivar = 5,7\n                    uu_fourier(:,:,:,ivar) = uu_fourier(:,:,:,ivar) / (time_step(irk) &\n                        * k_square(:,:,:) * resistivity + 1.0)\n                enddo\n            endif\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-3d-rktmod-rkt",
+  "meta": {
+   "body_lines": 22,
+   "call_sites": 1,
+   "file": "src_compressible/rktmod.f90",
+   "subroutine": "rkt"
+  },
+  "note": "excise the executable body of rkt (src_compressible/rktmod.f90)",
+  "source": "excise",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "excise",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "excise-3d-rktmod-rkt",
+  "meta": {
+   "body_lines": 22,
+   "call_sites": 1,
+   "file": "src_compressible/rktmod.f90",
+   "subroutine": "rkt"
+  },
+  "note": "excise the executable body of rkt (src_compressible/rktmod.f90)",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 9.76
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "1.132e-02 at frame 8 in Uy, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.01131619658274592,
+    "worst_frame": 8,
+    "worst_variable": "Uy"
+   }
+  },
+  "wall_total": 16.8
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

@@ -1,0 +1,1146 @@
+[
+ {
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-2d-mhdrhs-L264",
+  "note": "clipped a loop upper bound by one",
+  "task": "laps-repair-bounds-2d-mhdrhs-l264",
+  "tree": "2d"
+ },
+ {
+  "family": "bounds",
+  "floor_native": 0.5,
+  "id": "bounds-2d-mhdrhs-L267",
+  "note": "clipped a loop upper bound by one",
+  "task": "laps-repair-bounds-2d-mhdrhs-l267",
+  "tree": "2d"
+ },
+ {
+  "family": "bounds",
+  "floor_native": 0.35,
+  "id": "bounds-2d-mhdrhs-L35",
+  "note": "clipped a loop upper bound by one",
+  "task": "laps-repair-bounds-2d-mhdrhs-l35",
+  "tree": "2d"
+ },
+ {
+  "family": "bounds",
+  "floor_native": 0.35,
+  "id": "bounds-2d-mhdrhs-L37",
+  "note": "clipped a loop upper bound by one",
+  "task": "laps-repair-bounds-2d-mhdrhs-l37",
+  "tree": "2d"
+ },
+ {
+  "family": "bounds",
+  "floor_native": 0.1,
+  "id": "bounds-3d-mhdrhs-L137",
+  "note": "clipped a loop upper bound by one",
+  "task": "laps-repair-bounds-3d-mhdrhs-l137",
+  "tree": "3d"
+ },
+ {
+  "family": "coef",
+  "floor_native": 0.2,
+  "id": "coef-2d-mhd-L404k0-",
+  "note": "perturbed the CFL safety factor",
+  "task": "laps-repair-coef-2d-mhd-l404k0",
+  "tree": "2d"
+ },
+ {
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-2d-mhdrhs-L62k0-",
+  "note": "perturbed the magnetic pressure coefficient",
+  "task": "laps-repair-coef-2d-mhdrhs-l62k0",
+  "tree": "2d"
+ },
+ {
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-2d-rktmod-L17k0-",
+  "note": "perturbed the RK stage-1 coefficient",
+  "task": "laps-repair-coef-2d-rktmod-l17k0",
+  "tree": "2d"
+ },
+ {
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-2d-rktmod-L17k1-",
+  "note": "perturbed the RK stage-2 coefficient",
+  "task": "laps-repair-coef-2d-rktmod-l17k1",
+  "tree": "2d"
+ },
+ {
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-2d-rktmod-L17k2-",
+  "note": "perturbed the RK stage-3 coefficient",
+  "task": "laps-repair-coef-2d-rktmod-l17k2",
+  "tree": "2d"
+ },
+ {
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-2d-rktmod-L18k3-",
+  "note": "perturbed the RK stage-2 correction",
+  "task": "laps-repair-coef-2d-rktmod-l18k3",
+  "tree": "2d"
+ },
+ {
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-2d-rktmod-L18k4-",
+  "note": "perturbed the RK stage-3 correction",
+  "task": "laps-repair-coef-2d-rktmod-l18k4",
+  "tree": "2d"
+ },
+ {
+  "family": "coef",
+  "floor_native": 0.1,
+  "id": "coef-3d-mhd-L433k0-",
+  "note": "perturbed the CFL safety factor",
+  "task": "laps-repair-coef-3d-mhd-l433k0",
+  "tree": "3d"
+ },
+ {
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-3d-rktmod-L17k0-",
+  "note": "perturbed the RK stage-1 coefficient",
+  "task": "laps-repair-coef-3d-rktmod-l17k0",
+  "tree": "3d"
+ },
+ {
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-3d-rktmod-L17k1-",
+  "note": "perturbed the RK stage-2 coefficient",
+  "task": "laps-repair-coef-3d-rktmod-l17k1",
+  "tree": "3d"
+ },
+ {
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-3d-rktmod-L17k2-",
+  "note": "perturbed the RK stage-3 coefficient",
+  "task": "laps-repair-coef-3d-rktmod-l17k2",
+  "tree": "3d"
+ },
+ {
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-3d-rktmod-L18k3-",
+  "note": "perturbed the RK stage-2 correction",
+  "task": "laps-repair-coef-3d-rktmod-l18k3",
+  "tree": "3d"
+ },
+ {
+  "family": "coef",
+  "floor_native": 0.5,
+  "id": "coef-3d-rktmod-L18k4-",
+  "note": "perturbed the RK stage-3 correction",
+  "task": "laps-repair-coef-3d-rktmod-l18k4",
+  "tree": "3d"
+ },
+ {
+  "family": "dropterm",
+  "floor_native": 0.5,
+  "id": "dropterm-2d-mhdrhs-L69c62-",
+  "note": "dropped a magnetic tension term",
+  "task": "laps-repair-dropterm-2d-mhdrhs-l69c62",
+  "tree": "2d"
+ },
+ {
+  "family": "dropterm",
+  "floor_native": 0.5,
+  "id": "dropterm-2d-mhdrhs-L69c72-",
+  "note": "dropped the total-pressure term",
+  "task": "laps-repair-dropterm-2d-mhdrhs-l69c72",
+  "tree": "2d"
+ },
+ {
+  "family": "dropterm",
+  "floor_native": 0.5,
+  "id": "dropterm-2d-mhdrhs-L70c62-",
+  "note": "dropped a magnetic tension term",
+  "task": "laps-repair-dropterm-2d-mhdrhs-l70c62",
+  "tree": "2d"
+ },
+ {
+  "family": "dropterm",
+  "floor_native": 0.5,
+  "id": "dropterm-2d-mhdrhs-L74c62-",
+  "note": "dropped a magnetic tension term",
+  "task": "laps-repair-dropterm-2d-mhdrhs-l74c62",
+  "tree": "2d"
+ },
+ {
+  "family": "dropterm",
+  "floor_native": 0.5,
+  "id": "dropterm-2d-mhdrhs-L75c72-",
+  "note": "dropped the total-pressure term",
+  "task": "laps-repair-dropterm-2d-mhdrhs-l75c72",
+  "tree": "2d"
+ },
+ {
+  "family": "dropterm",
+  "floor_native": 0.5,
+  "id": "dropterm-2d-mhdrhs-L79c63-",
+  "note": "dropped a magnetic tension term",
+  "task": "laps-repair-dropterm-2d-mhdrhs-l79c63",
+  "tree": "2d"
+ },
+ {
+  "family": "dropterm",
+  "floor_native": 0.5,
+  "id": "dropterm-2d-mhdrhs-L80c63-",
+  "note": "dropped a magnetic tension term",
+  "task": "laps-repair-dropterm-2d-mhdrhs-l80c63",
+  "tree": "2d"
+ },
+ {
+  "family": "dropterm",
+  "floor_native": 0.5,
+  "id": "dropterm-2d-mhdrhs-L89c59-",
+  "note": "dropped the total-pressure term",
+  "task": "laps-repair-dropterm-2d-mhdrhs-l89c59",
+  "tree": "2d"
+ },
+ {
+  "family": "dropterm",
+  "floor_native": 0.5,
+  "id": "dropterm-2d-mhdrhs-L89c72-",
+  "note": "dropped the u.B transport term",
+  "task": "laps-repair-dropterm-2d-mhdrhs-l89c72",
+  "tree": "2d"
+ },
+ {
+  "family": "dropterm",
+  "floor_native": 0.5,
+  "id": "dropterm-2d-mhdrhs-L90c59-",
+  "note": "dropped the total-pressure term",
+  "task": "laps-repair-dropterm-2d-mhdrhs-l90c59",
+  "tree": "2d"
+ },
+ {
+  "family": "dropterm",
+  "floor_native": 0.5,
+  "id": "dropterm-2d-mhdrhs-L90c72-",
+  "note": "dropped the u.B transport term",
+  "task": "laps-repair-dropterm-2d-mhdrhs-l90c72",
+  "tree": "2d"
+ },
+ {
+  "family": "dropterm",
+  "floor_native": 0.5,
+  "id": "dropterm-3d-mhdrhs-L72c62-",
+  "note": "dropped a magnetic tension term",
+  "task": "laps-repair-dropterm-3d-mhdrhs-l72c62",
+  "tree": "3d"
+ },
+ {
+  "family": "dropterm",
+  "floor_native": 0.5,
+  "id": "dropterm-3d-mhdrhs-L77c63-",
+  "note": "dropped a magnetic tension term",
+  "task": "laps-repair-dropterm-3d-mhdrhs-l77c63",
+  "tree": "3d"
+ },
+ {
+  "family": "norm",
+  "floor_native": 0.5,
+  "id": "norm-2d-mhdrhs-L155",
+  "note": "FFT normalisation 1/nx -> 1/(nx-1)",
+  "task": "laps-repair-norm-2d-mhdrhs-l155",
+  "tree": "2d"
+ },
+ {
+  "family": "norm",
+  "floor_native": 0.5,
+  "id": "norm-3d-fftw-L160",
+  "note": "FFT normalisation 1/ny -> 1/(ny-1)",
+  "task": "laps-repair-norm-3d-fftw-l160",
+  "tree": "3d"
+ },
+ {
+  "family": "norm",
+  "floor_native": 0.5,
+  "id": "norm-3d-fftw-L177",
+  "note": "FFT normalisation 1/nz -> 1/(nz-1)",
+  "task": "laps-repair-norm-3d-fftw-l177",
+  "tree": "3d"
+ },
+ {
+  "family": "norm",
+  "floor_native": 0.5,
+  "id": "norm-3d-mhdrhs-L147",
+  "note": "FFT normalisation 1/nx -> 1/(nx-1)",
+  "task": "laps-repair-norm-3d-mhdrhs-l147",
+  "tree": "3d"
+ },
+ {
+  "family": "rkorder",
+  "floor_native": 0.5,
+  "id": "rkorder-2d-rktmod-L39",
+  "note": "fnl_rk is saved before, not after, the RK state update",
+  "task": "laps-repair-rkorder-2d-rktmod-l39",
+  "tree": "2d"
+ },
+ {
+  "family": "rkorder",
+  "floor_native": 0.5,
+  "id": "rkorder-3d-rktmod-L39",
+  "note": "fnl_rk is saved before, not after, the RK state update",
+  "task": "laps-repair-rkorder-3d-rktmod-l39",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.15,
+  "id": "sign-2d-mhd-L339c39-",
+  "note": "flipped `+` to `-` in the `cms2` statement",
+  "task": "laps-repair-sign-2d-mhd-l339c39",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.2,
+  "id": "sign-2d-mhd-L341c49-",
+  "note": "flipped `-` to `+` in the `cnsx2` statement",
+  "task": "laps-repair-sign-2d-mhd-l341c49",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L291c75-",
+  "note": "flipped `+` to `-` in the `fnl` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l291c75",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L296c75-",
+  "note": "flipped `+` to `-` in the `fnl` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l296c75",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L299c75-",
+  "note": "flipped `+` to `-` in the `fnl` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l299c75",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L302c76-",
+  "note": "flipped `+` to `-` in the `fnl` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l302c76",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L307c73-",
+  "note": "flipped `-` to `+` in the `fnl` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l307c73",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L311c73-",
+  "note": "flipped `-` to `+` in the `fnl` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l311c73",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L315c76-",
+  "note": "flipped `+` to `-` in the `fnl` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l315c76",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.35,
+  "id": "sign-2d-mhdrhs-L386c44-",
+  "note": "flipped `-` to `+` in the `uu_prim` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l386c44",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L387c33-",
+  "note": "flipped `+` to `-` in the `uu_prim` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l387c33",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.35,
+  "id": "sign-2d-mhdrhs-L387c66-",
+  "note": "flipped `+` to `-` in the `uu_prim` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l387c66",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.35,
+  "id": "sign-2d-mhdrhs-L388c47-",
+  "note": "flipped `+` to `-` in the `uu_prim` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l388c47",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.65,
+  "id": "sign-2d-mhdrhs-L388c66-",
+  "note": "flipped `+` to `-` in the `uu_prim` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l388c66",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L389c33-",
+  "note": "flipped `+` to `-` in the `uu_prim` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l389c33",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L62c34-",
+  "note": "flipped `+` to `-` in the `ptot` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l62c34",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.65,
+  "id": "sign-2d-mhdrhs-L62c49-",
+  "note": "flipped `+` to `-` in the `ptot` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l62c49",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L62c57-",
+  "note": "flipped `+` to `-` in the `ptot` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l62c57",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.6,
+  "id": "sign-2d-mhdrhs-L63c38-",
+  "note": "flipped `+` to `-` in the `udotb` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l63c38",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L63c46-",
+  "note": "flipped `+` to `-` in the `udotb` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l63c46",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L69c63-",
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l69c63",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L69c73-",
+  "note": "flipped `+` to `-` in the `flux` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l69c73",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L70c63-",
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l70c63",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L74c63-",
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l74c63",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.65,
+  "id": "sign-2d-mhdrhs-L75c63-",
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l75c63",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L75c73-",
+  "note": "flipped `+` to `-` in the `flux` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l75c73",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L79c64-",
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l79c64",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L80c64-",
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l80c64",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L84c52-",
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l84c52",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L85c52-",
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l85c52",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.6,
+  "id": "sign-2d-mhdrhs-L86c52-",
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l86c52",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L89c60-",
+  "note": "flipped `+` to `-` in the `flux` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l89c60",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L89c73-",
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l89c73",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L90c60-",
+  "note": "flipped `+` to `-` in the `flux` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l90c60",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-mhdrhs-L90c73-",
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "task": "laps-repair-sign-2d-mhdrhs-l90c73",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-rktmod-L40c56-",
+  "note": "flipped `+` to `-` in the `uu_fourier` statement",
+  "task": "laps-repair-sign-2d-rktmod-l40c56",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-2d-rktmod-L41c20-",
+  "note": "flipped `+` to `-` in the `uu_fourier` statement",
+  "task": "laps-repair-sign-2d-rktmod-l41c20",
+  "tree": "2d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.1,
+  "id": "sign-3d-mhd-L375c39-",
+  "note": "flipped `+` to `-` in the `cms2` statement",
+  "task": "laps-repair-sign-3d-mhd-l375c39",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.2,
+  "id": "sign-3d-mhd-L377c49-",
+  "note": "flipped `-` to `+` in the `cnsx2` statement",
+  "task": "laps-repair-sign-3d-mhd-l377c49",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.2,
+  "id": "sign-3d-mhd-L378c49-",
+  "note": "flipped `-` to `+` in the `cnsy2` statement",
+  "task": "laps-repair-sign-3d-mhd-l378c49",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.2,
+  "id": "sign-3d-mhd-L379c49-",
+  "note": "flipped `-` to `+` in the `cnsz2` statement",
+  "task": "laps-repair-sign-3d-mhd-l379c49",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-3d-mhdrhs-L227c73-",
+  "note": "flipped `-` to `+` in the `fnl` statement",
+  "task": "laps-repair-sign-3d-mhdrhs-l227c73",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.1,
+  "id": "sign-3d-mhdrhs-L289c44-",
+  "note": "flipped `-` to `+` in the `uu_prim` statement",
+  "task": "laps-repair-sign-3d-mhdrhs-l289c44",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-3d-mhdrhs-L290c33-",
+  "note": "flipped `+` to `-` in the `uu_prim` statement",
+  "task": "laps-repair-sign-3d-mhdrhs-l290c33",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-3d-mhdrhs-L290c66-",
+  "note": "flipped `+` to `-` in the `uu_prim` statement",
+  "task": "laps-repair-sign-3d-mhdrhs-l290c66",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.1,
+  "id": "sign-3d-mhdrhs-L291c47-",
+  "note": "flipped `+` to `-` in the `uu_prim` statement",
+  "task": "laps-repair-sign-3d-mhdrhs-l291c47",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-3d-mhdrhs-L291c66-",
+  "note": "flipped `+` to `-` in the `uu_prim` statement",
+  "task": "laps-repair-sign-3d-mhdrhs-l291c66",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-3d-mhdrhs-L292c33-",
+  "note": "flipped `+` to `-` in the `uu_prim` statement",
+  "task": "laps-repair-sign-3d-mhdrhs-l292c33",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-3d-mhdrhs-L60c49-",
+  "note": "flipped `+` to `-` in the `ptot` statement",
+  "task": "laps-repair-sign-3d-mhdrhs-l60c49",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-3d-mhdrhs-L60c57-",
+  "note": "flipped `+` to `-` in the `ptot` statement",
+  "task": "laps-repair-sign-3d-mhdrhs-l60c57",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-3d-mhdrhs-L61c38-",
+  "note": "flipped `+` to `-` in the `udotb` statement",
+  "task": "laps-repair-sign-3d-mhdrhs-l61c38",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-3d-mhdrhs-L61c46-",
+  "note": "flipped `+` to `-` in the `udotb` statement",
+  "task": "laps-repair-sign-3d-mhdrhs-l61c46",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-3d-mhdrhs-L72c63-",
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "task": "laps-repair-sign-3d-mhdrhs-l72c63",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-3d-mhdrhs-L77c64-",
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "task": "laps-repair-sign-3d-mhdrhs-l77c64",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-3d-mhdrhs-L83c52-",
+  "note": "flipped `-` to `+` in the `flux` statement",
+  "task": "laps-repair-sign-3d-mhdrhs-l83c52",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.5,
+  "id": "sign-3d-rktmod-L40c56-",
+  "note": "flipped `+` to `-` in the `uu_fourier` statement",
+  "task": "laps-repair-sign-3d-rktmod-l40c56",
+  "tree": "3d"
+ },
+ {
+  "family": "sign",
+  "floor_native": 0.1,
+  "id": "sign-3d-rktmod-L41c20-",
+  "note": "flipped `+` to `-` in the `uu_fourier` statement",
+  "task": "laps-repair-sign-3d-rktmod-l41c20",
+  "tree": "3d"
+ },
+ {
+  "family": "swapvel",
+  "floor_native": 0.5,
+  "id": "swapvel-2d-mhdrhs-L84",
+  "note": "swapped the velocity factors of one E-field component",
+  "task": "laps-repair-swapvel-2d-mhdrhs-l84",
+  "tree": "2d"
+ },
+ {
+  "family": "swapvel",
+  "floor_native": 0.5,
+  "id": "swapvel-2d-mhdrhs-L85",
+  "note": "swapped the velocity factors of one E-field component",
+  "task": "laps-repair-swapvel-2d-mhdrhs-l85",
+  "tree": "2d"
+ },
+ {
+  "family": "swapvel",
+  "floor_native": 0.5,
+  "id": "swapvel-2d-mhdrhs-L86",
+  "note": "swapped the velocity factors of one E-field component",
+  "task": "laps-repair-swapvel-2d-mhdrhs-l86",
+  "tree": "2d"
+ },
+ {
+  "family": "swapvel",
+  "floor_native": 0.5,
+  "id": "swapvel-3d-mhdrhs-L83",
+  "note": "swapped the velocity factors of one E-field component",
+  "task": "laps-repair-swapvel-3d-mhdrhs-l83",
+  "tree": "3d"
+ },
+ {
+  "family": "swapvel",
+  "floor_native": 0.5,
+  "id": "swapvel-3d-mhdrhs-L84",
+  "note": "swapped the velocity factors of one E-field component",
+  "task": "laps-repair-swapvel-3d-mhdrhs-l84",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.1,
+  "id": "excise-2d-aebmod-aeb_initialize",
+  "note": "excise the executable body of AEB_initialize (src_compressible/2D/AEBmod.f90)",
+  "task": "laps-restore-2d-aebmod-aeb-initialize",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.0,
+  "id": "excise-2d-fftw-fftw_initialize",
+  "note": "excise the executable body of fftw_initialize (src_compressible/2D/fftw.f90)",
+  "task": "laps-restore-2d-fftw-fftw-initialize",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-2d-fftw-transform_uu_fourier_to_real",
+  "note": "excise the executable body of transform_uu_fourier_to_real (src_compressible/2D/fftw.f90)",
+  "task": "laps-restore-2d-fftw-transform-uu-fourier-to-real",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-2d-mhd-evolve",
+  "note": "excise the executable body of evolve (src_compressible/2D/mhd.f90)",
+  "task": "laps-restore-2d-mhd-evolve",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.1,
+  "id": "excise-2d-mhd-vardt",
+  "note": "excise the executable body of vardt (src_compressible/2D/mhd.f90)",
+  "task": "laps-restore-2d-mhd-vardt",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.0,
+  "id": "excise-2d-mhdinit-arrays_initialize",
+  "note": "excise the executable body of arrays_initialize (src_compressible/2D/mhdinit.f90)",
+  "task": "laps-restore-2d-mhdinit-arrays-initialize",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.1,
+  "id": "excise-2d-mhdinit-background_fields_initialize",
+  "note": "excise the executable body of background_fields_initialize (src_compressible/2D/mhdinit.f90)",
+  "task": "laps-restore-2d-mhdinit-background-fields-initialize",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.0,
+  "id": "excise-2d-mhdinit-grid_initialize",
+  "note": "excise the executable body of grid_initialize (src_compressible/2D/mhdinit.f90)",
+  "task": "laps-restore-2d-mhdinit-grid-initialize",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.15,
+  "id": "excise-2d-mhdinit-initial_calc_conserve_variable",
+  "note": "excise the executable body of initial_calc_conserve_variable (src_compressible/2D/mhdinit.f90)",
+  "task": "laps-restore-2d-mhdinit-initial-calc-conserve-variable",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.2,
+  "id": "excise-2d-mhdinit-perturbation_initialize",
+  "note": "excise the executable body of perturbation_initialize (src_compressible/2D/mhdinit.f90)",
+  "task": "laps-restore-2d-mhdinit-perturbation-initialize",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.1,
+  "id": "excise-2d-mhdoutput-output_initialize",
+  "note": "excise the executable body of output_initialize (src_compressible/2D/mhdoutput.f90)",
+  "task": "laps-restore-2d-mhdoutput-output-initialize",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.0,
+  "id": "excise-2d-mhdoutput-output_uu",
+  "note": "excise the executable body of output_uu (src_compressible/2D/mhdoutput.f90)",
+  "task": "laps-restore-2d-mhdoutput-output-uu",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-2d-mhdrhs-calc_flux",
+  "note": "excise the executable body of calc_flux (src_compressible/2D/mhdrhs.f90)",
+  "task": "laps-restore-2d-mhdrhs-calc-flux",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-2d-mhdrhs-calc_rhs",
+  "note": "excise the executable body of calc_rhs (src_compressible/2D/mhdrhs.f90)",
+  "task": "laps-restore-2d-mhdrhs-calc-rhs",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-2d-mhdrhs-transform_flux_real_to_fourier",
+  "note": "excise the executable body of transform_flux_real_to_fourier (src_compressible/2D/mhdrhs.f90)",
+  "task": "laps-restore-2d-mhdrhs-transform-flux-real-to-fourier",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-2d-mhdrhs-update_uu_prim_from_uu",
+  "note": "excise the executable body of update_uu_prim_from_uu (src_compressible/2D/mhdrhs.f90)",
+  "task": "laps-restore-2d-mhdrhs-update-uu-prim-from-uu",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.1,
+  "id": "excise-2d-mhdrms-rms_initialize",
+  "note": "excise the executable body of rms_initialize (src_compressible/2D/mhdrms.f90)",
+  "task": "laps-restore-2d-mhdrms-rms-initialize",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.0,
+  "id": "excise-2d-parallel-decompose_1d",
+  "note": "excise the executable body of decompose_1d (src_compressible/2D/parallel.f90)",
+  "task": "laps-restore-2d-parallel-decompose-1d",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.0,
+  "id": "excise-2d-parallel-parallel_start",
+  "note": "excise the executable body of parallel_start (src_compressible/2D/parallel.f90)",
+  "task": "laps-restore-2d-parallel-parallel-start",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-2d-rktmod-rkt",
+  "note": "excise the executable body of rkt (src_compressible/2D/rktmod.f90)",
+  "task": "laps-restore-2d-rktmod-rkt",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-2d-rktmod-rkt_init",
+  "note": "excise the executable body of rkt_init (src_compressible/2D/rktmod.f90)",
+  "task": "laps-restore-2d-rktmod-rkt-init",
+  "tree": "2d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.1,
+  "id": "excise-3d-aebmod-aeb_initialize",
+  "note": "excise the executable body of AEB_initialize (src_compressible/AEBmod.f90)",
+  "task": "laps-restore-3d-aebmod-aeb-initialize",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.0,
+  "id": "excise-3d-fftw-fftw_initialize",
+  "note": "excise the executable body of fftw_initialize (src_compressible/fftw.f90)",
+  "task": "laps-restore-3d-fftw-fftw-initialize",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.1,
+  "id": "excise-3d-fftw-from_zxy_to_xyz",
+  "note": "excise the executable body of from_zxy_to_xyz (src_compressible/fftw.f90)",
+  "task": "laps-restore-3d-fftw-from-zxy-to-xyz",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-3d-fftw-transform_uu_fourier_to_real",
+  "note": "excise the executable body of transform_uu_fourier_to_real (src_compressible/fftw.f90)",
+  "task": "laps-restore-3d-fftw-transform-uu-fourier-to-real",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-3d-mhd-evolve",
+  "note": "excise the executable body of evolve (src_compressible/mhd.f90)",
+  "task": "laps-restore-3d-mhd-evolve",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.1,
+  "id": "excise-3d-mhd-vardt",
+  "note": "excise the executable body of vardt (src_compressible/mhd.f90)",
+  "task": "laps-restore-3d-mhd-vardt",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.0,
+  "id": "excise-3d-mhdinit-arrays_initialize",
+  "note": "excise the executable body of arrays_initialize (src_compressible/mhdinit.f90)",
+  "task": "laps-restore-3d-mhdinit-arrays-initialize",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.1,
+  "id": "excise-3d-mhdinit-background_fields_initialize",
+  "note": "excise the executable body of background_fields_initialize (src_compressible/mhdinit.f90)",
+  "task": "laps-restore-3d-mhdinit-background-fields-initialize",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.0,
+  "id": "excise-3d-mhdinit-grid_initialize",
+  "note": "excise the executable body of grid_initialize (src_compressible/mhdinit.f90)",
+  "task": "laps-restore-3d-mhdinit-grid-initialize",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.1,
+  "id": "excise-3d-mhdinit-initial_calc_conserve_variable",
+  "note": "excise the executable body of initial_calc_conserve_variable (src_compressible/mhdinit.f90)",
+  "task": "laps-restore-3d-mhdinit-initial-calc-conserve-variable",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.1,
+  "id": "excise-3d-mhdinit-perturbation_initialize",
+  "note": "excise the executable body of perturbation_initialize (src_compressible/mhdinit.f90)",
+  "task": "laps-restore-3d-mhdinit-perturbation-initialize",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.1,
+  "id": "excise-3d-mhdoutput-output_initialize",
+  "note": "excise the executable body of output_initialize (src_compressible/mhdoutput.f90)",
+  "task": "laps-restore-3d-mhdoutput-output-initialize",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.0,
+  "id": "excise-3d-mhdoutput-output_uu",
+  "note": "excise the executable body of output_uu (src_compressible/mhdoutput.f90)",
+  "task": "laps-restore-3d-mhdoutput-output-uu",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-3d-mhdrhs-calc_flux",
+  "note": "excise the executable body of calc_flux (src_compressible/mhdrhs.f90)",
+  "task": "laps-restore-3d-mhdrhs-calc-flux",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-3d-mhdrhs-calc_rhs",
+  "note": "excise the executable body of calc_rhs (src_compressible/mhdrhs.f90)",
+  "task": "laps-restore-3d-mhdrhs-calc-rhs",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-3d-mhdrhs-transform_flux_real_to_fourier",
+  "note": "excise the executable body of transform_flux_real_to_fourier (src_compressible/mhdrhs.f90)",
+  "task": "laps-restore-3d-mhdrhs-transform-flux-real-to-fourier",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-3d-mhdrhs-update_uu_prim_from_uu",
+  "note": "excise the executable body of update_uu_prim_from_uu (src_compressible/mhdrhs.f90)",
+  "task": "laps-restore-3d-mhdrhs-update-uu-prim-from-uu",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.1,
+  "id": "excise-3d-mhdrms-rms_initialize",
+  "note": "excise the executable body of rms_initialize (src_compressible/mhdrms.f90)",
+  "task": "laps-restore-3d-mhdrms-rms-initialize",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.0,
+  "id": "excise-3d-parallel-decompose_1d",
+  "note": "excise the executable body of decompose_1d (src_compressible/parallel.f90)",
+  "task": "laps-restore-3d-parallel-decompose-1d",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.0,
+  "id": "excise-3d-parallel-parallel_start",
+  "note": "excise the executable body of parallel_start (src_compressible/parallel.f90)",
+  "task": "laps-restore-3d-parallel-parallel-start",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.1,
+  "id": "excise-3d-parallel-transpose_yx",
+  "note": "excise the executable body of transpose_yx (src_compressible/parallel.f90)",
+  "task": "laps-restore-3d-parallel-transpose-yx",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-3d-rktmod-rkt",
+  "note": "excise the executable body of rkt (src_compressible/rktmod.f90)",
+  "task": "laps-restore-3d-rktmod-rkt",
+  "tree": "3d"
+ },
+ {
+  "family": "excise",
+  "floor_native": 0.5,
+  "id": "excise-3d-rktmod-rkt_init",
+  "note": "excise the executable body of rkt_init (src_compressible/rktmod.f90)",
+  "task": "laps-restore-3d-rktmod-rkt-init",
+  "tree": "3d"
+ }
+]

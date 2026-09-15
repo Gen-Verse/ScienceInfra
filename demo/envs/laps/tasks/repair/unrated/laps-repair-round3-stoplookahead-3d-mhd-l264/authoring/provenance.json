@@ -1,0 +1,75 @@
+{
+ "canary": "e7def65b-a36a-5e14-91ee-bf7e92e47e43",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhd.f90",
+     "new": "if (time + 0.5 * dt >= tmax) then",
+     "old": "if (time >= tmax) then"
+    }
+   ]
+  },
+  "family": "timebase",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhd.f90",
+     "new": "if (time >= tmax) then",
+     "old": "if (time + 0.5 * dt >= tmax) then"
+    }
+   ]
+  },
+  "id": "round3-stoplookahead-3d-mhd-l264",
+  "meta": {
+   "difficulty_design": "hard",
+   "file": "src_compressible/mhd.f90",
+   "line": 264,
+   "rationale": "The terminal overshoot policy determines the final evolved state and the number of full-precision time rows; it is procedural exactness with a global fingerprint, not a literature constant."
+  },
+  "note": "stopped the 3D run using a half-step lookahead",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "timebase",
+  "floor": 0.1,
+  "floor_per_check": {
+   "aw-128": 0.1
+  },
+  "id": "round3-stoplookahead-3d-mhd-l264",
+  "meta": {
+   "difficulty_design": "hard",
+   "file": "src_compressible/mhd.f90",
+   "line": 264,
+   "rationale": "The terminal overshoot policy determines the final evolved state and the number of full-precision time rows; it is procedural exactness with a global fingerprint, not a literature constant."
+  },
+  "note": "stopped the 3D run using a half-step lookahead",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 47.579
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "error": "frame count differs: reference 9, candidate 8. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 61.2
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

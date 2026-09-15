@@ -1,0 +1,108 @@
+{
+ "canary": "215cc3e5-3ce9-5b26-a618-dba5dd74582d",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdinit.f90",
+     "new": "uu(ix,iy,iz,4) = uu(ix,iy,iz,4) + db0 * exp( -0.99 * ( (xgrid(ix)-0.5*Lx) &",
+     "old": "uu(ix,iy,iz,4) = uu(ix,iy,iz,4) + db0 * exp( -( (xgrid(ix)-0.5*Lx) &"
+    },
+    {
+     "file": "src_compressible/2D/mhdinit.f90",
+     "new": "uu(ix,iy,iz,7) = uu(Ix,iy,iz,7) - db0/uu(ix,iy,iz,1) * exp( -0.99 * ( (xgrid(ix)-0.5*Lx) &",
+     "old": "uu(ix,iy,iz,7) = uu(Ix,iy,iz,7) - db0/uu(ix,iy,iz,1) * exp( -( (xgrid(ix)-0.5*Lx) &"
+    }
+   ]
+  },
+  "family": "icnorm",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/mhdinit.f90",
+     "new": "uu(ix,iy,iz,4) = uu(ix,iy,iz,4) + db0 * exp( -( (xgrid(ix)-0.5*Lx) &",
+     "old": "uu(ix,iy,iz,4) = uu(ix,iy,iz,4) + db0 * exp( -0.99 * ( (xgrid(ix)-0.5*Lx) &"
+    },
+    {
+     "file": "src_compressible/2D/mhdinit.f90",
+     "new": "uu(ix,iy,iz,7) = uu(Ix,iy,iz,7) - db0/uu(ix,iy,iz,1) * exp( -( (xgrid(ix)-0.5*Lx) &",
+     "old": "uu(ix,iy,iz,7) = uu(Ix,iy,iz,7) - db0/uu(ix,iy,iz,1) * exp( -0.99 * ( (xgrid(ix)-0.5*Lx) &"
+    }
+   ]
+  },
+  "id": "round3-icwidth-2d-mhdinit-l460",
+  "meta": {
+   "difficulty_design": "hard",
+   "file": "src_compressible/2D/mhdinit.f90",
+   "line": 460,
+   "rationale": "The ifield=5, ipert=2 decks activate this Gaussian pair. Scaling both coupled fields' x exponent together preserves their Alfv\u00e9nic relation, so only the author's unpublished pulse-width normalization distinguishes the reference."
+  },
+  "note": "broadened the live 2D Gaussian pair slightly in x",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "icnorm",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-2d-256": 0.5,
+   "aw-2d-512": 0.5
+  },
+  "id": "round3-icwidth-2d-mhdinit-l460",
+  "meta": {
+   "difficulty_design": "hard",
+   "file": "src_compressible/2D/mhdinit.f90",
+   "line": 460,
+   "rationale": "The ifield=5, ipert=2 decks activate this Gaussian pair. Scaling both coupled fields' x exponent together preserves their Alfv\u00e9nic relation, so only the author's unpublished pulse-width normalization distinguishes the reference."
+  },
+  "note": "broadened the live 2D Gaussian pair slightly in x",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 6.24
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 25.413
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "dt_abs": 0.0,
+    "error": "3.698e-04 at frame 10 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.0003698242751945177,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   },
+   "aw-2d-512": {
+    "dt_abs": 0.0,
+    "error": "3.698e-04 at frame 10 in Uz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.0003697709432149421,
+    "worst_frame": 10,
+    "worst_variable": "Uz"
+   }
+  },
+  "wall_total": 49.1
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

@@ -1,0 +1,98 @@
+{
+ "canary": "c0229e01-d68f-5bc8-a3dc-2b34161f95d7",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/fftw.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            do ivar = 1, nvar \n            \n                w_yx(:,:,:) = uu_fourier(:,:,:,ivar)\n\n                !do inverse Fourier transform along y\n                ixmin = xi_offset(myid_i+1) + 1\n                ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n                izmin = 1 \n                izmax = 1\n\n                do iz = izmin, izmax \n                    do ix = ixmin, ixmax \n                        fy_aux_ft(:) = w_yx(ix,:,iz)\n                        call fftw_execute_dft(plan_ifft_y,fy_aux_ft,fy_aux)\n                        w_yx(ix,:,iz) = fy_aux(:)\n                    enddo\n                enddo\n\n                !transpose y<-->x\n                call transpose_yx\n\n                !inverse fourier transform to get the real-space deriv\n                iymin = yi_offset(myid_i+1) + 1\n                iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n                izmin = 1 \n                izmax = 1\n\n                do iz = izmin, izmax \n                    do iy = iymin,iymax\n                        fx_aux_ft(:) = w_xy(:,iy,iz)\n                        call fftw_execute_dft_c2r(plan_ifft_x, fx_aux_ft, fx_aux)\n                        uu(:,iy,iz,ivar) = fx_aux(:)\n                    enddo\n                enddo\n            enddo\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/fftw.f90",
+     "new": "            do ivar = 1, nvar \n            \n                w_yx(:,:,:) = uu_fourier(:,:,:,ivar)\n\n                !do inverse Fourier transform along y\n                ixmin = xi_offset(myid_i+1) + 1\n                ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n                izmin = 1 \n                izmax = 1\n\n                do iz = izmin, izmax \n                    do ix = ixmin, ixmax \n                        fy_aux_ft(:) = w_yx(ix,:,iz)\n                        call fftw_execute_dft(plan_ifft_y,fy_aux_ft,fy_aux)\n                        w_yx(ix,:,iz) = fy_aux(:)\n                    enddo\n                enddo\n\n                !transpose y<-->x\n                call transpose_yx\n\n                !inverse fourier transform to get the real-space deriv\n                iymin = yi_offset(myid_i+1) + 1\n                iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n                izmin = 1 \n                izmax = 1\n\n                do iz = izmin, izmax \n                    do iy = iymin,iymax\n                        fx_aux_ft(:) = w_xy(:,iy,iz)\n                        call fftw_execute_dft_c2r(plan_ifft_x, fx_aux_ft, fx_aux)\n                        uu(:,iy,iz,ivar) = fx_aux(:)\n                    enddo\n                enddo\n            enddo\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-2d-fftw-transform_uu_fourier_to_real",
+  "meta": {
+   "body_lines": 35,
+   "call_sites": 1,
+   "file": "src_compressible/2D/fftw.f90",
+   "subroutine": "transform_uu_fourier_to_real"
+  },
+  "note": "excise the executable body of transform_uu_fourier_to_real (src_compressible/2D/fftw.f90)",
+  "source": "excise",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "excise",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-2d-256": 0.5,
+   "aw-2d-512": 0.5
+  },
+  "id": "excise-2d-fftw-transform_uu_fourier_to_real",
+  "meta": {
+   "body_lines": 35,
+   "call_sites": 1,
+   "file": "src_compressible/2D/fftw.f90",
+   "subroutine": "transform_uu_fourier_to_real"
+  },
+  "note": "excise the executable body of transform_uu_fourier_to_real (src_compressible/2D/fftw.f90)",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 1.365
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 4.202
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "dt_abs": 0.0,
+    "error": "1.220e-01 at frame 10 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.12203645923154957,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   },
+   "aw-2d-512": {
+    "dt_abs": 0.0,
+    "error": "1.198e-01 at frame 10 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.11981497863181391,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 11.1
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

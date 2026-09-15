@@ -1,0 +1,94 @@
+{
+ "canary": "6539b76b-654f-5f81-ba8e-281524e3912f",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/rktmod.f90",
+     "new": "\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n\n            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n",
+     "old": "\n            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n"
+    }
+   ]
+  },
+  "family": "rkorder",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/rktmod.f90",
+     "new": "\n            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n",
+     "old": "\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n\n            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n"
+    }
+   ]
+  },
+  "id": "rkorder-2d-rktmod-L39",
+  "meta": {
+   "file": "src_compressible/2D/rktmod.f90",
+   "line": 39
+  },
+  "note": "fnl_rk is saved before, not after, the RK state update",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "rkorder",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-2d-256": 0.5,
+   "aw-2d-512": 0.5
+  },
+  "id": "rkorder-2d-rktmod-L39",
+  "meta": {
+   "file": "src_compressible/2D/rktmod.f90",
+   "line": 39
+  },
+  "note": "fnl_rk is saved before, not after, the RK state update",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 1.153
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 5.331
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "dt_abs": 0.0,
+    "error": "1.549e-03 at frame 10 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.0015491073760280083,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   },
+   "aw-2d-512": {
+    "dt_abs": 0.0,
+    "error": "7.637e-04 at frame 10 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.000763728524498436,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 12.9
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

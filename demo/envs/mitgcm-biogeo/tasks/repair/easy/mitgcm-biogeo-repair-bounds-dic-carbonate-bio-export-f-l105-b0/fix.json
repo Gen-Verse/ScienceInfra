@@ -1,0 +1,10 @@
+{
+ "_canary": "8a759989-55e1-5d82-8440-633216487d4d",
+ "edits": [
+  {
+   "file": "pkg/dic/bio_export.F",
+   "new": "C$TAF STORE lit = bio_export\n       DO j=jMin,jMax",
+   "old": "C$TAF STORE lit = bio_export\n       DO j=jMin,jMax-1"
+  }
+ ]
+}

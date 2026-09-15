@@ -1,0 +1,75 @@
+{
+ "canary": "e5f3400a-31b4-5f29-aac4-2592bbfad699",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdinit.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            ixmin = 1\n            ixmax = nx \n\n            iymin = yi_offset(myid_i+1) + 1 \n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n\n            izmin = zj_offset(myid_j+1) + 1 \n            izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n\n            allocate(uu(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar), &\n                uu_prim(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:4), &\n                flux(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:18)) \n\n            if (if_AEB) then \n                allocate(expand_term(ixmin:ixmax, iymin:iymax, izmin:izmax,1))\n            endif\n\n            if (if_Hall) then \n                allocate(current_density(ixmin:ixmax, iymin:iymax, izmin:izmax,3))\n            endif\n            !--------------------------------------------------\n\n\n            !--------------------------------------------------\n            !uu in fourier space, note that the order is zxy\n            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n\n            iymin = yj_offset(myid_j+1) + 1\n            iymax = yj_offset(myid_j+1) + yj_size(myid_j+1)\n\n            izmin = 1 \n            izmax = nz\n\n            allocate(uu_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar),&\n                flux_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:18), &\n                fnl(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar), &\n                fnl_rk(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar))\n\n            if (if_AEB) then \n                !allocate(uu_prim_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 4:4))\n                allocate(expand_term_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 1))\n            endif\n\n            if (if_Hall) then \n                allocate(current_density_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 3))\n            endif\n            !--------------------------------------------------\n\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdinit.f90",
+     "new": "            ixmin = 1\n            ixmax = nx \n\n            iymin = yi_offset(myid_i+1) + 1 \n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n\n            izmin = zj_offset(myid_j+1) + 1 \n            izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n\n            allocate(uu(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar), &\n                uu_prim(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:4), &\n                flux(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:18)) \n\n            if (if_AEB) then \n                allocate(expand_term(ixmin:ixmax, iymin:iymax, izmin:izmax,1))\n            endif\n\n            if (if_Hall) then \n                allocate(current_density(ixmin:ixmax, iymin:iymax, izmin:izmax,3))\n            endif\n            !--------------------------------------------------\n\n\n            !--------------------------------------------------\n            !uu in fourier space, note that the order is zxy\n            ixmin = xi_offset(myid_i+1) + 1\n            ixmax = xi_offset(myid_i+1) + xi_size(myid_i+1)\n\n            iymin = yj_offset(myid_j+1) + 1\n            iymax = yj_offset(myid_j+1) + yj_size(myid_j+1)\n\n            izmin = 1 \n            izmax = nz\n\n            allocate(uu_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar),&\n                flux_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:18), &\n                fnl(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar), &\n                fnl_rk(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:nvar))\n\n            if (if_AEB) then \n                !allocate(uu_prim_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 4:4))\n                allocate(expand_term_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 1))\n            endif\n\n            if (if_Hall) then \n                allocate(current_density_fourier(ixmin:ixmax, iymin:iymax, izmin:izmax, 3))\n            endif\n            !--------------------------------------------------\n\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-3d-mhdinit-arrays_initialize",
+  "meta": {
+   "body_lines": 49,
+   "call_sites": 1,
+   "file": "src_compressible/mhdinit.f90",
+   "subroutine": "arrays_initialize"
+  },
+  "note": "excise the executable body of arrays_initialize (src_compressible/mhdinit.f90)",
+  "source": "excise",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": true,
+  "family": "excise",
+  "floor": 0.0,
+  "floor_per_check": {
+   "aw-128": 0.0
+  },
+  "id": "excise-3d-mhdinit-arrays_initialize",
+  "meta": {
+   "body_lines": 49,
+   "call_sites": 1,
+   "file": "src_compressible/mhdinit.f90",
+   "subroutine": "arrays_initialize"
+  },
+  "note": "excise the executable body of arrays_initialize (src_compressible/mhdinit.f90)",
+  "runs": {
+   "aw-128": {
+    "exit": 139,
+    "wall": 2.595
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "error": "no out###.dat in the candidate output",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "no_output",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 8.1
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

@@ -1,0 +1,202 @@
+{
+ "canary": "4ad9f68d-d933-54f9-8f3e-9cbae7e6b807",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "model/src/forward_step.F",
+     "new": "      myIter = nIter0 - iLoop",
+     "old": "      myIter = nIter0 + iLoop"
+    }
+   ]
+  },
+  "family": "sign",
+  "fix": {
+   "edits": [
+    {
+     "file": "model/src/forward_step.F",
+     "new": "      myIter = nIter0 + iLoop",
+     "old": "      myIter = nIter0 - iLoop"
+    }
+   ]
+  },
+  "id": "sign-ptracer-transport-forward-step-f-L807-s0",
+  "meta": {
+   "file": "model/src/forward_step.F",
+   "line": 807,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "flip one arithmetic sign in myIter",
+  "source": "inject",
+  "tree": "ptracer-transport"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "sign",
+  "floor": 0.2,
+  "floor_per_check": {
+   "cfc-offline": 0.2,
+   "cfc-online": 0.2,
+   "global-bling": 0.2,
+   "global-dic": 0.2,
+   "ptracer-advection-gyre": 0.2,
+   "so-box-calcite-keir": 0.2,
+   "so-box-calcite-naviaux": 0.2,
+   "so-box-dic": 0.2,
+   "so-box-obcs-saphe": 0.2
+  },
+  "id": "sign-ptracer-transport-forward-step-f-L807-s0",
+  "meta": {
+   "file": "model/src/forward_step.F",
+   "line": 807,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "flip one arithmetic sign in myIter",
+  "runs": {
+   "cfc-offline": {
+    "exit": 0,
+    "wall": 0.6269
+   },
+   "cfc-online": {
+    "exit": 0,
+    "wall": 2.8875
+   },
+   "global-bling": {
+    "exit": 0,
+    "wall": 5.5254
+   },
+   "global-dic": {
+    "exit": 0,
+    "wall": 1.7844
+   },
+   "ptracer-advection-gyre": {
+    "exit": 0,
+    "wall": 0.35
+   },
+   "so-box-calcite-keir": {
+    "exit": 0,
+    "wall": 1.439
+   },
+   "so-box-calcite-naviaux": {
+    "exit": 0,
+    "wall": 1.5367
+   },
+   "so-box-dic": {
+    "exit": 0,
+    "wall": 1.1713
+   },
+   "so-box-obcs-saphe": {
+    "exit": 0,
+    "wall": 1.1842
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "ptracer-transport",
+  "verdicts": {
+   "cfc-offline": {
+    "error": "candidate final iteration 0004269600 differs from reference 0004269624",
+    "files_ok": 0,
+    "files_scored": 0,
+    "final_iteration_match": false,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": null
+   },
+   "cfc-online": {
+    "error": "candidate final iteration 0004269600 differs from reference 0004269620",
+    "files_ok": 0,
+    "files_scored": 0,
+    "final_iteration_match": false,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": null
+   },
+   "global-bling": {
+    "error": "candidate final iteration 0000000000 differs from reference 0000000030",
+    "files_ok": 0,
+    "files_scored": 0,
+    "final_iteration_match": false,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": null
+   },
+   "global-dic": {
+    "error": "candidate final iteration 0005184000 differs from reference 0005184016",
+    "files_ok": 0,
+    "files_scored": 0,
+    "final_iteration_match": false,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": null
+   },
+   "ptracer-advection-gyre": {
+    "error": "candidate final iteration 0000259200 differs from reference 0000259320",
+    "files_ok": 0,
+    "files_scored": 0,
+    "final_iteration_match": false,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": null
+   },
+   "so-box-calcite-keir": {
+    "error": "candidate final iteration 0000000000 differs from reference 0000000060",
+    "files_ok": 0,
+    "files_scored": 0,
+    "final_iteration_match": false,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": null
+   },
+   "so-box-calcite-naviaux": {
+    "error": "candidate final iteration 0000000000 differs from reference 0000000060",
+    "files_ok": 0,
+    "files_scored": 0,
+    "final_iteration_match": false,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": null
+   },
+   "so-box-dic": {
+    "error": "candidate final iteration 0000000000 differs from reference 0000000060",
+    "files_ok": 0,
+    "files_scored": 0,
+    "final_iteration_match": false,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": null
+   },
+   "so-box-obcs-saphe": {
+    "error": "candidate final iteration 0000000000 differs from reference 0000000060",
+    "files_ok": 0,
+    "files_scored": 0,
+    "final_iteration_match": false,
+    "outcome": "time_base",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": null
+   }
+  },
+  "wall_total": 24.2
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

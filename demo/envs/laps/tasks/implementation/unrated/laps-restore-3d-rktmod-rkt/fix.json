@@ -1,0 +1,10 @@
+{
+ "_canary": "e18b0c9d-3295-5f9b-bc0b-6e0763d0b348",
+ "edits": [
+  {
+   "file": "src_compressible/rktmod.f90",
+   "new": "            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n\n\n            !fully implicit method for viscosity-----------------------\n            !Warning: if expansion exists, the k_square needs to be modified\n            if (if_visc .and. (.not. if_visc_exp)) then\n                do ivar = 2,4\n                    uu_fourier(:,:,:,ivar) = uu_fourier(:,:,:,ivar) / (time_step(irk) &\n                        * k_square(:,:,:) * viscosity + 1.0)\n                enddo\n            endif\n\n            !fully implicit method for resistivity-----------------------\n            !Warning: if expansion exists, the k_square needs to be modified\n            if (if_resis .and. (.not. if_resis_exp)) then\n                do ivar = 5,7\n                    uu_fourier(:,:,:,ivar) = uu_fourier(:,:,:,ivar) / (time_step(irk) &\n                        * k_square(:,:,:) * resistivity + 1.0)\n                enddo\n            endif\n",
+   "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+  }
+ ]
+}

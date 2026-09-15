@@ -1,0 +1,75 @@
+{
+ "canary": "2aa3d137-72bf-59a6-9598-3c71d7ff0ba3",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdoutput.f90",
+     "new": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n",
+     "old": "            out_size_full = [nx,ny,nz,nvar]\n            out_size_sub = [nx,yi_size(myid_i+1),zj_size(myid_j+1),nvar]\n            out_start_ind = [0,yi_offset(myid_i+1),zj_offset(myid_j+1),0]\n\n            call mpi_type_create_subarray(4,out_size_full,out_size_sub,out_start_ind,&\n                mpi_order_fortran,mpi_realtype,out_subarr_type,ierr)\n            call mpi_type_commit(out_subarr_type, ierr)\n\n\n            ! !create the time file\n            ! if (ipe==0) then \n            !     open(FILE='time.dat',UNIT=30,STATUS='REPLACE',ACTION='WRITE')\n            !     close(30)\n            ! endif\n\n            if (output_primitive) then \n                ixmin = 1\n                ixmax = nx \n\n                iymin = yi_offset(myid_i+1) + 1 \n                iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n\n                izmin = zj_offset(myid_j+1) + 1 \n                izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n\n                allocate(output_temp_storage(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:4))\n            endif\n"
+    }
+   ]
+  },
+  "family": "excise",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdoutput.f90",
+     "new": "            out_size_full = [nx,ny,nz,nvar]\n            out_size_sub = [nx,yi_size(myid_i+1),zj_size(myid_j+1),nvar]\n            out_start_ind = [0,yi_offset(myid_i+1),zj_offset(myid_j+1),0]\n\n            call mpi_type_create_subarray(4,out_size_full,out_size_sub,out_start_ind,&\n                mpi_order_fortran,mpi_realtype,out_subarr_type,ierr)\n            call mpi_type_commit(out_subarr_type, ierr)\n\n\n            ! !create the time file\n            ! if (ipe==0) then \n            !     open(FILE='time.dat',UNIT=30,STATUS='REPLACE',ACTION='WRITE')\n            !     close(30)\n            ! endif\n\n            if (output_primitive) then \n                ixmin = 1\n                ixmax = nx \n\n                iymin = yi_offset(myid_i+1) + 1 \n                iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)\n\n                izmin = zj_offset(myid_j+1) + 1 \n                izmax = zj_offset(myid_j+1) + zj_size(myid_j+1)\n\n                allocate(output_temp_storage(ixmin:ixmax, iymin:iymax, izmin:izmax, 1:4))\n            endif\n",
+     "old": "            ! ============================================================\n            ! The body of this subroutine has been removed.\n            ! Restore it so the solver reproduces the correct physics.\n            ! ============================================================\n            return\n"
+    }
+   ]
+  },
+  "id": "excise-3d-mhdoutput-output_initialize",
+  "meta": {
+   "body_lines": 27,
+   "call_sites": 1,
+   "file": "src_compressible/mhdoutput.f90",
+   "subroutine": "output_initialize"
+  },
+  "note": "excise the executable body of output_initialize (src_compressible/mhdoutput.f90)",
+  "source": "excise",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": true,
+  "family": "excise",
+  "floor": 0.1,
+  "floor_per_check": {
+   "aw-128": 0.1
+  },
+  "id": "excise-3d-mhdoutput-output_initialize",
+  "meta": {
+   "body_lines": 27,
+   "call_sites": 1,
+   "file": "src_compressible/mhdoutput.f90",
+   "subroutine": "output_initialize"
+  },
+  "note": "excise the executable body of output_initialize (src_compressible/mhdoutput.f90)",
+  "runs": {
+   "aw-128": {
+    "exit": 139,
+    "wall": 3.577
+   }
+  },
+  "source": "excise",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "error": "frame count differs: reference 9, candidate 1. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 8.5
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

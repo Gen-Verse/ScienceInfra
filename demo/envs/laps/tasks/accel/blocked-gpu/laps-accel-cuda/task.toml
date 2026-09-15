@@ -1,0 +1,77 @@
+# sciaccel-rl / laps-accel-cuda — Harbor manifest.
+#
+# THE GPU-PORT TASK: the harbor packaging of what ScienceAccelBench tasks/laps
+# actually asks — port LAPS from MPI+FFTW to the GPU, holding the trajectories
+# to 1e-10. This is the rtx4070-style cell of the source grid, with the
+# container's granted GPU as the target. laps-accel-cpu (sibling task) is the same
+# correctness machinery with no GPU: use it for pipeline smoke and CPU-only
+# fleets; use THIS task to train GPU rewriting.
+#
+# Reward is two-track (see tests/grade.py):
+#   reward      correctness ladder alone — oracle must score 1.0, verifiable
+#               on a GPU-less machine
+#   reward_gpu  reward x gpu_active — the TRAINING default on a GPU fleet;
+#               gpu_active is a telemetry tripwire, so the CPU-incumbent
+#               shortcut (build the original, run it on CPU, deliver) scores
+#               0.0 here by construction
+#
+# VERIFIED LOCALLY (no GPU): oracle -> reward 1.0 / reward_gpu 0.0; nop -> 0.
+# PENDING A GPU BOX: real port rollouts, telemetry thresholds under actual
+# cuFFT load, and the deck-scale budget-forcing lever (bringing back an
+# aw-256-class deck the CPU cannot finish in budget — the strongest
+# structural GPU signal; excluded so far because its reference is ~12 GB).
+
+schema_version = "1.4"
+
+# No artifacts list: the agent's publish directory /logs/artifacts/ transfers
+# to the separate verifier implicitly (frames, times.dat, telemetry.csv).
+
+[task]
+name = "sciaccel/laps-accel-cuda"
+description = "Port LAPS, a pseudo-spectral 3D Hall-MHD solar-wind code (Fortran 90 + MPI + FFTW3), to the container's GPU — holding three plasma trajectories (2D and 3D) to 1e-10 absolute, pointwise, against a reference produced from the pinned CPU build. GPU usage is evidenced by telemetry and gates the training reward."
+
+[metadata.provenance]
+derived_from = "ScienceAccelBench tasks/laps (v2 grid package), rtx4070-style cell"
+upstream_repo = "https://github.com/chenshihelio/LAPS"
+upstream_commit = "a625806931a82ba3342f35906955e6806081d219"
+upstream_license = "GPL-2.0"
+excluded_checks = "aw-256 (reference ~12 GB; the designated budget-forcing lever once a GPU box with disk hosts the verifier image)"
+
+[environment]
+# 4 CPUs for the incumbent baseline and the MPI side of a hybrid port; the
+# GPU is the target device. cpus is a declaration on the local docker
+# provider (not enforced) — a known harbor baseline gotcha.
+cpus = 4
+memory_mb = 16384
+gpus = 1
+# CUDA devel base is ~8 GB unpacked; the budget is for a cold pull.
+build_timeout_sec = 7200.0
+network_mode = "allowlist"
+allowed_hosts = ["*.chatgpt.com", "*.googleapis.com", "*.nodejs.org", "*.npmjs.com", "*.npmjs.org", "*.oaistatic.com", "aiplatform.googleapis.com", "api.anthropic.com", "api.openai.com", "auth.openai.com", "chatgpt.com", "claude.ai", "downloads.claude.ai", "files.pythonhosted.org", "github.com", "nodejs.org", "oauth2.googleapis.com", "objects.githubusercontent.com", "pypi.org", "raw.githubusercontent.com", "registry.npmjs.org", "sentry.io", "statsig.anthropic.com"]
+
+[agent]
+# Generous by default: a real port is hours of work. For RL rollouts, tune
+# DOWN per fleet — and note the timeout is the one clock the agent cannot
+# forge, which is what deck-scale budget forcing will lean on.
+timeout_sec = 14400.0
+network_mode = "allowlist"
+allowed_hosts = ["*.chatgpt.com", "*.googleapis.com", "*.oaistatic.com", "aiplatform.googleapis.com", "api.anthropic.com", "api.openai.com", "auth.openai.com", "chatgpt.com", "oauth2.googleapis.com", "sentry.io", "statsig.anthropic.com"]
+
+[verifier]
+# File comparison plus telemetry plausibility — no simulation at verify time.
+timeout_sec = 900.0
+environment_mode = "separate"
+
+[verifier.environment]
+# Identical build to laps-accel-cpu's verifier (same canonical debian recipe, same
+# in-situ reference production at image build). Layers are shared with the
+# laps-accel-cpu verifier image via the docker cache.
+cpus = 4
+memory_mb = 8192
+build_timeout_sec = 10800.0
+
+[metadata.taxonomy]
+category = "acceleration"
+difficulty = "unrated"
+difficulty_basis = "none"
+difficulty_design = "hard"

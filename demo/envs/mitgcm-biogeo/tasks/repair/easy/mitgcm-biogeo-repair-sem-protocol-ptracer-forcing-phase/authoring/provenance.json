@@ -1,0 +1,208 @@
+{
+ "canary": "d22e157e-aa2b-5746-b838-07fa13317eb0",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/ptracers/ptracers_integrate.F",
+     "new": "C-    External forcing term(s) inside Adams-Bashforth:\n          IF ( tracForcingOutAB.EQ.1 ) THEN\n            DO j=1-OLy,sNy+OLy\n             DO i=1-OLx,sNx+OLx\n",
+     "old": "C-    External forcing term(s) inside Adams-Bashforth:\n          IF ( tracForcingOutAB.NE.1 ) THEN\n            DO j=1-OLy,sNy+OLy\n             DO i=1-OLx,sNx+OLx\n"
+    }
+   ]
+  },
+  "family": "ptracer-coupling-protocol",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/ptracers/ptracers_integrate.F",
+     "new": "C-    External forcing term(s) inside Adams-Bashforth:\n          IF ( tracForcingOutAB.NE.1 ) THEN\n            DO j=1-OLy,sNy+OLy\n             DO i=1-OLx,sNx+OLx\n",
+     "old": "C-    External forcing term(s) inside Adams-Bashforth:\n          IF ( tracForcingOutAB.EQ.1 ) THEN\n            DO j=1-OLy,sNy+OLy\n             DO i=1-OLx,sNx+OLx\n"
+    }
+   ]
+  },
+  "id": "sem-protocol-ptracer-forcing-phase",
+  "meta": {
+   "file": "pkg/ptracers/ptracers_integrate.F",
+   "line": 337,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The end-state symptom is decoupled from a multi-stage state protocol, and local types do not encode the required ordering or phase.",
+   "semantic": true,
+   "target_checks": [],
+   "vein": "protocol"
+  },
+  "note": "apply the internal forcing in the wrong Adams-Bashforth phase",
+  "source": "semantic",
+  "tree": "ptracer-transport"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "ptracer-coupling-protocol",
+  "floor": 0.611111,
+  "floor_per_check": {
+   "cfc-offline": 0.5,
+   "cfc-online": 0.5,
+   "global-bling": 1.0,
+   "global-dic": 0.5,
+   "ptracer-advection-gyre": 1.0,
+   "so-box-calcite-keir": 0.5,
+   "so-box-calcite-naviaux": 0.5,
+   "so-box-dic": 0.5,
+   "so-box-obcs-saphe": 0.5
+  },
+  "id": "sem-protocol-ptracer-forcing-phase",
+  "meta": {
+   "file": "pkg/ptracers/ptracers_integrate.F",
+   "line": 337,
+   "predicted_tier": "hard",
+   "prediction_rationale": "The end-state symptom is decoupled from a multi-stage state protocol, and local types do not encode the required ordering or phase.",
+   "semantic": true,
+   "target_checks": [],
+   "vein": "protocol"
+  },
+  "note": "apply the internal forcing in the wrong Adams-Bashforth phase",
+  "runs": {
+   "cfc-offline": {
+    "exit": 0,
+    "wall": 0.6492
+   },
+   "cfc-online": {
+    "exit": 0,
+    "wall": 2.8417
+   },
+   "global-bling": {
+    "exit": 0,
+    "wall": 5.4075
+   },
+   "global-dic": {
+    "exit": 0,
+    "wall": 1.7384
+   },
+   "ptracer-advection-gyre": {
+    "exit": 0,
+    "wall": 0.3361
+   },
+   "so-box-calcite-keir": {
+    "exit": 0,
+    "wall": 1.4787
+   },
+   "so-box-calcite-naviaux": {
+    "exit": 0,
+    "wall": 1.4338
+   },
+   "so-box-dic": {
+    "exit": 0,
+    "wall": 1.2095
+   },
+   "so-box-obcs-saphe": {
+    "exit": 0,
+    "wall": 1.109
+   }
+  },
+  "source": "semantic",
+  "status": "survivor",
+  "tree": "ptracer-transport",
+  "verdicts": {
+   "cfc-offline": {
+    "error": "PTRACER01.0004269624.data: 20533 of 122880 values exceed atol=1e-20 rtol=1e-08 (max |err| 6.799e-11); PTRACER02.0004269624.data: 18572 of 122880 values exceed atol=1e-20 rtol=1e-08 (max |err| 2.994e-11)",
+    "files_ok": 0,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 6.798801958884699e-11,
+    "worst_file": "PTRACER01.0004269624.data"
+   },
+   "cfc-online": {
+    "error": "PTRACER01.0004269620.data: 19741 of 122880 values exceed atol=1e-20 rtol=1e-08 (max |err| 6.428e-11); PTRACER02.0004269620.data: 17604 of 122880 values exceed atol=1e-20 rtol=1e-08 (max |err| 2.402e-11)",
+    "files_ok": 0,
+    "files_scored": 2,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 6.428322757875242e-11,
+    "worst_file": "PTRACER01.0004269620.data"
+   },
+   "global-bling": {
+    "error": "all graded values within bound",
+    "files_ok": 18,
+    "files_scored": 18,
+    "final_iteration_match": true,
+    "outcome": "passed",
+    "passed": true,
+    "value": 0.0,
+    "worst_file": "Eta.0000000030.data"
+   },
+   "global-dic": {
+    "error": "PTRACER01.0005184016.data: 11799 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 4.040e-03); PTRACER02.0005184016.data: 11534 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 4.604e-03); surfDiag.0005184016.data: 9909 of 81920 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.570e-04)",
+    "files_ok": 11,
+    "files_scored": 14,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.004604245269870688,
+    "worst_file": "PTRACER02.0005184016.data"
+   },
+   "ptracer-advection-gyre": {
+    "error": "all graded values within bound",
+    "files_ok": 9,
+    "files_scored": 9,
+    "final_iteration_match": true,
+    "outcome": "passed",
+    "passed": true,
+    "value": 0.0,
+    "worst_file": "Eta.0000259320.data"
+   },
+   "so-box-calcite-keir": {
+    "error": "PTRACER01.0000000060.data: 2264 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.707e-03); PTRACER02.0000000060.data: 2246 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 4.240e-03); surfDiag.0000000060.data: 1337 of 8400 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.846e-04)",
+    "files_ok": 12,
+    "files_scored": 15,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.004240246300870165,
+    "worst_file": "PTRACER02.0000000060.data"
+   },
+   "so-box-calcite-naviaux": {
+    "error": "PTRACER01.0000000060.data: 2269 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.707e-03); PTRACER02.0000000060.data: 2246 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 4.240e-03); surfDiag.0000000060.data: 1337 of 8400 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.770e-04)",
+    "files_ok": 12,
+    "files_scored": 15,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.004240246300870165,
+    "worst_file": "PTRACER02.0000000060.data"
+   },
+   "so-box-dic": {
+    "error": "PTRACER01.0000000060.data: 2265 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.707e-03); PTRACER02.0000000060.data: 2246 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 4.240e-03); surfDiag.0000000060.data: 1337 of 8400 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.842e-04)",
+    "files_ok": 12,
+    "files_scored": 15,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.004240246105333689,
+    "worst_file": "PTRACER02.0000000060.data"
+   },
+   "so-box-obcs-saphe": {
+    "error": "PTRACER01.0000000060.data: 2270 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.707e-03); PTRACER02.0000000060.data: 2246 of 12600 values exceed atol=1e-10 rtol=1e-08 (max |err| 4.240e-03); surfDiag.0000000060.data: 1337 of 8400 values exceed atol=1e-10 rtol=1e-08 (max |err| 3.766e-04)",
+    "files_ok": 12,
+    "files_scored": 15,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.004240246105333689,
+    "worst_file": "PTRACER02.0000000060.data"
+   }
+  },
+  "wall_total": 24.5
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

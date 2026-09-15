@@ -1,0 +1,10 @@
+{
+ "_canary": "f8ba48d5-90cd-52dc-a342-a8c9ecd09e6a",
+ "edits": [
+  {
+   "file": "pkg/bling/bling_readparms.F",
+   "new": "      k_Fe                 = 1.6 _d -10 / permil\n",
+   "old": "      k_Fe                 = 2.1 _d -10 / permil\n"
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+{
+ "_canary": "538b1e74-c8e6-56ca-ad61-aa255c7841a5",
+ "edits": [
+  {
+   "file": "src_compressible/mhd.f90",
+   "new": "                        cnsz2 = sqrt(max(cms2**2 - 4 * csound2 * calfvenz**2 , 0.))",
+   "old": "                        cnsz2 = sqrt(max(cms2**2 + 4 * csound2 * calfvenz**2 , 0.))"
+  },
+  {
+   "file": "src_compressible/mhdrhs.f90",
+   "new": "                        flux(ix,iy,iz,14) = ux * Bz - uz * Bx",
+   "old": "                        flux(ix,iy,iz,14) = uz * Bz - ux * Bx"
+  }
+ ]
+}

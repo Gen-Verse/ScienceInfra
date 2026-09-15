@@ -1,0 +1,102 @@
+{
+ "canary": "4081e123-7fd4-5879-afcd-c1ca20a25096",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                        flux(ix,iy,iz,7) = uu(ix,iy,iz,2) * uy",
+     "old": "                        flux(ix,iy,iz,7) = uu(ix,iy,iz,2) * uy - Bx * By"
+    },
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n\n            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n",
+     "old": "\n            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n"
+    }
+   ]
+  },
+  "family": "multi",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                        flux(ix,iy,iz,7) = uu(ix,iy,iz,2) * uy - Bx * By",
+     "old": "                        flux(ix,iy,iz,7) = uu(ix,iy,iz,2) * uy"
+    },
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "\n            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n",
+     "old": "\n            fnl_rk(:,:,:,:) = fnl(:,:,:,:)\n\n            uu_fourier(:,:,:,:) = cc1(irk)*fnl(:,:,:,:) + dd1(irk) * fnl_rk(:,:,:,:) &\n                    + uu_fourier(:,:,:,:)\n"
+    }
+   ]
+  },
+  "id": "multi2-3d-dropterm-mhdrhs-L72c62-+rkorder-rktmod-L39",
+  "meta": {
+   "components": [
+    "dropterm-3d-mhdrhs-L72c62-",
+    "rkorder-3d-rktmod-L39"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/mhdrhs.f90",
+    "src_compressible/rktmod.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "dropped a magnetic tension term AND fnl_rk is saved before, not after, the RK state update",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "multi",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "multi2-3d-dropterm-mhdrhs-L72c62-+rkorder-rktmod-L39",
+  "meta": {
+   "components": [
+    "dropterm-3d-mhdrhs-L72c62-",
+    "rkorder-3d-rktmod-L39"
+   ],
+   "difficulty_design": "hard",
+   "files": [
+    "src_compressible/mhdrhs.f90",
+    "src_compressible/rktmod.f90"
+   ],
+   "symptom_style": "lean"
+  },
+  "note": "dropped a magnetic tension term AND fnl_rk is saved before, not after, the RK state update",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 14.168
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "1.132e-02 at frame 8 in Uy, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.011316060301381606,
+    "worst_frame": 8,
+    "worst_variable": "Uy"
+   }
+  },
+  "wall_total": 23.0
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

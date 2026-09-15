@@ -1,0 +1,75 @@
+{
+ "canary": "25fd2967-ab03-576d-8d5c-a39fe94ffe9a",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhd.f90",
+     "new": "if (time + dt >= tout) then",
+     "old": "if (time >= tout) then"
+    }
+   ]
+  },
+  "family": "schedule",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhd.f90",
+     "new": "if (time >= tout) then",
+     "old": "if (time + dt >= tout) then"
+    }
+   ]
+  },
+  "id": "round3-outsched-3d-mhd-l183",
+  "meta": {
+   "difficulty_design": "hard",
+   "file": "src_compressible/mhd.f90",
+   "line": 183,
+   "rationale": "This changes the incumbent's pre-step output convention and can create an extra initial-state frame; resolving it requires reconciling frame numbering, snapshot contents, and the completed-step rows in times.dat."
+  },
+  "note": "made 3D snapshot scheduling anticipate the next step",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "schedule",
+  "floor": 0.1,
+  "floor_per_check": {
+   "aw-128": 0.1
+  },
+  "id": "round3-outsched-3d-mhd-l183",
+  "meta": {
+   "difficulty_design": "hard",
+   "file": "src_compressible/mhd.f90",
+   "line": 183,
+   "rationale": "This changes the incumbent's pre-step output convention and can create an extra initial-state frame; resolving it requires reconciling frame numbering, snapshot contents, and the completed-step rows in times.dat."
+  },
+  "note": "made 3D snapshot scheduling anticipate the next step",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 45.68
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "error": "frame count differs: reference 9, candidate 10. A missing frame is a violation, not an unscored frame.",
+    "frames_ok": 0,
+    "frames_scored": 0,
+    "outcome": "wrong_shape",
+    "passed": false,
+    "value": null
+   }
+  },
+  "wall_total": 59.7
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

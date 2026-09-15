@@ -1,0 +1,76 @@
+{
+ "canary": "14ef042f-2a63-5216-9b9e-0ef6a4871556",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                        flux(ix,iy,iz,14) = uz * Bz - ux * Bx",
+     "old": "                        flux(ix,iy,iz,14) = ux * Bz - uz * Bx"
+    }
+   ]
+  },
+  "family": "swapvel",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                        flux(ix,iy,iz,14) = ux * Bz - uz * Bx",
+     "old": "                        flux(ix,iy,iz,14) = uz * Bz - ux * Bx"
+    }
+   ]
+  },
+  "id": "swapvel-3d-mhdrhs-L83",
+  "meta": {
+   "file": "src_compressible/mhdrhs.f90",
+   "line": 83
+  },
+  "note": "swapped the velocity factors of one E-field component",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "swapvel",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "swapvel-3d-mhdrhs-L83",
+  "meta": {
+   "file": "src_compressible/mhdrhs.f90",
+   "line": 83
+  },
+  "note": "swapped the velocity factors of one E-field component",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 11.266
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "1.160e-02 at frame 8 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.01159737023138013,
+    "worst_frame": 8,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 18.0
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

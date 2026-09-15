@@ -1,0 +1,78 @@
+{
+ "canary": "6c143b6a-7cd1-5001-8a23-1b7a35cb841a",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "cc20=5.0/12.002",
+     "old": "cc20=5.0/12.0"
+    }
+   ]
+  },
+  "family": "subtle",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/rktmod.f90",
+     "new": "cc20=5.0/12.0",
+     "old": "cc20=5.0/12.002"
+    }
+   ]
+  },
+  "id": "subtle-3d-rktmod-l17k1",
+  "meta": {
+   "difficulty_design": "medium",
+   "file": "src_compressible/rktmod.f90",
+   "symptom_style": "lean"
+  },
+  "note": "RK stage-2 coefficient (subtle)",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "subtle",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "subtle-3d-rktmod-l17k1",
+  "meta": {
+   "difficulty_design": "medium",
+   "file": "src_compressible/rktmod.f90",
+   "symptom_style": "lean"
+  },
+  "note": "RK stage-2 coefficient (subtle)",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 14.409
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "7.861e-07 at frame 8 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 7.860820871185854e-07,
+    "worst_frame": 8,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 22.7
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

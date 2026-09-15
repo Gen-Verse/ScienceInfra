@@ -1,0 +1,82 @@
+{
+ "canary": "95e7d6b5-4b8b-54ca-a397-a2af58dc1e1e",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_carbonate_sys.F",
+     "new": "           calcium = 1.028 _d -2*salt(i,j,k,bi,bj)/35.35 _d 0",
+     "old": "           calcium = 1.028 _d -2*salt(i,j,k,bi,bj)/35. _d 0"
+    }
+   ]
+  },
+  "family": "coef",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/bling/bling_carbonate_sys.F",
+     "new": "           calcium = 1.028 _d -2*salt(i,j,k,bi,bj)/35. _d 0",
+     "old": "           calcium = 1.028 _d -2*salt(i,j,k,bi,bj)/35.35 _d 0"
+    }
+   ]
+  },
+  "id": "coef-bling-biogeochemistry-bling-carbonate-sys-f-L156-n1",
+  "meta": {
+   "file": "pkg/bling/bling_carbonate_sys.F",
+   "line": 156,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "perturb a numeric coefficient in calcium by one percent",
+  "source": "inject",
+  "tree": "bling-biogeochemistry"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "coef",
+  "floor": 0.5,
+  "floor_per_check": {
+   "global-bling": 0.5
+  },
+  "id": "coef-bling-biogeochemistry-bling-carbonate-sys-f-L156-n1",
+  "meta": {
+   "file": "pkg/bling/bling_carbonate_sys.F",
+   "line": 156,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "perturb a numeric coefficient in calcium by one percent",
+  "runs": {
+   "global-bling": {
+    "exit": 0,
+    "wall": 5.3871
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "bling-biogeochemistry",
+  "verdicts": {
+   "global-bling": {
+    "error": "PTRACER01.0000000030.data: 1368 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 8.170e-07); PTRACER02.0000000030.data: 4092 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.634e-06); blingTracDiag.0000000030.data: 4525 of 983040 values exceed atol=1e-10 rtol=1e-08 (max |err| 1.427e-06)",
+    "files_ok": 15,
+    "files_scored": 18,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 1.6339998558656532e-06,
+    "worst_file": "PTRACER02.0000000030.data"
+   }
+  },
+  "wall_total": 6.2
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

@@ -18,9 +18,10 @@ parquets. Four stages, in a hard dependency order:
 | [`../../scripts/prepare/warm_status.sh`](../../scripts/prepare/warm_status.sh) | Probes how warm each node's image cache already is |
 | [`../../scripts/prepare/warm_repair.sh`](../../scripts/prepare/warm_repair.sh) | Retries only the tasks that failed a warm pass |
 
-Every command below is run from the repository root. `${TASK_BANK_REPO}` is your
-checkout of the task bank, and `192.168.1.x` stands in for your own node
-addresses.
+Every command below is run from the repository root. `demo` is the bundled task
+bank, which ships the `laps` and `mitgcm-biogeo` environments. Point `--repo` at
+your own checkout to use a different bank. `192.168.1.x` stands in for your own
+node addresses.
 
 ---
 
@@ -29,10 +30,10 @@ addresses.
 ```bash
 # See the plan first, touching nothing.
 bash scripts/prepare/prepare_all.sh \
-    --repo ${TASK_BANK_REPO} --envs mitgcm-biogeo --dry-run
+    --repo demo --envs mitgcm-biogeo --dry-run
 
 bash scripts/prepare/prepare_all.sh \
-    --repo ${TASK_BANK_REPO} --envs mitgcm-biogeo \
+    --repo demo --envs mitgcm-biogeo \
     --hosts 192.168.1.1,192.168.1.2
 ```
 
@@ -43,7 +44,7 @@ rather than that value times the env count.
 Re-run a single stage after a failure instead of redoing slow work:
 
 ```bash
-bash scripts/prepare/prepare_all.sh --repo ${TASK_BANK_REPO} \
+bash scripts/prepare/prepare_all.sh --repo demo \
     --envs mitgcm-biogeo --stages dataset
 ```
 
@@ -80,7 +81,7 @@ One compiler handles every env. It reads the env's own templates and
 compiler:
 
 ```bash
-cd ${TASK_BANK_REPO}
+cd demo
 python utils/harbor/to_harbor.py --env envs/<env>
 ```
 
@@ -108,7 +109,7 @@ on whether they record one, so this fills the gaps:
 
 ```bash
 python -m scienceinfra.datasets.resolve_defect_lines \
-    --repo ${TASK_BANK_REPO} --env laps --env mitgcm-biogeo --env athena-gr
+    --repo demo --env laps --env mitgcm-biogeo
 ```
 
 It downloads each env's pinned upstream source, verifies its sha256, and finds the
@@ -143,7 +144,7 @@ Hints exist because an unhinted 4B model scored near zero: the task became
 
 ```bash
 python -m scienceinfra.datasets.build_dataset \
-    --repo ${TASK_BANK_REPO} \
+    --repo demo \
     --out-dir data/mitgcm-biogeo/repair_easy \
     --env mitgcm-biogeo --categories repair --difficulty easy --hint-level all
 ```

@@ -1,0 +1,94 @@
+{
+ "canary": "9f5433a5-5c69-54d8-87eb-59dadbcf83dd",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/rktmod.f90",
+     "new": "cc30=0.752",
+     "old": "cc30=0.75"
+    }
+   ]
+  },
+  "family": "coef",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/2D/rktmod.f90",
+     "new": "cc30=0.75",
+     "old": "cc30=0.752"
+    }
+   ]
+  },
+  "id": "coef-2d-rktmod-L17k2-",
+  "meta": {
+   "file": "src_compressible/2D/rktmod.f90",
+   "line": 17
+  },
+  "note": "perturbed the RK stage-3 coefficient",
+  "source": "inject",
+  "tree": "2d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "coef",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-2d-256": 0.5,
+   "aw-2d-512": 0.5
+  },
+  "id": "coef-2d-rktmod-L17k2-",
+  "meta": {
+   "file": "src_compressible/2D/rktmod.f90",
+   "line": 17
+  },
+  "note": "perturbed the RK stage-3 coefficient",
+  "runs": {
+   "aw-2d-256": {
+    "exit": 0,
+    "wall": 1.18
+   },
+   "aw-2d-512": {
+    "exit": 0,
+    "wall": 4.95
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "2d",
+  "verdicts": {
+   "aw-2d-256": {
+    "dt_abs": 0.0,
+    "error": "1.845e-04 at frame 10 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.00018449647918754308,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   },
+   "aw-2d-512": {
+    "dt_abs": 0.0,
+    "error": "1.792e-04 at frame 10 in Bz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 10,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.0001791918353048899,
+    "worst_frame": 10,
+    "worst_variable": "Bz"
+   }
+  },
+  "wall_total": 11.9
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

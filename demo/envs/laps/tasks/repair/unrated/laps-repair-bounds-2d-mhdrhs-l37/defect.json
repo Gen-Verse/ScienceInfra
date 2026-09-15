@@ -1,0 +1,10 @@
+{
+ "_canary": "eba8ca62-c0e1-572b-98b9-f6d2ebe6902b",
+ "edits": [
+  {
+   "file": "src_compressible/2D/mhdrhs.f90",
+   "new": "            endif\n\n            ixmin = 1\n            ixmax = nx \n            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1) - 1",
+   "old": "            endif\n\n            ixmin = 1\n            ixmax = nx \n            iymin = yi_offset(myid_i+1) + 1\n            iymax = yi_offset(myid_i+1) + yi_size(myid_i+1)"
+  }
+ ]
+}

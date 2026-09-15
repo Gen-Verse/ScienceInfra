@@ -1,0 +1,76 @@
+{
+ "canary": "79b2da8c-cd3e-5296-8601-126d06183a49",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                        flux(ix,iy,iz,10) = uu(ix,iy,iz,2) * uz",
+     "old": "                        flux(ix,iy,iz,10) = uu(ix,iy,iz,2) * uz - Bx * Bz"
+    }
+   ]
+  },
+  "family": "dropterm",
+  "fix": {
+   "edits": [
+    {
+     "file": "src_compressible/mhdrhs.f90",
+     "new": "                        flux(ix,iy,iz,10) = uu(ix,iy,iz,2) * uz - Bx * Bz",
+     "old": "                        flux(ix,iy,iz,10) = uu(ix,iy,iz,2) * uz"
+    }
+   ]
+  },
+  "id": "dropterm-3d-mhdrhs-L77c63-",
+  "meta": {
+   "file": "src_compressible/mhdrhs.f90",
+   "line": 77
+  },
+  "note": "dropped a magnetic tension term",
+  "source": "inject",
+  "tree": "3d"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "dropterm",
+  "floor": 0.5,
+  "floor_per_check": {
+   "aw-128": 0.5
+  },
+  "id": "dropterm-3d-mhdrhs-L77c63-",
+  "meta": {
+   "file": "src_compressible/mhdrhs.f90",
+   "line": 77
+  },
+  "note": "dropped a magnetic tension term",
+  "runs": {
+   "aw-128": {
+    "exit": 0,
+    "wall": 22.645
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "3d",
+  "verdicts": {
+   "aw-128": {
+    "dt_abs": 0.0,
+    "error": "1.132e-02 at frame 8 in Uz, over the 1.0e-10 this check is graded at",
+    "frames_ok": 0,
+    "frames_scored": 8,
+    "nstep_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "time_abs": 0.0,
+    "value": 0.011316036559302856,
+    "worst_frame": 8,
+    "worst_variable": "Uz"
+   }
+  },
+  "wall_total": 31.7
+ },
+ "generator": "sciaccel-rl authoring/repair",
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-08
+ }
+}

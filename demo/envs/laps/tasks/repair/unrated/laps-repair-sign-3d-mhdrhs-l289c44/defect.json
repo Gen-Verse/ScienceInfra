@@ -1,0 +1,10 @@
+{
+ "_canary": "f8988538-af7e-56c8-bcf5-e84cea5c4c8a",
+ "edits": [
+  {
+   "file": "src_compressible/mhdrhs.f90",
+   "new": "            uu_prim(:,:,:,4) = (uu(:,:,:,8) + 0.5 * ( uu(:,:,:,2) * &",
+   "old": "            uu_prim(:,:,:,4) = (uu(:,:,:,8) - 0.5 * ( uu(:,:,:,2) * &"
+  }
+ ]
+}

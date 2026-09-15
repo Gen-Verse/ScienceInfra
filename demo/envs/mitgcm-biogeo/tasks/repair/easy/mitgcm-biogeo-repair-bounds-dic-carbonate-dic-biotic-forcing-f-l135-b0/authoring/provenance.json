@@ -1,0 +1,141 @@
+{
+ "canary": "e2b71d2d-595b-52a0-9e8d-13e48cb7400f",
+ "candidate": {
+  "break": {
+   "edits": [
+    {
+     "file": "pkg/dic/dic_biotic_forcing.F",
+     "new": "      ENDIF\n\n       DO k=1,Nr-1",
+     "old": "      ENDIF\n\n       DO k=1,Nr"
+    }
+   ]
+  },
+  "family": "bounds",
+  "fix": {
+   "edits": [
+    {
+     "file": "pkg/dic/dic_biotic_forcing.F",
+     "new": "      ENDIF\n\n       DO k=1,Nr",
+     "old": "      ENDIF\n\n       DO k=1,Nr-1"
+    }
+   ]
+  },
+  "id": "bounds-dic-carbonate-dic-biotic-forcing-f-L135-b0",
+  "meta": {
+   "file": "pkg/dic/dic_biotic_forcing.F",
+   "line": 135,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "clip a loop upper bound by one",
+  "source": "inject",
+  "tree": "dic-carbonate"
+ },
+ "funnel": {
+  "crashed": false,
+  "family": "bounds",
+  "floor": 0.16,
+  "floor_per_check": {
+   "global-dic": 0.5,
+   "so-box-calcite-keir": 0.1,
+   "so-box-calcite-naviaux": 0.0,
+   "so-box-dic": 0.1,
+   "so-box-obcs-saphe": 0.1
+  },
+  "id": "bounds-dic-carbonate-dic-biotic-forcing-f-L135-b0",
+  "meta": {
+   "file": "pkg/dic/dic_biotic_forcing.F",
+   "line": 135,
+   "predicted_tier": "easy",
+   "prediction_rationale": "Mechanical single-site control; the local arithmetic is re-derivable."
+  },
+  "note": "clip a loop upper bound by one",
+  "runs": {
+   "global-dic": {
+    "exit": 0,
+    "wall": 1.7258
+   },
+   "so-box-calcite-keir": {
+    "exit": 0,
+    "wall": 1.3965
+   },
+   "so-box-calcite-naviaux": {
+    "exit": 0,
+    "wall": 0.0908
+   },
+   "so-box-dic": {
+    "exit": 0,
+    "wall": 1.0627
+   },
+   "so-box-obcs-saphe": {
+    "exit": 0,
+    "wall": 1.0733
+   }
+  },
+  "source": "inject",
+  "status": "survivor",
+  "tree": "dic-carbonate",
+  "verdicts": {
+   "global-dic": {
+    "error": "PTRACER01.0005184016.data: 3823 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 7.290e-04); PTRACER02.0005184016.data: 3643 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 4.296e-04); PTRACER03.0005184016.data: 3865 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 4.114e-06); PTRACER05.0005184016.data: 2299 of 122880 values exceed atol=1e-10 rtol=1e-08 (max |err| 6.913e-04)",
+    "files_ok": 10,
+    "files_scored": 14,
+    "final_iteration_match": true,
+    "outcome": "diverged",
+    "passed": false,
+    "value": 0.0007290484789620866,
+    "worst_file": "PTRACER01.0005184016.data"
+   },
+   "so-box-calcite-keir": {
+    "error": "PTRACER01.0000000060.data: candidate contains non-finite values; PTRACER02.0000000060.data: candidate contains non-finite values; PTRACER03.0000000060.data: candidate contains non-finite values; PTRACER04.0000000060.data: candidate contains non-finite values; PTRACER05.0000000060.data: candidate contains non-finite values; surfDiag.0000000060.data: candidate contains non-finite values",
+    "files_ok": 9,
+    "files_scored": 9,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": "Eta.0000000060.data"
+   },
+   "so-box-calcite-naviaux": {
+    "error": " trcstat_ptracer04_del2       =   1.1893762876817E+01\n(PID.TID 0000.0001) %MON trcstat_ptracer05_max        =   1.4798681068747E+07\n(PID.TID 0000.0001) %MON trcstat_ptracer05_min        =   8.2383316333612E-02\n(PID.TID 0000.0001) %MON trcstat_ptracer05_mean       =   1.4205168016516E+05\n(PID.TID 0000.0001) %MON trcstat_ptracer05_sd         =   1.0202799695887E+06\n(PID.TID 0000.0001) %MON trcstat_ptracer05_del2       =   3.0178204314076E+03\n(PID.TID 0000.0001) // =======================================================\n(PID.TID 0000.0001) // End MONITOR ptracer field statistics\n(PID.TID 0000.0001) // =======================================================\n EXTERNAL_FIELDS_LOAD,         1 : iP,iLd,i0,i1=   12    1   12    1 ; Wght=  0.4833333333  0.5166666667\n DIC_FIELDS_LOAD,         1 : iP,iLd,i0,i1=   12    1   12    1 ; Wght=  0.4833333333  0.5166666667\n OBCS_FIELDS_LOAD,         2 : iP,iLd,i0,i1=   12    1   12    1 ; Wght=  0.4666666667  0.5333333333\n cg2d: Sum(rhs),rhsMax =   3.70217753957371E+01  9.88625784851454E-01\n(PID.TID 0000.0001)      cg2d_init_res =   2.18099076329477E-01\n(PID.TID 0000.0001)      cg2d_iters(min,last) =      -1      80\n(PID.TID 0000.0001)      cg2d_last_res =   9.55927126672097E-14\nS/R CALC_PCO2_SOLVESAPHE: H+ ion concentration less than 0 Divergence or too many iterations\nNote: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG IEEE_DIVIDE_BY_ZERO IEEE_OVERFLOW_FLAG IEEE_DENORMAL\nSTOP ABNORMAL END: S/R CALC_PCO2_SOLVESAPHE\n",
+    "files_ok": 0,
+    "files_scored": 0,
+    "final_iteration_match": false,
+    "outcome": "crash",
+    "passed": false,
+    "value": null
+   },
+   "so-box-dic": {
+    "error": "PTRACER01.0000000060.data: candidate contains non-finite values; PTRACER02.0000000060.data: candidate contains non-finite values; PTRACER03.0000000060.data: candidate contains non-finite values; PTRACER04.0000000060.data: candidate contains non-finite values; PTRACER05.0000000060.data: candidate contains non-finite values; surfDiag.0000000060.data: candidate contains non-finite values",
+    "files_ok": 9,
+    "files_scored": 9,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": "Eta.0000000060.data"
+   },
+   "so-box-obcs-saphe": {
+    "error": "PTRACER01.0000000060.data: candidate contains non-finite values; PTRACER02.0000000060.data: candidate contains non-finite values; PTRACER03.0000000060.data: candidate contains non-finite values; PTRACER04.0000000060.data: candidate contains non-finite values; PTRACER05.0000000060.data: candidate contains non-finite values; surfDiag.0000000060.data: candidate contains non-finite values",
+    "files_ok": 9,
+    "files_scored": 9,
+    "final_iteration_match": true,
+    "outcome": "nonconforming",
+    "passed": false,
+    "value": 0.0,
+    "worst_file": "Eta.0000000060.data"
+   }
+  },
+  "wall_total": 7.1
+ },
+ "generator": "sciaccel-rl envs/mitgcm-biogeo/factory",
+ "source": {
+  "archive_sha256": "7fc8abfc7bd58bc4c5a40c20213f8e3f2fb377c889a7ed0e3ddbfe1fe4358586",
+  "commit": "853761d8f46926cd8042d6e0ad252050561fd6fa",
+  "release": "checkpoint69q"
+ },
+ "thresholds": {
+  "FLOOR_MAX": 0.65,
+  "MARGIN_MIN": 1e-13
+ }
+}

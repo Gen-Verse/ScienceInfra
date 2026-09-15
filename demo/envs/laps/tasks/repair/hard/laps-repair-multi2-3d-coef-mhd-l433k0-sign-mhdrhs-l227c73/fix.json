@@ -1,0 +1,15 @@
+{
+ "_canary": "b579af9d-7cb9-5a09-94f7-681e8d6629dd",
+ "edits": [
+  {
+   "file": "src_compressible/mhd.f90",
+   "new": "dtmin = dtmin * cfl",
+   "old": "dtmin = dtmin * cfl * 1.02"
+  },
+  {
+   "file": "src_compressible/mhdrhs.f90",
+   "new": "                        fnl(ix,iy,iz,7) = ky * flux_fourier(ix,iy,iz,13) - &",
+   "old": "                        fnl(ix,iy,iz,7) = ky * flux_fourier(ix,iy,iz,13) + &"
+  }
+ ]
+}
