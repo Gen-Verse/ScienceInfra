@@ -4,6 +4,7 @@ __pycache__/
 build/
 dist/
 .venv/
+.claude/
 
 # Run artifacts. Checkpoints, Harbor job directories, and PSRL logs are large.
 outputs/

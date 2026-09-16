@@ -251,3 +251,9 @@ HINT_LEVEL=L1 \
 ## 致谢
 
 ScienceInfra 基于 **[PSRL](https://github.com/psrl-project/psrl)**、**[veRL](https://github.com/volcengine/verl)**、**[Harbor](https://github.com/laude-institute/harbor)** 和 **[vLLM](https://github.com/vllm-project/vllm)** 构建。感谢 ScienceIDE 贡献者，以及支持这些环境的科学软件维护者。
+
+## 许可证
+
+ScienceInfra 以 [Apache License 2.0](LICENSE) 发布。
+
+环境所构建和验证的科学程序属于第三方软件，各自遵循其自身的许可证。构建环境时会拉取这些上游源码，本仓库不对其重新授权。在重新分发某个环境或其构建产物之前，请先确认对应上游项目的授权条款。

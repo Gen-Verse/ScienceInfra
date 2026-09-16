@@ -267,3 +267,9 @@ If you use this infrastructure, also link to ScienceInfra and record the commit 
 ## Acknowledgments
 
 ScienceInfra builds on **[PSRL](https://github.com/psrl-project/psrl)**, **[veRL](https://github.com/volcengine/verl)**, **[Harbor](https://github.com/laude-institute/harbor)**, and **[vLLM](https://github.com/vllm-project/vllm)**. We thank the ScienceIDE contributors and the maintainers of the scientific software that makes these environments possible.
+
+## License
+
+ScienceInfra is released under the [Apache License 2.0](LICENSE).
+
+The scientific codebases these environments build and verify are third-party software distributed under their own licenses. Building an environment fetches that upstream source, which this repository does not relicense. Check the terms of each upstream project before redistributing an environment or its build artifacts.
