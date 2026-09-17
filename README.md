@@ -8,7 +8,7 @@
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
-[ScienceIDE](https://github.com/aitofound/ScienceIDE) · [Quickstart](#quickstart) · [Roadmap](#roadmap) · [Documentation](#documentation)
+[Paper](https://arxiv.org/abs/2609.19134) · [ScienceIDE](https://github.com/aitofound/ScienceIDE) · [Quickstart](#quickstart) · [Roadmap](#roadmap) · [Documentation](#documentation)
 
 </div>
 
@@ -83,17 +83,17 @@ We welcome contributions in **scientific environment integration, execution syst
 
 ## Citation and acknowledgments
 
-For the scientific environments, methodology, and reported experiments, cite the [ScienceIDE work](https://aitonomy.org/projects/scienceide). When using ScienceInfra, also link to this repository and record the commit used.
+For the scientific environments, methodology, and reported experiments, cite the [ScienceIDE work](https://arxiv.org/abs/2609.19134). When using ScienceInfra, also link to this repository and record the commit used.
 
 <details>
 <summary>BibTeX</summary>
 
 ```bibtex
-@misc{geng2026scienceide,
-  title  = {{ScienceIDE}: Scaling Scientific Experience toward 1,000 Executable Environments},
-  author = {Geng, Hejia and Huang, Zesen and Li, Haoyang and others},
-  year   = {2026},
-  url    = {https://aitonomy.org/projects/scienceide}
+@article{geng2026scienceide,
+  title={ScienceIDE: Turning World's Scientific Codebase into Agent Learnable Environments},
+  author={Geng, Hejia and Huang, Zesen and Li, Haoyang and Li, Wenbin and Wu, Koutian and Zhou, Zihan and Pang, Yuanbo and Liu, Weihao and Xu, Zigong and Li, Zhiping and Zhang, Zongzheng and Dong, Chuanfei and Sun, Jiankai and Zheng, Tianzhe and Xie, Fengyu and Ma, Yue and Shi, Yueheng and Xie, Tong and Di, Zonglin and Liu, Xianrong and Gao, Qucheng and Liu, Yimin and Pan, Jiaming and Huang, Sheng and Ma, Xiao-Han and Yuan, Lanqing and Zhu, Zhenlin and Liu, Ziang and Xu, Ziyang and Wang, Junkai and Liang, Kangkai and Xian, Jiayi and Zhao, Zehong and Xu, Liuwei and Xie, Jingxu and Zhang, Peijin and Gao, Qiang and Xing, Chengyi and Zhao, Zhe and Wang, Xi and Xing, Yaopeng and Meng, Xing and Yin, Zhenfei and Wu, Yingcheng and Yang, Ling},
+  journal={arXiv preprint arXiv:2609.19134},
+  year={2026}
 }
 ```
 
