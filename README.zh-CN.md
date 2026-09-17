@@ -8,7 +8,7 @@
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
-[ScienceIDE](https://github.com/aitofound/ScienceIDE) · [快速开始](#快速开始) · [发展路线](#发展路线) · [技术文档](#技术文档)
+[论文](https://arxiv.org/abs/2609.19134) · [ScienceIDE](https://github.com/aitofound/ScienceIDE) · [快速开始](#快速开始) · [发展路线](#发展路线) · [技术文档](#技术文档)
 
 </div>
 
@@ -85,17 +85,17 @@ Oracle 检查的预期得分为 **1.0**。Nop 基线检查、PSRL 安装与训�
 
 ## 引用与致谢
 
-科学环境、方法与论文实验结果请引用 [ScienceIDE](https://aitonomy.org/projects/scienceide)。使用 ScienceInfra 时，也请附上本仓库链接与实验使用的 Commit。
+科学环境、方法与论文实验结果请引用 [ScienceIDE](https://arxiv.org/abs/2609.19134)。使用 ScienceInfra 时，也请附上本仓库链接与实验使用的 Commit。
 
 <details>
 <summary>BibTeX</summary>
 
 ```bibtex
-@misc{geng2026scienceide,
-  title  = {{ScienceIDE}: Scaling Scientific Experience toward 1,000 Executable Environments},
-  author = {Geng, Hejia and Huang, Zesen and Li, Haoyang and others},
-  year   = {2026},
-  url    = {https://aitonomy.org/projects/scienceide}
+@article{geng2026scienceide,
+  title={ScienceIDE: Turning World's Scientific Codebase into Agent Learnable Environments},
+  author={Geng, Hejia and Huang, Zesen and Li, Haoyang and Li, Wenbin and Wu, Koutian and Zhou, Zihan and Pang, Yuanbo and Liu, Weihao and Xu, Zigong and Li, Zhiping and Zhang, Zongzheng and Dong, Chuanfei and Sun, Jiankai and Zheng, Tianzhe and Xie, Fengyu and Ma, Yue and Shi, Yueheng and Xie, Tong and Di, Zonglin and Liu, Xianrong and Gao, Qucheng and Liu, Yimin and Pan, Jiaming and Huang, Sheng and Ma, Xiao-Han and Yuan, Lanqing and Zhu, Zhenlin and Liu, Ziang and Xu, Ziyang and Wang, Junkai and Liang, Kangkai and Xian, Jiayi and Zhao, Zehong and Xu, Liuwei and Xie, Jingxu and Zhang, Peijin and Gao, Qiang and Xing, Chengyi and Zhao, Zhe and Wang, Xi and Xing, Yaopeng and Meng, Xing and Yin, Zhenfei and Wu, Yingcheng and Yang, Ling},
+  journal={arXiv preprint arXiv:2609.19134},
+  year={2026}
 }
 ```
 
