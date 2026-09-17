@@ -99,6 +99,6 @@ For the scientific environments, methodology, and reported experiments, cite the
 
 </details>
 
-Built on [PSRL](https://github.com/psrl-project/psrl), [veRL](https://github.com/volcengine/verl), [Harbor](https://github.com/laude-institute/harbor), and [vLLM](https://github.com/vllm-project/vllm). Thanks to the ScienceIDE contributors and scientific software maintainers.
+Built on [PSRL](https://github.com/psrl-project/psrl), [Harbor](https://github.com/laude-institute/harbor), and [vLLM](https://github.com/vllm-project/vllm). We thank [PKU-DAIR](https://github.com/PKU-DAIR) for their support and collaboration in providing the RL infrastructure. Thanks to the ScienceIDE contributors and scientific software maintainers.
 
 **License:** [Apache 2.0](LICENSE). Third-party scientific codebases retain their own licenses.

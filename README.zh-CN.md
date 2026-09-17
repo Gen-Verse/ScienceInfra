@@ -101,6 +101,6 @@ Oracle 检查的预期得分为 **1.0**。Nop 基线检查、PSRL 安装与训�
 
 </details>
 
-基于 [PSRL](https://github.com/psrl-project/psrl)、[veRL](https://github.com/volcengine/verl)、[Harbor](https://github.com/laude-institute/harbor) 与 [vLLM](https://github.com/vllm-project/vllm) 构建。感谢 ScienceIDE 贡献者与科学软件维护者。
+基于 [PSRL](https://github.com/psrl-project/psrl)、[Harbor](https://github.com/laude-institute/harbor) 与 [vLLM](https://github.com/vllm-project/vllm) 构建。感谢 [PKU-DAIR](https://github.com/PKU-DAIR) 的支持与合作，其提供了 RL infra 的支持。感谢 ScienceIDE 贡献者与科学软件维护者。
 
 **许可证：** [Apache 2.0](LICENSE)。第三方科学代码库遵循各自的许可证。
